@@ -1,0 +1,315 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\usepackage[%
+    pdftitle={CI3 - CIN -- Torseurs -- TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{%CI 3 -- CIN : Étude du comportement cinématique des systèmes
+}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+Partie  -- }}
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Damien \textsc{Iceta} \\ Xavier \textsc{Pessoles}}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- TD\\
+Ch. 7 : Torseurs -- \ifthenelse{\boolean{prof}}{P}{E}}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Chapitre 7 -- Torseurs}}
+\end{center}
+
+\begin{center}
+\textsc{Travaux dirigés}
+\end{center}
+
+\normalsize
+
+\begin{flushright}
+\textit{D'après ressources ???}
+\end{flushright}
+
+ \renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+
+\section{Pales d'hélicoptères}
+\setcounter{subparagraph}{0}
+\subsection{Mise en situation}
+\vspace{.5cm}
+\ifthenelse{\boolean{prof}}{}{
+\begin{minipage}[c]{.6\linewidth}
+L'hélicoptère est un giravion dont la sustentation est assurée par un rotor primaire équipé de pales. Un rotor secondaire (ou rotor de queue, lui aussi équipé de pales) permet à l'hélicoptère de ne pas tourner sur lui même. Ces rotors sont entraînés par une ou deux turbines suivant les hélicoptères, par l'intermédiaire d'une boîte de vitesse. 
+
+En vol, les rotors tournent à une vitesse de rotation fixe. La modification de l'inclinaison des pales permet à elle seule une accélération, un décélération, un changement d'altitude ou de direction de l'hélicoptère.
+
+\end{minipage} \hfill
+\begin{minipage}[c]{.35\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/fig1}
+\end{center}
+\end{minipage}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/SysML/Exigences}
+\end{center}
+}
+
+\subsection{Cinématique analytique}
+\ifthenelse{\boolean{prof}}{}{
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/fig2}
+\end{center}
+
+Le fuselage de l'hélicoptère est repéré par $S_0$ et on lui associe le repère $\mathcal{R}_0(O,\vect{x_0},\vect{y_0},\vect{z_{01}})$ défini de la
+manière suivante :
+\begin{itemize}
+\item $(O,\vect{z_{01}})$ correspond à l'axe de rotation du rotor principal;
+\item $(O, \vect{x_0} )$ définit l'axe longitudinal de l'appareil et est orienté de l'arrière vers l'avant;
+\item $(O, \vect{y_0} )$ définit l'axe transversal.
+\end{itemize}
+
+Ce rotor est constitué par :
+\begin{itemize}
+\item un moyeu central $S_1$ associé au repère $\mathcal{R}_1(O,\vect{x_1},\vect{y_{12}},\vect{z_{01}})$ qui est entraîné par la boîte de vitesse (non
+représentée ici);
+\item quatre pales $S_3$, $S_4$, $S_5$ et $S_6$. On associe le repère $\mathcal{R}_3(A_3,\vect{x_{23}},\vect{y_3},\vect{z_3} )$ à la pale $S_3$;
+\item quatre pieds de pales identiques reliant les pales au moyeu. On associe le repère
+$\mathcal{R}_2(A3,\vect{x_{23}},\vect{y_{12}},\vect{z_2} )$ au pied de pale $S_2$.
+\end{itemize}
+
+NB : Si les repères $\mathcal{R}_i$ et $\mathcal{R}_j$ ont un vecteur de base commun (par exemple $\vect{x_i}= \vect{x_j}$ ), celui-ci est noté $\vect{x_{ij}}$.
+
+
+Le mouvement de $S_1/S_0$ est une rotation d'axe $(O,\vect{z_{01}})$. On pose $\theta$ l’angle de rotation du rotor : $\theta = (\vect{x_0},\vect{x_1})$ .
+
+Le mouvement de $S_2/S_1$ est une rotation d'axe $(A_3,\vect{y_{12}})$ . On pose $\beta$ l’angle de battement : $\beta = (\vect{x_1},\vect{x_{23}})$.
+
+Le mouvement de $S_3/S_2$ est une rotation d'axe $(A_3,\vect{x_{23}})$. On pose $\alpha$ l’angle de pas : $\alpha = (\vect{y_{12}},\vect{y_3})$.
+
+On pose $\vect{OA_3} = r\cdot \vect{x_1}$ et $\vect{A_3G}=a\cdot \vect{x_{23}}$ où $G$ est le centre de gravité de la pale 3 ($r$ et $a$ constants). On suppose que tous les solides sont indéformables.
+}
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/cor1}
+\end{center}
+
+%\subparagraph{}
+%\textit{Réaliser 3 figures planes illustrant les 3 paramètres d'orientation $\theta$, $\beta$ et $\alpha$ , puis en déduire le vecteur rotation traduisant chaque figure.}
+%\ifthenelse{\boolean{prof}}{
+%\begin{corrige}
+%\begin{center}
+%\includegraphics[width=.9\textwidth]{images/cor1}
+%\end{center}
+%\end{corrige}}{}
+
+\subparagraph{}
+%\textit{Déterminer le torseur $\torseurcin{V}{S_3}{S_2}$ au point $G$.}
+\textit{Déterminer le vecteur $\vectv{G}{S_3}{S_2}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On a: 
+$$
+\torseurcin{V}{S_3}{S_2} = \torseurl{\vecto{S_3}{S_2}=\dot{\alpha}\vect{x_{23}}}{\vectv{A_3}{S_3}{S_2}=\vect{0}}{A_3}
+$$
+
+Par ailleurs, 
+$$
+\vectv{G}{S_3}{S_2}=\underbrace{\vectv{A_3}{S_3}{S_2}}_{\vect{0}}+\vect{GA_3}\wedge\vecto{S_3}{S_2}=
+-a\vect{x_{23}}\wedge \dot{\alpha}\vect{x_{23}}=\vect{0}
+$$
+
+Au final, 
+$$
+\torseurcin{V}{S_3}{S_2} = \torseurl{\vecto{S_3}{S_2}=\dot{\alpha}\vect{x_{23}}}{\vectv{G}{S_3}{S_2}=\vect{0}}{G}
+$$
+
+\end{corrige}}{}
+
+\subparagraph{}
+%\textit{Déterminer le torseur $\torseurcin{V}{S_2}{S_1}$ au point $G$.}
+\textit{Déterminer le vecteur $\vectv{G}{S_2}{S_1}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On a: 
+$$
+\torseurcin{V}{S_2}{S_1} = \torseurl{\vecto{S_2}{S_1}=\dot{\beta}\vect{y_{12}}}{\vectv{A_3}{S_2}{S_1}=\vect{0}}{A_3}
+$$
+
+Par ailleurs, 
+$$
+\vectv{G}{S_2}{S_1}=\underbrace{\vectv{A_3}{S_2}{S_1}}_{\vect{0}}+\vect{GA_3}\wedge\vecto{S_2}{S_1}=
+-a\vect{x_{23}}\wedge \dot{\beta}\vect{y_{12}}=-a\dot{\beta}\vect{z_{2}}
+$$
+
+Au final, 
+$$
+\torseurcin{V}{S_2}{S_1} = \torseurl{\vecto{S_2}{S_1}=\dot{\beta}\vect{y_{12}}}{\vectv{G}{S_2}{S_1}=-a\dot{\beta}\vect{z_{2}}}{G}
+$$\end{corrige}}{}
+
+\subparagraph{}
+%\textit{Déterminer le torseur $\torseurcin{V}{S_1}{S_0}$ au point $G$.}
+\textit{Déterminer le vecteur $\vectv{G}{S_1}{S_0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On a: 
+$$
+\torseurcin{V}{S_1}{S_0} = \torseurl{\vecto{S_1}{S_0}=\dot{\theta}\vect{z_{01}}}{\vectv{O}{S_1}{S_0}=\vect{0}}{O}
+$$
+
+Par ailleurs, 
+$$
+\vectv{G}{S_1}{S_0}=\underbrace{\vectv{O}{S_1}{S_0}}_{\vect{0}}+\vect{GO}\wedge\vecto{S_1}{S_0}=
+\left(-a\vect{x_{23}}-r\vect{x_1}\right)\wedge \dot{\theta}\vect{z_{01}}=
+a\dot{\theta}\cos\beta\vect{y_{12}}+r\dot{\theta}\vect{y_{12}}
+$$
+
+Au final, 
+$$
+\torseurcin{V}{S_1}{S_0} = 
+\torseurl{
+\vecto{S_1}{S_0}=\dot{\theta}\vect{z_{01}}
+}{%
+\vectv{G}{S_1}{S_0}
+=\dot{\theta}\left(a\cos\beta+r\right)\vect{y_{12}}}{G}
+$$
+
+\end{corrige}}{}
+
+\subparagraph{}
+%\textit{En déduire $\torseurcin{V}{S_3}{S_0}$ au point $G$.}
+\textit{Déduire des questions précédentes le torseur $\torseurcin{V}{S_3}{S_0}$ au point $G$.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Par composition du torseur cinématique on a :
+$$
+\torseurcin{V}{S_3}{S_0} = 
+\torseurcin{V}{S_3}{S_2} + \torseurcin{V}{S_2}{S_1} + \torseurcin{V}{S_1}{S_0}
+$$
+
+Tous les torseurs ayant déjà été exprimés au même point, on a :
+$$
+\torseurcin{V}{S_3}{S_0} = 
+\torseurl{
+\vecto{S_3}{S_0}=\dot{\theta}\vect{z_{01}}+\dot{\alpha}\vect{x_{23}}
++\dot{\beta}\vect{y_{12}}
+}{%
+\vectv{G}{S_3}{S_0}
+=\dot{\theta}\left(a\cos\beta+r\right)\vect{y_{12}}-a\dot{\beta}\vect{z_{2}}}{G}
+$$
+
+On pose maintenant $\vectv{G}{S_3}{S_0}=(a \cdot \cos \beta + r) \cdot \dot{\theta} \cdot \vect{y_{12}}-a\dot{\beta}\vect{z_2}$.
+\end{corrige}}{}
+
+
+On pose maintenant $\vectv{G}{S_3}{S_0}=(a \cdot \cos \beta + r) \cdot \dot{\theta} \cdot \vect{y_{12}}-a\dot{\beta}\vect{z_2}$.
+
+\subparagraph{}
+\textit{Exprimer l'accélération $\vectg{G}{S_3}{S_0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Par définition, 
+$$
+\vectg{G}{S_3}{S_0} = 
+\left[
+\dfrac{\vectv{G}{S_3}{S_0}}{dt}
+\right]_{\mathcal{R}_0}
+$$
+
+Il est donc nécessaire de dériver $\vect{y_{12}}$ et $\vect{z_{2}}$ :
+$$
+\left[
+\dfrac{d\vect{y_{12}}}{dt}
+\right]_{\mathcal{R}_0}
+=
+\left[
+\dfrac{d\vect{y_{12}}}{dt}
+\right]_{\mathcal{R}_1}+\vecto{S_1}{S_0} \wedge \vect{y_{12}}
+=\dot{\theta}\vect{z_{01}} \wedge \vect{y_{12}}
+=-\dot{\theta}\vect{x_{1}}
+$$
+
+$$
+\left[
+\dfrac{d\vect{z_{2}}}{dt}
+\right]_{\mathcal{R}_0}
+=
+\left[
+\dfrac{d\vect{z_{2}}}{dt}
+\right]_{\mathcal{R}_2}+\vecto{S_2}{S_0} \wedge \vect{z_{2}}
+=\left(
+\dot{\theta}\vect{z_{01}}+\dot{\beta}\vect{y_{12}}
+\right) \wedge \vect{z_{2}}
+=
+\dot{\theta}\sin\beta\vect{y_1}
++\dot{\beta}\vect{x_{2}}
+$$
+
+Au final :
+$$
+\vectg{G}{S_3}{S_0} = 
+-a \dot{\beta} \sin \beta \dot{\theta} \vect{y_{12}}
++(a \cos \beta + r) \ddot{\theta} \vect{y_{12}}
+-(a \cos \beta + r) \dot{\theta}^2 \vect{x_{1}}
+-a\ddot{\beta}\vect{z_2}
+-a\dot{\beta}\left( \dot{\theta}\sin\beta\vect{y_1}
++\dot{\beta}\vect{x_{2}}\right)
+$$
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{La longueur des pales est, entre autre, limitée par la vitesse du son en bout de pale (Exigence 1.1.1.1.1). Pour $\beta=0$, calculer la longueur maximale de la pale pour ne pas dépasser la vitesse du son. La vitesse du rotor est de $250\; tr/min$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Lorsque $\beta=0$ la vitesse en bout de pale est donnée par $L\dot{\theta}$.
+$\dot{\theta}=250 \; tr/min = \dfrac{250 \cdot 2 \pi}{60}\;rad/s = 26,18\;rad/s$
+On a donc :
+$$
+L = \dfrac{295,1}{26,18} =11,2 \; m
+$$
+\end{corrige}}{}
+\end{document}
+
+

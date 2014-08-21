@@ -1,0 +1,235 @@
+\documentclass[10pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={CIN -- Torseurs -- Travaux Dirigés},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ de l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- TD} \\ \footnotesize{Ch 7 : Torseurs -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- TD} \\ \footnotesize{Ch 7 : Torseurs -- E}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+
+
+\begin{center}
+ \Large\textsc{CI 3 -- CIN : Étude du comportement cinématique des systèmes}
+\end{center}
+
+\begin{center}
+ \large\textsc{Chapitre 7 -- Torseurs}
+\end{center}
+
+\begin{center}
+\textsc{Travaux Dirigés} 
+\end{center}
+
+\vspace{.5cm}
+
+\subsection*{Exercice 1 -- Came plate}
+\setcounter{subparagraph}{0}
+\begin{flushright}
+\textit{D'après ressources de Jean-Pierre Pupier.} 
+\end{flushright}
+La came plate 1 tourne et transmet un mouvement de translation alternatif à la pièce 2. Il y a une liaison sphère -- plan de centre A.
+
+\begin{itemize}
+\item On associe au bâti 0 un repère $\mathcal{R}_0=\left(H,\vect{x_0},\vect{y_0},\vect{z_0}, \right)$.
+\item On associe à la came plate 1 un repère  $\mathcal{R}_1=\left(H,\vect{x_0},\vect{y_1},\vect{z_1} \right)$. 
+\item On pose  $\alpha=\left( \vect{y_0}, \vect{y_1}\right)$.
+\item Un repère $\mathcal{R}'_1$ est également lié à 1 : $\mathcal{R}'_1=\left(H,\vect{x'_1},\vect{y'_1},\vect{z_1} \right)$. 
+\item Ce repère est tel que $\vect{x'_1}$ est perpendiculaire à la surface plane de 1 sur laquelle appuie la sphère.
+\item On pose $\theta= \left( \vect{x_0}, \vect{x'_1}\right)$. $\theta$ est constant.
+\item On associe à la pièce 2 un repère  $\mathcal{R}_2=\left(A,\vect{x_0},\vect{y_0},\vect{z_0} \right)$. 
+\item On pose $\vect{HA}=R\vect{y_0}+\lambda\vect{x_0}$ où $R$ est constant et $\lambda$ variable.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.6\textwidth]{png/fig_01}
+\end{center}
+
+\subparagraph{}
+\textit{Exprimer les torseurs $\torseur{\mathcal{V}(1/0)}$ et $\torseur{\mathcal{V}(2/0)}$. Préciser les noms de ces deux types de torseurs.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Les solides 1 et 0 sont en liaison pivot de centre $C$ et d'axe $(A,\vect{x_0})$. En conséquence, on a: 
+$$
+\torseur{\mathcal{V}(1/0)} =
+\torseurl{\vecto{1}{0}=\dot{\alpha}\vect{x_0}}{\vectv{C}{1}{0}=\vect{0}}{C,\mathcal{R}_0}
+$$
+
+Les solides 2 et 0 sont en liaison glissière d'axe $\vect{x_0}$. En conséquence, on a: 
+$$
+\torseur{\mathcal{V}(2/0)} =
+\torseurl{\vecto{2}{0}=\vect{0}}{\vectv{B}{2}{0}=\dot{\lambda}\vect{x_0}}{C,\mathcal{R}_0}
+$$
+
+Le torseur $\torseur{\mathcal{V}(1/0)}$ est un glisseur.
+
+Le torseur $\torseur{\mathcal{V}(2/0)}$ est un couple.
+
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Exprimer le torseur $\torseur{\mathcal{V}(2/1)}$.}
+\ifthenelse{\boolean{prof}}{
+
+\begin{corrige}
+Les solides 2 et 1 sont en liaison ponctuelle d'axe $(A,\vect{x'_1})$. En conséquence, on a: 
+$$
+\torseur{\mathcal{V}(2/1)} =
+\torseurl{\vecto{2}{1}=\omega_x \vect{x'_1}+\omega_y \vect{y'_1} + \omega_z \vect{z_1} }{\vectv{A}{2}{1}=v_y\vect{y'_1}+v_z\vect{z'_1}}{A,\mathcal{R}'_1}
+$$
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Trouver la relation entre $\dot{\lambda}$ et $\dot{\alpha}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+D'après la composition du torseur cinématique, on a :
+$$
+\torseur{\mathcal{V}(2/1)} = \torseur{\mathcal{V}(2/0)} + \torseur{\mathcal{V}(0/1)} \Longleftrightarrow 
+\torseur{\mathcal{V}(2/1)} = \torseur{\mathcal{V}(2/0)} - \torseur{\mathcal{V}(1/0)}
+$$
+
+Afin d'utiliser la relation de décomposition, il est nécessaire d'exprimer les torseurs au même point. Choisissons le point $A$ : 
+\begin{eqnarray*}
+\vectv{A}{2}{0} &=& \vectv{B}{2}{0}  + \vect{AB}\wedge\vecto{2}{0} \\
+& = &  \vectv{B}{2}{0}   = \dot{\lambda}\vect{x_0} \text{ car } \vecto{2}{0} = \vect{0}
+\end{eqnarray*}
+
+Par ailleurs, 
+
+\begin{eqnarray*}
+\vectv{A}{1}{0} &=& \vectv{C}{1}{0}  + \vect{AC}\wedge\vecto{1}{0} \\
+& = &  \left( -R \vect{y_0} - \lambda \vect{x_0}- L\vect{x_0} + \right) \wedge \dot{\alpha}\vect{x_0} \\
+ & = & R \dot{\alpha}\vect{z_0}
+\end{eqnarray*}
+
+On a donc :
+$$
+\vectv{A}{2}{1}=\vectv{A}{2}{0}-\vectv{A}{1}{0} = \dot{\lambda}\vect{x_0}  - R \dot{\alpha}\vect{z_0}
+$$
+
+Projetons $\vectv{A}{2}{1}$ dans $\mathcal{R}'_1$ :
+\begin{itemize}
+\item [$\bullet$] $\vect{x_0} =\vect{x_1}=\cos\theta \vect{x'_1} -\sin\theta \vect{y'_1}$;
+\item [$\bullet$] $\vect{z_0} =\cos\alpha \vect{z_1} +\sin\alpha \vect{y_1}
+=\sin\alpha \sin\theta \vect{x'_1}+\sin\alpha\cos\theta \vect{y'_1} + \cos\alpha \vect{z'_1} $.
+\end{itemize}
+
+D'où :
+$$
+\vectv{A}{2}{1}= \dot{\lambda}\left(\cos\theta \vect{x'_1} -\sin\theta \vect{y'_1}\right)  - R \dot{\alpha}\left( \sin\alpha \sin\theta \vect{x'_1}+\sin\alpha\cos\theta \vect{y'_1} + \cos\alpha \vect{z'_1}\right)
+$$
+
+D'après la question précédente, $\vectv{A}{2}{1}\cdot\vect{x'_1}= 0$. Au final, 
+$$
+\dot{\lambda}\cos\theta  - R \dot{\alpha} \sin\alpha \sin\theta =0 
+\Longleftrightarrow
+\dot{\lambda}\cos\theta  = R \dot{\alpha} \sin\alpha \sin\theta 
+\Longleftrightarrow
+\dot{\lambda}  = R \dot{\alpha} \sin\alpha \tan\theta 
+$$
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Trouver l'expression de $\lambda$ et exprimer la course de 2 par rapport à 0. }
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+En intégrant l'expression précédente, on a : $\lambda  =- R \cos\alpha \tan\theta + k
+$ avec $k$ constante. En conséquence, lorsque $\alpha=0$ alors $\lambda=-R\tan\theta + k$. Or, d'après la modélisation, lorsque $\alpha=0$,$\lambda = -R\tan\theta$. On a donc $k=0$ et :
+$$
+\lambda(t)=-R\cos\alpha(t)\tan\theta
+$$
+
+La pièce 2 parcourt sa course complète lorsque $\alpha$ varie de $0$ à $\pi$. On a donc : 
+$$
+c = |\lambda(\pi)-\lambda(0)| = |-R\tan\theta - R\tan\theta| = 2R\tan\theta
+$$
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Trouver la vitesse de glissement $\vectv{A}{2}{1}$ dans $\mathcal{B}'_1$ sans faire intervenir $\lambda$ (et sa dérivée).}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On a vu que : 
+$$
+\vectv{A}{2}{1}= -\dot{\lambda} \sin\theta \vect{y'_1}  - R \dot{\alpha}\sin\alpha\cos\theta \vect{y'_1} - R \dot{\alpha} \cos\alpha \vect{z'_1}
+$$
+En utilisant la question 3, on a :
+\begin{eqnarray*}
+\vectv{A}{2}{1}&=& - R \dot{\alpha} \sin\alpha \tan\theta  \sin\theta \vect{y'_1}  - R \dot{\alpha}\sin\alpha\cos\theta \vect{y'_1} - R \dot{\alpha} \cos\alpha \vect{z'_1} \\
+\end{eqnarray*}
+\end{corrige}
+}{}
+
+
+\end{document}
+\setcounter{subparagraph}{0}
+
+\subparagraph{}
+\textit{}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}

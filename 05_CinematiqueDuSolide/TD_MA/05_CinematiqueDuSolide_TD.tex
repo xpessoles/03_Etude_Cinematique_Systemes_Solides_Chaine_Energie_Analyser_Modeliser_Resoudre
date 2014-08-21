@@ -1,0 +1,476 @@
+\documentclass[10pt,oneside]{article}
+\input{coursHeadings}
+\input{macros-gilles}
+\usepackage[%
+    pdftitle={CIN -- Cinématique du solide -- TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ de l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles} -- TD de F. Mathurin}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- TD} \\ \footnotesize{Ch 5 : Cinématique du solide -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- TD} \\ \footnotesize{Ch 5 : Cinématique du solide -- E}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+
+
+\begin{center}
+ \Large\textsc{CI 3 -- CIN : Étude du comportement cinématique des systèmes}
+\end{center}
+
+\begin{center}
+ \large\textsc{Chapitre 5 -- Cinématique du solide indéformable}
+\end{center}
+
+%\begin{center}
+%\textsc{Manège Magic Arms } 
+%\end{center}
+\begin{flushright}
+\textit{Activité proposée par F. Mathurin} 
+\end{flushright}
+\vspace{.5cm}
+
+
+\section*{Robot ramasseur de fruits} 
+On étudie un robot ramasseur de fruits. Il permet à un agriculteur de cueillir, de manière automatique, les fruits mûrs dans les arbres, et de les mettre dans un conteneur spécifique. 
+
+Le bras 1 tourne autour de l'axe $(O_0,\vect{z_0})$ par rapport au bâti 0. Le bras 2 tourne autour de l'axe $(O_1,\vect{z_0})$ par rapport à 1. Le bras 3 tourner autour de l'axe $(O_2,\vect{z_0})$ par rapport à 2. On pose :
+\begin{itemize}
+\item $\vect{O_0O_1} = R\vect{x_1}$;
+\item $\vect{O_1O_2} = R\vect{x_2}$;
+\item $\vect{O_2M} = L\vect{x_3}$;
+\end{itemize}
+
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig1}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig2}
+\end{center}
+\end{minipage}
+
+\begin{center}
+\includegraphics[width=.5\textwidth]{png/fig3}
+\end{center}
+
+\subparagraph{}
+\textit{Construire les figures planes de repérage/paramétrage puis exprimer les vecteurs vitesse instantanée de rotation $\vecto{1}{0}$, $\vecto{2}{1}$, $\vecto{3}{2}$.} 
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\couleursfigureplane{black}{blue}
+\figureplanerep{x_0}{x_1}{y_0}{y_1}{z_0}{\theta_1}{0}{1}{3}
+\couleursfigureplane{blue}{red}
+\figureplanerep{x_1}{x_2}{y_1}{y_2}{z_0}{\theta_2}{1}{2}{3}
+\couleursfigureplane{red}{green}
+\figureplanerep{x_2}{x_3}{y_2}{y_3}{z_0}{\theta_3}{2}{3}{3}
+$$
+\vecrot{1}{0}=\dot\theta_1\vz{0} \quad \quad
+\vecrot{2}{1}=\dot\theta_2\vz{0} \quad \quad
+\vecrot{3}{2}=\dot\theta_3\vz{0}
+$$
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Déterminer $\vectv{O_1}{1}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{O_1}{1}{0}&=\vecvit{O_0}{1}{0}+\vecrot{1}{0}\wedge\gv{O_0 O_1}\\
+	&=\dot\theta_1\vz{0}\wedge R\vx{1}\\
+\vecvit{O_1}{1}{0}&=R\dot\theta_1\vy{1}
+\end{align*}
+\end{corrige}}{}
+
+
+\subparagraph{}
+\textit{Déterminer $\vectv{O_2}{2}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{O_2}{2}{0}&=\vecvit{O_1}{2}{0}+\vecrot{2}{0}\wedge\gv{O_1 O_2}\\
+	&=\vecvit{O_1}{2}{1}+\vecvit{O_1}{1}{0}+(\vecrot{2}{1}+\vecrot{1}{0})\wedge\gv{O_1 O_2}\\
+	&=R\dot\theta_1\vy{1}+(\dot\theta_2+\dot\theta_1)\vz0\wedge R\vx2\\
+\vecvit{O_2}{2}{0}=R\dot\theta_1\vy{1}+R(\dot\theta_2+\dot\theta_1)\vy{2}
+\end{align*}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Déterminer $\vectv{M}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{M}{3}{0}&=\vecvit{O_2}{3}{0}+\vecrot{3}{0}\wedge \gv{O_2 M}\\
+	&=\vecvit{O_2}{3}{2}+\vecvit{O_2}{2}{0}+(\vecrot{3}{2}+\vecrot{2}{1}+\vecrot{1}{0})\wedge \gv{O_2 M}\\
+	&=R\dot\theta_1\vy{1}+R(\dot\theta_2+\dot\theta_1)\vy{2}+(\dot\theta_3+\dot\theta_2+\dot\theta_1)\vz{0}\wedge L\vx{3}\\
+\vecvit{M}{3}{0}&=R\dot\theta_1\vy{1}+R(\dot\theta_2+\dot\theta_1)\vy{2} +L(\dot\theta_3+\dot\theta_2+\dot\theta_1)\vy{3}
+\end{align*}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Dans la configuration de rapprochement horizontal, ($\theta_2=\pi-2\theta_1$ et $\theta_3=\theta_1-\dfrac{\pi}{2}$) montrer que $\vectv{M}{3}{0}\cdot \vect{x_0}=0$et déterminer $||\vectv{M}{3}{0}||$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\systeq{
+\theta_2&=\pi-2\theta_1\\
+\theta_3&=\theta_1-\dfrac{\pi}{2}
+}
+
+\systeq{
+\dot\theta_2&=-2\dot\theta_1\\
+\dot\theta_3&=\theta_1
+}
+\begin{align*}
+\vecvit{M}{3}{0}& =R\dot\theta_1\vy{1} +R(\dot\theta_2+\dot\theta_1)\vy{2} +L(\dot\theta_3+\dot\theta_2+\dot\theta_1)\vy{3}\\
+	&=R\dot\theta_1\vy{1}-R\dot\theta_1\vy{2}+L(\dot\theta_1-2\dot\theta_1+\dot\theta_1)\vy{3}\\
+	&=R\dot\theta_1(\vy{1}-\vy{2})
+\intertext{Or}
+\vy{1}&=\cos\theta_1\vy{0}-\sin\theta_1\vx{0}\\
+\vy{2}&=\cos(\underbrace{\theta_1+\theta_2}_{\pi-\theta_1})\vy{0}- \sin(\underbrace{\theta_1+\theta_2}_{\pi-\theta_1})\vx0\\
+	&=-\cos\theta_1\vy{0}-\sin\theta_1\vx{0}
+\intertext{D'où}
+\vy1-\vy2&=2\cos\theta_1\vy0\\
+\intertext{Ainsi}
+\vecvit{M}{3}{0}=2R\dot\theta_1\cos\theta_1\vy0
+\end{align*}
+
+Ce qui prouve que $\vecvit{M}{3}{0}\cdot\vx{0}=0$ et que :
+$$
+\left|\left|\vecvit{M}{3}{0}\right|\right|=2R\dot\theta_1\cos\theta_1
+$$
+
+\end{corrige}}{}
+
+
+\subparagraph{}
+\textit{Déterminer la valeur numérique de la vitesse maximale (R = 48 cm, L = 72 cm et $\dot{\theta_1}= 0,08 tr/min$ ) et conclure quant à la capacité du robot à satisfaire le critère de vitesse d'approche du fruit du cahier des charges. }
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Application numérique : 
+\systeq{
+R&=0.48\ m\\
+L&=0.72\ m\\
+\dot\theta_1 &=0,08\text{ tr/min}\\
+	&=0,00838\text{ rad/s}
+}
+
+La valeur maximale de $\left|\left|\vecvit{M}{3}{0}\right|\right|$ est atteinte pour $\theta_1=0$, ce qui donne :
+\begin{align*}
+\left|\left|\vecvit{M}{3}{0}\right|\right|&=2R\dot\theta_1\\
+	&=0,00804\text{ m/s}\\
+	&=0,8\text{ cm/s}
+\end{align*}
+
+\fbox{Le cahier des charges est bien respecté, car $\left|\left|\vecvit{M}{3}{0}\right|\right|<3\text{ cm/s}$}
+
+\end{corrige}}{}
+
+\section*{Manège Magic Arms } 
+\setcounter{subparagraph}{0}
+
+La manège Magic Arms dont la modélisation ainsi qu'un extrait de cahier des charges fonctionnel est composé d'une structure métallique d'environ $12\; m$ de haut avec deux bras mobiles. Les passagers s'assoient sur 39 pièces disposées sur une plate-forme tournante. Dès que tous les passagers sont assis et attachés, la nacelle tourne autour de son axe, le bras principal (bras 1) et le bras secondaires (bras 2), liés l'un à l'autre au début du cycle, commencent à tourner. Après 9 secondes, le maximum de hauteur est atteint et les deux bras se désindexent et se mettent à tourner indépendamment l'un de l'autre. Tous les mouvements sont pilotés par ordinateur. 
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/img1}
+\end{center}
+
+Le manège, schématisé ci-dessus, comporte :
+\begin{itemize}
+\item un bras principal 1 assimilé à une barre $AO_1O_2$. Il est en liaison pivot parfait d'axe $(O_1,\vect{z_1})$ caractérisée par le paramètre $\alpha$ avec le bâti 0. On pose $\vect{O_1O_2}=-l_1\vect{y_1}$;
+\item un bras secondaire 2 assimilé à une barre $BO_2O_3$. Il est en liaison pivot parfait d'axe $(O_2,\vect{z_2})$ caractérisée par le paramètre $\beta$ avec le bras principal 1. On pose $\vect{O_2O_3}=-l_2\vect{y_2}$;
+\item une nacelle 3 assimilée à un disque de centre $O_3$ et de rayon $R$. Elle est en liaison parfaite d'axe $(O_3,\vect{y_2})$ caractérisée par le paramètre $\varphi$ avec le bras 2. On s'intéresse plus particulièrement à un passager considéré comme un point matériel $P$ tel que $\vect{O_3P}=-R\vect{z_3}$.
+\end{itemize}
+\subparagraph{}
+\textit{Construire les figures planes associées au schéma cinématique.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\couleursfigureplane{black}{red}
+\figureplanerep{x_0}{x_1}{y_0}{y_1}{z_0}{\alpha}{0}{1}{3}
+\couleursfigureplane{red}{blue}
+\figureplanerep{x_1}{x_2}{y_1}{y_2}{z_0}{\beta}{1}{2}{3}
+\couleursfigureplane{blue}{green}
+\figureplanerep{z_0}{z_3}{x_2}{x_3}{y_2}{\varphi}{2}{3}{3}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Calculer $\vecto{1}{0}$, $\vecto{2}{1}$ et $\vecto{3}{2}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecrot{1}{0}&=\dot\alpha\vz0\\
+\vecrot{2}{1}&=\dot\beta\vz0\\
+\vecrot{3}{2}&=\dot\varphi\vy2\\
+\end{align*}
+\end{corrige}}{}
+
+\vspace{.3cm}
+
+On admet que $\vecto{3}{0}=\vecto{3}{2}+\vecto{2}{1}+\vecto{1}{0}$.
+
+\subparagraph{}
+\textit{Calculer $\vecto{2}{0}$ et $\vecto{3}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecrot{2}{0}&=\vecrot{2}{1}+\vecrot{1}{0}\\
+	&=(\dot\alpha+\dot\beta)\vz0\\
+\vecrot{3}{0}&=\vecrot{3}{2}+\vecrot{2}{0}\\
+	&=(\dot\alpha+\dot\beta)\vz0+\dot\varphi\vy2
+\end{align*}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Calculer les produits vectoriels suivants : $\vect{z_2}\wedge\vect{z_3}$,
+$\vect{x_3}\wedge\vect{x_2}$, $\vect{x_3}\wedge\vect{z_2}$,
+$\vect{z_2}\wedge\vect{z_1}$, $\vect{x_2}\wedge\vect{x_0}$,
+$\vect{x_3}\wedge\vect{z_0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\begin{align*}
+\vz2 \wedge \vz3 &=\sin\varphi \vy2\\
+\vx3 \wedge\vx2 &= -\sin\varphi \vy2\\
+\vx3 \wedge \vz2&= -\sin\left(\dfrac{\pi}{2}+\varphi\right)\vy2\\
+	&=-\cos\varphi\vy2\\
+\vz2 \wedge \vz1 &= \vec{0}\\
+\vx2 \wedge \vx0 &= \left(\cos\beta\vx1+\sin\beta\vy1\right)\wedge\vx0\\
+	&=-\cos\beta\sin\alpha\vz0 - \sin\beta\sin\left(\dfrac{\pi}{2}+\alpha\right)\vz0\\
+	&=(-\cos\beta\sin\alpha-\sin\beta\cos\alpha)\vz0\\
+	&=-\sin(\beta+\alpha)\vz0\\
+\vx3\wedge\vz0 &= -\sin\left(\dfrac{\pi}{2}+\varphi\right)\vy2\\
+	&=-\cos\varphi\vy2
+\end{align*}
+
+\end{corrige}}{}
+
+
+\subparagraph{}
+\textit{Calculer $\vectv{O_2}{2}{0}$, $\vectv{O_3}{3}{0}$ et $\vectv{P}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{O_2}{2}{0}&={\vecvit{O_2}{2}{1}}+\vecvit{O_2}{1}{0}\\
+	&={\vecvit{O_1}{1}{0}}+\vecrot{1}{0}\wedge\gv{O_1 O_2}\\
+	&= \dot\alpha\vz0 \wedge (-l_1 \vy1) \\
+{\vecvit{O_2}{2}{0}}{= l_1\dot\alpha\vx1}\\
+\vecvit{O_3}{3}{0}&={\vecvit{O_3}{3}{2}}+\vecvit{O_3}{2}{0}\\
+	&=\vecvit{O_2}{2}{0}+\vecrot{2}{0}\wedge \gv{O_2 O_3}\\
+	&=l_1\dot\alpha\vx1+(\dot\alpha+\dot\beta)\vz0\wedge (-l_2 \vy2)\\
+{\vecvit{O_3}{3}{0}}{=l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2}\\
+\vecvit{P}{3}{0}&=\vecvit{O_3}{3}{0}+\vecrot{3}{0}\wedge\gv{O_3 P}\\	&=l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2+ \left((\dot\alpha+\dot\beta)\vz0+\dot\varphi\vy2\right)\wedge(-R\vz3)\\
+{\vecvit{P}{3}{0}}{=l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2-R\sin\varphi(\dot\alpha+\dot\beta)\vy2-R\dot\varphi\vx3}
+\end{align*}
+\end{corrige}}{}
+
+\vspace{.3cm}
+
+On donne l'évolution des vitesses angulaires des moteurs du manège en fonction du temps.
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/img2}
+\end{center}
+
+\subparagraph{\label{lab}}
+\textit{Déterminer les valeurs des paramètres $\dot{\alpha}$, $\dot{\beta}$ et $\dot{\varphi}$
+puis l'expression analytique des positions angulaires $\alpha(t)$ et $\beta(t)$ et $\varphi(t)$ dans l'intervalle de temps $[17;27]$ secondes en sachant qu'à l'instant $t=17\;s$, on a $\alpha=10,5\; rad$, $\beta=3,76\; rad$ et $\varphi=-10,676\; rad$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+Dans l'intervalle de temps compris entre 17 et 27 secondes, les vitesses angulaires sont constantes.
+
+$$
+\systeq{
+{\dot\alpha}{=0,84\text{ rad/s}}\\
+{\dot\beta}{=0,94\text{ rad/s}}\\
+{\dot\varphi}{=-0,628\text{ rad/s}}
+}
+$$
+
+Ainsi, par intégration :
+\begin{align*}
+\alpha (t)-\alpha(17)&=\int_{17}^t \dot\alpha d\tau \\
+%\alpha (t)-10,5&=0,84(t-17) \\
+%{\alpha (t) }{= 0,84(t-17) + 10,5}\\	
+%\beta (t)-\beta(17)&=\int_{17}^t \dot\beta d\tau \\
+%\beta (t)-3,76&=0,94(t-17) \\
+%{\beta (t) }{= 0,94(t-17) + 3,76}	\\
+%\varphi (t)-\varphi(17)&=\int_{17}^t \dot\varphi d\tau \\
+%\varphi (t)+10,676&=-0,628(t-17) \\
+%{\varphi (t) }{= -0,628(t-17) -10,676}	\\
+\end{align*}
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Déterminer les valeurs numériques à l'instant $t_1=19,8\; s$ de $\alpha$, $\beta$ et $\varphi$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+Pour $t=19,8$ s,
+\[
+\systeq{
+\alpha&=0,84 \times (19,8-17) + 10,5=\boxed{12,85\text{ rad}}\\
+\beta&=0,94\times (19,8-17) +3,76 = \boxed{6,39\text{ rad}}\\
+\varphi &= -0,628\times (19,8-17) -10,676 =\boxed{12,43\text{ rad}}
+}
+\]
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{On pose $\vectv{P}{3}{0}=V_{x2}\vect{x_2}+V_{y2}\vect{y_2}+V_{z2}\vect{z_2}$. Déterminer les expressions littérales de $V_{x2}$, $V_{x2}$, $V_{z2}$ puis les valeurs numériques de à $t_1=19,8\;s.$} (On donne : $l_1=3,9\;m$, $l_2=2,87\;m$, $R=2,61\;m$.)
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+Il s'agit de projeter le vecteur \vecvit{P}{3}{0} dans la base $(\vx2, \vy2 ,\vz0)$. En effet, le vecteur \vz2 est identique au vecteur \vz0.
+\begin{align*}
+\vecvit{P}{3}{0}&=V_{x2}\vx2 +V_{y2}\vy2 + V_{z2}\vz0\\
+V_{x2}&=\vecvit{P}{3}{0}\cdot\vx2\\
+	&=\left(l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2-R\sin\varphi(\dot\alpha+\dot\beta)\vy2-R\dot\varphi\vx3\right)\cdot\vx2\\
+{V_{x2}}{=l_1 \dot\alpha\cos\beta+l_2 (\dot\alpha+\dot\beta) -R \dot\varphi\cos\varphi}\\
+V_{y2}&=\vecvit{P}{3}{0}\cdot\vy2\\
+	&=\left(l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2-R\sin\varphi(\dot\alpha+\dot\beta)\vy2-R\dot\varphi\vx3\right)\cdot\vy2\\
+{V_{y2}}{=-l_1\dot\alpha\sin\beta-R\sin\varphi(\dot\alpha+\dot\beta)}\\
+V_{z2}&=\vecvit{P}{3}{0}\cdot\vy2\\
+	&=\left(l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2-R\sin\varphi(\dot\alpha+\dot\beta)\vy2-R\dot\varphi\vx3\right)\cdot\vz0\\
+{V_{z2}}{=R\dot\varphi\sin\varphi}
+\end{align*}
+
+Valeurs numériques à $t=19,8$ s :
+
+\begin{align*}
+V_{x2}&=3,9\times 0,84 \times \cos (6,39) + 2,87  \times (0,84 + 0,94) + 2,61 \times 0,628 \times \cos (12,43) \\
+	&=\boxed{9,99\text{ m/s}}\\
+V_{y2}&=-3,9 \times 0,84 \times \sin(6,39) - 2,61 \times \sin(12,43) \times (0,84 + 0,94)\\
+	&=\boxed{-0,28\text{ m/s}}\\
+V_{z2}&=-2,61\times 0,628 \times \sin(12,43) \\
+	&=\boxed{-0,22 \text{ m/s}}
+\end{align*}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Calculer $\vect{\Gamma\left(P\in3/0 \right)}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\begin{align*}
+\vecacc{P}{3}{0}&=\gderivect{\vecvit{P}{3}{0}}{0}\\
+	&=\dfrac{\dd}{\dd t}\left( l_1\dot\alpha\vx1+l_2(\dot\alpha+\dot\beta)\vx2-R\sin\varphi(\dot\alpha+\dot\beta)\vy2-R\dot\varphi\vx3 \right)_0 \\
+	&=l_1 \ddot\alpha\vx1+l_1 \dot\alpha\underbrace{\derivect{\vx1}{0}}_{\dot\alpha\vy1} + l_2(\ddot\alpha + \ddot\beta)\vx2+ l_2(\dot\alpha+\dot\beta)\underbrace{\derivect{\vx2}{0}}_{(\dot\alpha+\dot\beta)\vy2}-R\dot\varphi\cos\varphi(\dot\alpha+\dot\beta)\vy2\\
+	&\phantom{==}-R\sin\varphi(\ddot\alpha+\ddot\beta)\vy2-R\sin\varphi(\dot\alpha+\dot\beta)\underbrace{\derivect{\vy2}{0}}_{-(\dot\alpha+\dot\beta)\vx2}-R\ddot\varphi\vx3 -R\dot\varphi\derivect{\vx3}{0}\\
+\derivect{\vx3}{0}&={\derivect{\vx3}{3}}+\vecrot{3}{0}\wedge\vx3\\
+		&=\left((\dot\alpha+\dot\beta)\vz0+\dot\varphi\vy2\right)\wedge\vx3\\
+		&=(\dot\alpha+\dot\beta)\cos\varphi\vy2-\dot\varphi\vz3
+		\end{align*}
+		
+D'où :
+\begin{align*}
+\vecacc{P}{3}{0}&=l_1 \ddot\alpha\vx1+l_1 \dot\alpha^2\vy1 + l_2(\ddot\alpha + \ddot\beta)\vx2+ l_2(\dot\alpha+\dot\beta)^2\vy2-2R\dot\varphi\cos\varphi(\dot\alpha+\dot\beta)\vy2\\
+	& -R\sin\varphi(\ddot\alpha+\ddot\beta)\vy2+R\sin\varphi(\dot\alpha+\dot\beta)^2\vx2-R\ddot\varphi\vx3 +R\dot\varphi^2\vz3
+\end{align*}
+
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Calculer $\vect{\Gamma\left(P\in3/0 \right)}$ dans l'intervalle de temps $[17;27]$ secondes pour lequel les vitesses angulaires sont constantes.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+Dans le cas ou les vitesses angulaires sont constantes, les accélérations angulaires $\ddot\alpha$, $\ddot\beta$, et $\ddot\varphi$ sont nulles. L'expression de \vecacc{P}{3}{0} se simplifie donc :
+\begin{align*}
+{\vecacc{P}{3}{0}}{=l_1 \dot\alpha^2\vy1 + l_2(\dot\alpha+\dot\beta)^2\vy2-2R\dot\varphi\cos\varphi(\dot\alpha+\dot\beta)\vy2+ R\sin\varphi(\dot\alpha+\dot\beta)^2\vx2 +R\dot\varphi^2\vz3}\\
+\end{align*}
+
+\end{corrige}}{}
+
+\vspace{.3cm}
+
+Le graphe ci-dessous, obtenu par simulation numérique, présente le module de la vitesse du passager $P$ par rapport au bâti 0 ainsi que le module de l'accélération du passager $P$ par rapport au bâti 0 en fonction du temps. 
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/img3}
+\end{center}
+
+\subparagraph{}
+\textit{Comparer les résultats obtenus à la question \ref{lab} à ceux du graphe pour le temps $t_1=19,8\;s.$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+Le graphe montre qu'à $t=19,8$ s, l'intensité du vecteur \vecvit{P}{3}{0} vaut 10 m/s. Or  d'après la question~8, 
+\begin{align*}
+\left|\left|\vecvit{P}{3}{0}\right|\right|&=\sqrt{V_{x2}^2+V_{y2}^2+V_{z2}^2}\\
+	&=\sqrt{9,99^2+0,28^2+0,22^2}\\
+	&=\boxed{10\text{ m/s} }
+\end{align*}
+
+On constate que le calcul littéral nous donne le même résultat que l'exploitation de la courbe.
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Relever l'accélération maximale subie par le passager et conclure vis-à-vis du CdCF.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+D'après la courbe de l'accélération (en pointillés), la valeur maximale de l'accélération subie par le passager vaut 17,5 m/s\up{2}. Le cahier des charges exige que l'accélération maximale ne dépasse pas 2,5 $g$, soit 24,5 m/s\up{2}. Le cahier des charges est donc respecté.
+
+\end{corrige}}{}
+
+\end{document}

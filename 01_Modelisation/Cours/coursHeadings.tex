@@ -1,0 +1,511 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% \usepackage{lmodern}
+%\usepackage[adobe-utopia,uppercase=upright,greeklowercase=upright]{mathdesign}
+\usepackage[adobe-utopia]{mathdesign}
+%\usepackage{minionpro}
+% \usepackage{pifont}
+% \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[francais]{babel}
+% \usepackage[francais]{varioref}
+\usepackage[dvips]{graphicx}
+
+\usepackage{framed}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{vmargin}
+\usepackage{longtable}
+
+\usepackage{ifthen}
+
+
+%\usepackage{epsfig}
+\usepackage{subfig}
+
+\usepackage{multirow}
+\usepackage{multicol} % Portions de texte en colonnes
+\usepackage{flafter}%floatants après la référence
+
+
+
+\usepackage{color}
+\usepackage{colortbl}
+
+
+\definecolor{gris25}{gray}{0.75}
+\definecolor{bleu}{RGB}{18,33,98}
+\definecolor{bleuf}{RGB}{42,94,171}
+\definecolor{bleuc}{RGB}{231,239,247}
+\definecolor{rougef}{RGB}{185,18,27}
+\definecolor{rougec}{RGB}{255,230,231}
+\definecolor{vertf}{RGB}{103,126,82}
+\definecolor{vertc}{RGB}{220,255,191}
+
+\newenvironment{rem}[1][\hsize]%
+{%
+    \def\FrameCommand
+    {%
+\rotatebox{90}{\textit{\textsf{Remarque}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+
+\newenvironment{savoir}[1][\hsize]%
+{%
+    \def\FrameCommand
+    {%
+\rotatebox{90}{\textit{\textsf{Savoir}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{prob}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{ Problématique}}} 
+        {\color{rougef}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{rougec}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{obj}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{ $\;$}}} 
+        {\color{rougef}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{rougec}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{defi}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Définition\\}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+
+\newenvironment{hypo}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Hypothèse\\}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+
+\newenvironment{prop}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Propriété\\}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{props}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Propriétés\\}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{exemple}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Exemple\\}}} 
+        {\color{vertf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{vertc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{resultat}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Résultat\\}}} 
+        {\color{rougef}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{rougec}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{methode}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Méthode\\}}} 
+        {\color{rougef}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{rougec}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{theo}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Théorème\\}}} 
+        {\color{rougef}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{rougec}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+\newenvironment{warn}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Attention\\}}} 
+        {\color{rougef}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{rougec}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+% \usepackage{pstricks}
+%\usepackage{minitoc}
+% \setcounter{minitocdepth}{4}
+
+\setcounter{tocdepth}{2}
+
+% \mtcselectlanguage{french} 
+
+%\usepackage{draftcopy}% "Brouillon"
+% \usepackage{floatflt}
+\usepackage{psfrag}
+%\usepackage{listings} % Permet d'insérer du code de programmation
+\renewcommand{\baselinestretch}{1.2}
+
+% Changer la numérotation des figures :
+% ------------------------------------
+% \makeatletter
+% \renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi
+%  \@arabic\c@figure}
+% \@addtoreset{figure}{section}
+% \makeatother
+ 
+
+
+%%%%%%%%%%%%
+% Définition des vecteurs %
+%%%%%%%%%%%%
+ \newcommand{\vect}[1]{\overrightarrow{#1}}
+
+%%%%%%%%%%%%
+% Définition des torseusr %
+%%%%%%%%%%%%
+
+ \newcommand{\torseur}[1]{%
+\left\{{#1}\right\}
+}
+
+\newcommand{\torseurcin}[3]{%
+\left\{\mathcal{#1} \left(#2/#3 \right) \right\}
+}
+
+\newcommand{\torseurstat}[3]{%
+\left\{\mathcal{#1} \left(#2\rightarrow #3 \right) \right\}
+}
+
+ \newcommand{\torseurc}[8]{%
+%\left\{#1 \right\}=
+\left\{
+{#1}
+\right\}
+ = 
+\left\{%
+\begin{array}{cc}%
+{#2} & {#5}\\%
+{#3} & {#6}\\%
+{#4} & {#7}\\%
+\end{array}%
+\right\}_{#8}%
+}
+
+ \newcommand{\torseurcol}[7]{
+\left\{%
+\begin{array}{cc}%
+{#1} & {#4}\\%
+{#2} & {#5}\\%
+{#3} & {#6}\\%
+\end{array}%
+\right\}_{#7}%
+}
+
+ \newcommand{\torseurl}[3]{%
+%\left\{\mathcal{#1}\right\}_{#2}=%
+\left\{%
+\begin{array}{l}%
+{#1} \\%
+{#2} %
+\end{array}%
+\right\}_{#3}%
+}
+
+ \newcommand{\vectv}[3]{%
+\vect{V\left( {#1} \in {#2}/{#3}\right)}
+}
+
+
+\newcommand{\vectf}[2]{%
+\vect{R\left( {#1} \rightarrow {#2}\right)}
+}
+
+\newcommand{\vectm}[3]{%
+\vect{\mathcal{M}\left( {#1}, {#2} \rightarrow {#3}\right)}
+}
+
+
+ \newcommand{\vectg}[3]{%
+\vect{\Gamma \left( {#1} \in {#2}/{#3}\right)}
+}
+
+ \newcommand{\vecto}[2]{%
+\vect{\Omega\left( {#1}/{#2}\right)}
+}
+% }$$\left\{\mathcal{#1} \right\}_{#2} =%
+% \left\{%
+% \begin{array}{c}%
+%  #3 \\%
+%  #4 %
+% \end{array}%
+% \right\}_{#5}}
+
+%  ------------------------------------------
+% | Modification du formatage des sections : | 
+%  ------------------------------------------
+
+% Grands titres :
+% ---------------
+
+\newcommand{\titre}[1]{%
+\begin{center}
+      \bigskip
+      \rule{\textwidth}{1pt}
+      \par\vspace{0.1cm}
+      
+      \textbf{\large #1}
+      \par\rule{\textwidth}{1pt}
+    \end{center}
+    \bigskip
+  }
+
+% Supprime le numéro du chapitre dans la numérotation des sections:
+% -----------------------------------------------------------------
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section}
+\makeatother
+
+
+% \titleformat{\chapter}[display]
+% {\normalfont\Large\filcenter}
+% {}
+% {1pc}
+% {\titlerule[1pt]
+%   \vspace{1pc}%
+%   \Huge}[\vspace{1ex}%
+% \titlerule]
+
+
+%%%% Chapitres Comme PY Pechard %%%%%%%%%
+% numéro du chapitre
+\DeclareFixedFont{\chapnumfont}{OT1}{phv}{b}{n}{80pt}
+% pour le mot « Chapitre »
+\DeclareFixedFont{\chapchapfont}{OT1}{phv}{m}{it}{40pt}
+% pour le titre
+\DeclareFixedFont{\chaptitfont}{T1}{phv}{b}{n}{25pt}
+
+\definecolor{gris}{gray}{0.75}
+\titleformat{\chapter}[display]%
+	{\sffamily}%
+	{\filleft\chapchapfont\color{gris}\chaptertitlename\
+	\\
+	\vspace{12pt}
+	\chapnumfont\thechapter}%
+	{16pt}%
+	{\filleft\chaptitfont}%
+	[\vspace{6pt}\titlerule\titlerule\titlerule]
+
+%%%%  Fin Chapitres Comme PY Pechard %%%%%%%%%
+
+
+% Section, subsection, subsubsection sans serifs :
+% % ----------------------------------------------
+
+% \makeatletter
+% \renewcommand{\section}{\@startsection{section}{0}{0mm}%
+% {\baselineskip}{.3\baselineskip}%
+% {\normalfont\sffamily\Large\textbf}}%
+% \makeatother
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{{\textcolor{bleu}{\csname
+the#1\endcsname}\hspace{0.5em}}}
+\makeatother
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+                       {-4ex \@plus -1ex \@minus -.4ex}%
+                       {1ex \@plus.2ex }%
+                       {\normalfont\Large\sffamily\bfseries}}%
+\makeatother
+ 
+\makeatletter
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
+                          {-3ex \@plus -0.1ex \@minus -.4ex}%
+                          {0.5ex \@plus.2ex }%
+                          {\normalfont\large\sffamily\bfseries}}
+\makeatother
+ 
+\makeatletter
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
+                          {-2ex \@plus -0.1ex \@minus -.2ex}%
+                          {0.2ex \@plus.2ex }%
+                          {\normalfont\large\sffamily\bfseries}}
+\makeatother
+ 
+\makeatletter             
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+                                    {-2ex \@plus-.2ex \@minus .2ex}%
+                                    {0.1ex}%               
+{\normalfont\sffamily\bfseries}}
+\makeatother
+ 
+\makeatletter
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}%
+                                       {-2ex \@plus-.1ex \@minus .2ex}%
+                                       {0.1ex}%
+				    {\normalfont\normalsize\sffamily\bfseries}}
+\makeatletter
+% \makeatletter
+% \renewcommand{\subsection}{\@startsection{subsection}{1}{2mm}%
+% {\baselineskip}{.3\baselineskip}%
+% {\normalfont\sffamily\large\textbf}}%
+% \makeatother
+% 
+% \makeatletter
+% \renewcommand{\subsubsection}{\@startsection{subsubsection}{2}{4mm}%
+% {\baselineskip}{.15\baselineskip}%
+% {\normalfont\sffamily\large\textbf}}%
+% \makeatother
+% 
+% \makeatletter
+% \renewcommand{\paragraph}{\@startsection{paragraph}{3}{6mm}%
+% {\baselineskip}{.15\baselineskip}%
+% {\normalfont\sffamily\large\textbf}}%
+% \makeatother
+ 
+\setcounter{secnumdepth}{4}
+
+
+%  --------
+% | Marges |
+%  --------
+
+
+% \setmarginsrb{2.5cm}{1.5cm}{2.5cm}{2cm}{1cm}{1cm}{1cm}{1cm}
+\setmarginsrb{1.5cm}{1cm}{1cm}{1.5cm}{1cm}{1cm}{1cm}{1cm}
+
+% Changer les marges localement :
+% -----------------------------
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+
+
+\usepackage{pst-solides3d}
+\usepackage{titletoc}
+\titlecontents{chapter}[+3pc]
+  {\addvspace{10pt}\sffamily\bfseries}
+{\contentslabel[{\pscirclebox[fillstyle=solid,fillcolor=gray!25,
+linecolor=gray!25,framesep=4pt]{\textcolor{white}{\thecontentslabel}}}]{2.5pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+\titlecontents{section}[3pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{1.8pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+\titlecontents{subsection}[5pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{1.8pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+\titlecontents{subsubsection}[8pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{3pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+%{\;\titlerule\;\normalfont\thecontentspage\ }
+
+\titlecontents{paragraph}[9pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{3.5pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+

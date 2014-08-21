@@ -1,0 +1,30 @@
+\select@language {french}
+\contentsline {section}{\numberline {1}Avant propos}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Notion de solide ind\IeC {\'e}formable}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Notion de point appartenant \IeC {\`a} un solide}{3}{subsection.1.2}
+\contentsline {section}{\numberline {2}Trajectoire d'un point appartenant \IeC {\`a} un solide}{3}{section.2}
+\contentsline {section}{\numberline {3}Vitesse d'un point appartenant \IeC {\`a} un solide}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Le vecteur vitesse}{4}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}D\IeC {\'e}finition}{4}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Calcul du vecteur vitesse -- Application directe}{5}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}D\IeC {\'e}termination du vecteur vitesse dans les liaisons cin\IeC {\'e}matiques}{7}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Vecteur instantan\IeC {\'e} de rotation}{7}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}D\IeC {\'e}finition}{7}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}D\IeC {\'e}termination du vecteur vitesse instantan\IeC {\'e} de rotation dans les liaisons cin\IeC {\'e}matiques}{8}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}D\IeC {\'e}rivation vectorielle -- Formule de Bour}{8}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Champ du vecteur vitesse dans un solide en mouvement}{9}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Mise en \IeC {\'e}vidence}{9}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}R\IeC {\'e}sultat}{9}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}\'Equiprojectivit\IeC {\'e} du champ des vecteurs vitesses}{10}{subsubsection.3.4.3}
+\contentsline {section}{\numberline {4}Composition des mouvements}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Composition du vecteur vitesse}{11}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Composition du vecteur instantan\IeC {\'e} de rotation}{12}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Exemple}{12}{subsubsection.4.2.1}
+\contentsline {section}{\numberline {5}Acc\IeC {\'e}l\IeC {\'e}ration d'un point appartenant \IeC {\`a} un solide}{13}{section.5}
+\contentsline {subsection}{\numberline {5.1}D\IeC {\'e}finition}{13}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Champ d'acc\IeC {\'e}l\IeC {\'e}ration d'un solide en mouvement}{13}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Composition des acc\IeC {\'e}l\IeC {\'e}rations}{14}{subsection.5.3}
+\contentsline {section}{\numberline {6}Mouvements \IeC {\'e}l\IeC {\'e}mentaires}{15}{section.6}
+\contentsline {subsection}{\numberline {6.1}Loi de vitesse uniforme}{15}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Loi de vitesse en trap\IeC {\`e}ze}{15}{subsection.6.2}
+\contentsfinish 

@@ -1,0 +1,104 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 6 -- Cinématique du point immatériel dans un solide en mouvement}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Florestan \textsc{Mathurin}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 6 : Cinématique du point -- TD Transmission -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={CIN : Cinématique du point},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+\input{style/entete1}
+
+\begin{center}
+ \Large\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \large\textsc{\xxsoustitre}
+\end{center}
+
+\begin{center}
+ \large\textsc{Travail Dirigé : Calcul de de rapport de vitesse}
+\end{center}
+
+\begin{flushright}
+ \textit{Ressources de Florestan Mathurin\footnote{\url{http://florestan.mathurin.free.fr}}.}
+\end{flushright}
+
+
+
+\subsection*{Exercice : Réducteur DEMAG}
+
+Il existe 2 grandes familles de poulies Redex H ou SR, selon la forme de l’arbre central :
+
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig_01}
+\end{center}
+
+
+
+Le mouvement d’entrée est reçu par le boîtier tournant 5, entraîné par 5 courroies trapézoïdales 8, et guidé en rotation par rapport au bâti 18 à l’aide de deux roulements à billes 23 et 28. 
+Les flasques 16 permettent le montage des organes intérieurs. Ils sont munis de joints d’étanchéité 22 et 29. 
+Les trois axes 9, guidés en rotation par rapport au boîtier tournant 5 à l’aide de deux roulements à aiguilles 4 et 11, portent les trois satellites doubles 6-10.
+Les liaisons encastrements entre les axes 9 et les satellites 6 et 10 sont assurées (élastiquement) par de la matière plastique injectée entre les axes et les pignons préalablement dentelés (voir coupe A-A et B-B). 
+Les satellites 10 sont en prise avec le planétaire 24 (qui est en liaison encastrement avec le bâti 18 à l’aide d’un assemblage cannelé).
+Les satellites 6 sont en prise avec le planétaire 31 (qui est en liaison encastrement avec l’arbre de sortie 32 à l’aide d’un assemblage cannelé). Cet arbre de sortie 32 est guidé en rotation par rapport au bâti 18 à l’aide de deux roulements à aiguilles 19 et 21.
+
+
+
+\subparagraph{}
+\textit{Après avoir colorié les classes d'équivalence sur le dessin d'ensemble, établi le schéma cinématique, déterminer littéralement, en fonction des nombres de dents, la loi E/S du système (c'est-à-dire le rapport de transmission).}
+
+
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig_02}
+\end{center}
+
+
+
+
+
+
+
+\end{document}

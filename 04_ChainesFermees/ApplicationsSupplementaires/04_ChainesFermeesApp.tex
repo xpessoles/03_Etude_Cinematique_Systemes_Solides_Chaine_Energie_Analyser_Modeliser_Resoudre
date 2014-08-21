@@ -1,0 +1,265 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={CIN -- Géométrie vectorielle -- Applications},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ de l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles} -- TD de S. Genouël}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch. 4 : Entrée -- Sortie -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch. 4 : Lois Entrée -- Sortie -- E}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+
+
+\begin{center}
+ \Large\textsc{CI 3 -- CIN : Étude du comportement cinématique des systèmes}
+\end{center}
+
+\begin{center}
+ \large\textsc{Chapitre 4 -- Étude des chaînes fermées :
+Détremination des lois Entrées -- Sorties}
+\end{center}
+
+\begin{center}
+\textsc{Exercices d'application supplémentaires} 
+\end{center}
+\begin{flushright}
+\textit{D'après ressources de Stéphane Genouël \cite{SG}.} 
+\end{flushright}
+\vspace{.5cm}
+
+\subsection*{Exercice 1 -- Pompe hydraulique à pistons radiaux}
+ 
+On s’intéresse au comportement cinématique du dispositif de transformation de mouvement par excentrique 
+qui permet de transformer le mouvement de rotation continu de l’arbre d’entrée, sur lequel est fixé 
+l’excentrique 1, en mouvement de translation alternative du piston 2. 
+
+\begin{center}
+\includegraphics[height=5cm]{png/fig1} 
+\includegraphics[height=5cm]{png/fig2} 
+\end{center}
+
+
+
+
+\subparagraph{}
+\textit{Donner le graphe de liaison de ce système.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Donner les caractéristiques, le paramètre d’entrée et le paramètre de sortie du système. }
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Déterminer la loi E/S en position du système à l’aide d’une fermeture géométrique. }
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{En déduire la vitesse du piston par rapport au cylindre (c'est-à-dire la loi E/S en vitesse). }
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subsection*{Exercice 2 -- Système d'orientation d'antenne}
+\setcounter{subparagraph}{0}
+
+\begin{minipage}[c]{.65\linewidth}
+Le système d’orientation d’antenne ci-contre permet, grâce à une télécommande, de régler à distance l’orientation de sa parabole afin d’optimiser la réception des chaines de télévision. 
+ 
+Pour cela, le vérin électrique est alimenté en énergie électrique par le préactionneur, de façon à faire rentrer ou sortir la tige et obtenir ainsi la position de l’antenne désirée. 
+\end{minipage} \hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig3} 
+\end{center}
+\end{minipage} 
+
+
+\begin{center}
+\includegraphics[height=5cm]{png/fig4} 
+\includegraphics[height=5cm]{png/fig5} 
+\end{center}
+
+\begin{obj}
+Déterminer la durée d’alimentation en énergie électrique du système d’orientation pour un 
+changement de position de l’antenne donné. 
+
+\end{obj}
+
+
+
+\begin{minipage}[c]{.65\linewidth}
+Une représentation 2D du système d’orientation d’antenne est donnée ci-dessous :
+\begin{itemize}
+\item $\vect{AC}=L_0\vect{x_0}$;
+\item $\vect{AB}=L_1\vect{x_1}$;
+\item $\alpha_1(t)$ : paramètre de mouvement de l’antenne 1 par rapport au support 0; 
+\item $\alpha_2(t)$ : paramètre de mouvement du corps 2 par rapport au support 0;
+\item $d(t)$ : paramètre de mouvement de la tige 3 par rapport au corps 2. 
+\end{itemize}
+\end{minipage} \hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig6} 
+\end{center}
+\end{minipage} 
+
+
+\subparagraph{}
+\textit{Réaliser, en s’inspirant de la figure ci-dessus, le schéma cinématique du système d’orientation d’antenne dans le plan 
+$\left(O,\vect{x_0},\vect{y_0}\right)$. Paramétrer ce schéma cinématique. }
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Donner le graphe de liaison de ce système.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Donner les caractéristiques, le paramètre d’entrée et le paramètre de sortie du système.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Déterminer la loi E/S en position du système à l’aide d’une fermeture géométrique. }
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\vspace{.5cm}
+
+\begin{minipage}[c]{.45\linewidth}
+Le vérin électrique utilisé est constitué : 
+\begin{itemize}
+\item d’un moteur électrique ;
+\item d’un réducteur à engrenage (rapport de réduction $k=1/5$);
+\item d’un dispositif de transformation de mouvement de type vis-
+écrou (pas $p=2$). 
+\end{itemize}
+\end{minipage} \hfill
+\begin{minipage}[c]{.5\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig7} 
+\end{center}
+\end{minipage} 
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig8} 
+\end{center}
+
+On suppose que le moteur électrique tourne à la vitesse constante de $6000\; tr/min$. 
+
+
+\subparagraph{}
+\textit{Déterminer la vitesse de sortie de la tige par rapport au corps.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+On souhaite faire passer l’antenne 1 d’une position initiale ($\alpha_1 = 58\textdegree$) à une position finale ($\alpha_2 = 82\textdegree$) .
+
+\subparagraph{}
+\textit{Déterminer, à l’aide de la courbe de la loi entrée-sortie donnée ci-dessous, la durée d’alimentation du vérin électrique permettant ce changement de position. }
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig9} 
+\end{center}
+
+
+\begin{thebibliography}{2}
+\bibitem[1]{SG} Stéphane Genouël, Cours TP et TD en MPSI et PCSI -- Lycée Chateaubriand Rennes \url{http://stephane.genouel.free.fr/}.
+\end{thebibliography}
+
+\end{document}

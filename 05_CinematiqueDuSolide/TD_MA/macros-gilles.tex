@@ -1,0 +1,419 @@
+%%UTF8
+%% macros-mecanique version 26-mai-2013
+%\usepackage[francais, frenchb]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{url}
+%\usepackage{multicol}
+%\usepackage{graphicx}
+%\usepackage{xargs}
+%%\usepackage[usenames,svgnames,dvipsnames]{xcolor}  %pas pour AMC
+%\usepackage[leqno, fleqn]{amsmath}
+%\usepackage{amssymb}
+%\usepackage{mathtools}
+%\usepackage{wrapfig}
+%\usepackage{enumerate}
+%\usepackage{longtable}
+%\usepackage{tabularx}
+\usepackage{tikz}
+%\usetikzlibrary{shapes}
+%\usetikzlibrary{calc}
+%\usepackage{enumitem}
+%\usepackage{fancyhdr}
+%\usepackage{caption}
+%\usepackage{subcaption}
+%\usepackage{ifthen}
+%\usepackage{calc}
+%\usepackage{fp}
+%\usepackage{multido}
+%\usepackage{lscape}
+%\usepackage{titling}
+%\usepackage{cancel}
+%\usepackage{geometry}
+%\usepackage{float}
+%%\usepackage{palatino}  %pas pour AMC
+%\usepackage{hyperref}
+%\usepackage{subscript}
+%\usepackage{movie15}
+%\usepackage{siunitx}  %pas pour AMC
+%\usepackage{auto-greek}
+%\usepackage{floatfig}
+
+
+
+
+% Xavier
+%\usepackage[adobe-utopia]{mathdesign}
+%\usepackage{framed}
+%\usepackage[normalem]{ulem}
+%\usepackage{titlesec}
+%\usepackage{vmargin}
+%\usepackage{longtable}
+%\usepackage{subfig}
+%\usepackage{color}
+%\usepackage{colortbl}
+%
+%
+\definecolor{gris25}{gray}{0.75}
+\definecolor{gris15}{gray}{0.85}
+%\definecolor{bleu}{RGB}{18,33,98}
+%\definecolor{bleuf}{RGB}{42,94,171}
+%\definecolor{bleuc}{RGB}{231,239,247}
+%\definecolor{rougef}{RGB}{185,18,27}
+%\definecolor{rougec}{RGB}{255,230,231}
+%\definecolor{vertf}{RGB}{103,126,82}
+%\definecolor{vertc}{RGB}{220,255,191}
+%
+
+%Symbole degres \deg
+\renewcommand{\deg}{\ensuremath{^\circ}\xspace}
+
+%norme d'un vecteur
+\newcommand{\norme}[1]{\ensuremath{\|#1 \|}}
+%grande fleche sur les vecteurs : \gv
+\newcommand{\gv}[1]{\ensuremath{\overrightarrow{#1}}}
+%vecteurs de base raccourcis
+\newcommand{\vx}[1]{\ensuremath{\vec{x}_{#1}}}
+\newcommand{\vy}[1]{\ensuremath{\vec{y}_{#1}}}
+\newcommand{\vz}[1]{\ensuremath{\vec{z}_{#1}}}
+
+%coordonnees de vecteurs		  			
+\newcommand{\coordvecteur}[3]{\begin{pmatrix} #1 \\ #2\\ #3 \end{pmatrix}}   
+% pour les torseurs
+%indice en bas a gauche (torseurs) \indicegauche
+\newcommand{\indicegauche}[2]{{\vphantom{#2}}_{#1}#2}
+% nom d'un torseur d'action meca \nomtorseur
+\newcommand{\nomtorseur}[2]{\left\{ \mathcal{#1}_{#2} \right\}}
+
+%Torseur d'action mécanique
+\newcommand{\torseuram}[2]{\ensuremath{\left\{ \mathcal{T}_{#1 \to #2} \right\}}}
+
+
+% torseur sous la forme développée en coordonnees pluckeriennes
+\newcommand{\coordtorseur}[7]{\ensuremath{\indicegauche{#1}{\begin{Bmatrix} #2 & #5 \\ #3 & #6 \\ #4 & #7 \end{Bmatrix}}}}
+% torseur phantom
+\newcommand{\torseurphantom}{\ensuremath{\vphantom{\indicegauche{0}{\begin{Bmatrix} 0 & 0 \\ 0 & 0 \\ 0 & 0 \end{Bmatrix}}}}}
+\newcommand{\composanteOmegaTorseur}[3]{\omega_{#1_{#2#3}}}
+\newcommand{\composanteVitesseTorseur}[3]{v_{#1_{#2#3}}}
+% torseur sous la forme developpee en coordonnees pluckeriennes avec base xyz
+\newcommand{\coordtorseurxyz}[7]{\ensuremath{\indicegauche{#1}{\begin{Bmatrix} #2 & #5 \\ #3 & #6 \\ #4 & #7 \end{Bmatrix}_{(\vec{x},\vec{y},\vec{z})}}}}
+\newcommand{\torcindev}[9]{
+\coordtorseur{#1}{\ifthenelse{#2=1}{\composanteOmegaTorseur{x}{#8}{#9}}{0}}{\ifthenelse{#3=1}{\composanteOmegaTorseur{y}{#8}{#9}}{0}}{\ifthenelse{#4=1}{\composanteOmegaTorseur{z}{#8}{#9}}{0}}{\ifthenelse{#5=1}{\composanteVitesseTorseur{x}{#8}{#9}}{0}}{\ifthenelse{#6=1}{\composanteVitesseTorseur{y}{#8}{#9}}{0}}{\ifthenelse{#7=1}{\composanteVitesseTorseur{z}{#8}{#9}}{0}}
+}
+% d droit pour la differentielle
+\newcommand{\dd}{\mathrm{d}}
+%vecteur vitesse
+\newcommand{\vecvit}[3]{\ensuremath{\gv{V}_{#1\in #2 / #3}}}
+%vecteur taux de rotation
+\newcommand{\vecrot}[2]{\ensuremath{\gv{\Omega}_{#1 / #2}}}
+%vecteur acceleration
+\newcommand{\vecacc}[3]{\ensuremath{\gv{\Gamma}_{#1 \in #2 / #3}}}
+% vecteur force
+\newcommand{\vecforce}[3]{\ensuremath{\gv{#1}_{#2 \to #3}}}
+% vecteur moment
+\newcommand{\vecmoment}[2]{\ensuremath{\gv{M}_{#1(#2)}}}
+% Mouvement
+\newcommand{\mvt}[2]{\ensuremath{\text{Mvt}_{#1 / #2}}}
+% Torseur cinematique
+\newcommand{\torcin}[2]{\ensuremath{\left\{ \mathcal{V}_{#1 / #2} \right\}}}
+% derivee d'un vecteur par rapport au temps, et dans un referentiel donne
+\newcommand{\derivect}[2]{\ensuremath{\left( \frac{\dd #1}{\dd t} \right)_{#2}}}
+% dérivée d'un vecteur par rapport au temps, et dans un référentiel donné, grande fraction (texte)
+\newcommand{\gderivect}[2]{\ensuremath{\left( \dfrac{\dd #1}{\dd t} \right)_{#2}}}
+% forme littérale d'un torseur
+\newcommand{\torlit}[3]{{\indicegauche{#1}{\begin{Bmatrix} #2 \\ #3  \end{Bmatrix}}}}
+% Trajectoire d'un point
+\newcommand{\traj}[3]{\ensuremath{T_{#1 \in #2/#3}}}
+% derivee scalaire par rapport au temps
+\newcommand{\derit}[1]{\frac{\mathrm{d}#1}{\mathrm{d}t}}
+% différentielle droite \ud
+\newcommand{\ud}{\mathrm{d}}
+% calcul d'un produit vectoriel par les composantes (entiers relatifs uniquement)
+\newcommand{\prodvec}[6]{\ensuremath{
+\FPeval\respvx{trunc(((#2*#6)-(#3*#5)),0)}
+\FPeval\respvy{trunc(((#3*#4)-(#1*#6)),0)}
+\FPeval\respvz{trunc(((#1*#5)-(#2*#4)),0)}
+\begin{pmatrix}
+ \respvx \\
+ \respvy \\
+ \respvz 
+\end{pmatrix}
+}}
+% systeme d'equations
+\newcommand{\systeq}[1]{\ensuremath{\left\{ \begin{aligned} #1 \end{aligned}\right.}}
+
+%pour générer des copies à trous
+\newcommand{\acompleter}[1]{\ifthenelse{\boolean{version-a-trous}}{\phantom{{\Large{#1\xspace}}}}{\textcolor{red}{#1}}}
+
+% mise en forme
+% exemple
+%\newcommand{\exemple}[1]{\paragraph{Exemple :} #1}
+% exemple
+\newcommand{\exemples}[1]{\paragraph{Exemples :} #1}
+
+
+%%%%%%% mise en forme de Xavier
+\newenvironment{definition}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Definition\\}}} 
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+%%%%%%%%%%%%%%%%%%%
+
+
+% pour encadrer dans un alignement
+\makeatletter
+\newlength{\boxed@align@width}
+\newcommand{\boxedalign}[2]{
+#1 & \setlength{\boxed@align@width}{\widthof{$\displaystyle#1$}+1.4pt+1.4pt}
+\hspace{-\boxed@align@width}\boxed{\vphantom{#1}\hspace{\boxed@align@width}#2}}
+\makeatother
+%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Commande pour tracer des figures planes: \figureplane
+\newcommand\figureplane[9]{
+\begin{tikzpicture}[scale=#9]
+\draw[thick,->,#7] (0,0) -- (0:1) node[anchor=north west]{$\vec{#1}$};
+\draw[thick,->,#7] (0,0) -- (90:1) node[anchor=north east]{$\vec{#3}$}; 
+\draw[thick,->,#8] (0,0) -- (20:1) node[anchor=south east]{$\vec{#2}$}; 
+\draw[thick,->,#8] (0,0) -- (110:1) node[anchor=north east]{$\vec{#4}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick,#7] (0,0) circle (0.05);
+\fill[#7] (0,0) circle (0.01);
+\draw (-0.05,0) node[anchor=north east] {$\vec{#5}$};
+\draw[thick,->] (0.4,0) arc (0:20:0.4);
+\draw[thick,->] (0,0.4) arc (90:110:0.4);
+\draw (0.4,0.08) node[anchor=west] {$#6$};
+\draw (-0.08,0.4) node[anchor=south] {$#6$};
+\end{tikzpicture}
+}
+
+%couleurs des figures planes pour ne pas dépasser neuf arguments
+\newcommand\couleursfigureplane[2]{%
+    \def\premierecouleur{#1}%
+    \def\deuxiemecouleur{#2}%
+}
+
+
+%Commande pour tracer des figures planes avec reperes: \figureplanerep
+\newcommand\figureplanerep[9]{
+\begin{tikzpicture}[scale=#9]
+\draw[thick,->,\premierecouleur ] (0,0) -- (0:1) node[anchor=north west]{$\vec{#1}$};
+\draw[thick,->,\premierecouleur ] (0,0) -- (90:1) node[anchor=north east]{$\vec{#3}$}; 
+\draw[thick,->,\deuxiemecouleur ] (0,0) -- (20:1) node[anchor=south east]{$\vec{#2}$}; 
+\draw[thick,->,\deuxiemecouleur ] (0,0) -- (110:1) node[anchor=north east]{$\vec{#4}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick,\premierecouleur] (0,0) circle (0.05);
+\fill[\premierecouleur] (0,0) circle (0.01);
+\draw[\premierecouleur] (-0.05,0) node[anchor=north east] {$\vec{#5}$};
+\draw[thick,->] (0.4,0) arc (0:20:0.4);
+\draw[thick,->] (0,0.4) arc (90:110:0.4);
+\draw[thick,\premierecouleur] (0:0.5) arc (180:360:0.15) ;
+\draw[\premierecouleur] (0.65,-0.07) node{\ensuremath{#7}};
+\draw[thick,\deuxiemecouleur] (20:0.8) arc (20:200:0.15);
+\draw[\deuxiemecouleur] (0.59,0.29) node{\ensuremath{#8}};
+\draw (0.4,0.08) node[anchor=west] {$#6$};
+\draw (-0.08,0.4) node[anchor=south] {$#6$};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des figures planes autour de z avec reperes: \figureplanerepz
+\newcommand\figureplanerepz[9]{
+\begin{tikzpicture}[scale=#9]
+\draw[thick,->, #7] (0,0) -- (0:1) node[anchor=north west]{$\vec{x}_{#1}$};
+\draw[thick,->, #7] (0,0) -- (90:1) node[anchor=north east]{$\vec{y}_{#1}$}; 
+\draw[thick,->, #8] (0,0) -- (20:1) node[anchor=south east]{$\vec{x}_{#2}$}; 
+\draw[thick,->, #8] (0,0) -- (110:1) node[anchor=north east]{$\vec{y}_{#2}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick, #7] (0,0) circle (0.05);
+\fill[#7] (0,0) circle (0.01);
+\draw[#7] (-0.05,0) node[anchor=north east] {$\vec{z}_{#3}$};
+\draw[thick,->] (0.4,0) arc (0:20:0.4);
+\draw[thick,->] (0,0.4) arc (90:110:0.4);
+\draw (0.4,0.08) node[anchor=west] {$#4$};
+\draw (-0.08,0.4) node[anchor=south] {$#4$};
+\draw[#7] [thick] (0:0.5) arc (180:360:0.15) ;
+\draw[#7] (0.65,-0.07) node{\ensuremath{#5}};
+\draw[#8] [thick] (20:0.8) arc (20:200:0.15);
+\draw[#8] (0.59,0.29) node{\ensuremath{#6}};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des figures planes autour de x avec reperes: \figureplanerepx
+\newcommand\figureplanerepx[9]{
+\begin{tikzpicture}[scale=#9]
+\draw[thick,->, #7] (0,0) -- (0:1) node[anchor=north west]{$\vec{y}_{#1}$};
+\draw[thick,->, #7] (0,0) -- (90:1) node[anchor=north east]{$\vec{z}_{#1}$}; 
+\draw[thick,->, #8] (0,0) -- (20:1) node[anchor=south east]{$\vec{y}_{#2}$}; 
+\draw[thick,->, #8] (0,0) -- (110:1) node[anchor=north east]{$\vec{z}_{#2}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick, #7] (0,0) circle (0.05);
+\fill[#7] (0,0) circle (0.01);
+\draw[#7] (-0.05,0) node[anchor=north east] {$\vec{x}_{#3}$};
+\draw[thick,->] (0.4,0) arc (0:20:0.4);
+\draw[thick,->] (0,0.4) arc (90:110:0.4);
+\draw (0.4,0.08) node[anchor=west] {$#4$};
+\draw (-0.08,0.4) node[anchor=south] {$#4$};
+\draw[#7] [thick] (0:0.5) arc (180:360:0.15) ;
+\draw[#7] (0.65,-0.07) node{\ensuremath{#5}};
+\draw[#8] [thick] (20:0.8) arc (20:200:0.15);
+\draw[#8] (0.59,0.29) node{\ensuremath{#6}};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des figures planes autour de y avec reperes: \figureplanerepy
+\newcommand\figureplanerepy[9]{
+\begin{tikzpicture}[scale=#9]
+\draw[thick,->, #7] (0,0) -- (0:1) node[anchor=north west]{$\vec{z}_{#1}$};
+\draw[thick,->, #7] (0,0) -- (90:1) node[anchor=north east]{$\vec{x}_{#1}$}; 
+\draw[thick,->, #8] (0,0) -- (20:1) node[anchor=south east]{$\vec{z}_{#2}$}; 
+\draw[thick,->, #8] (0,0) -- (110:1) node[anchor=north east]{$\vec{x}_{#2}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick, #7] (0,0) circle (0.05);
+\fill[#7] (0,0) circle (0.01);
+\draw[#7] (-0.05,0) node[anchor=north east] {$\vec{y}_{#3}$};
+\draw[thick,->] (0.4,0) arc (0:20:0.4);
+\draw[thick,->] (0,0.4) arc (90:110:0.4);
+\draw (0.4,0.08) node[anchor=west] {$#4$};
+\draw (-0.08,0.4) node[anchor=south] {$#4$};
+\draw[#7] [thick] (0:0.5) arc (180:360:0.15) ;
+\draw[#7] (0.65,-0.07) node{\ensuremath{#5}};
+\draw[#8] [thick] (20:0.8) arc (20:200:0.15);
+\draw[#8] (0.59,0.29) node{\ensuremath{#6}};
+\end{tikzpicture}
+}
+
+%%% Graphe des liaisons%%%%%%%%%%%%
+
+%\begin{tikzpicture}[scale=1]
+%\tikzstyle{sommet}=[draw,ellipse,minimum height=1.5cm,fill=gray!20]
+%\tikzstyle{liaison}=[text width=2cm, text centered]
+%\node[sommet] (0) at (360/3*0:3) {Bâti 0};
+%\node[sommet] (1) at (360/3*1:3) {Coulisseau 1};
+%\node[sommet] (2) at (360/3*2:3) {Panneau 2};
+%\draw (1) to[bend right=20] (2);
+%\draw (2) to[bend right=20] (0);
+%\draw (0) to[bend right=20] (1);
+%\node[liaison] at (360/3*0.4:3.2) {Glissière de direction \vx{0}} ;
+%\node[liaison] at (360/3*1.5:3.2) {Ponctuelle de normale $(B,\vx{2})$} ;
+%\node[liaison] at (360/3*2.6:3.3) {Pivot d'axe $(C,\vz{0})$} ;
+%\end{tikzpicture}
+
+%Commande pour tracer des bases isometriques: \baseiso
+\newcommand\baseiso[5]{
+\begin{tikzpicture}[scale=#5*0.82]
+\draw[->] (0,0) -- (-30:1) node[anchor=north west]{$\vec{#1}$};
+\draw[->] (0,0) -- (90:1) node[anchor=east]{$\vec{#2}$}; 
+\draw[->] (0,0) -- (210:1) node[anchor=north east]{$\vec{#3}$};
+\draw node[anchor=south east]{#4};
+\end{tikzpicture}
+}
+
+
+%Commande pour tracer des bases planes: \baseplane
+\newcommand\baseplane[4]{
+\begin{tikzpicture}[scale=#4]
+\draw[->] (0,0) -- (0:1) node[anchor=north west]{$\vec{#1}$};
+\draw[->] (0,0) -- (90:1) node[anchor=south east]{$\vec{#2}$}; 
+\draw node[anchor=north east]{#3};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des bases en 2D avec vecteur sortant, tournées d'un certain angle : \basevecteursortant
+\newcommand\basevecteursortant[5]{
+\begin{tikzpicture}[scale=#5]
+\draw[->] (0,0) -- (0+#4:1) node[anchor=north west]{$\vec{#1}$};
+\draw[->] (0,0) -- (90+#4:1) node[anchor=south east]{$\vec{#2}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick] (0,0) circle (0.05);
+\fill (0,0) circle (0.01);
+\draw (-0.05,0) node[anchor=north east] {$\vec{#3}$};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des bases en 2D avec vecteur rentrant, tournées d'un certain angle : \basevecteurrentrant
+\newcommand\basevecteurrentrant[5]{
+\begin{tikzpicture}[scale=#5]
+\draw[->] (0,0) -- (#4:1) node[anchor=north west]{$\vec{#1}$};
+\draw[->] (0,0) -- (90+#4:1) node[anchor=south east]{$\vec{#2}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick] (0,0) circle (0.05);
+\draw (225:0.05) -- (45:0.05);
+\draw (135:0.05) -- (-45:0.05);
+\draw (-0.05,0) node[anchor=north east] {$\vec{#3}$};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des bases planes tournées d'un certain angle: \baseplanerot
+\newcommand\baseplanerot[5]{
+\begin{tikzpicture}[scale=#5]
+\draw[->] (0,0) -- (0+#4:1) node[anchor=north west]{$\vec{#1}$};
+\draw[->] (0,0) -- (90+#4:1) node[anchor=south east]{$\vec{#2}$}; 
+\draw node[anchor=north east]{#3};
+\end{tikzpicture}
+}
+
+%Commande pour tracer des tableaux de ddl : tabddl
+\newcommand\tabddl[6]{
+\begin{tabular}{|c|c|}
+\hline 
+\ensuremath{#1} & \ensuremath{#4} \\ 
+\hline 
+\ensuremath{#2} & \ensuremath{#5} \\ 
+\hline 
+\ensuremath{#3} & \ensuremath{#6} \\ 
+\hline 
+\end{tabular} 
+}
+
+%Commande pour tracer des tableaux de ddl vides : tabddlvide
+\newcommand\tabddlvide{
+\begin{tabular}{|c|c|}
+\hline 
+$\phantom{T_x}$ & $\phantom{T_x}$ \\ 
+\hline 
+$\phantom{T_x}$ & $\phantom{T_x}$ \\ 
+\hline 
+$\phantom{T_x}$ & $\phantom{T_x}$ \\ 
+\hline 
+\end{tabular} 
+}
+
+
+%%% figure pour projeter un vecteur avec un angle quelconque \figureprojection{x}{y}{z}{u}{v}{\theta}{40}{4}
+\newcommand\figureprojection[8]{
+\begin{tikzpicture}[scale=#8]
+\draw[thick,->] (0,0) -- (0:1); 
+\draw (0:1.1) node {$\vec{#1}$};
+\draw[thick,->] (0,0) -- (90:1);
+\draw (90:1.1) node {$\vec{#2}$}; 
+\draw[thick,->] (0,0) -- (#7:1);
+\draw (#7:1.1) node {$\vec{#4}$}; 
+\draw[thick,->] (0,0) -- (90+#7:1);
+\draw (90+#7:1.1) node {$\vec{#5}$}; 
+\fill[white] (0,0) circle (0.05);
+\draw[thick] (0,0) circle (0.05);
+\fill (0,0) circle (0.01);
+\draw (-0.05,0) node[anchor=north east] {$\vec{#3}$};
+\draw[thick,->] (0.4,0) arc (0:#7:0.4);
+\draw[thick,->] (0,0.4) arc (90:90+#7:0.4);
+\draw (#7/2:0.5) node {$#6$};
+\draw (#7/2+90:0.5) node {$#6$};
+\end{tikzpicture}
+}
+
+\newcommand\laplace[1]{L(#1)}
+
+\newcommand\baseisoxyz{\baseiso{x}{y}{z}{A}{2}}
+\newcommand\baseplanexy{\baseplane{x}{y}{A}{2}}
+\newcommand\baseplaneyz{\baseplane{y}{z}{A}{2}}
+\newcommand\baseplanezx{\baseplane{z}{x}{A}{2}}

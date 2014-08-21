@@ -1,0 +1,324 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={CIN -- Géométrie vectorielle -- Applications},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ de l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch. 4 : Entrée -- Sortie -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch. 4 : Lois Entrée -- Sortie -- E}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+
+
+\begin{center}
+ \Large\textsc{CI 3 -- CIN : Étude du comportement cinématique des systèmes}
+\end{center}
+
+\begin{center}
+ \large\textsc{Chapitre 4 -- Étude des chaînes fermées :
+Détermination des lois Entrées -- Sorties}
+\end{center}
+
+\begin{center}
+\textsc{Exercices d'application} 
+\end{center}
+\begin{flushright}
+\textit{D'après ressources de Jean-Pierre Pupier.} 
+\end{flushright}
+\vspace{.5cm}
+
+\subsection*{Exercice 1 -- Poussoir et roulette}
+ 
+\begin{center}
+\includegraphics[width=.6\textwidth]{png/fig1_1b} 
+\end{center}
+Fonctionnement : La rotation de 1 (entrée) fait mouvoir 3 (sortie).
+
+\subparagraph{}
+\textit{Définir les différents repères liés aux solides. Dessiner les axes sur le schéma.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{center}
+\includegraphics[width=.6\textwidth]{png/fig1_1c} 
+\end{center}
+On a les repères suivants :
+\begin{itemize}
+\item $\mathcal{R}_0=\left(B,\vect{x_0},\vect{y_0},\vect{z_0} \right)$ lié à 0;
+\item $\mathcal{R}_1=\left(B,\vect{x_1},\vect{y_1},\vect{z_0} \right)$ lié à 1;
+\item $\mathcal{R}_2=\left(A,\vect{x_2},\vect{y_2},\vect{z_0}\right)$ lié à 2;
+\item $\mathcal{R}_3=\left(E,\vect{x_0},\vect{y_0},\vect{z_0} \right)$ lié à 3.
+\end{itemize}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Réaliser le paramétrage géométrique de ce mécanisme (tous les paramètres). Préciser si les paramètres sont variables ou constants. Indiquez les paramètres sur le schéma.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+Il est possible de définir les paramètres géométriques constants suivants : 
+\begin{itemize}
+\item $\vect{BA} = R\vect{x_1}$;
+\item $\vect{AC} = r\vect{x_2}$ et $\vect{DA} = r\vect{y_0}$;
+\item $\vect{BF} = a\vect{x_0}-b\vect{y_0}$.
+\end{itemize}
+
+Les paramètres angulaires permettant le changements de repères sont donnés par les figures suivantes: 
+\begin{center}
+\includegraphics[width=.6\textwidth]{png/fig1_2c} 
+\end{center}
+
+On peut par ailleurs définir $\lambda$ tel que $\vect{FE} = \lambda \vect{y_0}$ ou encore $\mu_1(t)$ et $\mu_2(t)$ tels que $\vect{BD} = \mu_1(t) \vect{x_0}+\mu_2(t) \vect{y_0}$
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Trouver la loi entrée sortie.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On peut par exemple écrire la fermeture de chaîne vectorielle suivante :
+$$
+\vect{BA}+\vect{AD}+\vect{DB}=\vect{0} 
+$$
+
+En projetant cette loi sur $\vect{y_0}$ on obtient : 
+$$
+\vect{BA}\cdot\vect{y_0}+\vect{AD}\cdot\vect{y_0}+\vect{DB}\cdot\vect{y_0}=0
+\Longleftrightarrow
+R\vect{x_1}\cdot\vect{y_0} - r\vect{y_0}\cdot\vect{y_0}- \mu_1(t) \vect{x_0}\cdot\vect{y_0}-\mu_2(t) \vect{y_0}\cdot\vect{y_0} = 0
+$$
+$$
+\Longleftrightarrow
+R\cos\left( \dfrac{\pi}{2}-\alpha(t)\right) - r-\mu_2(t)=0
+$$
+On a donc $R\sin\alpha(t) - r-\mu_2(t)=0$ soit :
+$$\mu_2(t)=R\sin\alpha(t) - r$$
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Calculer l'expression de la vitesse de 3 dans 0 en fonction de la vitesse angulaire de 1 dans 0 et de certains paramètres constants.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+En dérivant l'expression précédente, on a donc 
+$$\dot{\mu_2(t)}{dt}=\dot{\alpha(t)}R\cos\alpha(t) $$
+\end{corrige}
+}{}
+
+
+\subsection*{Exercice 2 -- Mécanisme pour mouvement alternatif}
+\setcounter{subparagraph}{0}
+ 
+\begin{center}
+\includegraphics[width=.7\textwidth]{png/fig2_1} 
+\end{center}
+
+Le mécanisme ci-dessus est cinématiquement plan. La rotation de l'arbre d'entrée 1 permet d'imprimer un mouvement de translation alternatif à l'arbre de sortie 4.
+
+\begin{rem}
+Soignez l'écriture (les indices doivent être parfaitement lisibles).
+\end{rem}
+
+\subparagraph{}
+\textit{Définir les différents repères liés aux sous-ensembles cinématiques. Indiquer les autres origines possibles pour chaque repère.}
+
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+On a les repères suivants :
+\begin{itemize}
+\item $\mathcal{R}_0=\left(A,\vect{x_0},\vect{y_0},\vect{z_0} \right)$ lié à 0;
+\item $\mathcal{R}_1=\left(A,\vect{x_1},\vect{y_1},\vect{z_0} \right)$ lié à 1 (autre origine possible : $B$);
+\item $\mathcal{R}_2=\left(C,\vect{x_2},\vect{y_2},\vect{z_0}\right)$ lié à 2;
+\item $\mathcal{R}_3=\left(E,\vect{x_2},\vect{y_2},\vect{z_0}\right)$ lié à 3 (autre origine possible : $D$);
+\item $\mathcal{R}_4=\left(E,\vect{x_0},\vect{y_0},\vect{z_0} \right)$ lié à 4.
+\end{itemize}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Compléter le schéma ci-dessus en indiquant les divers axes utiles des repères.}
+
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Effectuer le paramétrage de ce mécanisme (les paramètres intermédiaires non utiles pour trouver la loi entrée-sortie ne doivent pas apparaître). On donne : $AB = r$ , $AC = a$, $\vect{CF}\cdot\vect{x_0}=b$. La position du point D sur CE n'a aucune importance ; il ne faut pas la faire intervenir dans les calculs. Il en est de même de l'altitude du point $F$.}
+
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Indiquer les paramètres variables et les paramètres constants sur le schéma.}
+
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Trouver la loi entrée-sortie. }
+
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subparagraph{}
+\textit{Trouver l'expression de la valeur du paramètre d'entrée pour laquelle le point $E$ est au maximum en bas en utilisant une méthode mathématique puis en utilisant une méthode géométrique (plus intuitive). Faites un dessin pour la deuxième réponse.}
+
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subsection*{Exercice 3 -- Joint de Cardan}
+\setcounter{subparagraph}{0}
+
+
+Un joint de Cardan est un accouplement qui permet de transmettre un mouvement de rotation entre deux arbres concourants mais non alignés. L'angle maximum pratiquement utilisé entre les arbres est de $45\textdegree$. Une application courante est la transmission entre boite de vitesses  et roues-avant d’une voiture. 
+
+Les vues ci-dessous donnent des images d’un joint de cardan.
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=.3\textwidth]{png/fig3_1} & 
+\includegraphics[width=.3\textwidth]{png/fig3_2} & 
+\includegraphics[width=.3\textwidth]{png/fig3_3} 
+\end{tabular}
+\end{center}
+
+La modélisation suivante est proposée.
+\begin{center}
+\includegraphics[width=.7\textwidth]{png/fig3_4} 
+\end{center}
+
+On appelle : 
+\begin{itemize}
+\item $\mathcal{R}$ le repère lié au solide $R$ considéré comme fixe. $\mathcal{R}=\left(O,\vect{x},\vect{y},\vect{z} \right)$;
+\item $\mathcal{R}'$ le repère lié au solide R considéré comme fixe. $\mathcal{R}'=\left(O,\vect{u},\vect{v},\vect{z} \right)$. On pose $\alpha = \left(\vect{y},\vect{v} \right)$ (constant);
+\item $\alpha$ l'"angle de brisure";
+\item $\mathcal{R}_1$ le repère lié au solide 1. $\mathcal{R}_1 = \left(O,\vect{x_1},\vect{y},\vect{z_1} \right)$. On pose  $\theta_1 = \left(\vect{x},\vect{x_1} \right)$;
+\item $\mathcal{R}_3$ le repère lié au solide 3. $\mathcal{R}_3 = \left(O,\vect{x_3},\vect{v},\vect{z_3} \right)$. On pose $\theta_3 = \left(\vect{u},\vect{x_3} \right)$.
+\end{itemize}
+
+\subparagraph{}
+\textit{Tracer en vue orthogonale, les trois dessins (figures de changement de base) permettant le passage de $\mathcal{R}$ à $\mathcal{R}_1$ , de $\mathcal{R}$ à $\mathcal{R}'$ et de $\mathcal{R}'$ à $\mathcal{R}_3$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Exprimer la condition géométrique sur 2 permettant de lier $\mathcal{R}_1$ à $\mathcal{R}_3$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Développer cette relation et trouver la loi entrée sortie : $\theta_3 = f(\theta_1 , \alpha)$. Tracer, pour $\alpha=45\textdegree$, la courbe représentant l’évolution de la sortie $\theta_3$ en fonction de l’entrée $\theta_1$ avec $\theta_1$ variant de $-\pi$ à $+\pi$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Dériver cette relation par rapport au temps pour trouver la vitesse de sortie $\dot{\theta_3}$ en fonction de la vitesse d’entrée $\dot{\theta_1}$, de $\theta_1$ et de $\alpha$.}
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Tracer l’évolution de la vitesse de sortie $\dot{\theta_3}$ en fonction notamment de l’évolution de l’angle d’entrée $\theta_1$. On prendra un angle de brisure de $45\textdegree$ et une vitesse d’entée constante $\dot{\theta_1}$ de 1 rad/s.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Conclure sur une des propriétés de ce mécanisme.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+
+\end{document}

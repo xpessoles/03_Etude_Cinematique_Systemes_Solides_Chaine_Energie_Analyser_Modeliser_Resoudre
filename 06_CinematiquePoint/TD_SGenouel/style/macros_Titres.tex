@@ -1,0 +1,178 @@
+\setcounter{tocdepth}{2}
+% \mtcselectlanguage{french} 
+
+
+%  ------------------------------------------
+% | Modification du formatage des sections : | 
+%  ------------------------------------------
+
+% Grands titres :
+% ---------------
+
+\newcommand{\titre}[1]{%
+\begin{center}
+      \bigskip
+      \rule{\textwidth}{1pt}
+      \par\vspace{0.1cm}
+      
+      \textbf{\large #1}
+      \par\rule{\textwidth}{1pt}
+    \end{center}
+    \bigskip
+  }
+
+% Supprime le numéro du chapitre dans la numérotation des sections:
+% -----------------------------------------------------------------
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section}
+\makeatother
+
+
+% \titleformat{\chapter}[display]
+% {\normalfont\Large\filcenter}
+% {}
+% {1pc}
+% {\titlerule[1pt]
+%   \vspace{1pc}%
+%   \Huge}[\vspace{1ex}%
+% \titlerule]
+
+
+%%%% Chapitres Comme PY Pechard %%%%%%%%%
+% numéro du chapitre
+\DeclareFixedFont{\chapnumfont}{OT1}{phv}{b}{n}{80pt}
+% pour le mot « Chapitre »
+\DeclareFixedFont{\chapchapfont}{OT1}{phv}{m}{it}{40pt}
+% pour le titre
+\DeclareFixedFont{\chaptitfont}{T1}{phv}{b}{n}{25pt}
+
+\definecolor{gris}{gray}{0.75}
+\titleformat{\chapter}[display]%
+	{\sffamily}%
+	{\filleft\chapchapfont\color{gris}\chaptertitlename\
+	\\
+	\vspace{12pt}
+	\chapnumfont\thechapter}%
+	{16pt}%
+	{\filleft\chaptitfont}%
+	[\vspace{6pt}\titlerule\titlerule\titlerule]
+
+%%%%  Fin Chapitres Comme PY Pechard %%%%%%%%%
+
+
+% Section, subsection, subsubsection sans serifs :
+% % ----------------------------------------------
+
+% \makeatletter
+% \renewcommand{\section}{\@startsection{section}{0}{0mm}%
+% {\baselineskip}{.3\baselineskip}%
+% {\normalfont\sffamily\Large\textbf}}%
+% \makeatother
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{{\textcolor{bleu}{\csname
+the#1\endcsname}\hspace{0.5em}}}
+\makeatother
+
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+                       {-4ex \@plus -1ex \@minus -.4ex}%
+                       {1ex \@plus.2ex }%
+                       {\normalfont\Large\sffamily\bfseries}}%
+\makeatother
+ 
+\makeatletter
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
+                          {-3ex \@plus -0.1ex \@minus -.4ex}%
+                          {0.5ex \@plus.2ex }%
+                          {\normalfont\large\sffamily\bfseries}}
+\makeatother
+ 
+\makeatletter
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
+                          {-2ex \@plus -0.1ex \@minus -.2ex}%
+                          {0.2ex \@plus.2ex }%
+                          {\normalfont\large\sffamily\bfseries}}
+\makeatother
+ 
+\makeatletter             
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+                                    {-2ex \@plus-.2ex \@minus .2ex}%
+                                    {0.1ex}%               
+{\normalfont\sffamily\bfseries}}
+\makeatother
+ 
+ 
+\makeatletter             
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}%
+                                    {-2ex \@plus-.2ex \@minus .2ex}%
+                                    {0.1ex}%               
+{\normalfont\bfseries Question }}
+\makeatother
+\renewcommand{\thesubparagraph}{\arabic{subparagraph}} 
+\makeatletter
+
+\setcounter{secnumdepth}{5}
+
+
+
+
+
+% Formatage de la table des matières 
+% Paquets nécessaires : titletoc ?
+
+% Chapitre spéciaux écrits dans un nombre cerclé dans la table des matières.
+\titlecontents{chapter}[+3pc]
+  {\addvspace{10pt}\sffamily\bfseries}
+{\contentslabel[{\pscirclebox[fillstyle=solid,fillcolor=gray!25,
+linecolor=gray!25,framesep=4pt]{\textcolor{white}{\thecontentslabel}}}]{2.5pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+\titlecontents{section}[3pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{1.8pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+\titlecontents{subsection}[5pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{1.8pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+\titlecontents{subsubsection}[8pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{3pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+%{\;\titlerule\;\normalfont\thecontentspage\ }
+
+\titlecontents{paragraph}[9pc]
+  {\addvspace{2pt}\sffamily}
+  {\contentslabel[\thecontentslabel]{3.5pc}}
+  {}
+  {\dotfill \normalfont\thecontentspage\ }
+
+%pour avoir l indentation dans minipage
+\newdimen\oldparindent\oldparindent=\parindent
+
+\makeatletter
+\def\@iiiminipage#1#2[#3]#4{%
+  \noindent
+  \leavevmode
+  \@pboxswfalse
+  \setlength\@tempdima{#4}%
+  \def\@mpargs{{#1}{#2}[#3]{#4}}%
+  \setbox\@tempboxa\vbox\bgroup
+    \color@begingroup
+      \hsize\@tempdima
+      \textwidth\hsize \columnwidth\hsize
+      \@parboxrestore
+      \parindent=\oldparindent
+      \def\@mpfn{mpfootnote}\def\thempfn{\thempfootnote}\c@mpfootnote\z@
+      \let\@footnotetext\@mpfootnotetext
+      \let\@listdepth\@mplistdepth \@mplistdepth\z@
+      \@minipagerestore
+      \@setminipage}
+\makeatother

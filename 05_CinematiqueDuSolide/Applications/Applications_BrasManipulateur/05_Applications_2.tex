@@ -1,0 +1,149 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 5 -- Cinématique du solide indéformable}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 5 : Cinématique du solide -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={CIN : Cinématique du solide},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+
+\input{style/entete1}
+
+\begin{center}
+ \Large\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \large\textsc{\xxsoustitre}
+\end{center}
+
+\begin{center}
+ \Large\textsc{Exercice d'application}
+\end{center}
+\begin{flushright}
+D'après ressources de Stéphane Génouël\footnote{\url{http://stephane.genouel.free.fr/}} et Renan Bonnard.
+\end{flushright}
+
+\vspace{.25cm}
+
+\subsection*{Etude d'une bras manipulateur}
+
+\vspace{.25cm}
+
+
+\begin{minipage}[c]{.45\linewidth}
+La figure ci-dessous représente un bras manipulateur permettant de déplacer des objets.
+Ce mécanisme est constitué :
+\begin{itemize}
+\item d'un bâti S0;
+\item d'un solide S1 entraîné en rotation par un moteur M1;
+\item d'un solide S2 entraîné en rotation par un moteur M2;
+\item d'un solide S3 entraîné en translation par un vérin V1;
+\item d'une pince située à l’extrémité du vérin permettant de saisir l’objet.
+\end{itemize}
+
+On note : 
+\begin{itemize}
+\item $1/0$ la rotation d'axe $(A,\vect{z_0})$.
+\item $2/1$ la rotation d'axe $(B,\vect{x_1})$.
+\item $3/2$ la translation rectiligne de direction $\vect{z_2}$.
+\item $\vect{AB}=a\vect{y_1}$.
+\end{itemize}
+
+\end{minipage}\hfill%
+\begin{minipage}[c]{.5\linewidth}
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{png/bras1}
+\end{center}
+
+\begin{center}
+\includegraphics[width=\textwidth]{png/parametrage}
+\end{center}
+
+$$\vect{BC}=\lambda\vect{z_2}$$
+
+\end{minipage}
+
+\subparagraph{}
+Proposer un schéma cinématique du bras manipulateur.
+%\ifthenelse{\boolean{prof}}{
+%\begin{corrige}
+%\end{corrige}}{}
+%
+%
+%\subparagraph{}
+%Donner le paramétrage du système.
+%\ifthenelse{\boolean{prof}}{
+%\begin{corrige}
+%\end{corrige}}{}
+
+
+\subparagraph{}
+Quelle est la trajectoire du point $B$ appartenant au solide 2 par rapport à 0.
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+Calculer $\vectv{C}{3}{2}$, $\vectv{C}{2}{1}$, $\vectv{C}{1}{0}$, $\vectv{B}{2}{0}$, $\vectv{C}{3}{0}$.
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+Calculer $\vect{\Gamma(B,2/0)}$ et $\vect{\Gamma(C,2/0)}$.
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+
+
+
+
+
+
+
+\end{document}
+

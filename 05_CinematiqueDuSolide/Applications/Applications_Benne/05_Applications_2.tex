@@ -1,0 +1,142 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 5 -- Cinématique du solide indéformable}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 5 : Cinématique du solide -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={CIN : Cinématique du solide},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+
+\input{style/entete1}
+
+\begin{center}
+ \Large\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \large\textsc{\xxsoustitre}
+\end{center}
+
+\begin{center}
+ \Large\textsc{Exercice d'application}
+\end{center}
+\begin{flushright}
+D'après ressources de Stéphane Génouël\footnote{\url{http://stephane.genouel.free.fr/}}.
+\end{flushright}
+
+\vspace{.25cm}
+
+\subsection*{Etude d'une benne de camion}
+
+\vspace{.25cm}
+
+
+Soit $\mathcal{R}_0$ un repère lié au châssis 0 d'un camion benne. Soit $\mathcal{R}_1$ et $\mathcal{R}_2$  deux repères liés respectivement au corps 1 et à la tige 2 d'un des deux vérins hydrauliques.
+On suppose que le vérin étudié (corps+tige) se déplace dans le plan $(\vect{x_0},\vect{y_0})$.
+On pose $\alpha=(\vect{x_0};\vect{x_1})$ et $\vect{OB}=\lambda (t)\vect{x_1}$.
+
+\vspace{.25cm}
+
+
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/benne1}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/benne2}
+\end{center}
+\end{minipage}
+
+\vspace{.25cm}
+
+\begin{minipage}[c]{.45\linewidth}
+Le paramétrage du système est le suivant :
+$$
+\vect{OB} = \lambda(t) \vect{x_1}
+$$
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.45\textwidth]{png/parametrage}
+\end{center}
+\end{minipage}
+
+
+%\subparagraph{}
+%Donner le paramétrage du système.
+%\ifthenelse{\boolean{prof}}{
+%\begin{corrige}
+%\end{corrige}}{}
+
+\subparagraph{}
+Quelle est la trajectoire du point $B$ appartenant au solide 2 par rapport à 0.
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+Calculer $\vectv{B}{2}{0}$.
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+\subparagraph{}
+Calculer $\vect{\Gamma(B,2/0)}$.
+
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}}{}
+
+
+
+
+
+
+
+
+
+\end{document}
+

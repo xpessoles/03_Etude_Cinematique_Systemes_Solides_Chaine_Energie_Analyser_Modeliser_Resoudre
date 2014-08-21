@@ -1,0 +1,765 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={TD Cinématique},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=1.4cm]{png/logo_jh_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2011 -- 2012} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{TD -- CI 2 : Cinématique -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{TD -- CI 2 : Cinématique}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+\begin{center}
+ \LARGE\textsc{CI 2 -- Cinématique : Modélisation, prévision et vérification du comportement cinématiques des systèmes}
+\end{center}
+
+\begin{center}
+ \Large\textsc{Chapitre 4 -- Cinématique du point} 
+\end{center}
+
+
+\section*{Exercice 1 : Capsuleuse de bocaux}
+\textbf{Objectif :} 
+\begin{itemize}
+\item Introduire la notion de vitesse de glissement
+\item Établir la loi Entrée/Sortie lors d'une transmission de mouvement par contact ponctuel
+\end{itemize}
+
+\textbf{Objectif technologique:} 
+\begin{itemize}
+\item Diminuer l'usure dans les composants constituants la croix de Malte.
+\item Valider que la vitesse de rotation du moteur empêche le basculement des bocaux.
+\item Valider le choix du galet.
+\end{itemize}
+
+\vspace{1cm}
+\subsection*{Mise en situation}
+
+\begin{minipage}[c]{.4\linewidth}
+\begin{center}
+ \includegraphics[width=\textwidth]{png/capsuleuse}
+\end{center}
+
+\end{minipage} \hfill
+\begin{minipage}[c]{.55\linewidth}
+Le conditionnement de nombreux produits alimentaires est réalisé dans des bocaux en verre fermés par des capsules vissées. La société RAVOUX, spécialisée dans le conditionnement, a créé ce prototype afin d'optimiser ses machines de production. Elle est donc équipée de nombreux capteurs permettant, via un ordinateur, d'optimiser les paramètres de production tels que qualité totale, production maximale, ...
+
+Le système de laboratoire proposé s'insère dans une chaîne de conditionnement de produits alimentaires, entre l'unité de remplissage des bocaux et le poste d'étiquetage. Sa fonction principale est la «fermeture étanche de bocaux préalablement remplis de produits alimentaires»
+\end{minipage}
+
+\vspace{1cm}
+\begin{minipage}[c]{.55\linewidth}
+Ce système comprend plusieurs parties :
+\begin{itemize}
+\item un convoyeur linéaire d'alimentation des bocaux ;
+\item un système électromécanique de transfert et d'indexation des bocaux (moto-réducteur, mécanisme à Croix de Malte, étoile de transfert) ;
+\item un magasin de stockage des capsules ;
+\item une partie opérative pneumatique de pose et de vissage des capsules - vérin V1, tête de vissage comprenant les vérins V2 et VR, ventouse et vacuostat (le vacuostat est une cellule permettant d'assurer la mise en dépression de la ventouse afin d'effectuer la préhension de la capsule) ;
+\item un vérin de serrage des bocaux sous la tête de vissage ;
+\item un convoyeur linéaire d'évacuation des bocaux ;
+\item une partie commande par automate programmable Télémécanique TSX 37-10 64 entrées/sorties et un pupitre de commande.
+\end{itemize}
+
+\end{minipage} \hfill
+\begin{minipage}[c]{.4\linewidth}
+\begin{center}
+ \includegraphics[width=\textwidth]{png/systeme3}
+\end{center}
+\end{minipage}
+
+\vspace{.5cm}
+
+On s'intéresse ici au système de croix de Malte. Il permet d'obtenir une rotation discontinue à partir d'un mouvement de rotation continue. Ainsi, pendant que la croix de Malte ne tourne pas, le système peut agir sur la matière d'\oe{}uvre (flacon).
+
+Lors de la rotation de la croix de Malte, la capsuleuse déplace deux flacons. Afin d'accroître la productivité, il faut diminuer la durée de cette phase. Cependant, si la croix de Malte tourne trop vite, les flacons basculent ce qui entraîne un mauvais fonctionnement du système. Ainsi, on désire que la \textbf{vitesse de la croix soit inférieure à 50 tours/minute}. 
+
+
+
+\subsection*{Modélisation sans galet}
+
+\begin{minipage}[c]{.4\linewidth}
+Afin de modéliser le système à croix de malte, on propose le schéma cinématique ci-contre. 
+
+
+On note :
+\begin{itemize}
+\item $\mathcal{R}=\left( O,\vect{x_0},\vect{y_0},\vect{z_0}\right)$ le repère lié au bâti $S_0$. On note $\vect{OB}=-L\vect{x_0}$ avec $L = 145\; mm$;
+\item $\mathcal{R}_1=\left( O,\vect{x_1},\vect{y_1},\vect{z_1}\right)$ le repère lié à l'arbre $S_1$. On pose $\vect{OA}=R\vect{y_1}$  avec $R =141\;mm$ et $\alpha = \left( \vect{x_0}, \vect{x_1}\right)$. L'arbre $S_1$ est lié au motoréducteur de la capsuleuse. On a : $\dot{\alpha} = 10\;tr/min$;
+\item  $\mathcal{R}_2=\left( C,\vect{x_2},\vect{y_2},\vect{z_2}\right)$ le repère lié à l'arbre $S_2$. On pose $\vect{BA}=\lambda(t)\vect{x_2}$,  $\vect{AI}=r\vect{y_2}$ et $\beta = \left( \vect{x_0}, \vect{x_2}\right)$;
+\end{itemize}
+
+
+\end{minipage} \hfill
+\begin{minipage}[c]{.55\linewidth}
+\begin{center}
+ \includegraphics[width=\textwidth]{png/schema1}
+\end{center}
+\end{minipage}
+
+%\paragraph{}
+%\textit{Indiquer une différence majeure entre le système réel et le système modélisé.}
+
+\paragraph{}
+\textit{Donner le paramétrage associé au schéma cinématique.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+\begin{center}
+ \includegraphics[width=.4\textwidth]{png/param1}
+\end{center}\\
+\hline
+\end{tabular}
+\end{center}
+}{%
+}
+
+
+\paragraph{}
+\textit{\'Etablir la loi entrée/sortie du système.}
+
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+On a :
+$$ \vect{OA} + \vect{AB} + \vect{BO} = \vect{0} \Longleftrightarrow 
+R\vect{y_1} - \lambda(t)\vect{x_2} + L \vect{x_0} = \vect{0}
+$$
+En projetant sur $\vect{x_0}$ et $\vect{y_0}$ on a :
+$$
+\left\{
+\begin{array}{l}
+- R \sin \alpha(t) - \lambda(t) \cos\beta(t) + L = 0\\
+R\cos\alpha(t) - \lambda(t)\sin \beta(t)=0
+\end{array}
+\right.
+$$
+Suivant le cas, on peut donc avoir $\alpha$ en fonction de $\beta$ ou $\lambda$ en fonction de $\alpha$ ou $\beta$ :
+$$
+\tan \beta = \dfrac{R\cos\alpha}{L-R\sin\alpha}
+$$
+
+$$
+\lambda(t)^2 = R^2 + L^2 - 2RL \sin\alpha
+$$
+
+\\
+\hline
+\end{tabular}
+\end{center}
+}{%
+}
+
+\paragraph{}
+\textit{Donner une méthode permettant de valider la cahier des charges vis à vis de la vitesse de rotation de la croix de Malte.}
+
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+On peut calculer : 
+$$
+\dot{\beta} = \dfrac{R^2\dot{\alpha} - LR\dot{\alpha}\sin\alpha }{L^2-2RL\sin\alpha + R^2}
+$$
+
+Le tracé Excel permet de valider que la vitesse de rotation de la croix de Malte reste inférieure à 50 tours par minute.
+\\
+\hline
+\end{tabular}
+\end{center}
+}{%
+}
+
+
+\paragraph{}
+\textit{Donner l'expression du torseur cinématique de $S_1$ par rapport à $S_0$ au point $I$.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$\{\mathcal{V}(S_1/S_0)\} = 
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_1/S_0)} = \dot{\alpha}\vect{z_0} \\
+\vect{V(O,S_1/S_0)} = \vect{0}
+\end{array}
+\right\}_O =
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_1/S_0)} = \dot{\alpha}\vect{z_0} \\
+\vect{V(I,S_1/S_0)} = \vect{IO} \wedge \dot{\alpha}\vect{z_0}
+\end{array}
+\right\}_I
+$$
+
+$$
+\vect{V(I,S_1/S_0)} =\left( -R\vect{y_1} - r \vect{y_2} \right) \wedge \dot{\alpha}\vect{z_0} =- R\dot{\alpha}\vect{x_1} - r\dot{\alpha}\vect{x_2}
+$$
+$$\{\mathcal{V}(S_1/S_0)\} = 
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_1/S_0)} = \dot{\alpha}\vect{z_0} \\
+\vect{V(I,S_1/S_0)} = -R\dot{\alpha}\vect{x_1} - r\dot{\alpha}\vect{x_2}
+\end{array}
+\right\}_I
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+
+}{%
+}
+\paragraph{}
+\textit{Donner l'expression du torseur cinématique de $S_2$ par rapport à $S_0$ au point $I$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$\{\mathcal{V}(S_2/S_0)\} = 
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_2/S_0)} = \dot{\beta}\vect{z_0} \\
+\vect{V(B,S_2/S_0)} = \vect{0}
+\end{array}
+\right\}_B =
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_2/S_0)} = \dot{\beta}\vect{z_0} \\
+\vect{V(I,S_2/S_0)} = \vect{IB} \wedge \dot{\beta}\vect{z_0}
+\end{array}
+\right\}_I
+$$
+$$
+\vect{V(I,S_2/S_0)} =\left( -\lambda(t)\vect{x_2} - r \vect{y_2} \right) \wedge \dot{\beta}\vect{z_0} = \lambda(t) \dot{\beta}\vect{y_2} - r\dot{\beta}\vect{x_2}
+$$
+
+$$\{\mathcal{V}(S_2/S_0)\} = 
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_2/S_0)} = \dot{\beta}\vect{z_0} \\
+\vect{V(I,S_2/S_0)} = \lambda(t) \dot{\beta}\vect{y_2} - r\dot{\beta}\vect{x_2}
+\end{array}
+\right\}_I
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}{%
+}
+
+\paragraph{}
+\textit{En déduire l'expression du torseur cinématique de $S_2$ par rapport à $S_1$ au point $I$ et $\vect{V(I,S_2/S_1)}$ dans la base $\mathcal{R}_2$. On donne $ \vect{x_1} 
+=\cos(\alpha-\beta)\vect{x_2} + \sin(\alpha-\beta)\vect{y_2}
+$.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+D'après la composition du torseur cinématique on a :
+$$
+\{ \mathcal{V}(S_2/S_1)\} = \{ \mathcal{V}(S_2/S_0)\} + \{ \mathcal{V}(S_0/S_1)\} 
+\Longleftrightarrow \{ \mathcal{V}(S_2/S_1)\} = \{ \mathcal{V}(S_2/S_0)\} - \{ \mathcal{V}(S_1/S_0)\} 
+$$
+On a donc : 
+$$
+\{ \mathcal{V}(S_2/S_1)\} =
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_2/S_1)} = \vect{\Omega(S_2/S_0)} - \vect{\Omega(S_1/S_0)}  = \left(\dot{\beta}-\dot{\alpha} \right)\vect{z_0} \\
+\vect{V(I,S_2/S_1)} = \vect{V(I,S_2/S_0)} - \vect{V(I,S_1/S_0)} 
+=
+ \lambda(t) \dot{\beta}\vect{y_2} - r\dot{\beta}\vect{x_2} +
+ R\dot{\alpha}\vect{x_1} + r\dot{\alpha}\vect{x_2}
+\end{array}
+\right\}_I
+$$
+
+%$$
+%\{ \mathcal{V}(S_2/S_1)\} =
+%\left\{
+%\begin{array}{l}
+%\vect{\Omega(S_2/S_1)} = \left(\dot{\beta}-\dot{\alpha} \right)\vect{z_0} \\
+%\vect{V(I,S_2/S_1)} =
+ %-\lambda(t) \dot{\beta}\vect{x_2}  -  R\dot{\alpha}\vect{y_1} 
+%\end{array}
+%\right\}_I
+%$$
+
+$$ \vect{x_1} 
+=\cos(\alpha-\beta)\vect{x_2} + \sin(\alpha-\beta)\vect{y_2}
+$$
+D'où :
+$$
+\vect{V(I,S_2/S_1)} =
+ \lambda(t) \dot{\beta}\vect{y_2} - r\dot{\beta}\vect{x_2} +
+ R\dot{\alpha}\cos(\alpha-\beta)\vect{x_2} +  R\dot{\alpha}\sin(\alpha-\beta)\vect{y_2} + r\dot{\alpha}\vect{x_2}
+=\left[
+\begin{array}{l}
+- r\dot{\beta}+ R\dot{\alpha}\cos(\alpha-\beta) + r\dot{\alpha}\\
+ \lambda(t) \dot{\beta}+  R\dot{\alpha}\sin(\alpha-\beta)\\
+0\\
+\end{array}
+\right]_{\mathcal{R}_2}
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}{%
+}
+
+\paragraph{}
+\textit{D'après le paramétrage adopté, quelle est la direction du vecteur vitesse du solide $S_1$ par rapport à $S_2$ ? Calculer ce vecteur comme dérivée du vecteur position. En utilisant les résultats de la question précédente, déduire une condition de fonctionnement du mécanisme.}
+
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+Le vecteur vitesse devrait être orienté suivant $\vect{x_2}$. La dérivation du vecteur position donne ainsi : 
+$$\left[
+\dfrac{d\vect{BI}}{dt}
+\right]_{\mathcal{R}_2} = \dot{\lambda}\vect{x_2}
+$$
+
+Ainsi, nécessairement :
+$$
+\left\{
+\begin{array}{l}
+- r\dot{\beta}+ R\dot{\alpha}\cos(\alpha-\beta)  +r\dot{\alpha} = \dot{\lambda}\\
+ \lambda(t) \dot{\beta}+  R\dot{\alpha}\sin(\alpha-\beta)=0\\
+\end{array}
+\right.
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}{}
+
+\paragraph{}
+\textit{$\vect{V(I,S_2/S_1)}\cdot\vect{y_2}$ est appelée \textbf{vitesse de glissement}. Quel problème technologique pose l'existence de cette vitesse ? Ce problème est-il pris en compte sur la capsuleuse ? Si oui, comment ? Si non, proposez une modification du système permettant la prise en compte de ce problème.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+Cette vitesse de glissement provoque le frottement du doigt sur la croix de Malte. Ce frottement entraînant de l'usure, la capsuleuse de bocaux est équipée d'un galet.
+\\
+\hline
+\end{tabular}
+\end{center}
+}{}
+
+
+\subsection*{Modélisation avec galet}
+\begin{minipage}[c]{.4\linewidth}
+On considère maintenant l'existence d'un galet $S_3$ en bout de de l'arbre $S_1$. On fait l'hypothèse que le galet roule sans glisser dans le $S_2$. $S_3$ et $S_1$ sont en liaison pivot d'axe $\vect{z_0}$ et de centre $A$.
+
+Le galet a un diamètre extérieur de $16\;mm$. D'après la documentation constructeur, la vitesse de rotation du galet ne doit pas dépasser les $5000\; tr/min$.
+\end{minipage} \hfill
+\begin{minipage}[c]{.55\linewidth}
+\begin{center}
+ \includegraphics[width=\textwidth]{png/galet}
+\end{center}
+\end{minipage}
+
+\begin{center}
+ \includegraphics[width=.9\textwidth]{png/schema2}
+\end{center}
+
+\paragraph{}
+\textit{Quelle est la modification sur le paramétrage du système ?}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+Un angle $\gamma$ correspondant à la rotation du galet sur lui même apparaît.
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+\paragraph{}
+\textit{Comment est-il possible de traduire l'hypothèse de \textbf{roulement} sans glissement ?}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+La vitesse est nulle entre le galet et la croix de Malte est nulle au point $I$ :
+$$ 
+\vect{V(I,S_3/S_2)} = \vect{0}
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+\paragraph{}
+\textit{Calculer la vitesse de rotation du galet $\dot{\gamma}$ en commençant par exprimer $\vect{V_I(S_3/S_2)}$?}
+\textit{Indice : décomposer $\vect{V_I(S_3/S_2)}$ en fonction de mouvements connus}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+Malgré l'introduction d'un nouveau composant, la position du point $I$ reste inchangée.
+
+Il faut identifier le torseur $\{\mathcal{V}(S_3/S_2)\}$. 
+Pour cela, la composition des vitesses donne :
+$$
+\{\mathcal{V}(S_3/S_2)\} = \{\mathcal{V}(S_3/S_1)\} + \{\mathcal{V}(S_1/S_2)\}  
+$$
+
+
+Au point $I$ on connaît déjà $\{\mathcal{V}(S_1/S_2)\}$.
+
+Calculons $\{\mathcal{V}(S_3/S_1)\}$:
+
+$$
+\{\mathcal{V}(S_3/S_1)\}
+= 
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_3/S_1)} = \dot{\gamma}\vect{z_0} \\
+\vect{V(A,S_3/S_1)} = \vect{0}
+\end{array}
+\right\}_A =
+\left\{
+\begin{array}{l}
+\vect{\Omega(S_3/S_1)} = \dot{\gamma}\vect{z_0} \\
+\vect{V(I,S_3/S_1)} = \vect{IA} \wedge \dot{\gamma}\vect{z_0}
+= -r\vect{y_2} \wedge \dot{\gamma}\vect{z_0} = -r \dot{\gamma}\vect{x_2}
+\end{array}
+\right\}_I
+$$
+
+On a donc :
+$$
+\vect{V(I,S_3/S_2)} = \vect{V(I,S_3/S_1)} + \vect{V(I,S_1/S_2)} 
+$$
+$$
+\vect{V(I,S_3/S_2)} = -r \dot{\gamma}\vect{x_2} 
++\left(-r\dot{\beta}+ R\dot{\alpha}\cos(\alpha-\beta) + r\dot{\alpha}\right)\vect{x_2}
+- \left(\lambda(t) \dot{\beta}+  R\dot{\alpha}\sin(\alpha-\beta)\right)\vect{y_2}
+$$
+
+
+$$
+\vect{V(I,S_3/S_2)} =\left[ 
+\begin{array}{l}
+ -r \dot{\gamma}+\left(-r\dot{\beta}+ R\dot{\alpha}\cos(\alpha-\beta) + r\dot{\alpha}\right)\\
+- \left(\lambda(t) \dot{\beta}+  R\dot{\alpha}\sin(\alpha-\beta)\right)\\
+0\\
+\end{array}
+\right]_{\mathcal{R}_2}  
+$$
+
+
+%De même que précédemment, les solides étant indéformable, la projection de la vitesse sur $\vect{y_2}$ est nulle. 
+
+D'après l'hypothèse de roulement sans glissement, on a :
+$$ 
+\vect{V(I,S_3/S_2)} = \vect{0} \Longrightarrow  \dot{\gamma}=-\dfrac{-r\dot{\beta}+ R\dot{\alpha}\cos(\alpha-\beta) + r\dot{\alpha}}{r}
+$$
+
+\\
+\hline
+\end{tabular}
+\end{center}
+
+}
+{}
+
+\paragraph{}
+\textit{Valider le choix du galet.}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$
+ \dot{\gamma}=-\dfrac{-r\dot{\beta}+ R\dot{\alpha}\cos(\alpha-\beta) + r\dot{\alpha}}{r}
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+
+
+
+\setcounter{paragraph}{0}
+\section*{Exercice 2 : Roulement à billes}
+Un roulement mécanique est un élément technologique permettant le positionnement, la transmission des efforts et la rotation entre deux pièces par roulement. Ce composant mécanique interposé entre les deux pièces optimise le frottement et la précision de la liaison. Un roulement à billes se présente sous la forme de deux bagues coaxiales entre lesquelles sont placées des billes maintenues espacées par une cage. La fonction de la cage est donc de maintenir deux billes consécutives à distance égale l'une de l'autre lors du fonctionnement du roulement mais elle entraîne aussi des effets nuisibles car il existe un phénomène de glissement entre la cage et les billes. \textbf {L'objectif est d'étudier ce phénomène de glissement.}
+
+\begin{center}
+ \includegraphics[width=.6\textwidth]{png/roulement}
+\end{center}
+
+On désigne par :
+\begin{itemize}
+\item $\mathcal{R}_0 = \left(O,\vect{x_0},\vect{y_0},\vect{z_0}\right)$ le repère associé au bâti 0;
+\item $\mathcal{R}_1 = \left(O,\vect{x_1},\vect{y_1},\vect{z_0}\right)$ le repère associé à la bague intérieure 1 en liaison pivot d'axe $(O,\vect{z_0})$ avec le bâti 0 tel que $\theta_1 = \left(\vect{x_0},\vect{x_1}\right) = \left(\vect{y_0},\vect{y_1}\right)$;
+\item $\mathcal{R}_2 = \left(O,\vect{x_2},\vect{y_2},\vect{z_0}\right)$ le repère associé à la bague intérieure 2 en liaison pivot d'axe $(O,\vect{z_0})$ avec le bâti 0 tel que $\theta_2 = \left(\vect{x_0},\vect{x_2}\right) = \left(\vect{y_0},\vect{y_2}\right)$;
+\item $\mathcal{R}_3 = \left(G,\vect{x_3},\vect{y_3},\vect{z_0}\right)$ le repère associé à la bille 3 qui roule sans glisser sur 1 en I et sur 2 en J et dont on peut considérer qu'elle est en liaison pivot d'axe $(G,\vect{z_0})$ avec la cage 4 tel que $\theta_3 = \left(\vect{x_0},\vect{x_3}\right) = \left(\vect{y_0},\vect{y_3}\right)$;
+\item $\mathcal{R}_4 = \left(O,\vect{x_4},\vect{y_4},\vect{z_0}\right)$ le repère associé à la cage 4 en mouvement de rotation autour de $(O,\vect{z_0})$ tel que $\theta_4 = \left(\vect{x_0},\vect{x_4}\right) = \left(\vect{y_0},\vect{y_4}\right)$.
+\end{itemize}
+
+Pour faciliter les calculs on définit le repère $\mathcal{R}=\left(O,\vect{i},\vect{j},\vect{z_0} \right)$ tel que, à tout instant, le vecteur $\vect{i}$ possède la même direction et le même sens que le vecteur $\vect{OG}$. Ce repère n'est lié à aucun solide en particulier et ne sert qu'à exprimer simplement les différents termes cinématiques évoqué dans l'énoncé. On pose :
+
+$$
+\omega_k = \dot{\theta}_k \quad (k=1,2,3,4) \quad \vect{OI}=r_1 \vect{i} \quad \vect{OJ}=r_2\vect{i} \quad \vect{GC}=\dfrac{1}{2}(r_2-r_1)\vect{j}
+$$
+
+\paragraph{}
+\textit{Réaliser les figures planes correspondant au paramétrage du système.}
+
+\paragraph{}
+\textit{Déterminer le torseur cinématique $\{\mathcal{V}(1/0)\}$ aux points O et I.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$
+\left\{ \mathcal{V}(1/0)\right\}=
+\left\{
+\begin{array}{l}
+\vect{\Omega(1/0)}= \dot{\theta}_1 \vect{z_0}\\
+\vect{V(O,1/0)}= \vect{0}
+\end{array}
+\right\}_O
+=
+\left\{
+\begin{array}{l}
+\vect{\Omega(1/0)}= \dot{\theta}_1 \vect{z_0}\\
+\vect{V(I,1/0)}= r_1 \omega_1 \vect{j}
+\end{array}
+\right\}_I
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+
+\paragraph{}
+\textit{Déterminer le torseur cinématique $\{\mathcal{V}(2/0)\}$ aux points O et J. }
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$
+\left\{ \mathcal{V}(1/0)\right\}=
+\left\{
+\begin{array}{l}
+\vect{\Omega(2/0)}= \dot{\theta}_2 \vect{z_0}\\
+\vect{V(O,2/0)}= \vect{0}
+\end{array}
+\right\}_O
+=
+\left\{
+\begin{array}{l}
+\vect{\Omega(2/0)}= \dot{\theta}_2 \vect{z_0}\\
+\vect{V(J,2/0)}= r_1 \omega_2 \vect{j}
+\end{array}
+\right\}_J
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+\paragraph{}
+\textit{Exprimer les conditions de roulement sans glissement en $I$ et $J$. Établir les expression des vecteurs $\vect{V(I,3/0)}$ et $\vect{V(J,3/0)}$.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$
+\vect{V(I,3/1)}= \vect{0}
+$$
+$$
+\vect{V(I,3/0)}=\vect{V(I,3/1)}+\vect{V(I,1/0)} \Longrightarrow \vect{V(I,3/0)}=\vect{V(I,1/0)} = r_1\omega_1\vect{j}
+$$
+
+$$
+\vect{V(J,3/2)}= \vect{0}
+$$
+$$
+\vect{V(J,3/0)}=\vect{V(J,3/2)}+\vect{V(J,2/0)} \Longrightarrow \vect{V(J,3/0)}=\vect{V(J,2/0)} = r_2\omega_2\vect{j}
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+\paragraph{}
+\textit{En déduire l'expression de $\omega_3$ en fonction de $r_1$, $r_2$, $\omega_1$, $\omega_2$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$
+\vect{V(I,3/0)}= \vect{V(J,3/0)}+\vect{IJ}\wedge\vect{\Omega(3/0)}
+$$
+$$
+\omega_3 = \dfrac{r_2\omega_2-r_1\omega_1}{r_2-r_1}
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+
+
+\paragraph{}
+\textit{Déterminer $\vect{V(G,3/0)}$ en fonction de $r_1$, $r_2$, $\omega_1$, $\omega_2$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+$$
+\vect{V(G,3/0)}= \vect{V(I,3/0)}+\vect{GI}\wedge\vect{\Omega(3/0)} = \dfrac{r_2\omega_2+r_1\omega_1}{2}\vect{j}
+$$
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+
+\paragraph{}
+\textit{Déterminer l'expression de la vitesse de glissement de la bille 3 par rapport à la cage 4 au point $C$ en fonction de $r_1$, $r_2$, $\omega_1$, $\omega_2$.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{center}
+    \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.9\textwidth}|}
+\hline
+On cherche à calculer $\vect{V(C,3/4)}$ :
+
+$$
+\vect{V(C,3/4)}= \vect{V(G,3/4)}+\vect{CG}\wedge\vect{\Omega(3/4)}
+$$
+
+Calcul de $\vect{CG}$ :
+$$
+\vect{CG}=-\dfrac{1}{2}(r_2-r_1)\vect{j}
+$$
+
+Calcul de $\vect{\Omega(3/4)}$ :
+$$
+\vect{\Omega(3/4)}=\vect{\Omega(3/0)}-\vect{\Omega(4/0)}
+$$
+
+Calcul de $\omega_4$ :
+$$
+\vect{V(G,3/4)}=\vect{V(G,3/0)}-\vect{V(G,4/0)}=\vect{0}
+$$
+
+Calcul de $\vect{V(G,4/0)}$ :
+$$
+\vect{V(G,4/0)}=\vect{V(O,4/0)}+\vect{GO}\wedge \vect{\Omega(4/0)}=\dfrac{r_2+r_1}{2}\omega_4\vect{j}
+$$
+
+Au final calcul de $\omega_4$ :
+$$
+\omega_4 = \dfrac{r_2\omega_2+r_1\omega_1}{r_1+r_2}
+$$
+
+Calcul de $\vect{\Omega(3/4)}$ : 
+$$
+\vect{\Omega(3/4)}=\vect{\Omega(3/0)}-\vect{\Omega(4/0)} = \left( \dfrac{r_2\omega_2 -r_1\omega_1}{r_2-r_1} - \dfrac{r_2\omega_2 +r_1\omega_1}{r_2+r_1} \right) \vect{z_0}
+$$
+
+Au final en faisant le calcul on obtient : 
+$$
+\vect{V(C,3/4)} = \dfrac{r_2r_1(\omega_1-\omega_2)}{r_1+r_2}\vect{i}
+$$
+
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+{}
+
+
+\end{document}

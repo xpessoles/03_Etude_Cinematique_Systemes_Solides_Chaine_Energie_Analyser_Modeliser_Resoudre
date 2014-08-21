@@ -1,0 +1,236 @@
+\documentclass[10pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={CIN -- Torseurs -- Applications},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ de l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch 7 : Torseurs -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch 7 : Torseurs -- E}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+
+
+\begin{center}
+ \Large\textsc{CI 3 -- CIN : Étude du comportement cinématique des systèmes}
+\end{center}
+
+\begin{center}
+ \large\textsc{Chapitre 7 -- Torseurs}
+\end{center}
+
+\begin{center}
+\textsc{Exercices d'application} 
+\end{center}
+\begin{flushright}
+\textit{D'après ressources de Jean-Pierre Pupier.} 
+\end{flushright}
+\vspace{.5cm}
+
+\subsection*{Exercice 1}
+\setcounter{subparagraph}{0}
+Soit le torseur suivant :
+$\torseur{\mathcal{T}} = \torseurcol{1}{-3}{2}{13}{5}{1}{A,\mathcal{B}}$. On donne $\vect{OA}=\left[\begin{array}{c} 1 \\ 2 \\ 1\end{array}\right]_{\mathcal{B}}$.
+
+\subparagraph{}
+\textit{Calculer les éléments de réduction de ce torseur au point $B$ tel que $\vect{OB}=3\vect{y}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Est-ce un torseur particulier ? Si oui, quel est son nom ?}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subsection*{Exercice 2}
+\setcounter{subparagraph}{0}
+Soit le torseur suivant :
+$\torseur{\mathcal{T}} = \torseurcol{1}{-3}{2}{13}{5}{3}{A,\mathcal{B}}$. On donne $\vect{OA}=\left[\begin{array}{c} 1 \\ 2 \\ 1\end{array}\right]_{\mathcal{B}}$.
+
+\subparagraph{}
+\textit{Est-ce un torseur particulier ? Si non, calculer son pas, puis son moment central.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subsection*{Exercice 3}
+\setcounter{subparagraph}{0}
+On donne le torseur :
+$\torseur{\mathcal{T}} = \torseurcol{1}{2}{-3}{4}{-1}{2}{A,\mathcal{B}}$. On donne $\vect{OA}=\left[\begin{array}{c} 2 \\ 1 \\ -1\end{array}\right]_{\mathcal{B}}$ et 
+$\vect{OB}=\left[\begin{array}{c} 3 \\ -2 \\ -2\end{array}\right]_{\mathcal{B}}$.
+
+\subparagraph{}
+\textit{Vérifier que le champ de vecteur est bien équiprojectif.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subsection*{Exercice 4}
+\setcounter{subparagraph}{0}
+On donne les torseurs suivants :
+$\torseur{\mathcal{T}_1} = \torseurcol{1}{-4}{1}{1}{-2}{3}{A,\mathcal{B}}$ et 
+$\torseur{\mathcal{T}_2} = \torseurcol{3}{-4}{-1}{-3}{-5}{1}{B,\mathcal{B}}$. On a par ailleurs 
+$\vect{OA}=\left[\begin{array}{c} 1 \\ 2 \\ -5\end{array}\right]_{\mathcal{B}}$ et 
+$\vect{OB}=\left[\begin{array}{c} 4 \\ -2 \\ 3\end{array}\right]_{\mathcal{B}}$.
+
+\subparagraph{}
+\textit{En utilisant les notations adaptées, calculer au point $A$ $\torseur{\mathcal{T}}=\torseur{\mathcal{T}_1}+\torseur{\mathcal{T}_2}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Calculer le comoment des deux torseurs.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\subsection*{Exercice 5}
+\setcounter{subparagraph}{0}
+\subparagraph{}
+\textit{Écrire un exemple numérique des torseurs suivants : 
+\begin{itemize}
+\item torseur couple; 
+\item torseur glisseur en un point central;
+\item le même en un point non central;
+\item un torseur quelconque.
+\end{itemize}}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subsection*{Exercice 6 -- Copeau coincé}
+\setcounter{subparagraph}{0}
+Une plaque 1 est en appui plan sur une table de machine $R$ et est placée dans ce plan par trois appuis ponctuels $A$, $B$ et $C$.
+
+ Lors de la mise en place de la plaque sur ces points un copeau d'épaisseur $e$ se coince entre le point $B$ et la pièce.
+
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig1}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig2}
+\end{center}
+\end{minipage}
+
+\vspace{.25cm}
+
+\textit{Application numérique} :
+$a=10\; mm$, $b=35\; mm$, $c= 20\; mm$, $x=53\; mm$, $y=28\; mm$, $e=0,3\; mm$.
+
+\subparagraph{}
+\textit{Calculer le petit déplacement du point M que subit ce point du fait de la présence du copeau par rapport à la position idéale qu’il occuperait s’il n’y avait pas de copeau.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{Faire les applications numériques.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\end{document}
+
+\subparagraph{}
+\textit{}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\end{corrige}
+}{}
+
+\subparagraph{}
+\textit{}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+\end{document}

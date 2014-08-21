@@ -1,0 +1,758 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 6 -- Cinématique du point immatériel dans un solide en mouvement}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 6 : Cinématique du point -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={CIN : Cinématique du point},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+
+\input{style/entete1}
+
+\begin{center}
+ \huge\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \LARGE\textsc{\xxsoustitre}
+\end{center}
+
+\begin{savoir}
+\textbf{Savoirs :}
+\begin{itemize}
+\item Mod-- C12 -- S2 : Identifier, dans le cas du contact ponctuel, le vecteur vitesse de glissement ainsi que les vecteurs rotation de roulement et de pivotement.
+\end{itemize}
+\end{savoir}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[height=3.5cm]{png/fig1} &
+\includegraphics[height=3.5cm]{png/fig2}\\
+\textit{Modèle CAO d'un} & \textit{Modélisation par}\\
+ \textit{arbre à came} & \textit{schéma cinématique}\\
+\end{tabular}
+\end{center}
+
+
+\vspace{.2cm}
+Dans de nombreux mécanismes, la liaison entre deux solides est modélisée par un contact ponctuel. Cependant, l'écriture du torseur cinématique correspondant au mouvement entre les deux solides n'est pas toujours évidente. 
+
+Intéressons nous par exemple au cas d'un système de distribution présent sur les véhicules équipés de moteurs thermiques. Ce système permet l'admission du mélange air+carburant dans la chambre de combustion et l'échappement des gaz brulés par l'intermédiaire de \textbf{soupapes}. Ces soupapes ont un mouvement de translation. L'ouverture et la fermeture des soupapes est réglée par l'intermédiaire de \textbf{cames} et d'un \textbf{arbre à cames}. La rotation de l'arbre à came est effectuée grâce à un entraînement par une courroie directement reliée au \textbf{vilebrequin} du moteur. 
+
+
+\begin{prob}
+\textsc{Problématique :}
+\begin{itemize}
+\item Comment calculer le vecteur vitesse et le vecteur instantané de rotation dans une liaison de type sphère -- plan ?
+\end{itemize}
+\end{prob}
+
+%\begin{savoir}
+%\textsc{Savoirs :}
+%\begin{itemize}
+%\item Connaître les principes de la cinématique des contacts (adhérence ou glissement, roulement et pivotement)
+%\end{itemize}
+%\end{savoir}
+
+\setlength{\parskip}{0ex plus 0.2ex minus 0ex}
+ \renewcommand{\contentsname}{}
+ \renewcommand{\baselinestretch}{1}
+
+\tableofcontents
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+% \vspace{1cm}
+\textit{Ce document est en évolution permanente. Merci de signaler toutes
+erreurs ou coquilles.}
+
+
+\section{Présentation -- Système de distribution}
+
+\begin{minipage}[c]{.65\linewidth}
+Intéressons nous à la modélisation d'une soupape, notée $S_1$ en liaison glissière d'axe $(A,\vect{y_0})$ avec le moteur $S_0$. La came $S_2$ est en liaison pivot d'axe $(O,\vect{z_0})$ avec $S_0$.  $S_1$ et $S_2$ sont en liaison sphère -- plan de normale $(I,\vect{y_0})$.
+
+L'objectif de ce cours est de calculer $\vecto{S_2}{S_1}$ et $\vect{V(I,S_2/S_1)}$.
+\end{minipage}
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig2} 
+\end{center}
+\end{minipage}
+.
+%\ifthenelse{\boolean{prof}}{%
+%\begin{center}
+%  \begin{tabular}{|>{\columncolor[gray]{.95}}p{0.6\textwidth}|}
+%\hline
+%$$
+%\{\mathcal{V}(S_2/S_1)\}
+%=\left\{
+%\begin{array}{c}
+%\vect{\Omega(S_2/S_1)}\\
+%\vect{V(I,S_2/S_1)}
+%\end{array}
+%\right\}_I
+%$$ \\
+%\hline
+%\end{tabular}
+%\end{center}
+%}{
+%\begin{center}
+%\begin{tabular}{|p{8cm}|}
+%\hline
+%\\
+%\\
+%\\
+%\\
+%\hline
+%\end{tabular}
+%\end{center}
+%}
+
+
+\section{Modélisation des vitesses de glissement}
+\subsection{Hypothèses}
+Considérons deux solides $S_1$ et $S_2$ en contact ponctuel. 
+
+Définissons alors $I$ le point de contact entre les deux solides et $\vect{n_{12}}$ la normale de contact. On appelle $\mathcal{P}$ le plan normal à $\vect{n_{12}}$ en $I$. Il est tangent à $S_1$ et $S_2$. 
+
+On note $\vecto{S_2}{S_1}$ le vecteur instantané de rotation entre $S_2$ et $S_1$ et $\vect{V(I,S_2/S_1)}$ le vecteur vitesse de glissement entre les deux solides.
+%On note $
+%\{\mathcal{V}(S_2/S_1)\}
+%=\left\{
+%\begin{array}{c}
+%\vect{\Omega(S_2/S_1)}\\
+%V(I,S_2/S_1)
+%\end{array}
+%\right\}_I$
+%le torseur cinématique du mouvement relatif de $S_2$ par rapport à $S_1$ au point $I$.
+
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/ContactReel} 
+\end{center}
+
+\subsection{Vitesses de rotation}
+On a vu que dans le cas d'un contact ponctuel il existait 3 degrés de libertés de rotation paramétrables par les angles d'Euler. Nous ne cherchons pas ici à calculer directement le vecteur $\vect{\Omega(S_2/S_1)}$ en fonction de ces angles.
+
+Cependant, ce vecteur est décomposable en une somme de deux vecteurs.
+\subsubsection*{Le vecteur de pivotement}
+Ce vecteur est normal au plan $\mathcal{P}$. On le note $\vect{\Omega_p(S_2/S_1)}$. On a donc :
+$$
+\vect{\Omega_p(S_2/S_1)} = ||\vecto{S_2}{S_1}\cdot \vect{n_{12}}||\cdot \vect{n_{12}}
+$$
+\subsubsection*{Le vecteur de roulement}
+Ce vecteur est contenu dans le plan $\mathcal{P}$. On le note $\vect{\Omega_r(S_2/S_1)}$.
+
+
+\begin{resultat}
+\textbf{Vitesse de rotation}
+
+La vitesse de rotation se compose donc ainsi :
+$$\vect{\Omega(S_2/S_1)} = \vect{\Omega_p(S_2/S_1)} + \vect{\Omega_r(S_2/S_1)}$$
+\end{resultat}
+
+
+
+\subsection{Vitesse de glissement}
+\subsubsection{Position du point de contact entre solides}
+Cinématiquement, le point $I$ n'est pas unique. En effet, on peut distinguer l'existence de 3 points différents :
+\begin{itemize}
+\item le point I matériel appartenant au solide $S_1$;
+\item le point I matériel appartenant au solide $S_2$;
+\item le point I (non matériel) correspondant au point de contact entre les deux solides.
+\end{itemize}
+
+À l'instant $t$, ces points peuvent être confondus. À $t+dt$ ils peuvent être distincts.
+
+En conséquence :
+\begin{resultat}
+$$
+\vect{V(I,S_2/S_0)} \neq \vect{V(I,S_1/S_0)}
+$$ 
+\end{resultat}
+
+\begin{exemple}
+\begin{center}
+\includegraphics[width=.4\textwidth]{png/ptI}
+\end{center}
+\end{exemple}
+
+\subsubsection{Définition de la vitesse de glissement}
+On appelle vecteur vitesse de glissement en $I$ de $S_2/S_1$ le vecteur $\vect{V(I,S_2/S_1)}$.
+
+\begin{rem}
+On considère qu'il y a toujours contact entre $S_1$ et $S_2$ et que les solides sont indéformables. En conséquence :
+$$\vect{V(I,S_2/S_1)} \in \mathcal{P}$$
+\end{rem}
+
+\subsubsection{Condition de roulement sans glissement}
+\begin{defi}
+\textbf{Condition de roulement sans glissement}
+
+Dans de très nombreux mécanismes (dans les engrenages, lors du contact entre la roue et le sol \textit{etc}) on peut faire l'hypothèse que le glissement est nul. On a alors : 
+
+$$
+\vect{V(I,S_2/S_1)} = \vect{0}
+$$
+\end{defi}
+
+
+Il est alors possible d'identifier des lois de comportement.
+\subsection{Méthode de calcul de la vitesse de glissement}
+Le calcul de la vitesse de glissement peut se calculer à l'aide de la procédure suivante.
+
+\begin{methode}
+\begin{enumerate}
+\item Paramétrer le système
+\item Décomposer le mouvement : $\vect{V(I,S_1/S_2)}=\vect{V(I,S_1/S_0)}+\vect{V(I,S_0/S_2)}$
+\item Calculer $\torseurcin{V}{S_1}{S_0}$ au point $I$
+\item Calculer $\torseurcin{V}{S_2}{S_0}$ au point $I$
+\item Calculer  $\vect{V(I,S_1/S_2)}$
+\end{enumerate}
+\end{methode}
+
+\begin{warn}
+\textbf{$I$ n'est pas un point matériel. Il n'appartient ni à $S_1$ ni à $S_2$. On ne peut donc pas calculer $\left[\dfrac{\vect{OI}}{dt}\right]_{\mathcal{R}_0}$}.
+\end{warn}
+
+%\newpage
+
+\section{Application -- Calcul de la vitesse de glissement entre la came et la soupape}
+Pour le système de distribution composé d'une came, d'une soupape et du moteur, on se propose de calculer la vitesse de glissement entre la soupape et la came.
+\subsection*{Paramétrage}
+\begin{center}
+\includegraphics[width=.7\textwidth]{png/parametrage} 
+\end{center}
+
+\subsection*{Détermination de la loi Entrée -- Sortie}
+La fermeture géométrique de la chaîne est : 
+$$
+\vect{OC}+\vect{CI}+\vect{IA}+\vect{AO} = \vect{0} \Longleftrightarrow e\vect{x_1} -R\vect{y_0} + \mu(t)\vect{x_0}+\lambda(t) \vect{y_0} = \vect{0}
+$$
+
+L'équation en projection sur $\vect{y_0}$ est la suivante : 
+$$
+e\vect{x_1}\cdot \vect{y_0} -R +\lambda(t)  = 0 
+\Longleftrightarrow e\cos\left(\dfrac{\pi}{2}-\theta \right) -R +\lambda(t)  = 0
+\Longleftrightarrow e\sin \theta -R +\lambda(t)  = 0
+$$
+
+La loi en vitesse est donc donnée par :
+$$
+e\dot{\theta}\cos \theta +\dot{\lambda}(t)  = 0
+$$
+
+\subsection*{Décomposition en mouvements simples}
+D'après la composition des mouvements, on a : 
+$$
+\vect{V(I,S_1/S_2)} = \vect{V(I,S_1/S_0)} + \vect{V(I,S_0/S_2)}
+= \vect{V(I,S_1/S_0)} - \vect{V(I,S_2/S_0)}
+$$
+
+%\begin{center}
+%\begin{tabular}{|p{8cm}|}
+%\hline
+%$$
+%\vect{V(I,S_2/S_1)} = \vect{V(I,S_1/S_0)} + \vect{V(I,S_0/S_2)}
+%$$
+%\\
+%\hline
+%\end{tabular}
+%\end{center}
+
+%\subsection*{Calcul de $\{\mathcal{V}(S_1/S_0)\}$}
+\subsection*{Calcul de $\vect{V(I,S_2/S_0)}$}
+Nature du mouvement entre $S_2$ et $S_0$ : liaison glissière d'axe $(A,\vect{y_0})$.
+On a donc :
+
+$$
+\begin{array}{l}
+\vect{\Omega(S_2/S_0)} = \vect{0} \\
+\vect{V(A,S_2/S_0)} = \left[\dfrac{d\vect{OA}}{dt}\right]_{\mathcal{R}_0}  = -\dot{\lambda}(t) \vect{y_0}\\
+\end{array}
+$$
+
+%$$
+%\{\mathcal{V}(S_1/S_0)\} =
+%\left\{
+%\begin{array}{c}
+%\vect{\Omega(S_1/S_0)} = \vect{0} \\
+%\vect{V(A,S_1/S_0)} = \dfrac{d\vect{OA}}{dt} \\
+%\end{array}
+%\right\}_A
+%$$
+
+%Calculons $\vect{V(A,S_1/S_0)}$ :
+%$$
+%\vect{V(A,S_1/S_0)} = \dfrac{d\vect{OA}}{dt} = \dfrac{d\lambda(t)\vect{y_0}}{dt} =  e \dot{\theta}(t) \cos \theta(t) \vect{y_0}
+%$$
+
+Calculons alors $\vect{V(I,S_2/S_0)}$ :
+$$ \vect{V(I,S_2/S_0)} = \vect{V(A,S_2/S_0)} + \underbrace{\vect{IA} \wedge \vect{\Omega(S_2/S_0)}}_{\vect{0}} $$
+%
+%D'où :
+%\begin{center}
+%\begin{tabular}{|p{8cm}|}
+%\hline
+%$$
+%\{\mathcal{V}(S_1/S_0)\} =
+%\left\{
+%\begin{array}{c}
+%\vect{\Omega(S_1/S_0)} = \vect{0} \\
+%\vect{V(I,S_1/S_0)} = e \dot{\theta}(t) \cos \theta(t) \vect{y_0}  \\
+%\end{array}
+%\right\}_I
+%$$
+%\\
+%\hline
+%\end{tabular}
+%\end{center}
+
+%\subsection*{Calcul de $\{\mathcal{V}(S_2/S_0)\}$}
+\subsection*{Calcul de $\vect{V(I,S_1/S_0)}$}
+Nature du mouvement entre $S_1$ et $S_0$ : liaison pivot d'axe $(O,\vect{z_0})$.
+On a donc : 
+
+$$
+%\{\mathcal{V}(S_2/S_0)\} =
+%\left\{
+\begin{array}{l}
+\vect{\Omega(S_1/S_0)} = \dot{\theta}\vect{z_0} \\
+\vect{V(A,S_1/S_0)} = \vect{0} \\
+\end{array}
+%\right\}_O
+$$
+
+Calculons alors $\vect{V(I,S_1/S_0)}$ :
+$$
+\vect{V(I,S_1/S_0)} 
+= \underbrace{\vect{V(O,S_1/S_0)}}_{\vect{0} }
++ \vect{IO} \wedge \vect{\Omega(S_1/S_0)} = \left(R\vect{y_0}-e\vect{x_1}\right) \wedge \dot{\theta}\vect{z_0}
+= R\dot{\theta}\vect{x_0} + e\dot{\theta}\vect{y_1}
+$$
+
+%$$
+%\vect{V(I,S_2/S_0)} = R\dot{\theta}\vect{x_0} + e\dot{\theta}\vect{y_2}
+%$$
+%
+%D'où :
+%\begin{center}
+%\begin{tabular}{|p{8cm}|}
+%\hline
+%$$
+%\{\mathcal{V}(S_2/S_0)\} =
+%\left\{
+%\begin{array}{c}
+%\vect{\Omega(S_2/S_0)} = \dot{\theta}\vect{z_0} \\
+%\vect{V(I,S_2/S_0)} = R\dot{\theta}\vect{x_0} + e\dot{\theta}\vect{y_2}  \\
+%\end{array}
+%\right\}_I
+%$$ \\
+%\hline
+%\end{tabular}
+%\end{center}
+
+\subsection*{Calcul de $\vect{V(I,S_1/S_2)}$}
+
+Au final, on a :
+$$
+\vect{V(I,S_1/S_2)} = \vect{V(I,S_1/S_0)} - \vect{V(I,S_2/S_0)}
+= R\dot{\theta}\vect{x_0} + e\dot{\theta}\vect{y_1} +\dot{\lambda}(t) \vect{y_0}
+$$
+
+En projetant $\vect{y_1}$ dans $\mathcal{R}_0$ : 
+$$
+\vect{V(I,S_1/S_2)} 
+= R\dot{\theta}\vect{x_0} + e\dot{\theta}\left( \cos\theta \vect{y_0} - \sin\theta \vect{x_0} \right)+\dot{\lambda}(t) \vect{y_0} 
+= \left(R\dot{\theta} - e\dot{\theta}\sin\theta \right) \vect{x_0} + \left(e\dot{\theta} \cos\theta +\dot{\lambda}(t) \right) \vect{y_0}
+$$
+
+Or, d'après la loi entrée-sortie, $e\dot{\theta}\cos \theta +\dot{\lambda}(t)  = 0$. (On pourrait aussi remarquer que la vitesse de glissement est contenue dans le plan tangent au contact).
+
+On a donc :
+$$
+\vect{V(I,S_1/S_2)} 
+= \dot{\theta}\left(R - e\sin\theta \right) \vect{x_0} 
+$$
+
+%
+%$$
+%\vect{V(I,S_2/S_1)} = \vect{V(I,S_1/S_0)} + \vect{V(I,S_0/S_2)}
+%$$
+%
+%$$
+%\Longleftrightarrow \vect{V(I,S_2/S_1)} = \vect{V(I,S_1/S_0)} - \vect{V(I,S_2/S_0)}
+%$$
+%
+%$$
+%\Longleftrightarrow \vect{V(I,S_2/S_1)} =  e \dot{\theta}(t) \cos \theta(t) \vect{y_0} - \left( R\dot{\theta}\vect{x_0} + e\dot{\theta}\vect{y_2} \right)
+%$$
+%
+%$$
+%\Longleftrightarrow \vect{V(I,S_2/S_1)} = 
+% e \dot{\theta}(t) \cos \theta(t) \vect{y_0} 
+%- R\dot{\theta}\vect{x_0} 
+%- e\dot{\theta}\left( \cos \theta(t) \vect{y_0}- \sin \theta(t) \vect{x_0} \right)
+%$$
+%
+%Au final :
+%\begin{center}
+%\begin{tabular}{|p{8cm}|}
+%\hline
+%$$
+%\vect{V(I,S_2/S_1)} =  \dot{\theta}\left(e\sin \theta(t) - R\right)\vect{x_0} 
+%$$\\
+%\hline
+%\end{tabular}
+%\end{center}
+
+
+\section{Calcul du rapport de transmission d'un engrenage}
+\subsection{Étude d'un convoyeur à bande}
+\begin{exemple}
+\begin{minipage}[c]{.55\linewidth}
+Un convoyeur à bande est un dispositif de transport de manutention permettant le déplacement continue de marchandises en vrac ou de charges isolées. Il est constitué essentiellement d'une bande sans fin (ou courroie) en matériau souple entraînée par un tambour moteur. La bande, plus ou moins large, comporte un brin inférieur et un brin supérieur, lequel supporte et entraîne les marchandises posées dessus.
+\end{minipage}\hfill
+\begin{minipage}[c]{.4\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig02}
+\end{center}
+\end{minipage}
+\end{exemple}
+
+L'objectif est de calculer le rapport de réduction du tambour moteur. 
+
+
+Les engrenages sont représentables ainsi :
+\begin{center}
+\begin{minipage}[c]{.2\linewidth}
+\begin{center}
+\includegraphics[height=3cm]{png/fig3}
+\textit{Engrenage}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[height=5cm]{png/fig4}
+
+\textit{Représentation 2D}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[height=5cm]{png/fig5}
+
+\textit{Schéma cinématique}
+\end{center}
+\end{minipage} \hfill
+\end{center}
+
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig01}
+\end{center}
+
+On donne :
+\begin{itemize}
+\item $Z_{33}=16$ et $m=1,5$;
+\item $Z_{15}=59$ et $m=1,5$;
+\item $Z_{19}=17$ et $m=2,5$;
+\item $Z_{32}=62$ et $m=2,5$.
+\end{itemize}
+
+\begin{enumerate}
+\item Réaliser le schéma cinématique minimal du moteur tambour.
+\item Réaliser le paramétrage du système.
+%\item A l'aide de votre GDI, déterminer ce qu'est le module d'un engrenage ainsi que le diamètre primitif. Donner alors la relation existant entre le module, le diamètre primitif et le nombre de dents.
+\item En utilisant l'hypothèse de roulement sans glissement entre les pièces 33 et 15, déterminer le rapport de réduction $r_1=\dfrac{\omega(19/1)}{\omega(33/1)}$.
+\item En utilisant l'hypothèse de roulement sans glissement entre les pièces 33 et 15, déterminer le rapport de réduction $r_2=\dfrac{\omega(9/1)}{\omega(19/1)}$.
+\item En déduire alors le rapport de réduction du réducteur : $r=\dfrac{\omega(9/1)}{\omega(33/1)}$.
+\end{enumerate}
+
+\subsection{Rapport de transmission dans un train d'engrenages}
+\begin{defi}
+\begin{minipage}[c]{.55\linewidth}
+Un engrenage est réalisé par la mise en contact de deux roues dentées. Parmi l'ensemble des paramètres existants, on retiendra l'existence d'un diamètre primitif, et l'existence d'un module.
+
+Dans le fonctionnement d'un engrenage, les deux roues dentées roulent sans glisser l'une par rapport à l'autre selon leur cylindre primitif. 
+
+Pour engrener, les roues dentées doivent avoir le même module.
+
+En notant $m$ le module, $Z$ le nombre de dents et $d_p$ le diamètre primitif d'une roue dentée, on a :
+$$
+d_p = mZ
+$$
+\end{minipage} \hfill
+\begin{minipage}[c]{.4\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/gdi}
+
+\textit{D'après GDI -- Engrenages \cite{gdi}}
+\end{center}
+\end{minipage}
+\end{defi}
+
+\begin{resultat}
+Dans un train d'engrenage, en utilisant le formalisme des fonctions de transfert, le rapport de réduction peut être défini ainsi : 
+$$
+r = \dfrac{\omega_{\text{sortie/bâti}}}{\omega_{\text{entrée/bâti}}} =  \left(-1\right)^n\dfrac{\prod Z_{\text{menantes}}}{\prod Z_{\text{menées}}}
+$$
+\end{resultat}
+
+%\begin{rem}
+%Il existe aussi la notion de rapport de transmission. Dans la norme la valeur absolue de ce rapport 
+%\end{rem}
+
+\section{Calcul du rapport de transmission dans un train épicycloïdal}
+\subsection{Étude d'un compensateur de bulldozer}
+\begin{exemple}
+\begin{minipage}[c]{.55\linewidth}
+
+Un train compensateur est un élément de transmission de puissance que l'on retrouve sur les bulldozer. Il permet notamment d'adapter la vitesse de rotation délivrée par le moteur pour les roues motrices des chenilles droites et gauches.
+
+L'objectif de cette étude est de vérifier une performance du réducteur et du train compensateur dont on donne un extrait du cahier des charges fonctionnel ainsi que le dessin d'ensemble. 
+
+On donne $Z_{25}=32$, $Z_{23}=23$, $Z_{17}=78$.
+\end{minipage}\hfill
+\begin{minipage}[c]{.4\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig7}
+\end{center}
+\end{minipage}
+\end{exemple}
+
+\begin{minipage}[c]{.4\linewidth}
+
+\begin{enumerate}
+\item Identifier les classes d'équivalence cinématique sur le dessin d'ensemble puis réaliser le schéma cinématique et le paramétrage du système.
+\item Après avoir écrit la relation de roulement sans glissement entre les roues 23 et 24 donner une relation entre $\omega_{23/28}$, $\omega_{25/17}$, $\omega_{28/17}$ et les paramètres géométriques des engrenages.
+\item Après avoir écrit la relation de roulement sans glissement entre les roues 23 et 17 donner une relation entre $\omega_{23/28}$, $\omega_{28/17}$ et les paramètres géométriques des engrenages.
+\item En déduire le rapport de réduction du train épicycloïdal : $\dfrac{\omega_{28/17}}{\omega_{25/17}}$.
+\item Donner une relation géométrique de fonctionnement entre les différents paramètres géométriques des engrenages.
+\end{enumerate}
+\end{minipage}\hfill
+\begin{minipage}[c]{.55\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig9}
+\end{center}
+\end{minipage}
+
+\subsubsection{Modélisation du train épicycloïdal}
+\begin{minipage}[c]{.8\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/schema_epi}
+\end{center}
+\end{minipage}
+
+\begin{minipage}[c]{.34\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/graphe_liaisons}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.64\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/parametrage_epi}
+\end{center}
+\end{minipage}
+On pose :
+$$
+\dfrac{d\theta_1(t)}{dt} = \omega(1/0)(t)
+\quad
+\dfrac{d\theta_2(t)}{dt} =\omega(3/0)(t)
+\quad
+\dfrac{d\theta_3(t)}{dt} =\omega(3/2)(t)
+$$
+\begin{obj}
+L'objectif est de déterminer le rapport $\dfrac{\omega(3/0)(t)}{\omega(1/0)(t)}$.
+\end{obj}
+\subsubsection{Roulement sans glissement en $I$}
+\begin{minipage}[c]{.6\linewidth}
+D'après l'hypothèse de roulement sans glissement exprimée au point $I$, on a : 
+$$\vectv{I}{1}{2} = \vect{0} $$
+$$ \Longleftrightarrow \vectv{I}{1}{0} + \vectv{I}{0}{3} + \vectv{I}{3}{2} = \vect{0}$$
+$$\Longleftrightarrow 
+\vectv{I}{1}{0} - \vectv{I}{3}{0} + \vectv{I}{3}{2} = \vect{0} 
+$$
+\end{minipage}
+\begin{minipage}[c]{.3\linewidth}\hfill
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/graphe_i}
+\end{center}
+\end{minipage}
+
+%\begin{minipage}[c]{.3\linewidth}
+\begin{tabular}{p{.3\textwidth}|p{.3\textwidth}|p{.3\textwidth}}
+\begin{eqnarray*}
+\lefteqn{\vectv{I}{1}{0}} \\
+&=& \vectv{O}{1}{0} + \vect{IO} \wedge \vecto{1}{0} \\
+&=& \vect{0} -R_1\vect{x_3}\wedge\omega(1/0)\vect{z_0} \\
+&=& R_1 \omega(1/0)\vect{y_3} 
+\end{eqnarray*}&
+%\end{minipage}\hfill
+%\begin{minipage}[c]{.3\linewidth}
+\begin{eqnarray*}
+\lefteqn{\vectv{I}{3}{0}} \\
+&= &\vectv{O}{3}{0} + \vect{IO} \wedge \vecto{3}{0} \\
+&= &\vect{0} -R_1\vect{x_3}\wedge\omega(3/0)\vect{z_0} \\
+&=&  R_1 \omega(3/0)\vect{y_3} 
+\end{eqnarray*}&
+%\end{minipage}\hfill
+%\begin{minipage}[c]{.3\linewidth}
+\begin{eqnarray*}
+\lefteqn{\vectv{I}{3}{2}} \\
+&=& \vectv{A}{3}{2} + \vect{IA} \wedge \vecto{3}{2} \\
+&=& \vect{0} + R_2\vect{x_3}\wedge\omega(3/2)\vect{z_0} \\
+&=& -R_2 \omega(3/2)\vect{y_3} 
+\end{eqnarray*}
+%\end{minipage}
+\end{tabular}
+
+\vspace{.25cm}
+
+Au final, 
+$$
+R_1 \omega(1/0)\vect{y_3}  -R_1 \omega(3/0)\vect{y_3}  -R_2 \omega(3/2)\vect{y_3} = \vect{0}
+\Longrightarrow
+R_1 \omega(1/0) -R_1 \omega(3/0)  -R_2 \omega(3/2) = 0
+$$
+
+\subsubsection{Roulement sans glissement en $J$}
+\begin{minipage}[c]{.6\linewidth}
+D'après l'hypothèse de roulement sans glissement exprimée au point $J$, on a : 
+$$
+\vectv{J}{2}{0} = \vect{0}
+\Longleftrightarrow 
+\vectv{J}{2}{3} + \vectv{J}{3}{0}= \vect{0}
+\Longleftrightarrow 
+-\vectv{J}{3}{2} + \vectv{J}{3}{0}= \vect{0}
+$$
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/graphe_j}
+\end{center}
+\end{minipage}
+
+
+\begin{minipage}[c]{.45\linewidth}
+\begin{eqnarray*}
+\vectv{J}{3}{2} &=& \vectv{A}{3}{2} + \vect{JA}\wedge\vecto{3}{2} \\
+& = & -R_2\vect{x_3} \wedge \omega(3/2)\vect{z_0}\\
+& = & R_2 \omega(3/2)\vect{y_3}
+\end{eqnarray*}
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{eqnarray*}
+\vectv{J}{3}{0} &=& \vectv{O}{3}{0} + \vect{JO}\wedge\vecto{3}{0} \\
+& = & -R_0\vect{x_3} \wedge \omega(3/0)\vect{z_0} \\
+& = & R_0 \omega(3/0)\vect{y_3}
+\end{eqnarray*}
+\end{minipage}
+
+\vspace{.25cm}
+
+Au final, 
+$$
+-R_2 \omega(3/2)\vect{y_3} + R_0 \omega(3/0)\vect{y_3}= \vect{0}
+\Longrightarrow 
+-R_2 \omega(3/2) + R_0 \omega(3/0)= 0
+$$
+
+\subsubsection{Calcul du rapport de réduction}
+Les deux relations obtenues sont donc les suivantes : 
+$$
+R_1 \omega(1/0) -R_1 \omega(3/0)  -R_2 \omega(3/2) = 0 
+\quad \text{et} \quad
+-R_2 \omega(3/2) + R_0 \omega(3/0)= 0
+$$
+
+Il est donc nécessaire de supprimer $\omega(3/2)$ :
+$$
+R_1 \omega(1/0) -R_1 \omega(3/0) -  R_0 \omega(3/0) = 0 
+\Longleftrightarrow
+R_1 \omega(1/0) - \omega(3/0) \left(R_0 +R_1 \right) = 0 
+\Longleftrightarrow
+\dfrac{\omega(3/0)}{\omega(1/0)} = \dfrac{R_1}{R_1 +R_0}
+$$
+
+En conclusion :
+$$
+\dfrac{\omega(3/0)}{\omega(1/0)} = \dfrac{Z_1}{Z_1 +Z_0}
+$$
+
+\subsubsection{Relation géométrique}
+
+Dans un train épicycloïdal, il est possible d'écrire une relation entre les nombres de dents qui correspond à une relation géométrique. On peut donc par exemple écrire la relation d'entre axe entre l'axe du satellite et l'axe du planétaire (ou du porte-satellite) que :
+$$
+OA = OI + IA \Longleftrightarrow 
+R_1 + R_2 = R_0 - R_2
+\Longleftrightarrow 
+Z_0 = Z_1 + 2Z_2
+$$
+
+\subsection{Méthode générale de calcul de rapport du rapport de transmission dans un train épicycloïdal}
+
+\begin{methode}
+\begin{enumerate}
+\item On trace le graphe de structure.
+\item On écrit la condition de roulement sans glissement au point $I$. 
+\item On établit une première relation entre les taux de rotation en utilisant le décomposition du vecteur vitesse.
+\item On écrit la condition de roulement sans glissement au point $J$.
+\item On établit une seconde relation  entre les taux de rotation en utilisant le décomposition du vecteur vitesse.
+\item On combine les deux relations obtenues pour avoir une relation entre les taux de rotation.
+\item Si nécessaire, on utilise la décomposition du taux de rotation pour avoir le rapport de réduction final.
+\end{enumerate}
+\end{methode}
+
+
+\begin{thebibliography}{2}
+\bibitem[1]{gdi} André Chevalier, Guide du dessinateur Industriel, Éditions Hachette Technique.
+\end{thebibliography}
+\end{document}
+
+
+\end{document}
+
+
