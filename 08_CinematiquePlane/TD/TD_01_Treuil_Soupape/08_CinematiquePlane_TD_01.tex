@@ -1,0 +1,207 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={CI3 - Cin Cinématique graphique - TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{%CI 3 -- CIN : Étude du comportement cinématique des systèmes
+}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+Partie  -- }}
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Jean-Pierre \textsc{Pupier}}{
+Damien \textsc{Iceta} \\ Xavier \textsc{Pessoles}}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- TD\\
+Ch. 8 : Cinématique graphique}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Chapitre 8 --  Étude graphique des mouvements plans}}
+\end{center}
+
+\begin{center}
+\textsc{Travaux dirigés}
+\end{center}
+
+\normalsize
+
+\begin{flushright}
+\textit{D'après ressources de Jean-Pierre Pupier.}
+\end{flushright}
+
+ \renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+\subsection*{Treuil différentiel}
+\begin{minipage}[c]{.65\linewidth}
+On considère un bâti 0 auquel est attaché le repère $\mathcal{R}_0 = \left(M,\vect{x_0},\vect{y_0},\vect{z_0}\right)$.
+
+La poulie 1 de centre $M$ est en liaison pivot d'axe $\left(M,\vect{z_0}\right)$  avec le bâti. Elle porte une surface cylindrique de petit rayon $r$ et une autre de grand rayon $R$. Soit $\mathcal{R}_1 = \left(M,\vect{x_1},\vect{y_1},\vect{z_0}\right)$ un repère lié à 1.
+
+On pose $\alpha=\left(\vect{x_0},\vect{x_1}\right)$.
+
+La poulie 2 de centre $A$ est associée au repère $\mathcal{R}_2 = \left(A,\vect{x_2},\vect{y_2},\vect{z_0}\right)$. On pose $\beta=\left(\vect{x_0},\vect{x_2}\right)$.
+
+Un câble inextensible et infiniment souple est enroulé sur les deux surfaces cylindriques de la poulie 1. Il relie les deux poulies par les brins $BE$ et $CD$. Ces brins sont de direction $\vect{y_0}$.
+
+Les conditions d'utilisation sont telles que : $\vect{MA}\cdot \vect{y_0} = \lambda$.
+
+Le problème est considéré comme plan.
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/treuil_1}
+\end{center}
+\end{minipage}
+\subparagraph{}
+\textit{Trouver la relation entre $\dot{\lambda}$ et $\dot{\alpha}$.}
+
+\subparagraph{}
+\textit{Trouver la relation entre la vitesse angulaire de la poulie 2 et celle de la poulie 1.}
+
+\vspace{.25cm}
+
+\begin{minipage}[c]{.2\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/treuil_2}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.75\linewidth}
+La fonction de ce mécanisme est de lever une charge attachée en $A$ à l'aide d'une manivelle actionnant 
+la poulie 1.
+
+
+\subparagraph{}
+\textit{Calculer le rayon de la poulie du treuil de gauche pour que la montée de la charge s'effectue dans les mêmes conditions cinématiques que pour le treuil différentiel.}
+
+Application numérique : $R=80\;mm$; $r=74\;mm$.
+
+\subparagraph{}
+\textit{Calculer la valeur numérique du rayon de la poulie du treuil de gauche.}
+
+On donne : rayon du câble $\rho=4\;mm$. 
+
+\subparagraph{}
+\textit{Quel est le principal intérêt d'un treuil différentiel ?}
+
+\subparagraph{}
+\textit{Faire une analyse graphique récapitulant et analysant les diverses réponses aux questions.}
+
+
+\end{minipage}
+
+
+
+
+\subsection*{Commande de soupape}
+\setcounter{subparagraph}{0}
+
+\begin{minipage}[c]{.5\linewidth}
+
+Le dessin ci-contre représente la commande d'ouverture d'une soupape montée sur une moto HONDA 125 CG.
+
+Un dessin simplifié de cette commande est donné sur le document format A3.
+
+Elle comprend :
+\begin{itemize}
+\item un bâti \textbf{0} considéré comme fixe;
+\item une came \textbf{1} tournant à $250\; rad/s$ autour d'un point fixe $A$;
+\item un linguet \textbf{2} ayant un mouvement de rotation autour d'un point fixe $B$;
+\item une tige de culbuteur \textbf{3} transmettant le mouvement à la partie haute du cylindre;
+\item un culbuteur \textbf{4} destiné à inverser le sens du mouvement. Le culbuteur \textbf{4} tourne autour d'un point fixe $C$;
+\item une soupape \textbf{5}.
+\end{itemize}
+
+Le dessin est représenté à l'échelle \textbf{1,5 : 1}. On veut calculer, pour la configuration donnée, la vitesse de déplacement de la soupape.
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/soupape_1}
+\end{center}
+\end{minipage}
+
+\subparagraph{}
+\textit{Calculer la norme $\vectv{I}{1}{0}$ en $mm/s$.}
+
+\subparagraph{}
+\textit{Dessiner la sur le document A3 en adoptant l'échelle : $20\; mm/s \leftrightarrow 1 mm$ (c'est très long mais c'est normal).}
+
+\subparagraph{}
+\textit{En justifiant vos résultats, trouver graphiquement les vitesses suivantes :\\
+\begin{minipage}[c]{.22\linewidth}
+\begin{itemize}
+\item [$\bullet$] $\vectv{I}{1}{0}$;
+\item [$\bullet$] $\vectv{I}{2}{0}$;
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{.22\linewidth}
+\begin{itemize}
+\item [$\bullet$] $\vectv{D}{2}{0}$;
+\item [$\bullet$] $\vectv{D}{3}{0}$;
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{.22\linewidth}
+\begin{itemize}
+\item [$\bullet$] $\vectv{E}{3}{0}$;
+\item [$\bullet$] $\vectv{E}{4}{0}$;
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.22\linewidth}
+\begin{itemize}
+\item [$\bullet$] $\vectv{J}{4}{0}$;
+\item [$\bullet$] $\vectv{J}{5}{0}$.
+\end{itemize}
+\end{minipage}}
+
+\subparagraph{}
+\textit{Expliquer en dessinant à main levée un croquis du mécanisme à échelle réduite comment trouver le centre instantané de rotation du mouvement 3/0.}
+
+\subparagraph{}
+\textit{Situer approximativement la position de ce CIR.}
+
+
+
+\end{document}
+
+

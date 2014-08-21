@@ -1,0 +1,145 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={CI3 - Cin Cinématique graphique - TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{%CI 3 -- CIN : Étude du comportement cinématique des systèmes
+}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+Partie  -- }}
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+F. \textsc{Mathurin} -- S. \textsc{Genouël}}{
+Damien \textsc{Iceta} \\ Xavier \textsc{Pessoles}}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- TD\\
+Ch. 8 : Cinématique graphique}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Chapitre 8 --  Étude graphique des mouvements plans}}
+\end{center}
+
+\begin{center}
+\textsc{Travaux dirigés}
+\end{center}
+
+\normalsize
+
+\begin{flushright}
+\textit{D'après ressources de Florestan Mathurin et Stéphane Genouël.}
+\end{flushright}
+
+ \renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+\subsection*{Treuil-palan de pont roulant}
+\begin{minipage}[c]{.45\linewidth}
+On s'intéresse à un treuil-palan de pont roulant. Il est constitué d'un ensemble moteur, réducteur et tambour qui met en mouvement, par l'intermédiaire de câbles, une poulie sur laquelle on retrouve un crochet.
+
+L'objectif de cette étude est de vérifier une performance du réducteur dont on donne un extrait du cahier des charges fonctionnel ainsi que le modèle. 
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/fig1}
+\end{center}
+\end{minipage}
+
+\vspace{.5cm}
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{images/plan}
+\end{center}
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/SysML/Exigences}
+\end{center}
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/fig3}
+\end{center}
+\subparagraph{}
+\textit{Compléter le tableau ci-dessus en indiquant les nombres de dents, les modules et les diamètres primitifs manquants.}
+
+
+Dans un premier temps, on se propose de déterminer le rapport de réduction du réducteur en utilisant une méthode graphique. Sur la figure des documents réponse sont représentés les cercles primitifs des différentes roues du mécanismes. Sur le cadran de droite on retrouve le premier étage de réduction. Sur le cadran de gauche on retrouve le deuxième étage de réduction.
+
+A l'instant $t$, on donne le vecteur vitesse $\vectv{B}{1}{0}$. On note $I_{i/j}$ le CIR du solide $i$par rapport au solide $j$.
+
+\subparagraph{}
+\textit{Déterminer $I_{1/0}$, $I_{2/1}$, $I_{2/0}$, $I_{3/0}$, $I_{3/2}$, $I_{3/4}$, $I_{4/0}$, $I_{4/5}$.}
+
+
+\subparagraph{}
+\textit{En expliquant la démarche de construction déterminer graphiquement sur le document réponse $\vectv{C}{2}{0}$. En déduire $\vectv{C}{3}{0}$.}
+
+\subparagraph{}
+\textit{En expliquant la démarche de construction déterminer graphiquement sur le document réponse $\vectv{I}{3}{0}$. En déduire $\vectv{I}{4}{0}$.}
+
+\subparagraph{}
+\textit{En expliquant la démarche de construction déterminer graphiquement sur le document réponse $\vectv{F}{4}{0}$. En déduire $\vectv{F}{5}{0}$.}
+
+\subparagraph{}
+\textit{Déterminer une relation entre $||\vectv{C}{3}{0}||$ et $||\vectv{B}{1}{0}||$.}
+
+\subparagraph{}
+\textit{Déterminer une relation entre $||\vectv{C}{3}{0}||$ et $||\vectv{I}{4}{0}||$ en fonction de $d_1$, $d_2$ et $d_3$.}
+
+\subparagraph{}
+\textit{Déterminer une relation entre $||\vectv{I}{4}{0}||$ et $||\vectv{F}{5}{0}||$.}
+
+\subparagraph{}
+\textit{Déterminer la relation entre $\omega_{5/0}$ et $||\vectv{F}{5}{0}||$ en fonction de $d_3$, $d_4$ ainsi que le relation entre $\omega_{1/0}$ et $||\vectv{B}{1}{0}||$ en fonction de $d_1$.}
+
+\subparagraph{}
+\textit{En déduire le rapport de réduction du réducteur.}
+
+\subparagraph{}
+\textit{Faire l'application et conclure vis-à-vis du cahier des charges fonctionnel.}
+
+
+\begin{center}
+\rotatebox{90}{\includegraphics[width=.8\textheight]{images/fig4}}
+\end{center}
+
+\end{document}
+
+

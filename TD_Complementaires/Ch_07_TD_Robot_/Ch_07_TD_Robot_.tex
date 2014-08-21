@@ -1,0 +1,233 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+%Chapitre 6 -- Cinématique du point immatériel dans un solide en mouvement
+}{}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 7 : Torseurs -- TD -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{}}
+
+\usepackage[%
+    pdftitle={CIN : Torseurs},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+\input{style/entete1}
+
+\begin{center}
+ \Large\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \large\textsc{\xxsoustitre}
+\end{center}
+
+\begin{center}
+ \large\textsc{Travail Dirigé : Robot à deux moteurs}
+\end{center}
+
+\begin{flushright}
+ \textit{Ressources de Jean-Pierre Pupier.}
+\end{flushright}
+
+
+\subsection*{Mise en situation}
+\vspace{.25cm}
+
+Le système étudié est un robot industriel à deux moteurs destiné à la manutention de pièces lourdes. Ce robot a une structure en parallélogramme déformable qui lui permet de déplacer son poignet dans l’aire de travail.
+
+\vspace{.25cm}
+
+\noindent\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[height=6cm]{png/fig1}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[height=6cm]{png/fig2}
+\end{center}
+\end{minipage}
+
+\vspace{.25cm}
+
+Le schéma ci-dessus représente la cinématique simplifiée du robot à deux moteurs. L'outil faisant le travail est fixé au point $J$ et le socle est le solide \textbf{0}. La pièce \textbf{3} est rectiligne et a une longueur $CJ$. 
+
+Au point $A$ il y a :
+\begin{itemize}
+\item une liaison pivot entre \textbf{0} et \textbf{1} motorisée par un moteur \textbf{M1},
+\item une liaison pivot entre \textbf{0} et \textbf{2} motorisée par un moteur \textbf{M2}.
+\end{itemize}
+
+Ces deux motorisations sont, bien sûr, indépendantes.
+
+La géométrie est telle que : $AB=EC=L$; $EA=CB=D$; $BJ=H$.
+
+\subparagraph{}
+\textit{Quel est le nom du quadrilatère $AECB$ ? Donner la propriété de ce quadrilatère.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+On donne :
+\begin{itemize}
+\item $\mathcal{R}_0=\left(A;\vect{x_0};\vect{y_0};\vect{z_0}\right)$ repère lié au solide \textbf{0};
+\item $\mathcal{R}_A=\left(A;\vect{x_A};\vect{y_A};\vect{z_0}\right)$ repère lié au solide \textbf{1};
+\item $\mathcal{R}_2=\left(A;\vect{x_2};\vect{y_2};\vect{z_0}\right)$ repère lié au solide \textbf{2};
+\item $\mathcal{R}_3=\left(C;\vect{x_2};\vect{y_2};\vect{z_0}\right)$ repère lié au solide \textbf{3};
+\item $\mathcal{R}_4=\left(E;\vect{x_1};\vect{y_1};\vect{z_0}\right)$ repère lié au solide \textbf{4}.
+\end{itemize}
+
+\subparagraph{}
+\textit{A partir de la définition des repères associés aux quatre autres solides indiquer les noms des axes manquants.}
+
+\subsection*{Première partie : $\beta=0$ et moteur M2 arrêté}
+\begin{rem}
+Il est nécessaire de refaire sur votre copie le schéma du robot  dans la configuration imposée par la question.
+\end{rem}
+
+\subparagraph{}
+\textit{Écrire, dans l'ordre demandé, les torseurs cinématiques des mouvements suivants aux points indiqués : il faudra les exprimer en utilisant les paramètres géométriques ou leur dérivée définis précédemment. Utiliser la base de projection donnant l’expression la plus simple :
+\begin{itemize}
+\item mouvement de \textbf{2} par rapport à \textbf{0}, au point $A$;
+\item mouvement de \textbf{1} par rapport à \textbf{0}, au point $A$;
+\item mouvement de \textbf{4} par rapport à \textbf{0}, au point $E$;
+\item mouvement de \textbf{3} par rapport à \textbf{0}, au point $B$;
+\item mouvement de \textbf{3} par rapport à \textbf{1}, au point $B$;
+\item mouvement de \textbf{3} par rapport à \textbf{4}, au point $C$.
+\end{itemize}}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+\subparagraph{}
+\textit{Donner le nom des mouvements 1/0 et 3/0.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+
+\subparagraph{}
+\textit{Déterminer $\vectv{J}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+
+\subparagraph{}
+\textit{Définir et tracer la trajectoire $T_{J\in3/0}$.}
+% Reproduire pour cela les éléments principaux du schéma sur votre copie.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+
+\subsection*{Deuxième partie : $\alpha=60^o$ et moteur M1 arrêté}
+
+\begin{rem}
+Il est nécessaire de refaire sur votre copie le schéma du robot  dans la configuration imposée par la question.
+\end{rem}
+
+
+\subparagraph{}
+\textit{Écrire, dans l'ordre demandé, les torseurs cinématiques des mouvements suivants aux points indiqués :
+\begin{itemize}
+\item mouvement de \textbf{1} par rapport à \textbf{0}, au point $A$;
+\item mouvement de \textbf{2} par rapport à \textbf{0}, au point $A$;
+\item mouvement de \textbf{4} par rapport à \textbf{0}, au point $E$;
+\item mouvement de \textbf{3} par rapport à \textbf{0}, au point $B$;
+\item mouvement de \textbf{3} par rapport à \textbf{1}, au point $B$;
+\item mouvement de \textbf{4} par rapport à \textbf{2}, au point $E$;.
+\end{itemize}}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+\subparagraph{}
+\textit{Déterminer $\vectv{J}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+\subparagraph{}
+\textit{Définir et tracer la trajectoire $T_{J\in3/0}$.}
+% Reproduire pour cela les éléments principaux du schéma sur votre copie.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+\subsection*{Troisième partie : les deux moteurs fonctionnent}
+\subparagraph{}
+\textit{Déterminer $\vectv{J}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+On donne : $ L=70\;mm$; $D=32\;mm$ ; $H=59\;mm$.
+
+\subparagraph{}
+\textit{Tracer sur une figure à l'échelle 1 la surface liée à 0 dans laquelle se déplace le point $J$ lorsque $\alpha$ varie de $60^o$ à $60^o$ et $\beta$ de $-45^o$ à $45^o$. Cette surface sera la surface de travail du robot.}
+
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+\end{corrige}
+}{%
+}
+
+
+
+
+
+\end{document}

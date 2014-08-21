@@ -1,0 +1,88 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={Exercice},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\begin{document}
+
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=1.4cm]{png/logo_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+%\fancyfoot[L]{\footnotesize{2011 -- 2012} \\ X. \textsc{Pessoles}}
+%\fancyfoot[R]{\footnotesize{Exercice de colle 5}}
+
+
+\begin{center}
+ \LARGE\textsc{Exercice de colle 5 - Presse à décolleter}
+\end{center}
+
+
+\setlength{\parskip}{0ex plus 0.2ex minus 0ex}
+ \renewcommand{\contentsname}{}
+ \renewcommand{\baselinestretch}{1}
+%  \tableofcontents
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+La presse à décolleter est représentée ci-dessous. L’action du vérin pneumatique 1+2 permet le
+déplacement du poinçon 5.
+
+On désire une vitesse de déplacement du poinçon 5 par rapport au bâti 0 ($\vectv{E}{5}{0}$) de 14 cm/s.
+
+\begin{minipage}[c]{.45\linewidth}
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\end{minipage}
+
+\paragraph{}
+\textit{Déterminer la vitesse de sortie de la tige du vérin par rapport au corps du vérin : $||\vectv{B}{2}{1}||$.}
+
+\newpage
+$$
+\quad
+$$
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig2}
+\end{center}
+
+
+
+\end{document}

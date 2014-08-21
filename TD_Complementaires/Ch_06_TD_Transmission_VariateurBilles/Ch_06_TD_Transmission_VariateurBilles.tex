@@ -1,0 +1,230 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 6 -- Cinématique du point immatériel dans un solide en mouvement}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 6 : Cinématique du point -- TD Transmission -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={CIN : Cinématique du point},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+\input{style/entete1}
+
+\begin{center}
+ \Large\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \large\textsc{\xxsoustitre}
+\end{center}
+
+\begin{center}
+ \large\textsc{Travail Dirigé : Étude d'un variateur à billes}
+\end{center}
+
+\begin{flushright}
+ \textit{Ressources de Jean-Pierre Pupier.}
+\end{flushright}
+
+
+\subsection*{Mise en situation}
+\vspace{.25cm}
+
+\noindent\begin{minipage}[c]{.47\linewidth}
+
+Ce réducteur à billes comporte plusieurs billes de rayon $R$ identiques à la bille 3 représentée ici.
+
+\textbf{3} roule sans glisser aux points $A$ et $B$ sur le bâti \textbf{0} (\textbf{0} forme une sorte d'assiette dans laquelle roulent les billes) puis en $C$ sur le solide \textbf{1} qui est l'arbre de sortie puis en $D$ sur le solide \textbf{2} qui est l'arbre d'entrée.
+
+Un moteur actionne \textbf{2}, l'adhérence en $D$ met la bille en mouvement dans <<l'assiette>>, le point $C$ a donc une vitesse, on récupère cette vitesse par adhérence en $C$, ce qui fait tourner l'arbre de sortie \textbf{1}.
+
+\begin{itemize}
+\item $\mathcal{R}_0 = \left(O,\vect{x_0},\vect{y_0},\vect{z_0}\right)$ lié au bâti \textbf{0}.
+\item $\mathcal{R} = \left(O,\vect{x},\vect{y},\vect{z_0}\right)$ tel que $\vect{GO}=a\vect{y}$. ($G$ centre de la sphère). Ce repère n'est lié à aucun solide mais tous les points sont dans le plan $\left(O,\vect{y},\vect{z_0} \right)$. Il sera donc très utile.
+\item $\mathcal{R}_1 = \left(O,\vect{x_1},\vect{y_1},\vect{z_0}\right)$ lié à \textbf{1}.
+\item $\mathcal{R}_2 = \left(O,\vect{x_2},\vect{y_2},\vect{z_0}\right)$ lié à \textbf{2}.
+\item On pose : $\left( \vect{y_0},\vect{y_1}\right)=\psi$ et $\left( \vect{y_0},\vect{y_2}\right)=\theta$, les angles $\beta$, $\gamma$ et $\delta$ sont constants. 
+\item $\vect{i}$ est porté direction $AB$.
+\end{itemize}
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/fig1}
+\end{center}
+\end{minipage}
+
+\subparagraph{}
+\textit{Trouver l’axe instantané de rotation du mouvement (axe central) de \textbf{3} par rapport à \textbf{0}. Il faudra justifier. Cet axe instantané de rotation est-il de direction fixe dans \textbf{0} ?}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+La condition de roulement sans glissement au point $A$ se traduit par $\vectv{A}{3}{0} =\vect{0}$.
+
+La condition de roulement sans glissement au point $B$ se traduit par $\vectv{B}{3}{0} =\vect{0}$.
+
+$A$ et $B$ sont donc des points où la norme du vecteur vitesse est minimale. Ce sont donc des points centraux. La droite $(AB)$ est donc un axe central. En conséquence, $\forall P \in (AB)$, alors, $\vectv{P}{3}{0}=\vect{0}$. 
+
+Les points de contact $A$ et $B$ étant mobiles, la droite $(AB)$ n'a donc pas une direction fixe dans $\mathcal{R}_0$.
+\end{corrige}
+}{%
+}
+
+
+\subparagraph{}
+\textit{Justifier l’écriture du vecteur $\vecto{3}{0} = \omega \vect{i}$ (avec $\omega$ composante scalaire du vecteur $\vecto{3}{0}$).}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+L'axe central étant de même direction que la résultante du torseur, on a donc nécessairement $\vecto{3}{0} = \omega \vect{i}$.
+\end{corrige}
+}{%
+}
+
+\subparagraph{}
+\textit{Exprimer la relation entre $\dot{\psi}$ et $\omega$ issue du roulement sans glissement en $C$. On utilisera comme base de projection la base associée au repère $\mathcal{R}$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+D'après la relation de roulement sans glissement au point $C$ on a $\vectv{C}{3}{1} =\vect{0}$.
+En conséquences, $\vectv{C}{3}{1} = \vectv{C}{3}{0} + \vectv{C}{0}{1}= \vectv{C}{3}{0} - \vectv{C}{1}{0} =\vect{0}$.
+
+D'une part, calculons $\vectv{C}{3}{0}$ :
+\begin{eqnarray*}
+\vectv{C}{3}{0} &=&  \vectv{A}{3}{0} + \vect{CA}\wedge \vecto{3}{0} \\
+& = & \left( R\cos\beta\vect{y} - R\left(1+\sin\beta\right) \vect{z_0}\right)\wedge\omega\vect{i}\\
+& = & \left( R\cos\beta\vect{y} - R\left(1+\sin\beta\right) \vect{z_0}\right)\wedge\omega\left(\cos\delta\vect{y} - \sin\delta\vect{z_0} \right)\\
+& = & -R\omega\cos\beta\sin\delta\vect{x} + R\omega\left(1+\sin\beta\right)\cos\delta\vect{x} 
+\end{eqnarray*}
+
+D'une part, calculons $\vectv{C}{1}{0}$ :
+\begin{eqnarray*}
+\vectv{C}{1}{0} &=&  \vectv{O}{3}{0} + \vect{CO}\wedge \vecto{1}{0} \\
+& = & \left(\left(R\cos\beta +a\right)\vect{y} -R\sin\beta \vect{z_0}\right)\wedge \dot{\psi}\vect{z_0}\\
+& = & \dot{\psi}\left(R\cos\beta +a\right)\vect{x}
+\end{eqnarray*}
+
+Au final, 
+$$
+\vectv{C}{3}{1} =\vect{0} \Longleftrightarrow -R\omega\cos\beta\sin\delta\vect{x} + R\omega\left(1+\sin\beta\right)\cos\delta\vect{x}  - \dot{\psi}\left(R\cos\beta +a\right)\vect{x} = \vect{0}
+$$
+Et donc :
+$$
+-R\omega\cos\beta\sin\delta + R\omega\left(1+\sin\beta\right)\cos\delta - \dot{\psi}\left(R\cos\beta +a\right) = 0
+$$
+
+\end{corrige}
+}{%
+}
+
+
+\subparagraph{}
+\textit{Exprimer la relation entre $\dot{\theta}$ et $\omega$ issue du roulement sans glissement en $D$. On utilisera comme base de projection la base associée au repère $\mathcal{R}$.}
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+
+D'après la relation de roulement sans glissement au point $D$ on a $\vectv{D}{2}{3} =\vect{0}$.
+En conséquences, $\vectv{D}{2}{3} = \vectv{D}{2}{0} + \vectv{D}{0}{3}= \vectv{D}{2}{0} - \vectv{D}{3}{0} =\vect{0}$.
+
+D'une part, calculons $\vectv{D}{3}{0}$ :
+\begin{eqnarray*}
+\vectv{D}{3}{0} &=&  \vectv{A}{3}{0} + \vect{DA}\wedge \vecto{3}{0} \\
+& = & \left( -R\cos\beta\gamma{y} - R\left(1+\sin\gamma\right) \vect{z_0}\right)\wedge\omega\vect{i}\\
+& = & \left( -R\cos\beta\gamma{y} - R\left(1+\sin\gamma\right) \vect{z_0}\right))\wedge\omega\left(\cos\delta\vect{y} - \sin\delta\vect{z_0} \right)\\
+& = &R\omega\cos\gamma\sin\delta\vect{x} + R\omega\left(1+\sin\gamma\right)\cos\delta\vect{x} 
+\end{eqnarray*}
+
+D'une part, calculons $\vectv{D}{2}{0}$ :
+\begin{eqnarray*}
+\vectv{D}{2}{0} &=&  \vectv{O}{2}{0} + \vect{DO}\wedge \vecto{2}{0} \\
+& = & \left(\left(-R\cos\gamma -a\right)\vect{y} -R\sin\delta \vect{z_0}\right)\wedge \dot{\theta}\vect{z_0}\\
+& = & \dot{\theta}\left(a-R\cos\gamma \right)\vect{x}
+\end{eqnarray*}
+
+Au final, 
+$$
+\vectv{D}{2}{0} =\vect{0} \Longleftrightarrow \dot{\theta}\left(a-R\cos\gamma \right)\vect{x} -  
+R\omega\cos\gamma\sin\delta\vect{x} - R\omega\left(1+\sin\gamma\right)\cos\delta\vect{x}= \vect{0}
+$$
+Et donc :
+$$
+\dot{\theta}\left(a-R\cos\gamma \right) -  
+R\omega\cos\gamma\sin\delta - R\omega\left(1+\sin\gamma\right)\cos\delta= 0
+$$
+\end{corrige}
+}{%
+}
+
+
+\subparagraph{}
+\textit{Déduire des deux réponses précédentes le rapport de réduction  $\dfrac{\dot{\theta}}{\dot{\psi}}$. }
+\ifthenelse{\boolean{prof}}{%
+\begin{corrige}
+On a vu que :
+\begin{eqnarray*}
+-R\omega\cos\beta\sin\delta + R\omega\left(1+\sin\beta\right)\cos\delta - \dot{\psi}\left(R\cos\beta +a\right) = 0 
+\Longleftrightarrow 
+\dot{\psi}\left(R\cos\beta +a\right) = R\omega\left(-\cos\beta\sin\delta + \left(1+\sin\beta\right)\cos\delta \right) \\
+\dot{\theta}\left(a-R\cos\gamma \right) - R\omega\cos\gamma\sin\delta - R\omega\left(1+\sin\gamma\right)\cos\delta= 0
+\Longleftrightarrow 
+\dot{\theta}\left(a-R\cos\gamma \right) = R\omega\left( \cos\gamma\sin\delta + \left(1+\sin\gamma\right)\cos\delta\right)
+\end{eqnarray*}
+
+En conséquence : 
+$$
+\dfrac{\dot{\theta}}{\dot{\psi}} = \dfrac{ R\omega\left( \cos\gamma\sin\delta + \left(1+\sin\gamma\right)\cos\delta\right)}{ R\omega\left(-\cos\beta\sin\delta + \left(1+\sin\beta\right)\cos\delta \right)}\cdot\dfrac{\left(R\cos\beta +a\right)}{\left(a-R\cos\gamma \right)}
+$$
+
+$$
+\Longleftrightarrow \dfrac{\dot{\theta}}{\dot{\psi}} = \dfrac{ \cos\gamma\sin\delta + \cos\delta +\sin\gamma\cos\delta}{ -\cos\beta\sin\delta + \cos\delta+\sin\beta\cos\delta }\cdot\dfrac{\left(R\cos\beta +a\right)}{\left(a-R\cos\gamma \right)}
+$$
+
+$$
+\Longleftrightarrow \dfrac{\dot{\theta}}{\dot{\psi}} = \dfrac{ \sin\left(\gamma+\delta \right) + \cos\delta }{\sin\left( \beta - \delta\right)+\cos\delta}\cdot\dfrac{\left(R\cos\beta +a\right)}{\left(a-R\cos\gamma \right)}
+$$
+\end{corrige}
+}{%
+}
+
+
+
+
+
+
+\end{document}

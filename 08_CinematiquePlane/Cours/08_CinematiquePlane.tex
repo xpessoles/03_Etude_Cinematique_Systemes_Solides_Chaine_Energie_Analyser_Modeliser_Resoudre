@@ -1,0 +1,402 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={CI3 - Cin Cinématique graphique},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 8 --  Étude graphique des mouvements plans}{
+Partie  -- }}
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Damien \textsc{Iceta} \\ Xavier \textsc{Pessoles}}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours\\
+Ch. 8 : Cinématique graphique}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[height=3.5cm]{images/fig1} &
+\includegraphics[height=3.5cm]{images/fig2} &
+\includegraphics[height=5cm]{images/fig4} \\
+\textit{Système EPAS} & \textit{Schématisation 3D}&\textit{Modélisation plane}\\
+\end{tabular}
+\end{center}
+
+\vspace{.2cm}
+
+On s'intéresse au déploiement de l'Échelle Pivotante Automatique à commande Séquentielle. Lors de cette phase, les tourelles sont bloquées. Le mouvement de l'échelle est réalisé grâce à la sortie de la tige du vérin. 
+
+Ce mouvement à la particularité d'être "plan". En effet, les liaisons qui constituent le mécanisme ne génèrent que des mouvements dans le plan $\left( \vect{x}; \vect{y}\right)$. Dans ce cas, il est possible d'utiliser des outils graphiques pour déterminer les vitesses de déplacement des solides. 
+
+\begin{prob}
+\textbf{Problématique :}
+\begin{itemize}
+\item Comment déterminer graphiquement les vitesses des solides dans les systèmes mécaniques ?
+\end{itemize}
+\end{prob}
+
+\begin{savoir}
+\textbf{Savoirs :}
+
+Résoudre :
+\begin{itemize}
+\item Rés-C1-S2 : Déterminer graphiquement le champ des vecteurs vitesses des points d’un solide dans le cas de mouvements plan sur plan.
+\end{itemize}
+\end{savoir}
+
+\setlength{\parskip}{0ex plus 0.2ex minus 0ex}
+ \renewcommand{\contentsname}{}
+ \renewcommand{\baselinestretch}{1}
+
+\tableofcontents
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+% \vspace{1cm}
+\textit{Ce document est en évolution permanente. Merci de signaler toutes
+erreurs ou coquilles.}
+
+
+\section{Cinématique plane}
+\begin{defi}
+\textbf{Problème plan}
+
+Soient deux solides $S_1$ et $S_2$ en mouvement l'un par rapport à l'autre auxquels on associe les repères $\mathcal{R}_0$ et $\mathcal{R}_1$. Le problème est dit plan lorsque 
+$$
+\forall t\in\mathbb{R}^+, \vect{z_1}\wedge{\vect{z_0}} =\vect{0}
+$$
+Le mouvement est alors contenu dans le plan $\mathcal{P}\left(\vect{x_1};\vect{y_1} \right)$.
+
+\end{defi}
+
+
+\subsection{Forme du torseur cinématique pour des mouvements plans}
+\begin{resultat}
+\textbf{Torseur cinématique}
+
+Lorsqu'un mouvement a lieu dans le plan $\left(\vect{x};\vect{y} \right)$, le torseur cinématique associé au mouvement est de la forme :
+$$
+\torseurc{\mathcal{V}(S_2/S_1)}{\tilde{}}{\tilde{}}{\omega_z}{u_x}{u_y}{\tilde{}}{O,\mathcal{R}}{}
+$$
+
+\end{resultat}
+
+\begin{exemple}
+\textit{Donner les torseurs associés aux liaisons suivantes dans le plan $\left(\vect{x};\vect{y} \right)$.}
+
+\begin{minipage}[c]{.15\linewidth}
+$$\mathcal{L}(3/2)$$
+\begin{center}
+%\includegraphics[width=.9\textwidth}{images/}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.15\linewidth}
+$$\mathcal{L}(4/3)$$
+\begin{center}
+%\includegraphics[width=.9\textwidth}{images/}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.15\linewidth}
+$$\text{Sph\`ere cylindre}$$
+$$\text{de normale } \vect{x}$$
+\begin{center}
+%\includegraphics[width=.9\textwidth}{images/}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.15\linewidth}
+$$\text{Sph\`ere cylindre}$$
+$$\text{de normale } \vect{z}$$
+\begin{center}
+%\includegraphics[width=.9\textwidth}{images/}
+\end{center}
+\end{minipage}
+
+\vspace{2.5cm}
+\end{exemple}
+
+\subsection{Représentation du vecteur vitesse}
+
+
+\begin{defi}
+Le vecteur vitesse est représenté par un glisseur. Ce glisseur est caractérisé par :
+\begin{itemize}
+\item une direction;
+\item un sens; 
+\item une norme;
+\item un point d'application.
+\end{itemize}
+
+En cinématique graphique, déterminer le vecteur vitesse revient à déterminer les glisseurs de chacun des points. 
+\end{defi}
+
+\begin{exemple}
+\textit{Représentation d'un glisseur}
+\vspace{2cm}
+\end{exemple}
+
+\subsection{Champ des vitesses pour un solide en translation}
+\begin{resultat}
+Soit un solide $S_2$ en translation par rapport à un solide $S_1$. Connaissant $\vectv{A}{S_2}{S_1}$, on a :
+$$
+\forall M \in S_2, \vectv{M}{S_2}{S_1} = \vectv{A}{S_2}{S_1}
+$$
+\end{resultat}
+\begin{exemple}
+
+Tracer $\vectv{B}{3}{4}$ et $\vectv{D}{4}{3}$.
+
+\begin{center}
+\includegraphics[width=4cm]{images/verin}
+\end{center}
+
+\end{exemple}
+
+\subsection{Champ des vitesses pour un solide en rotation}
+
+\begin{resultat}
+Soit un solide $S_2$ en rotation par rapport à un solide $S_1$. Soit $O$ le centre de la liaison. On a donc, $\vecto{S_2}{S_1}=\omega\vect{z}$, $\omega$ étant une vitesse de rotation exprimée en $rad/s$. 
+Soit un point $A$ appartenant au plan $\mathcal{P}\left(\vect{x_0};\vect{y_0}\right)$ tel que $\vect{OA} = r\vect{x_1}$
+
+D'après la relation du champ de moment, 
+$$
+\vectv{A}{S_2}{S_1}=\vectv{O}{S_2}{S_1}+\vect{AO}\wedge\vecto{S_2}{S_1}=r\omega\vect{y_1}
+$$
+\end{resultat}
+\begin{exemple}
+\begin{minipage}[c]{.3\linewidth}
+Tracer $\vectv{B}{1}{0}$
+\begin{center}
+\includegraphics[width=\textwidth]{images/came}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+Tracer $\vectv{C}{1}{0}$
+\includegraphics[width=\textwidth]{images/came}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+Donner $||\vecto{1}{0}||$
+\end{center}
+\end{minipage}
+
+
+\end{exemple}
+
+
+\subsection{Notion de point appartenant à deux solides}
+\begin{resultat}
+Soient deux solides $S_1$ et $S_2$. La liaisons entre les deux solides est de centre $A$ et ne permet aucune translation dans $\mathcal{P}$. Soit $S_0$ le bâti.
+On a alors :
+
+$$
+\vectv{A}{S_2}{S_0} =\underbrace{\vectv{A}{S_2}{S_1}}_{\vect{0}} + \vectv{A}{S_1}{S_0}
+$$
+
+\end{resultat}
+
+\begin{exemple}
+\textit{Déterminer $\vectv{D}{5}{3}$ et $\vectv{D}{5}{2}$.}
+
+\begin{center}
+\includegraphics[width=7cm]{images/point}
+\end{center}
+
+\end{exemple}
+\section{Résolution des problèmes graphiques en utilisant l'équiprojectivité}
+
+\begin{resultat}
+\textbf{Equiprojectivité}
+
+Soit un solide $S_1$ en mouvement par rapport à un repère fixe $\mathcal{R}_0$. Soient deux points $A$ et $B$ appartenant au solide $S_1$. On démontre qu'à chaque instant $t$ :
+$$
+\vectv{A}{S_1}{\mathcal{R}_0}\cdot \vect{AB} = 
+\vectv{B}{S_1}{\mathcal{R}_0}\cdot \vect{AB}
+$$
+\end{resultat}
+
+\begin{exemple}
+\textit{Interprétation graphique}
+
+\begin{center}
+\includegraphics[width=6cm]{images/ballon1}
+\end{center}
+\end{exemple}
+
+\textit{Démonstration}
+
+D'après la relation du champ de moment, 
+\begin{eqnarray*}
+\vectv{B}{S_1}{\mathcal{R}_0} = \vectv{A}{S_1}{\mathcal{R}_0}
++\vect{BA}\wedge\vecto{S_1}{\mathcal{R}_0}\\
+\Longleftrightarrow 
+\vectv{B}{S_1}{\mathcal{R}_0} \cdot\vect{AB}= \vectv{A}{S_1}{\mathcal{R}_0}\cdot\vect{AB}
++\underbrace{\left(\vect{BA}\wedge\vecto{S_1}{\mathcal{R}_0}\right)\cdot\vect{AB}}_{=\left(\vect{AB}\wedge \vect{BA} \right)\cdot\vecto{S_1}{\mathcal{R}_0}=0}
+\end{eqnarray*}
+
+\begin{flushright}
+\textit{CQFD}
+\end{flushright}
+
+\begin{methode}
+\begin{enumerate}
+\item Identifier les données connues :
+\begin{itemize}
+\item fréquence de rotation des moteurs; 
+\item vitesse de déplacement des vérins ...
+\end{itemize}
+\item Tracer les vecteurs vitesses connus en respectant l'échelle
+\item Identifier la direction du vecteur vitesse aux points caractéristiques du mécanisme
+\item Utiliser la décomposition du vecteur vitesse si besoin
+\item Tracer le vecteur vitesse final en utilisant l'équiprojectivité
+\item Mesurer la norme du vecteur vitesse et comparer avec le cahier des charges.
+\end{enumerate}
+\end{methode}
+
+%\begin{exemple}
+%\vspace{2cm}
+%\end{exemple}
+
+
+\section{Résolution des problèmes graphiques en utilisant les centres instantanés de rotation}
+
+\begin{defi}
+\textbf{Glisseur}
+
+Soit le torseur suivant :
+$$
+\torseurcin{V}{S_2}{S_1}=\torseurl{\vecto{S_2}{S_1}}{\vectv{A}{S_2}{S_1}}{A}
+$$
+$\{\mathcal{V}\}$ est un glisseur si et seulement si :
+\begin{itemize}
+\item $\vecto{S_2}{S_1}\neq \vect{0}$;
+\item $\vecto{S_2}{S_1} \cdot \vectv{A}{S_2}{S_1} = 0$.
+\end{itemize}
+\end{defi}
+
+\begin{resultat}
+\textbf{Centre instantané de rotation - CIR}
+
+Au vu de la forme des torseurs en cinématique plane, le torseur cinématique est un glisseur. Il existe donc un point $I$ tel $\vectv{I}{S_2}{S_1}= \vect{0}$. 
+
+$I$ est appelé le centre instantané de rotation du solide 1 par rapport au solide 2. On le note $I_{21}$.
+
+L'axe instantané est de même direction que $\vecto{S_2}{S_1}$. Il est perpendiculaire au plan du mouvement.
+
+\end{resultat}
+
+\begin{resultat}
+\textbf{Construction du CIR}
+
+$\vectv{A}{S_2}{S_1}$ et $\vectv{B}{S_2}{S_1}$ étant connu, $I_{12}$ est à l'intersection des perpendiculaires aux vecteurs vitesses en $A$ et en $B$.
+
+\end{resultat}
+
+\begin{exemple}
+\textit{Interprétation graphique}
+
+\begin{center}
+\includegraphics[width=6cm]{images/ballon2}
+\end{center}
+\end{exemple}
+
+
+
+\begin{rem}
+\begin{itemize}
+\item Pour un solide en translation, le CIR n'existe pas.
+\item Pour un solide en rotation autour d'un point fixe, le CIR est au centre de la liaison.
+\item Pour un mouvement plan quelconque, le CIR change à chaque instant.
+\end{itemize}
+\end{rem}
+
+\begin{defi}
+\textbf{Base et roulante}
+
+Soit un solide $S_1$ en mouvement dans un solide $\mathcal{R}_0$. On appelle base la trajectoire du CIR par rapport à $\mathcal{R}$. On appelle roulante la trajectoire du CIR par rapport à $S_1$.
+\end{defi}
+
+\begin{theo}
+Soient 3 solides $S_1$, $S_2$ et $S_3$ en mouvement plan. $I_{12}$, $I_{23}$ et $I_{13}$ sont alignés
+\end{theo}
+
+\begin{resultat}
+L'alignement des CIR peut permettre de déterminer la direction d'un vecteur vitesse.
+\end{resultat}
+
+\begin{exemple}
+\textit{Agitateur médical}
+
+Système à double excentrique (transformation d'un mouvement de rotation continue en rotation discontinue). Les solides $S_1$ et $S_3$ sont en liaison pivot avec le bâti $S_0$. La bielle $S_2$ est en liaison pivot avec $S_1$ et $S_3$.
+
+\begin{minipage}[c]{.4\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/img6_1}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.5\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/img6}
+\end{center}
+\end{minipage}
+Mouvement de $1/0$ rotation autour de l'axe $(O_1,\vect{z_0})$ : CIR $I_{1/0}=O_1$. 
+Liaison $2/1$ pivot d'axe $(A,\vect{z_0})$ : CIR $I_{2/1}=A$ : CIR $I_{2/0}$ est sur l'axe $(O_1 A)$.
+
+Mouvement de $3/0$ rotation autour de l'axe $(O_3,\vect{z_0})$ : CIR $I_{3/0}=O_3$. 
+Liaison $3/2$ pivot d'axe $(B,\vect{z_0})$ : CIR $I_{3/2}=B$ : CIR $I_{2/0}$ est sur l'axe $(O_3 B)$.
+
+On en déduit $I_{2/0}$ intersection entre les droites $(O_3 B)$ et $(O_1 A)$.
+
+
+On connaît le CIR $I_{1/0}=O_1$ et le CIR $I_{3/0}=O_3$ par conséquent le CIR $I_{3/1}$ est sur l'axe $(O_1O_3)$. 
+
+On connaît le CIR $I_{3/2}=A$ et le CIR $I_{2/1}=B$ par conséquent le CIR $I_{3/1}$ est sur l'axe $(AB)$.
+
+On en déduit $I_{3/1}$ intersection entre les droites $(O_1O_3)$ et $(AB)$.
+
+\end{exemple}
+\end{document}

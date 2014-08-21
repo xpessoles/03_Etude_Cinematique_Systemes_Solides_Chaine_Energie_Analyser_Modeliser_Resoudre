@@ -1,0 +1,225 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={CI3 - Cin Cinématique graphique - TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{%CI 3 -- CIN : Étude du comportement cinématique des systèmes
+}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+Partie  -- }}
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent 2013 -- 2014 \\
+Florestan \textsc{Mathurin}}{
+Damien \textsc{Iceta} \\ Xavier \textsc{Pessoles}}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- TD\\
+Ch. 8 : Cinématique graphique}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Chapitre 8 --  Étude graphique des mouvements plans}}
+\end{center}
+
+\begin{center}
+\textsc{Travaux dirigés}
+\end{center}
+
+\normalsize
+
+\begin{flushright}
+\textit{D'après ressources de Florestan Mathurin.}
+\end{flushright}
+
+ \renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+\section{Machine de poinçonnage}
+
+On étudie une machine de poinçonnage. Cette machine permet de faire des trous dans les pièces dont la forme le nécessite. Ces trous sont obtenus par arrachage de matière lors de la percussion à haute vitesse d'un outil (appelé poinçon) avec la pièce en question.
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/fig1_1}
+
+\includegraphics[width=.7\textwidth]{images/SysML/Exigences}
+\end{center}
+
+\begin{Objectif}
+L'objectif est de vérifier que l'exigence 1.4.1 est vérifiée.
+\end{Objectif}
+
+
+Le schéma cinématique de la mise en mouvement du poinçon, dans la machine est fournit sur la figure de la page suivante. Un moteur impose un mouvement de rotation de la pièce 1. Ce mouvement est transformé par les pièces 2, 3 et 4, jusqu'à être changé en mouvement de translation alternative du poinçon 5. 
+
+\subparagraph{}
+\textit{La pièce 1 tourne à 200 tr/min. La distance OA est de 4cm. Déterminer $||\vectv{A}{1}{0}||$.}
+
+\subparagraph{}
+\textit{Le sens de rotation de la pièce 1 est donné sur la figure. Tracer sur cette figure $\vectv{A}{1}{0}$. Échelle graphique : $1m/s = 6cm$.}
+
+\subparagraph{}
+\textit{Déterminer, en argumentant votre réponse, $\vectv{B}{2}{0}$.}
+
+\subparagraph{}
+\textit{Déterminer, en argumentant votre réponse, $\vectv{D}{5}{0}$.}
+
+\subparagraph{}
+\textit{Conclure quant à la capacité de la machine de poinçonnage à satisfaire le critère de vitesse de déplacement du cahier des charges.}
+
+\vspace{6cm}
+
+\begin{center}
+\includegraphics[width=.6\textwidth]{images/fig2}
+\end{center}
+
+\newpage
+
+\section{Benne de camion}
+
+\setcounter{subparagraph}{0}
+On se propose d'étudier le système qui assure l'ouverture d'une benne de camion de ramassage d'ordures.
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig3_1}\hfill
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.65\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/SysML/Exigences_Benne}
+\end{center}
+\end{minipage}
+
+\begin{Objectif}
+L'objectif est de vérifier que l'exigence 1.4.1 est vérifiée.
+\end{Objectif}
+
+
+Le schéma cinématique de la mise en mouvement du système est fourni sur la figure suivante. Un vérin impose le mouvement du système. Dans la position donnée, la vitesse de sortie de la tige 2 par rapport au corps du vérin 1 est de $0,1\; m/s$ (Echelle des vitesses : 3cm pour 0,1 m/s).
+
+
+\begin{center}
+\includegraphics[width=.6\textwidth]{images/fig4}
+\end{center}
+
+
+\subparagraph{}
+\textit{Déterminer graphiquement avec les justifications utiles $\vectv{B}{3}{0}$ puis $\vectv{F}{3}{0}$}
+
+
+\subparagraph{}
+\textit{Déterminer $\omega(3/0)$ et conclure vis-à-vis du cahier des charges $(BO=6m)$.}
+
+La benne est munie d'une porte 4 qui s'ouvre lorsque 3 s'incline.
+
+
+\subparagraph{}
+\textit{Déterminer graphiquement avec les justifications utiles $\vectv{C}{5}{0}$ et $\vectv{G}{5}{0}$.}
+
+
+\subparagraph{}
+\textit{Déterminer $\omega_{5/3}$.}
+
+
+$$ \quad $$
+\vspace{6cm}
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{images/fig5}
+\end{center}
+
+
+
+\newpage
+
+\section{Porte d'autobus}
+\setcounter{subparagraph}{0}
+On considère un système d'ouverture de porte d'autobus dont on donne un extrait de cahier des charges ci-dessous.
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig6_1}\hfill
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.65\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/SysML/Exigences_Bus}
+\end{center}
+\end{minipage}
+ 
+La figure de la page suivante représente le schéma du mécanisme actionneur d'une porte (3) d'autobus (en vue dessus). Au dessus de la porte, un vérin pneumatique (air comprimé) (4,5) entraîne une bielle (2) en liaison pivot avec la carrosserie (1). Le bras (AB), encastré à la bielle (2), entraîne le battant de porte (3) qui est guidé par un maneton (C) se déplaçant dans la rainure. L'amplitude de rotation de la bielle (2) de 90 degrés environ permet d'obtenir les positions extrêmes (ouvert/fermé) du battant (3). 
+
+Pour tous les tracés des vitesses on prendra 10mm/s pour 5mm.
+ La vitesse de sortie du vérin lors de l'ouverture de la porte d'autobus est $||\vectv{F}{4}{5}||=50mm/s$
+
+\subparagraph{}
+\textit{Déterminer graphiquement le vecteur vitesse $\vectv{F}{4}{1}$ en justifiant la démarche suivie. }
+
+\subparagraph{}
+\textit{Déterminer, par équiprojectivité, le vecteur vitesse $\vectv{B}{3}{1}$ en justifiant la démarche suivie.}
+
+\subparagraph{}
+\textit{Donner la direction du vecteur vitesse $\vectv{C}{3}{1}$. En déduire la position du centre instantané de rotation de la porte (3) par rapport au bâti (1) noté $I_{31}$.}
+
+\subparagraph{}
+\textit{Déterminer graphiquement le vecteur vitesse $\vectv{C}{3}{1}$ en justifiant la démarche suivie.}
+
+\subparagraph{}
+\textit{Conclure quant à la capacité de  la porte d'autobus à l'exigence 1.4.1.}
+
+\subparagraph{}
+\textit{Déterminer le CIR du mouvement de (4) par rapport à 1.}
+
+\newpage
+
+$$\quad$$
+
+\vspace{15cm}
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/fig7}
+\end{center}
+
+
+
+\end{document}
+
+

@@ -1,0 +1,944 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={Cinématique - Transmissions mécaniques},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+\usepackage{schemabloc}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\colorlet{shadecolor}{orange!15}
+
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2012 -- 2013} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{Cours -- CI 2 : Cinématique -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{Cours -- CI 2 : Cinématique}}
+}
+
+
+
+\begin{center}
+ \huge\textsc{CI 2 -- Cinématique : Modélisation, prévision et vérification du comportement cinématiques des systèmes}
+\end{center}
+
+\begin{center}
+ \LARGE\textsc{Chapitre 6 -- Étude des systèmes de transmission mécanique} 
+\end{center}
+
+\vspace{.5cm}
+
+\begin{minipage}[c]{.45\linewidth}
+La transmission est un élément a part entière de la chaîne fonctionnelle. Elle a donc une grande importance dans l'étude des systèmes mécatroniques.
+
+
+Les transmissions sont d'une très grande variété. Ils permettent de transmettre une puissance en conservant la vitesse ou en la modifiant, en transformant le type de mouvement ou en le conservant.
+\end{minipage}\hfill
+\begin{minipage}[c]{.5\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{png/ch_fonc}
+\end{center}
+\end{minipage}
+
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[height=3cm]{png/ex_3} &
+\includegraphics[height=3cm]{png/ex_2} &
+\includegraphics[height=3cm]{png/ex_1} \\
+\textit{Système de direction} & \textit{Boîte de vitesse}&\textit{Système de distribution}\\
+\end{tabular}
+\end{center}
+
+L'étude des différentes parties d'un véhicule permet d'illustrer la richesse des solutions : 
+la transformation d'une translation en rotation dans le moteur (système bielle-manivelle), les transmissions par courroie et l'utilisation d'arbre à cames dans le système de distribution, les engrenages et les trains épicycloïdaux dans les boîtes de vitesses et les différentiels...
+
+Le but de ce cours est donc de présenter une liste (non exhaustive) de systèmes de transmission.
+
+\vspace{.2cm}
+
+
+
+\begin{prob}
+\textsc{Problématique :}
+\begin{itemize}
+\item Quels sont les systèmes qui permettent de transmettre et de transformer les mouvements ?
+\item Comment peut-on modéliser ces systèmes ?
+\end{itemize}
+\end{prob}
+
+\begin{savoir}
+\textsc{Savoirs :}
+\begin{itemize}
+\item Les transmetteur de puissance mécanique et les effecteurs pour les arbres et accouplements, mécanismes plans à barres, mécanisme vis écrou, réducteurs et multiplicateurs
+\end{itemize}
+\end{savoir}
+
+\setlength{\parskip}{0ex plus 0.2ex minus 0ex}
+ \renewcommand{\contentsname}{}
+ \renewcommand{\baselinestretch}{1}
+
+\tableofcontents
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+% \vspace{1cm}
+\textit{Ce document est en évolution permanente. Merci de signaler toutes
+erreurs ou coquilles.}
+
+
+\section{Transmission du mouvement sans modification de la vitesse}
+Accouplements
+
+
+
+
+\section{Transmission du mouvement avec modification de la vitesse}
+
+\subsection{Réduction par engrenages}	
+
+\subsubsection{Géométrie des engrenages}
+
+\subsubsection{Train d'engrenages}
+
+\subsection{Trains épicycloïdaux}
+
+\subsection{Réduction par chaîne}
+\subsection{Réduction par roue de friction}
+\subsection{Variateurs}
+ \subsubsection{Variateurs à courroie}
+ \subsubsection{Variateurs à friction}
+\subsection{Transmission par roue libre}
+\section{Transformation du mouvement}
+\subsection{Pignon -- Crémaillère}
+\subsection{Systèmes bielles manivelles}
+\subsection{Systèmes à excentriques}
+\subsection{Systèmes à cames}
+\subsection{Systèmes à croix malte}
+\subsection{Vis - écrou}
+
+
+\newpage
+\subsection{Joint de cardan}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/cardan2}
+\textit{Composant mécanique\cite{cardan2}}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+Le joint de cardan est utilisé pour transmettre une vitesse de rotation entre deux arbres non coaxiaux (un débattement angulaire est possible entre les deux axes). L'utilisation d'un cardan simple n'est pas homocinétique. Cela signifie que la vitesse de l'arbre moteur et de l'arbre récepteur ne sont pas identiques. Utiliser deux joints de cardan en parallèle permet d'avoir un accouplement homocinétique.
+
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item \url{http://www2c.ac-lille.fr/eiffel/cpge/animation25.html}
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+
+\newpage
+
+\subsection{Joint tripode et joint rzeppa}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/tripode2}
+\textit{Composant mécanique \cite{tripode2}}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+
+\newpage
+
+\subsection{Joint de Oldham}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/oldham2}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/oldham3}
+\textit{Modèle CAO \cite{oldham3}}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Roue libre}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/roue_1}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/roue_1}
+\textit{Composant mécanique \cite{roue1}}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/roue_2}
+\textit{Représentation graphique \cite{roue2}}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/roue_4}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Embrayages}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Train d'engrenage simple}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Train d'engrenage épicycloïdal}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Transmission par chaîne et par courroie}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Transmission par friction}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Pignon -- crémaillère}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Bielle -- manivelle}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Cames}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Excentriques}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Croix de Malte}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+
+\newpage
+
+\subsection{Vis -- écrou}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+
+\begin{itemize}
+\item
+\end{itemize}
+\newpage
+
+\subsection{Roue et vis sans fin}
+\subsubsection{Description}
+
+\begin{center}
+\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Composant mécanique}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle CAO}
+\end{center} 
+\end{minipage}\hfill
+\begin{minipage}[c]{.21\linewidth}
+\begin{center}
+%\includegraphics[width=.9\textwidth]{png/}
+\textit{Modèle cinématique}
+\end{center} 
+\end{minipage}\hfill
+\end{center}
+
+
+\textbf{Vidéos :}
+\begin{itemize}
+\item 
+\end{itemize}
+
+\subsubsection{Modélisation cinématique}
+\subsubsection{Modélisation statique}
+\subsubsection{Conception}
+\subsubsection{Remarques}
+\subsubsection{Utilisation}
+\begin{itemize}
+\item
+\end{itemize}
+\begin{itemize}
+\item
+\end{itemize}
+
+\begin{thebibliography}{2}
+\bibitem{cardan2}{\url{http://img.directindustry.fr/images_di/photo-m2/cardans-doubles-379839.jpg}}
+\bibitem{tripode2}{\url{http://2.bp.blogspot.com/-EFFAq8t0O7U/TfUzsiwoG5I/AAAAAAAAAFE/TvOfMzMTO3w/s1600/tripodjoint.jpg}}
+\bibitem{oldham3}{\url{http://img.directindustry.fr/images_di/photo-g/accouplement-flexible-accouplement-oldham-422127.jpg}}
+
+\bibitem{roue1}{\url{http://www.trialprod.com/fr/}}
+\bibitem{roue2}{\url{http://fr.wikipedia.org/wiki/Fichier:Roue_libre2.svg}}
+
+\end{thebibliography}
+
+\end{document}

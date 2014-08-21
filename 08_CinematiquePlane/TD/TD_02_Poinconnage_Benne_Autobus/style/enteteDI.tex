@@ -1,0 +1,87 @@
+\ifthenelse{\boolean{xp}}{
+\usepackage[%
+    pdftitle={OS et Environnement de développement},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}}{
+\usepackage[%
+    pdftitle={OS et Environnement de développement},
+    pdfauthor={Damien Iceta},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}}
+
+\usepackage{pifont}
+\usepackage{lastpage}
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\colorlet{shadecolor}{orange!15}
+
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+
+
+\pagestyle{fancy}
+%\renewcommand{\headrulewidth}{0}
+\renewcommand{\headrulewidth}{0.2pt} %pour mettre le trait en haut
+
+\fancyhead{}
+\fancyhead[L]{
+\footnotesize{{{\xxtitre}}}%
+%\noindent\noindent\begin{minipage}[c]{2.6cm}
+%\includegraphics[width=2.5cm]{png/logo.png}%
+%\end{minipage}
+}
+
+%\fancyhead[C]{\rule{12cm}{.5pt}}  %pour mettre le petit trait en haut
+
+
+\fancyhead[R]{%
+\noindent\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{{{\xxcathegorie}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{}}
+\fancyfoot[L]{%
+\begin{minipage}[l]{.2\linewidth}
+\noindent\footnotesize{{\xxauteur}}
+\end{minipage}
+\begin{minipage}[c]{.15\linewidth}
+%\includegraphics[width=2cm]{png/logoCC.png}
+\end{minipage}}
+
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{Page \thepage\   sur  \pageref{LastPage}}}}
+
+\begin{center}
+ \huge\textsc{\xxtitre}
+\end{center}
+
+\begin{center}
+ \LARGE\textsc{\xxsoustitre}
+\end{center}
+
+\vspace{.5cm}
