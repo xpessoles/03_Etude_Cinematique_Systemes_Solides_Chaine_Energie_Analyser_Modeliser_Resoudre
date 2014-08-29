@@ -1,2 +1,0 @@
-\select@language {french}
-\contentsfinish 
