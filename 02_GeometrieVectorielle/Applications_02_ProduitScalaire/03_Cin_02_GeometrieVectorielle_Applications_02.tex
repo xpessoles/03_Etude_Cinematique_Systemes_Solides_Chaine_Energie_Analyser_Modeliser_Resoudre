@@ -1,0 +1,115 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+\usepackage{longtable}
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\newif\ifprof
+%\proftrue
+\proffalse
+
+\newboolean{td}
+\setboolean{td}{true}
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{CI 3 -- CIN : Étude cinématique des systèmes de solides de la chaîne d'énergie \\
+Analyser, Modéliser, Résoudre}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 2 -- Géométrie Vectorielle}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+4 : Cinématique \\
+Ch 2 : Géométrie Vectorielle -- Application 1 -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+\usepackage{multicol}
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+
+
+%\renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+%\begin{comp}
+%\noindent \textbf{Résoudre :} **
+%\begin{itemize}
+%\item **
+%\item **
+%\end{itemize}
+%
+%\noindent \textit{Rés -- C1.1 :} 
+%
+%\noindent \textit{Mod2 -- C4.1 :} 
+%\end{comp}
+
+\section*{Produit scalaire}
+
+\begin{center}
+\includegraphics[width=.4\textwidth]{images/FiguresPlanes}
+\end{center}
+
+\subparagraph*{}\textit{Calculer les produits scalaires suivants :}
+
+\begin{multicols}{3}
+\begin{itemize}
+ \renewcommand{\labelitemi}{\tiny{$\blacksquare$}}
+\item $\vect{i_0} \cdot \vect{j_0}$
+\item $\vect{j_0} \cdot \vect{k_0}$
+\item $\vect{j_0} \cdot \vect{j_1}$
+\item $\vect{j_0} \cdot \vect{k_1}$
+\item $\vect{i_0} \cdot \vect{i_2}$
+\item $\vect{k_1} \cdot \vect{k_0}$
+\item $\vect{i_0} \cdot \vect{j_2}$
+\item $\vect{i_2} \cdot \vect{j_1}$
+\item $\vect{j_2} \cdot \vect{j_0}$
+\item $\vect{k_1} \cdot \vect{i_2}$
+\item $\vect{i_0} \cdot \vect{k_1}$
+\item $\vect{j_2} \cdot \vect{i_2}$
+\end{itemize}
+\end{multicols}
+
+\end{document}
+
+
