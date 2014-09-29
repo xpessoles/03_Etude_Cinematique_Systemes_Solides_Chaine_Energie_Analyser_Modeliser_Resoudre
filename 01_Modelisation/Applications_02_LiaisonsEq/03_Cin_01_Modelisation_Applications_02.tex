@@ -1,0 +1,147 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+\usepackage{longtable}
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\newif\ifprof
+%\proftrue
+\proffalse
+
+\newboolean{td}
+\setboolean{td}{true}
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{CI 3 -- CIN : Étude cinématique des systèmes de solides de la chaîne d'énergie \\
+Analyser, Modéliser, Résoudre}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 1 -- Modélisation des systèmes mécaniques}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+4 : Cinématique \\
+Ch 1 : Modélisation -- Application 1 -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+
+
+%\renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+%\begin{comp}
+%\noindent \textbf{Résoudre :} **
+%\begin{itemize}
+%\item **
+%\item **
+%\end{itemize}
+%
+%\noindent \textit{Rés -- C1.1 :} 
+%
+%\noindent \textit{Mod2 -- C4.1 :} 
+%\end{comp}
+
+\section*{Liaisons équivalentes}
+\subparagraph*{}\textit{Donner les liaisons équivalentes des liaisons suivantes. Préciser le dégré d'hyperstatisme.}
+
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_01}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_02}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_03}
+\end{center}
+\end{minipage}
+
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_04}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_05}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_06}
+\end{center}
+\end{minipage}
+
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_07}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_08}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_09}
+\end{center}
+\end{minipage}
+
+
+\begin{minipage}[c]{.32\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/fig_10}
+\end{center}
+\end{minipage}
+
+
+\end{document}
+
+
