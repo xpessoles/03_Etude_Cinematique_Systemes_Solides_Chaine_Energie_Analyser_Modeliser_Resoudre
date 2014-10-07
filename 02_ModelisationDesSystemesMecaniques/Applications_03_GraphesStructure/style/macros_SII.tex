@@ -1,0 +1,90 @@
+%%%%%%%%%%%%
+% Définition des vecteurs 
+%%%%%%%%%%%%
+ \newcommand{\vect}[1]{\overrightarrow{#1}}
+\newcommand{\axe}[2]{\left(#1,\vect{#2}\right)}
+
+\newcommand{\rep}[1]{\mathcal{R}_{#1}}
+\newcommand{\vx}[1]{\vect{x_{#1}}}
+\newcommand{\vy}[1]{\vect{y_{#1}}}
+\newcommand{\vz}[1]{\vect{z_{#1}}}
+
+%%%%%%%%%%%%
+% Définition des torseurs 
+%%%%%%%%%%%%
+
+ \newcommand{\torseur}[1]{%
+\left\{{#1}\right\}
+}
+
+\newcommand{\torseurcin}[3]{%
+\left\{\mathcal{#1} \left(#2/#3 \right) \right\}
+}
+
+\newcommand{\torseurstat}[3]{%
+\left\{\mathcal{#1} \left(#2\rightarrow #3 \right) \right\}
+}
+
+ \newcommand{\torseurc}[8]{%
+%\left\{#1 \right\}=
+\left\{
+{#1}
+\right\}
+ = 
+\left\{%
+\begin{array}{cc}%
+{#2} & {#5}\\%
+{#3} & {#6}\\%
+{#4} & {#7}\\%
+\end{array}%
+\right\}_{#8}%
+}
+
+ \newcommand{\torseurcol}[7]{
+\left\{%
+\begin{array}{cc}%
+{#1} & {#4}\\%
+{#2} & {#5}\\%
+{#3} & {#6}\\%
+\end{array}%
+\right\}_{#7}%
+}
+
+ \newcommand{\torseurl}[3]{%
+%\left\{\mathcal{#1}\right\}_{#2}=%
+\left\{%
+\begin{array}{l}%
+{#1} \\%
+{#2} %
+\end{array}%
+\right\}_{#3}%
+}
+
+ \newcommand{\vectv}[3]{%
+\vect{V\left( {#1} \in {#2}/{#3}\right)}
+}
+
+
+\newcommand{\vectf}[2]{%
+\vect{R\left( {#1} \rightarrow {#2}\right)}
+}
+
+\newcommand{\vectm}[3]{%
+\vect{\mathcal{M}\left( {#1}, {#2} \rightarrow {#3}\right)}
+}
+
+
+ \newcommand{\vectg}[3]{%
+\vect{\Gamma \left( {#1} \in {#2}/{#3}\right)}
+}
+
+ \newcommand{\vecto}[2]{%
+\vect{\Omega\left( {#1}/{#2}\right)}
+}
+% }$$\left\{\mathcal{#1} \right\}_{#2} =%
+% \left\{%
+% \begin{array}{c}%
+%  #3 \\%
+%  #4 %
+% \end{array}%
+% \right\}_{#5}}

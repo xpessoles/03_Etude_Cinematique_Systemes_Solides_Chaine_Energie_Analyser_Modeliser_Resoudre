@@ -33,7 +33,7 @@
 Analyser, Modéliser, Résoudre}{}}
 
 \def\xxsoustitre{\ifthenelse{\boolean{xp}}{
-Chapitre 2 -- Géométrie Vectorielle}{
+Chapitre 1 -- Modélisation des systèmes mécaniques}{
 }}
 
 
@@ -44,7 +44,7 @@ Chapitre 2 -- Géométrie Vectorielle}{
 
 \def\xxpied{\ifthenelse{\boolean{xp}}{
 4 : Cinématique \\
-Ch 2 : Géométrie Vectorielle -- Application 1 -- \ifthenelse{\boolean{prof}}{P}{E}%
+Ch 1 : Modélisation -- Application 3 -- \ifthenelse{\boolean{prof}}{P}{E}%
 }{
 }}
 
@@ -59,7 +59,6 @@ Informatique - Cours}}
 
 %---------------------------------------------------------------------------
 
-\usepackage{multicol}
 
 \begin{document}
 
@@ -84,44 +83,25 @@ Informatique - Cours}}
 %\noindent \textit{Mod2 -- C4.1 :} 
 %\end{comp}
 
-\section*{Produit scalaire}
+\section*{Graphe de liaisons}
+\subparagraph*{}\textit{Faire le graphe des liaisons associés aux schémas cinématiques suivants. Préciser, si cela est nécessaire, des points au centre des liaisons et des références.}
 
-On donnes les figures planes associées aux bases suivantes : $\left( \vect{i_0},\vect{j_0},\vect{k_0}\right)$, $\left( \vect{i_0},\vect{j_1},\vect{k_1}\right)$ et $\left( \vect{i_2},\vect{j_2},\vect{k_1}\right)$ :
+
+\begin{minipage}[c]{.31\linewidth}
 \begin{center}
-\includegraphics[width=.4\textwidth]{images/FiguresPlanes}
+\includegraphics[width=.95\textwidth]{images/micromoteur}
 \end{center}
-
-\subparagraph{}\textit{Calculer les produits scalaires suivants :}
-
-\begin{multicols}{3}
-\begin{itemize}
- \renewcommand{\labelitemi}{\tiny{$\blacksquare$}}
-\item $\vect{i_0} \cdot \vect{j_0}$
-\item $\vect{j_0} \cdot \vect{k_0}$
-\item $\vect{j_0} \cdot \vect{j_1}$
-\item $\vect{j_0} \cdot \vect{k_1}$
-\item $\vect{i_0} \cdot \vect{i_2}$
-\item $\vect{k_1} \cdot \vect{k_0}$
-\item $\vect{i_0} \cdot \vect{j_2}$
-\item $\vect{i_2} \cdot \vect{j_1}$
-\item $\vect{j_2} \cdot \vect{j_0}$
-\item $\vect{k_1} \cdot \vect{i_2}$
-\item $\vect{i_0} \cdot \vect{k_1}$
-\item $\vect{j_2} \cdot \vect{i_2}$
-\end{itemize}
-\end{multicols}
-
-\subparagraph{}\textit{Exprimer :
-\begin{itemize}
- \renewcommand{\labelitemi}{\tiny{$\blacksquare$}}
-\item le vecteur $\vect{j_1}$ dans la base $\left(\vect{i_0},\vect{j_0},\vect{k_0}\right)$;
-\item le vecteur $\vect{k_1}$ dans la base $\left(\vect{i_0},\vect{j_0},\vect{k_0}\right)$;
-\item le vecteur $\vect{i_2}$ dans la base $\left(\vect{i_1},\vect{j_1},\vect{k_1}\right)$;
-\item le vecteur $\vect{j_2}$ dans la base $\left(\vect{i_0},\vect{j_0},\vect{k_0}\right)$.
-\end{itemize}
-}
-
-
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\rotatebox{90}{\includegraphics[height=\textwidth]{images/schrader}}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.2\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/schema_archi}
+\end{center}
+\end{minipage}
 
 \end{document}
 
