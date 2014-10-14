@@ -1,0 +1,288 @@
+' ******************************************************************************
+' swxJRNL.swj - journal recorded on 11/22/99 by Standard
+' ******************************************************************************
+
+Dim swApp As Object
+Dim Part As Object
+Dim Gtol As Object
+Dim FeatureData As Object
+Dim Feature As Object
+Dim Component As Object
+Sub main()
+Set swApp = CreateObject ("SldWorks.Application")
+Set Part = swApp.NewPart
+Set Part = swApp.ActivateDoc ("Part1")
+Set Part = swApp.OpenDoc ("C:\Michel\Base données techniques\Winch\Winch SW\winch3.SLDASM", 2)
+Set Part = swApp.ActivateDoc ("winch3.SLDASM")
+swApp.ActiveDoc.ActiveView.FrameWidth = 900
+swApp.ActiveDoc.ActiveView.FrameHeight = 560
+Part.SelectByID "", "FACE", -0.008143054991465, 0.05428932902959, 0.006500000000017
+Part.InsertSketch
+Part.CreateLine2 0, 0, 0, 0, 0.06279961042559, 0
+Part.CreateLine2 0, 0, 0, -0.001682704918427, 0.04920892186662, 0
+Part.ViewZoomTo2 0.046006, 0.00910445, -0.05625, 0.0550836, -0.00519282, -0.05625
+Part.ClearSelection
+Part.SelectByID "Line1", "SKETCHSEGMENT", 0, 0.05400067621031, 0
+Part.AndSelectByID "Line2", "SKETCHSEGMENT", -0.001643557584807, 0.04806409958655, 0
+Part.AddDimension 0.00130087, 0.0555335, 0.0065
+Part.ClearSelection
+Part.Parameter("D1@Esquisse1").SystemValue = 0.0341818
+' MSGBOX
+' L'esquisse n'est plus sur-contrainte.
+
+Part.SelectByID "Point4", "SKETCHPOINT", -0.001682704918427, 0.04920892186662, 0
+Part.AndSelectByID "Point-1", "SKETCHPOINT", 0.001800997377346, 0.04871672103546, 0.02250000000001
+Part.AddDimension 0.00252715, 0.0550597, 0.0065
+Part.ClearSelection
+' MSGBOX
+' La cote sélectionnée est une cote pilotée. Sa valeur ne peut pas être changée.
+
+Part.EditDelete
+Part.AndSelectByID "Point4", "SKETCHPOINT", -0.001682704918427, 0.04920892186662, 0
+Part.AndSelectByID "", "EDGE", 0.001941877301426, 0.04870539000836, 0.006500000000017
+Part.SketchAddConstraints "sgCOINCIDENT"
+Part.ClearSelection
+Part.AndSelectByID "Point4", "SKETCHPOINT", -0.001682704918427, 0.04920892186662, 0
+Part.ActiveView().ZoomByFactor 0.970874
+Part.ActiveView().ZoomByFactor 0.5
+Part.SelectByID "Line2", "SKETCHSEGMENT", -0.001325958777107, 0.03877625907339, 0
+Part.EditDelete
+Part.ActiveView().ZoomByFactor 0.961538
+Part.ActiveView().ZoomByFactor 0.568182
+Part.ActiveView().ZoomByFactor 0.740741
+Part.CreateLine2 0, 0, 0, -0.001793335301646, 0.04894214810798, 0
+Part.ViewZoomTo2 0.0314683, 0.0153623, -0.05625, 0.0652327, -0.0069109, -0.05625
+Part.ClearSelection
+Part.SelectByID "Line1", "SKETCHSEGMENT", 0, 0.04819172204467, 0
+Part.AndSelectByID "Line3", "SKETCHSEGMENT", -0.001645698082292, 0.04491296145827, 0
+Part.AddDimension 0.00298202, 0.0542249, 0.0065
+Part.ClearSelection
+Part.Parameter("D1@Esquisse1").SystemValue = 3.10497
+Part.ClearSelection
+Part.InsertSketch
+Part.SelectByID "Esquisse1", "SKETCH", 0, 0, 0
+Part.EditDelete
+Set Part = swApp.OpenDoc ("C:\Michel\Base données techniques\Winch\Winch SW\tambour 5.SLDPRT", 1)
+Set Part = swApp.ActivateDoc ("tambour 5.SLDPRT")
+swApp.ActiveDoc.ActiveView.FrameWidth = 921
+swApp.ActiveDoc.ActiveView.FrameHeight = 560
+Part.SelectByID "Enlèv. mat.-Extru.3", "BODYFEATURE", 0, 0, 0
+Part.SelectByID "Enlèv. mat.-Extru.3", "BODYFEATURE", 0, 0, 0
+Part.FeatEdit
+Part.ClearSelection
+Part.SetPickMode
+Part.ShowNamedView2 "*Dessous", 6
+Part.ActiveView().RotateAboutCenter 0.013552, -0.0202091
+Part.ActiveView().RotateAboutCenter 0.0316213, -0.0875727
+Part.ActiveView().RotateAboutCenter 0.00903465, -0.0269454
+Part.ActiveView().RotateAboutCenter 0.00903465, -0.0606272
+Part.ActiveView().RotateAboutCenter 0.013552, -0.0606272
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0336818
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0202091
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0269454
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0134727
+Part.ActiveView().RotateAboutCenter 0, -0.0134727
+Part.ActiveView().RotateAboutCenter 0.00451732, 0
+Part.ActiveView().RotateAboutCenter 0, -0.00673636
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0471545
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0808363
+Part.ActiveView().RotateAboutCenter 0.00903465, -0.0740999
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0673636
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0606272
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0538909
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0606272
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0471545
+Part.ActiveView().RotateAboutCenter 0, -0.0336818
+Part.ActiveView().RotateAboutCenter 0, -0.0269454
+Part.ActiveView().RotateAboutCenter 0, -0.00673636
+Part.ActiveView().RotateAboutCenter 0, -0.0269454
+Part.ActiveView().RotateAboutCenter 0, -0.0740999
+Part.ActiveView().RotateAboutCenter -0.00903465, -0.0808363
+Part.ActiveView().RotateAboutCenter 0, -0.0404182
+Part.ActiveView().RotateAboutCenter 0.00451732, -0.0538909
+Part.ActiveView().RotateAboutCenter 0, -0.101045
+Part.ActiveView().RotateAboutCenter 0, -0.101045
+Part.ActiveView().RotateAboutCenter 0, -0.0538909
+Part.ActiveView().RotateAboutCenter 0, -0.0471545
+Part.ActiveView().RotateAboutCenter 0, -0.0808363
+Part.ActiveView().RotateAboutCenter 0, -0.0538909
+Part.ActiveView().RotateAboutCenter 0, -0.00673636
+Part.SetPickMode
+Part.SelectByID "D1@Esquisse6@tambour 5.SLDPRT", "DIMENSION", -0.04081512930377, -0.07314030568224, -0.004975844592407
+Part.Parameter("D1@Esquisse6").SystemValue = 0.0349066
+' MSGBOX
+' Veuillez sélectionner une face plane.
+
+Part.SelectByID "", "FACE", -0.004999999999939, -0.0510702712005, 0.01146622533425
+Part.ViewZoomTo2 -0.0177395, 0.012458, -0.042552, 0.0264872, -0.0853861, -0.042552
+Part.SetPickMode
+Part.ClearSelection
+Part.ViewZoomTo2 -0.0105984, -0.0394204, -0.042552, 0.00675798, -0.0560138, -0.042552
+Part.ViewZoomtofit2
+Part.ViewZoomTo2 -0.0495576, 0.0258392, 0.005, 0.0961566, -0.112385, 0.005
+Part.CreateCircularSketchStepAndRepeat 0.05153, 1.570796326795, 2, -0.03490658503989, 1, ""
+Part.CreateCircularSketchStepAndRepeat 0.1, 4.712388980385, 4, 0.01163552834663, 1, ""
+Part.CreateCircularSketchStepAndRepeat 0.1, 4.712388980385, 4, -0.01163552834663, 1, ""
+Part.ClearSelection
+Part.ViewZoomTo2 -0.0169822, -0.0337077, 0.005, 0.0204704, -0.0692741, 0.005
+Part.ViewZoomTo2 -0.00993807, -0.041542, 0.005, 0.0107224, -0.0598452, 0.005
+Part.SetPickMode
+Part.SelectByID "Arc29", "SKETCHSEGMENT", 0.005377414894726, -0.0516362486315, 0
+Part.EditDelete
+Part.SelectByID "Arc26", "SKETCHSEGMENT", 0.004197084314752, -0.05163589852641, 0
+Part.EditDelete
+Part.SelectByID "Arc20", "SKETCHSEGMENT", 0.003525453374427, -0.05200681914565, 0
+Part.EditDelete
+Part.SelectByID "Line14", "SKETCHSEGMENT", 0.005432459548727, -0.04881055486553, 0
+Part.EditDelete
+Part.SelectByID "Point78", "SKETCHPOINT", 0.003741186306363, -0.04872010856655, 0
+Part.EditDelete
+' MSGBOX
+' Les points d'extrémité et les points centraux de l'esquisse ne peuvent pas être supprimés à moins que le point d'extrémité soit un point de fractionnement d'une courbe.
+
+Part.SelectByID "Line13", "SKETCHSEGMENT", 0.004546314750788, -0.04876150094668, 0
+Part.EditDelete
+Part.SelectByID "Arc31", "SKETCHSEGMENT", 0.003829200230147, -0.05444772738397, 0
+Part.EditDelete
+Part.SelectByID "Arc40", "SKETCHSEGMENT", -0.003734168738238, -0.0544450932596, 0
+Part.EditDelete
+Part.SelectByID "", "FACE", -0.004999999999995, -0.05329619162783, 0.005019830118343
+Part.SelectByID "Arc39", "SKETCHSEGMENT", -0.004828011470899, -0.05314090594681, 0
+Part.EditDelete
+Part.SelectByID "Arc36", "SKETCHSEGMENT", -0.003813668341116, -0.05274633032307, 0
+Part.EditDelete
+Part.SelectByID "Arc37", "SKETCHSEGMENT", -0.002843305486542, -0.05441174290419, 0
+Part.EditDelete
+Part.SelectByID "Arc34", "SKETCHSEGMENT", -0.001701803681362, -0.05438522278818, 0
+Part.EditDelete
+Part.SelectByID "Arc16", "SKETCHSEGMENT", -0.001072057610414, -0.05387204450801, 0
+Part.SelectByID "Point110", "SKETCHPOINT", -0.00139351428206, -0.05437419857351, 0
+Part.SelectByID "Arc35", "SKETCHSEGMENT", -0.0009048906782449, -0.05303846710221, 0
+Part.EditDelete
+Part.SelectByID "Arc33", "SKETCHSEGMENT", -0.002551391855781, -0.05301743821135, 0
+Part.EditDelete
+Part.SelectByID "Line16", "SKETCHSEGMENT", -0.004487252940283, -0.04876012626778, 0
+Part.EditDelete
+Part.SelectByID "Line17", "SKETCHSEGMENT", -0.005411976290859, -0.0488098395744, 0
+Part.EditDelete
+Part.SelectByID "Arc38", "SKETCHSEGMENT", -0.002101021595702, -0.05320992294061, 0
+Part.EditDelete
+Part.SelectByID "Arc32", "SKETCHSEGMENT", 0.0006900439333179, -0.05161467757322, 0
+Part.EditDelete
+Part.SelectByID "Arc23", "SKETCHSEGMENT", 0.002463036307924, -0.05325148758302, 0
+Part.EditDelete
+Part.SelectByID "Arc30", "SKETCHSEGMENT", 0.002262600375322, -0.05368541639679, 0
+Part.EditDelete
+Part.SelectByID "Point71", "SKETCHPOINT", 0.002764475713349, -0.05430468112146, 0
+Part.SelectByID "Point80", "SKETCHPOINT", 0.001997997673127, -0.05438474987035, 0
+Part.SelectByID "Point89", "SKETCHPOINT", 0.001393514282059, -0.05437419857351, 0
+Part.SelectByID "Point80", "SKETCHPOINT", 0.001997997673127, -0.05438474987035, 0
+Part.SelectByID "Arc22", "SKETCHSEGMENT", 0.002368461074871, -0.05432339357579, 0
+Part.EditDelete
+Part.SelectByID "Arc28", "SKETCHSEGMENT", 0.002543981078703, -0.05440716077548, 0
+Part.EditDelete
+Part.SelectByID "Arc27", "SKETCHSEGMENT", 0.0007949600554922, -0.0527027723249, 0
+Part.EditDelete
+Part.SelectByID "Arc21", "SKETCHSEGMENT", 0.0004959900511425, -0.05313720694788, 0
+Part.EditDelete
+Part.SelectByID "Arc24", "SKETCHSEGMENT", -6.055740717771e-005, -0.05353678443262, 0
+Part.EditDelete
+Part.SelectByID "Arc25", "SKETCHSEGMENT", 0.001402233116045, -0.05438405994579, 0
+Part.EditDelete
+Part.SelectByID "Line11", "SKETCHSEGMENT", 0.003144966094999, -0.04860338880939, 0
+Part.EditDelete
+Part.SelectByID "Line12", "SKETCHSEGMENT", 0.003223389426275, -0.04871408345437, 0
+Part.EditDelete
+Part.SelectByID "Line15", "SKETCHSEGMENT", -0.003450940710933, -0.04871673125329, 0
+Part.EditDelete
+Part.ViewZoomtofit2
+Part.ViewZoomTo2 -0.03262, -0.019733, 0.005, 0.0652178, -0.0905811, 0.005
+Part.CreateCircularSketchStepAndRepeat 0.05152926911339, 1.570796326795, 2, 0.03490658503989, 1, ""
+Part.SetPickMode
+Part.ClearSelection
+Part.SelectByID "Arc14", "SKETCHSEGMENT", 0.001809500118014, -0.05177261229359, 0
+Part.EditDelete
+Part.SelectByID "Point52", "SKETCHPOINT", -0.0008675601221347, -0.05436807854279, 0
+Part.SelectByID "Point50", "SKETCHPOINT", 0.0008675601221343, -0.05436807854279, 0
+Part.SelectByID "Point52", "SKETCHPOINT", -0.0008675601221347, -0.05436807854279, 0
+Part.ViewZoomTo2 -0.00945777, -0.0429348, 0.005, 0.0131915, -0.0630982, 0.005
+Part.SelectByID "Line7", "SKETCHSEGMENT", 0.002136886079309, -0.04868353822677, 0
+Part.EditDelete
+Part.SelectByID "Arc41", "SKETCHSEGMENT", 0.0006409952084408, -0.04963072831522, 0
+Part.SelectByID "Arc16", "SKETCHSEGMENT", -0.001924586335327, -0.05138277542784, 0
+Part.EditDelete
+Part.SelectByID "Arc15", "SKETCHSEGMENT", 0.0004863914447872, -0.05437282453912, 0
+Part.EditDelete
+Part.EditRebuild
+Part.SelectByID "Enlèv. mat.-Extru.3", "BODYFEATURE", 0, 0, 0
+Part.Save2 FALSE
+Set Part = swApp.ActivateDoc ("winch3.SLDASM")
+' MSGBOX
+' Les modèles contenus dans l'assemblage ont changé. Souhaitez vous reconstruire l'assemblage maintenant?
+
+Part.SelectByID "Corps 18-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "coussinet 9-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Bouchon 11-1@winch3", "COMPONENT", 0, 0, 0
+Part.ViewZoomtofit2
+Part.Save2 FALSE
+Part.SelectByID "Corps 18-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Corps 18-1@winch3", "COMPONENT", 0, 0, 0
+Part.ViewDisplayShaded
+Part.SelectByID "coussinet 9-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "coussinet 9-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Bouchon 11-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Coussinet-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Coussinet-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Axe-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "rondelle 8-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "rondelle 8-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "cage aiguilles-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "clavette 14-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "clavette 14-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "flasque 4-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "flasque 4-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Vis FHC M4-12 - 10.9 - NF E 27-160-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "rondelle 2-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "rondelle 2-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "rondelle 2-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "Anneau élastique 1-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "manivelle-1@winch3", "COMPONENT", 0, 0, 0
+Part.SelectByID "manivelle-1@winch3", "COMPONENT", 0, 0, 0
+Part.Save2 FALSE
+Part.Save2 FALSE
+Part.ShowNamedView2 "*Isométrique", 7
+Part.ViewZoomTo2 -0.171789, 0.196629, 0.12278, 0.120655, -0.0796737, 0.12278
+Part.ViewZoomTo2 -0.147561, 0.152464, 0.12278, 0.108814, -0.0672858, 0.12278
+Part.ClearSelection
+Part.Save2 FALSE
+Part.SaveAs2 "C:\Michel\Base données techniques\Winch\Winch SW\winch.SLDASM", 0, FALSE, FALSE
+Set Part = Nothing
+swApp.CloseDoc "winch.SLDASM"
+Set Part = swApp.ActivateDoc ("tambour 5.SLDPRT")
+Part.ClearSelection
+Set Part = Nothing
+swApp.CloseDoc "tambour 5.SLDPRT"
+Set Part = swApp.ActivateDoc ("Part1")
+Set Part = swApp.OpenDoc ("C:\Michel\Base données techniques\Winch\Winch SW\tambour 5.SLDPRT", 1)
+Set Part = swApp.ActivateDoc ("tambour 5.SLDPRT")
+swApp.ActiveDoc.ActiveView.FrameWidth = 921
+swApp.ActiveDoc.ActiveView.FrameHeight = 560
+Part.ViewDisplayShaded
+Part.ShowNamedView2 "*Isométrique", 7
+Part.Save2 FALSE
+Set Part = Nothing
+swApp.CloseDoc "tambour 5.SLDPRT"
+Set Part = swApp.ActivateDoc ("Part1")
+Set Part = swApp.OpenDoc ("C:\Michel\Base données techniques\Winch\Winch SW\winch.SLDASM", 2)
+Set Part = swApp.ActivateDoc ("winch.SLDASM")
+swApp.ActiveDoc.ActiveView.FrameWidth = 900
+swApp.ActiveDoc.ActiveView.FrameHeight = 560
+Part.ShowNamedView2 "*Dessous", 6
+Part.ShowNamedView2 "*Isométrique", 7
+Set Part = Nothing
+swApp.CloseDoc "winch.SLDASM"
+Set Part = swApp.ActivateDoc ("Part1")
+Set Part = Nothing
+swApp.CloseDoc "Part1"
+swApp.ExitApp
+End Sub
