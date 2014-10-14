@@ -1,0 +1,48 @@
+' ******************************************************************************
+' swxJRNL.swj - journal recorded on 10/14/14 by JIPE
+' *****************************************************************************
+Dim swApp As Object
+Dim Part As Object
+Dim boolstatus As Boolean
+Dim longstatus As Long
+Dim Annotation As Object
+Dim Gtol As Object
+Dim DatumTag As Object
+Dim FeatureData As Object
+Dim Feature As Object
+Dim Component As Object
+Sub main()
+
+Set swApp = Application.SldWorks
+
+Set Part = swApp.OpenDoc4 ("G:\Github\CI_08_EtudeConception\Mecanismes\012_CompresseurClimatiseur\1994-compresseur-de-climatiseur-pour-automobile-dt-sw-2\compresseur.SLDASM", 2, 0, "", longstatus)
+Set Part = swApp.ActivateDoc ("compresseur.SLDASM")
+Part.WindowRedraw
+swApp.ActiveDoc.ActiveView.FrameWidth = 1765
+swApp.ActiveDoc.ActiveView.FrameHeight = 828
+swApp.ActiveDoc.ActiveView.FrameLeft = 0
+swApp.ActiveDoc.ActiveView.FrameTop = 0
+swApp.ActiveDoc.ActiveView.FrameState = 1
+swApp.ActiveDoc.ActiveView.FrameState = 1
+Part.ActiveView().TranslateBy 0, -0.000265887
+Part.ActiveView().TranslateBy 0, -0.00132943
+Part.ActiveView().TranslateBy -0.00106355, -0.00691305
+Part.ActiveView().TranslateBy -0.00159532, -0.00611539
+Part.ActiveView().TranslateBy -0.00106355, -0.00292475
+Part.ActiveView().TranslateBy -0.00372241, -0.00850837
+Part.ActiveView().TranslateBy -0.00319064, -0.00212709
+Part.ActiveView().TranslateBy -0.00611539, -0.00265887
+Part.ActiveView().TranslateBy -0.00265887, 0.000531773
+swApp.ActiveDoc.ActiveView.FrameState = 1
+swApp.ActiveDoc.ActiveView.FrameState = 1
+swApp.ActiveDoc.ActiveView.FrameState = 1
+swApp.ActiveDoc.ActiveView.FrameState = 1
+Part.ActiveView().TranslateBy 0, 0.000231652
+Part.ActiveView().TranslateBy 0.000231652, 0.00694957
+Part.ActiveView().TranslateBy 0.000463305, 0.00162157
+Part.ActiveView().TranslateBy 0, 0.00324313
+Part.ActiveView().TranslateBy 0, 0.00231652
+Part.ActiveView().TranslateBy 0.000231652, 0.000694957
+swApp.ActiveDoc.ActiveView.FrameState = 1
+swApp.ExitApp
+End Sub

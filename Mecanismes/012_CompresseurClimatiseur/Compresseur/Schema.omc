@@ -1,0 +1,42 @@
+<!DOCTYPE openMecaFile>
+<system>
+ <GlobalVar Echelle_Vit="1" SolverOption_AnnulerInertie="0" Echelle="0.032" SolverOption_EquilibreStatic ="0" Echelle_Acc="1" sceneCenterX="0" sceneCenterY="0" sceneCenterZ="0" SolverTypeIntegration="6" SolverOption_CheckPhase="0" Echelle_Force="1" Bati="A" AxisVisible="1" GrabForce="1" SolverTypeSolver="0" simulStep="0.01" Echelle_Torque="1" Echelle_VitRot="1" sceneRadius="0.5" gAccX="0" gAccY="0" gAccZ="0" simulEndTime="0" />
+ <SE>
+  <SE_1 centerMassY="0" InertiaExtraDiagZ="0" BColor="214" centerMassZ="0" InertiaDiagX="0" RColor="41" InertiaDiagY="0" Mass="0" InertiaDiagZ="0" Name="A" GColor="107" InertiaExtraDiagX="0" centerMassX="0" InertiaExtraDiagY="0" />
+  <SE_2 centerMassY="0" InertiaExtraDiagZ="0" BColor="169" centerMassZ="0" InertiaDiagX="0" RColor="235" InertiaDiagY="0" Mass="0" InertiaDiagZ="0" Name="B" GColor="44" InertiaExtraDiagX="0" centerMassX="0" InertiaExtraDiagY="0" />
+  <SE_3 centerMassY="0" InertiaExtraDiagZ="0" BColor="187" centerMassZ="0" InertiaDiagX="0" RColor="3" InertiaDiagY="0" Mass="0" InertiaDiagZ="0" Name="C" GColor="33" InertiaExtraDiagX="0" centerMassX="0" InertiaExtraDiagY="0" />
+  <SE_4 centerMassY="0" InertiaExtraDiagZ="0" BColor="95" centerMassZ="0" InertiaDiagX="0" RColor="239" InertiaDiagY="0" Mass="0" InertiaDiagZ="0" Name="D" GColor="95" InertiaExtraDiagX="0" centerMassX="0" InertiaExtraDiagY="0" />
+  <SE_5 centerMassY="0" InertiaExtraDiagZ="0" BColor="16" centerMassZ="0" InertiaDiagX="0" RColor="76" InertiaDiagY="0" Mass="0" InertiaDiagZ="0" Name="E" GColor="252" InertiaExtraDiagX="0" centerMassX="0" InertiaExtraDiagY="0" />
+ </SE>
+ <Liaison>
+  <Liaison_1 SpeParam="0.001" CenterX="-0.09" CenterY="0.05" CenterZ="0" Vec3X="-1" Vec3Y="0" Vec3Z="0" Type="6" Vec1X="0" SE1="A" Vec1Y="1" SE2="E" Vec1Z="0" LocalRepVisible="0" Name="Pivot glissant_1" Vec2X="0" Vec2Y="0" Vec2Z="-1" />
+  <Liaison_2 SpeParam="0.001" CenterX="0" CenterY="0" CenterZ="0" Vec3X="1" Vec3Y="0" Vec3Z="0" Type="5" Vec1X="0" SE1="A" Vec1Y="1" SE2="B" Vec1Z="0" LocalRepVisible="0" Name="Pivot_1" Vec2X="0" Vec2Y="0" Vec2Z="1" />
+  <Liaison_3 SpeParam="0.001" CenterX="-0.05" CenterY="0" CenterZ="0" Vec3X="-0.707107" Vec3Y="0.707107" Vec3Z="0" Type="5" Vec1X="0" SE1="B" Vec1Y="0" SE2="C" Vec1Z="-1" LocalRepVisible="0" Name="Pivot_2" Vec2X="-0.707107" Vec2Y="-0.707107" Vec2Z="0" />
+  <Liaison_4 SpeParam="0.001" CenterX="-0.07" CenterY="0" CenterZ="0" Vec3X="0" Vec3Y="-1" Vec3Z="0" Type="8" Vec1X="1" SE1="C" Vec1Y="0" SE2="A" Vec1Z="0" LocalRepVisible="0" Name="Rotule_1" Vec2X="0" Vec2Y="0" Vec2Z="1" />
+  <Liaison_5 SpeParam="0.001" CenterX="-0.05" CenterY="0.05" CenterZ="0" Vec3X="0" Vec3Y="-1" Vec3Z="0" Type="8" Vec1X="1" SE1="C" Vec1Y="0" SE2="D" Vec1Z="0" LocalRepVisible="0" Name="Rotule_2" Vec2X="0" Vec2Y="0" Vec2Z="1" />
+  <Liaison_6 SpeParam="0.001" CenterX="-0.07" CenterY="0.05" CenterZ="0" Vec3X="0" Vec3Y="-1" Vec3Z="0" Type="8" Vec1X="-1" SE1="E" Vec1Y="0" SE2="D" Vec1Z="0" LocalRepVisible="0" Name="Rotule_3" Vec2X="0" Vec2Y="0" Vec2Z="-1" />
+ </Liaison>
+ <PieceTige>
+  <PieceTige_1 SE="B" Parent="Pivot_1" Name="Tige_1" DirX="-0.000565685" DirY="-2.22045e-20" DirZ="-0.0294343" long="0.0294398" NextPoint="2" />
+  <PieceTige_2 SE="C" Parent="Rotule_2" Name="Tige_1" DirX="-0.02" DirY="1.11022e-17" DirZ="0.05" long="0.0538516" NextPoint="1" />
+  <PieceTige_3 SE="C" Parent="Rotule_1" Name="Tige_2" DirX="0.0313137" DirY="2.06806e-18" DirZ="0.0113137" long="0.0332949" NextPoint="1" />
+  <PieceTige_4 SE="D" Parent="Rotule_2" Name="Tige_1" DirX="-0.02" DirY="0" DirZ="0" long="0.02" NextPoint="1" />
+  <PieceTige_5 SE="E" Parent="Rotule_3" Name="Tige_1" DirX="0.02" DirY="0" DirZ="0" long="0.02" NextPoint="1" />
+ </PieceTige>
+ <PieceGeom/>
+ <Point/>
+ <Traj/>
+ <Vit/>
+ <VitRot/>
+ <Acc/>
+ <Force/>
+ <Torque/>
+ <MotorLaw>
+  <MotorLaw_1 NumLoop="1" TypeMvt="5" NameLiaison="Pivot_1" Units="2" TypeMvtLaw="1" >
+   <Law_1 Vo="1" Ao="0" Time="0" />
+  </MotorLaw_1>
+ </MotorLaw>
+ <ReactionLiaison/>
+ <DeplacementLiaison/>
+ <RotationLiaison/>
+</system>

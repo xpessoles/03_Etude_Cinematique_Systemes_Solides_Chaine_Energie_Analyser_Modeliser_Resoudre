@@ -1,0 +1,186 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={Cinématique - Modélisation des systèmes mécaniques},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+\usepackage{schemabloc}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\colorlet{shadecolor}{orange!15}
+
+\newtheorem{theorem}{Theorem}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=1.4cm]{png/logo_jh_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2011 -- 2012} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{Cours -- CI 7 : SLCI -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{Cours -- CI 1 : Cinématique}}
+}
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+\begin{center}
+ \huge\textsc{CI 2 -- Cinématique : Modélisation, prévision et vérification du comportement cinématiques des systèmes}
+\end{center}
+
+\begin{center}
+ \LARGE\textsc{Chapitre 1 -- Modélisation des systèmes mécaniques} 
+\end{center}
+
+\begin{center}
+ \Large\textsc{Système de climatisation d'une automobile} 
+\end{center}
+\vspace{.5cm}
+
+
+\section*{Mise en situation}
+\begin{minipage}[c]{.5\linewidth}
+Le système de climatisation d'une automobile permet
+d'obtenir à l'intérieur de l'habitacle une température
+agréable quelles que soient les conditions climatiques
+extérieures. Il est composé :
+\begin{itemize}
+\item d'un dispositif de chauffage qui réchauffe l'air pulsé
+à travers les éléments d'un radiateur alimenté par
+l'eau de refroidissement du moteur ;
+\item d'un dispositif de réfrigération qui refroidit l'air pulsé
+dans l'habitacle tout en lui retirant une partie de son
+humidité et de ses poussières.
+\end{itemize}
+Ce dispositif de réfrigération (voir figure 1) se
+compose principalement d'un compresseur 1, de deux
+échangeurs (un condenseur 2 et un évaporateur 5),
+d'un filtre receveur 3 et d'une soupape d'expansion 4
+qui fait fonction de détendeur.
+
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/compresseur}
+\end{center}
+\end{minipage}
+
+\vspace{.25cm}
+
+L'objet de cette étude est essentiellement le
+compresseur à pistons axiaux (voir document 1) intégré dans un système de réfrigération.
+
+\section*{Fonctionnement}
+\subsection*{Le système de réfrigération}
+Entraîné par le moteur thermique au moyen d'une courroie, le compresseur aspire le fluide réfrigérant à basse pression et à
+l'état gazeux, et le refoule à haute pression. Le fluide réfrigérant traverse alors le condensent, d'où il ressort à l'état liquide
+avant de passer dans le filtre. Celui-ci amortit les excès pendant les phases de charges variables et filtre les particules
+solides. La soupape d'expansion, réglée au montage et pilotée par une sonde, assure le débit et abaisse la pression du
+fluide à l'entrée de l'évaporateur.
+L'évaporateur a un rôle primordial. Le fluide réfrigérant qui le traverse absorbe la chaleur de l'air ambiant extérieur, qui est
+pulsé vers l'habitacle. L'air, qui pénètre à l'intérieur de l'habitacle, est donc refroidi. De plus la capacité réfrigérante de
+l'évaporateur permet la déshumidification de l'air, ce qui accroît notablement le bien-être dans l'habitacle. Le réglage de
+l'installation est tel que le fluide réfrigérant sort de l'évaporateur à l'état gazeux.
+
+\subsection*{Le compresseur}
+Le compresseur est représenté, sur le document 1, en coupe longitudinale dans le plan (C,x,y) fixe par rapport au corps 1. Il
+est composé de cinq pistons 13 identiques, de diamètre 35 mm, disposés axialement. Lorsque la bobine 18 de l'embrayage
+électromagnétique est alimentée, le champ magnétique fait adhérer la rondelle 20 sur la poulie 19 qui est alors en liaison
+encastrement avec l'arbre d'entrée 23. Le plateau came 2 et le plateau oscillant 3 transforment le mouvement de rotation
+continue de l'arbre d'entrée 23 en un mouvement de translation alternatif des pistons 13.
+
+\section*{Nomenclature}
+\begin{minipage}[c]{.46\linewidth}
+\begin{center}
+\begin{tabular}{|c|c|p{6cm}|}
+\hline 
+32 &1& Fourreau \\ \hline
+31 &5 &Vis HM 515 \\ \hline
+30 &1 &Goupille élastique \\ \hline
+29 &6 &Rondelle \\ \hline
+28 &6 &Rivet \\ \hline
+27 &1 &Circlips \\ \hline
+26 &1 &Rondelle butée \\ \hline
+25 &1 &Rondelle ressort \\ \hline
+24 &1 &Rondelle de réglage \\ \hline
+23 &1 &Arbre d'entrée \\ \hline
+22 &1 &Butée à aiguilles \\ \hline
+21 &1 &Moyeu \\ \hline
+20 &1 &Rondelle flasque d'embrayage \\ \hline
+19 &1 &Poulie d'entraînement \\ \hline
+18 &1 &Bobine \\ \hline
+17 &2 &Roulement à billes \\ \hline
+\textbf{Rep} & \textbf{Nb} & \textbf{Désignation} \\ \hline
+\end{tabular}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.46\linewidth}
+\begin{center}
+\begin{tabular}{|c|c|p{6cm}|}
+\hline 
+16 &1 &Couvercle moyeu \\ \hline
+15 &1 &Roulement à aiguilles \\ \hline
+14 &5 &Bielle \\ \hline
+13 &5 &Piston \\ \hline
+12 &1 &Clapet \\ \hline
+11 &1 &Culasse \\ \hline
+10& 1 &Clapet \\ \hline
+9 &1 &Couvercle de culasse \\ \hline
+8 &1 &Ressort \\ \hline
+7 &1 &Clavette \\ \hline
+6 &1 &Pignon fixe 17 dents \\ \hline
+5& 1 & Bille de poussée \\ \hline
+4& 1 &Roue conique 17 dents \\ \hline
+3& 1 &Plateau oscillant \\ \hline
+2& 2 &Plateau came \\ \hline
+1& 1 &Corps \\ \hline
+\textbf{Rep} & \textbf{Nb} & \textbf{Désignation} \\ \hline
+\end{tabular}
+\end{center}
+
+\end{minipage}
+\end{document}
