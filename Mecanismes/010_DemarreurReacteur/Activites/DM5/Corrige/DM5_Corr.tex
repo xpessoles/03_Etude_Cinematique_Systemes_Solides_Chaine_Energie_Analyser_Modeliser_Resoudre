@@ -1,0 +1,253 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={DM5 - Cinématique},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\usepackage{schemabloc}
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+
+
+\colorlet{shadecolor}{orange!15}
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2012 -- 2013} \\ J.-P. \textsc{Pupier} \& X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{DM 3} -- CI 2 : Cinématique \& CI 5 : Communication technique}
+}{%
+\fancyfoot[R]{\footnotesize{DM 3}}%-- CI 3 : Statique \& CI 6 : PPM}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+\begin{center}
+ \Large\textsc{Devoir Maison 5}
+\end{center}
+
+\begin{center}
+ \large\textsc{Éléments de corrigés} 
+\end{center}
+
+
+\vspace{0.5cm}
+
+
+\noindent\rule{\linewidth}{.2pt}
+\begin{center}
+ \large\textbf{CI 2} \textit{Cinématique : Modélisation, prévision et vérification du comportement cinématiques des systèmes. Loi E/S}
+
+ \large\textbf{CI 5} \textit{Communication technique : Schémas et géométrie des pièces, architecture des systèmes pluritechniques}
+\end{center}
+\noindent\rule{\linewidth}{.2pt}
+
+
+\vspace{0.5cm}
+
+
+\vspace{1cm}
+
+
+\noindent\rule{\linewidth}{.2pt}
+\begin{center}
+ \LARGE\textbf{\textsc{Démarreur de réacteur}}
+\end{center}
+\noindent\rule{\linewidth}{.2pt}
+
+\section*{Démarreur de réacteur}
+
+\section*{Travail demandé}
+
+\subsection*{Étude technologique et fonctionnelle}
+
+\paragraph{}
+\textit{Donner la désignation normalisée et le rôle de la pièce \textbf{67}.}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{68} ? Quelle est sa fonction ? Comment est-elle réalisée ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{63} ? Quelle est sa fonction ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{60}? Quelle est sa fonction ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{61} ? Quelle est sa fonction ? Comment est-elle réalisée ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{41} ? Quelle est sa fonction ? Comment assurer sa stabilité ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Comment est assurée la lubrification du système d'engrenages ? Quel est le rôle des pièces \textbf{19} et \textbf{37} ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{49} ? Quelle est sa fonction ? En quelle matière est-elle réalisée ?}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Quelle est la fonction du dispositif \textbf{55} dont le détail est représenté à l'échelle 2 ? Comment est-elle réalisée ? Quel est le rôle des pièces \textbf{54} et \textbf{55c}. Quel est le rôle de l'encoche sur la pièce \textbf{51}.}
+
+Voir annexe.
+
+\paragraph{}
+\textit{Quels types de matériaux doit-on respectivement choisir pour les pièces \textbf{10}, \textbf{11} et \textbf{46} ?}
+
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/10}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/11}
+\end{center}
+\end{minipage}
+
+\begin{center}
+\includegraphics[width=.45\textwidth]{png/46}
+\end{center}
+
+\paragraph{}
+\textit{Quel est la nature de la liaison entre la pièce \textbf{22} et l'ensemble des pièces liées au carter ? Quels sont les deux roulements qui la réalisent ? Comment est effectué l'arrêt axial ?}
+
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/22}
+\end{center}
+
+\paragraph{}
+\textit{Quelle est la nature de la liaison entre \textbf{42} et \textbf{40} ? Comment est-elle réalisée ?}
+
+\begin{center}
+\includegraphics[width=.45\textwidth]{png/42}
+\end{center}
+
+\paragraph{}
+\textit{Le mécanisme comprend une roue libre. Quel est son rôle ? Identifier les pièces principales qui la constituent.}
+
+Lorsque le réacteur est arrête, il est nécessaire qu'il soit entraîne par le démarreur pour démarrer. Lorsque le réacteur est allumé, il n'est plus nécessaire que le démarreur soit entraîné. Le roue libre permet de désaccoupler le démarreur et le réacteur lorsque ce dernier est lancé. 
+
+La pièce \textbf{(40)} est liée à la couronne \textbf{(42)} qui est mise en rotation par le train épicycloïdal (dont l'arbre d'entré est mis en rotation grâce au passage des gaz dans les turbines \textbf{(57)} et \textbf{(62)}). 
+
+L'arbre de sortie \textbf{(22)} est lié à l'arbre d'entrée du réacteur (non représenté) par cannelures.
+
+10 galets \textbf{(21)} sont interposés entre \textbf{(40)}  et \textbf{(22)}. 
+
+Lorsque la vitesse de rotation de l'arbre \textbf{(22)} est plus grande que la vitesse de rotation de l'arbre \textbf{(40)}, les galets se coincent dans la pente de le la pièce \textbf{(22)} sous le pression des ressorts \textbf{(72)} et des poussoirs \textbf{(71)}. On
+ réalise ainsi un accouplement entre les deux arbres. 
+
+\paragraph{}
+\textit{Quel est le rôle du système composé des pièces \textbf{71}, \textbf{72}, \textbf{73} ?}
+
+Suite à la question précédente, les pièces \textbf{71}, \textbf{72} et \textbf{73} permettent le fonctionnement de la roue libre. 
+
+
+
+
+\paragraph{}
+\textit{Quand le réacteur fonctionne en régime établi et que le turbomoteur de démarrage est arrêté, on souhaite que tout contact soit supprimé au niveau de la roue libre. Comment cela est-il réalisé ? Tracer le croquis d'un galet dans cette position.}
+
+Dans ces conditions, les galets tournent avec l'arbre  \textbf{(22)}. Sous l'effet de la force centrifuge, les galets sont propulsés vers l'extérieur, supprimant ainsi le contact avec l'arbre  \textbf{(42)}.
+
+\paragraph{}
+\textit{Le système comprend deux capteurs de vitesse \textbf{4} et \textbf{56}. Quelles indications donnent-ils respectivement et pourquoi sont-ils nécessaires tous les 2 ?}
+
+Le capteur 56 permet de mesurer la vitesse d'entrée du démarreur en comptant les tours sur les dents de l'écrou  \textbf{(59)}. 
+Le capteur 4 permet de mesurer la vitesse de sortie du démarreur en comptant les tours sur les dents de la couronne \textbf{(3)}. 
+
+\paragraph{}
+\textit{Établir le schéma cinématique minimal du démarreur. }
+
+\begin{center}
+\includegraphics[width=.75\textwidth]{png/schema}
+\end{center}
+
+\paragraph{}
+\textit{Réaliser, à main levée, le croquis de l'écrou \textbf{59}.}
+
+
+\begin{minipage}[c]{.35\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/59}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.6\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/porteS}
+
+\textit{Porte satellite -- Non demandé}
+\end{center}
+\end{minipage}
+
+
+
+\newpage
+
+\begin{center}
+\textbf{Annexes}
+
+\includegraphics[width=.85\textwidth]{png/fig1}
+\end{center}
+
+\begin{center}
+
+
+\includegraphics[width=.85\textwidth]{png/fig2}
+\end{center}
+\end{document}

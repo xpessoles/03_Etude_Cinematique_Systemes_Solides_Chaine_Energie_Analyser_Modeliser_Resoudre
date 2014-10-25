@@ -1,0 +1,186 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={DM5 - Cinématique},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\usepackage{schemabloc}
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+
+
+\colorlet{shadecolor}{orange!15}
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2012 -- 2013} \\ J.-P. \textsc{Pupier} \& X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{DM 3} -- CI 2 : Cinématique \& CI 5 : Communication technique}
+}{%
+\fancyfoot[R]{\footnotesize{DM 3}}%-- CI 3 : Statique \& CI 6 : PPM}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+\begin{center}
+ \Large\textsc{Devoir Maison 5}
+\end{center}
+
+\begin{center}
+ \large\textsc{A rendre le mercredi 5 décembre 2012} 
+\end{center}
+
+
+\vspace{0.5cm}
+
+
+\noindent\rule{\linewidth}{.2pt}
+\begin{center}
+ \large\textbf{CI 2} \textit{Cinématique : Modélisation, prévision et vérification du comportement cinématiques des systèmes. Loi E/S}
+
+ \large\textbf{CI 5} \textit{Communication technique : Schémas et géométrie des pièces, architecture des systèmes pluritechniques}
+\end{center}
+\noindent\rule{\linewidth}{.2pt}
+
+
+\vspace{0.5cm}
+
+
+\vspace{1cm}
+
+
+\noindent\rule{\linewidth}{.2pt}
+\begin{center}
+ \LARGE\textbf{\textsc{Démarreur de réacteur}}
+\end{center}
+\noindent\rule{\linewidth}{.2pt}
+
+\section*{Démarreur de réacteur}
+
+Le turbomoteur de réacteur a été conçu pour permettre la mise en route des réacteurs des avions à partir du poste de pilotage, sans que soit nécessaire l'utilisation de dispositifs d'assistance au sol. 
+
+
+\begin{center}
+\includegraphics[width=.5\textwidth]{png/bac}
+\end{center}
+
+Il est essentiellement constitué :
+\begin{itemize}
+\item d'une turbine à gaz, appelée générateur de gaz, équipée d'un moteur électrique de lancement;
+\item d'une turbine de puissance et d'un réducteur de vitesse appelés démarreur,
+\item des accessoires nécessaires à sa mise en \oe{}uvre et à son contrpole. 
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=.65\textwidth]{png/fig1}
+\end{center}
+
+Il permet d'amener le réacteur à une vitesse telle que l'allumage soit possible puis d'accompagner la mise en route jusqu'à une vitesse correspondant à un coule moteur sensiblement supérieur aux couples résistants. 
+
+Lorsque le réacteur atteint sa vitesse d'autonomie, l'alimentation en combustible est coupée et le démarreur se trouve automatiquement désaccouplé du réacteur. 
+
+Le démarreur, objet de l'étude est représenté en plan d'ensemble. Il est essentiellement composé d'une turbine à grande vitesse à deux roues \textbf{57} et \textbf{62} alimentée en $E$ par les gaz fournis par la turbine du générateur de gaz, d'un ensemble réducteur et d'une roue libre à galets débrayage automatiquement qui entraîne l'arbre de réacteur $S$.
+On s'intéresse au fonctionnement d'une pompe à main.
+
+
+\section*{Travail demandé}
+
+\subsection*{Étude technologique et fonctionnelle}
+
+\paragraph{}
+\textit{Donner la désignation normalisée et le rôle de la pièce \textbf{67}.}
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{68} ? Quelle est sa fonction ? Comment est-elle réalisée ?}
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{63} ? Quelle est sa fonction ?}
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{60}? Quelle est sa fonction ?}
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{61} ? Quelle est sa fonction ? Comment est-elle réalisée ?}
+
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{41} ? Quelle est sa fonction ? Comment assurer sa stabilité ?}
+
+\paragraph{}
+\textit{Comment est assurée la lubrification du système d'engrenages ? Quel est le rôle des pièces \textbf{19} et \textbf{37} ?}
+
+\paragraph{}
+\textit{Que représente la pièce \textbf{49} ? Quelle est sa fonction ? En quelle matière est-elle réalisée ?}
+
+\paragraph{}
+\textit{Quelle est la fonction du dispositif \textbf{55} dont le détail est représenté à l'échelle 2 ? Comment est-elle réalisée ? Quel est le rôle des pièces \textbf{54} et \textbf{55c}. Quel est le rôle de l'encoche sur la pièce \textbf{51}.}
+
+\paragraph{}
+\textit{Quels types de matériaux doit-on respectivement choisir pour les pièces \textbf{10}, \textbf{11} et \textbf{46} ?}
+
+\paragraph{}
+\textit{Quel est la nature de la liaison entre la pièce \textbf{22} et l'ensemble des pièces liées au carter ? Quels sont les deux roulements qui la réalisent ? Comment est effectué l'arrêt axial ?}
+
+\paragraph{}
+\textit{Quelle est la nature de la liaison entre \textbf{42} et \textbf{40} ? Comment est-elle réalisée ?}
+
+\paragraph{}
+\textit{Le mécanisme comprend une roue libre. Quel est son rôle ? Identifier les pièces principales qui la constituent.}
+
+\paragraph{}
+\textit{Quel est le rôle du système composé des pièce \textbf{71}, \textbf{72}, \textbf{73} ?}
+
+\paragraph{}
+\textit{Quand le réacteur fonctionne en régime établi et que le turbomoteur de démarrage est arrêté, on souhaite que tout contact soit supprimé au niveau de la roue libre. Comment cela est-il réalisé ? Tracer le croquis d'un galet dans cette position.}
+
+\paragraph{}
+\textit{Le système comprend deux capteurs de vitesse \textbf{4} et \textbf{56}. Quelles indications donnent-ils respectivement et pourquoi sont-ils nécessaires tous les 2 ?}
+
+\paragraph{}
+\textit{Établir le schéma cinématique minimal du démarreur. }
+
+\paragraph{}
+\textit{Réaliser, à main levée, le croquis de l'écrou \textbf{59}.}
+
+
+\end{document}

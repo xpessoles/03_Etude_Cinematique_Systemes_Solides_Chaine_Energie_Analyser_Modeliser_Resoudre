@@ -1,0 +1,144 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 8 : Analyse, Modélisation et Conception des systèmes mécaniques}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Exercice de colle -- Démarreur de réacteur
+}{Partie  -- }}
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+Xavier \textsc{Pessoles}}{}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 8 : Analyse, Modélisation et Conception des systèmes mécaniques\\
+Exercice de colle}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{}{}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
+
+
+\subsection*{Mise en situation}
+Le démarreur de réacteur est un turbomoteur. Son contexte et ses cas d'utilisations sont décrits partiellement dans les diagrammes ci-dessous :
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/contexte}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/uc}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.39\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/fig1}
+\end{center}
+\end{minipage}
+
+
+Le démarreur permet d'amener le réacteur à une vitesse telle que l'allumage soit possible puis d'accompagner la mise en route jusqu'à une vitesse correspondant à un couple moteur sensiblement supérieur aux couples résistants. 
+
+Lorsque le réacteur atteint sa vitesse d'autonomie, l'alimentation en combustible du générateur de gaz est coupée et le démarreur se trouve automatiquement désaccouplé du réacteur. 
+
+Le démarreur, objet de l'étude est représenté en plan d'ensemble. Il est essentiellement composé d'une turbine à grande vitesse à deux roues \textbf{57} et \textbf{62} alimentée en $E$ par les gaz fournis par la turbine du générateur de gaz, d'un ensemble réducteur et d'une roue libre à galets permettant de débrayer automatiquement l'arbre qui entraîne le réacteur $S$.
+
+
+\subsection*{Analyse du système}
+
+\subparagraph{}
+\textit{Identifier sur le plan d'ensemble :
+\begin{itemize}
+\item l'ensemble de pièces constituant le bâti;
+\item les pales et l'arbre assurant la mise en rotation le démarreur;
+\item l'arbre de sortie du démarreur;
+\item l'ensemble réducteur;
+\item la roue libre.
+\end{itemize}}
+
+\subparagraph{}
+\textit{Préciser le nom et les fonctions des pièces suivantes : \textbf{67}, \textbf{68}, \textbf{63}, \textbf{60}, \textbf{61}, \textbf{49}.}
+
+
+%\subparagraph{}
+%\textit{Que représente la pièce \textbf{41} ? Quelle est sa fonction ? Comment assurer sa stabilité ?}
+
+\subparagraph{}
+\textit{Comment est assurée la lubrification du système d'engrenages ? Quel est le rôle des pièces \textbf{19} et \textbf{37} ?}
+
+\subparagraph{}
+\textit{Quelle est la fonction du dispositif \textbf{55} dont le détail est représenté à l'échelle 2 ?
+% Comment est-elle réalisée ? 
+Quel est le rôle des pièces \textbf{54} et \textbf{55c}. Quel est le rôle de l'encoche sur la pièce \textbf{51}.}
+
+%\subparagraph{}
+%\textit{Quels types de matériaux doit-on respectivement choisir pour les pièces \textbf{10}, \textbf{11} et \textbf{46} ?}
+
+\subparagraph{}
+\textit{Quel est la nature de la liaison entre la pièce \textbf{22} et l'ensemble des pièces liées au carter ? Quels sont les deux roulements qui la réalisent ? Comment sont effectués les arrêts ?}
+
+\subparagraph{}
+\textit{Quelle est la nature de la liaison entre \textbf{42} et \textbf{40} ? Comment est-elle réalisée ?}
+
+\subparagraph{}
+\textit{Le mécanisme comprend une roue libre. Quel est son rôle ? Identifier les pièces principales qui la constituent.}
+
+\subparagraph{}
+\textit{Quel est le rôle du système composé des pièce \textbf{71}, \textbf{72}, \textbf{73} ?}
+
+\subparagraph{}
+\textit{Quand le réacteur fonctionne en régime établi et que le turbomoteur de démarrage est arrêté, on souhaite que tout contact soit supprimé au niveau de la roue libre. Comment cela est-il réalisé ? Tracer le croquis d'un galet dans cette position.}
+
+\subparagraph{}
+\textit{Le système comprend deux capteurs de vitesse \textbf{4} et \textbf{56}. Quelles indications donnent-ils respectivement et pourquoi sont-ils nécessaires tous les 2 ?}
+
+\subsection*{Modélisation du système}
+
+\subparagraph{}
+\textit{Établir le schéma cinématique minimal du démarreur.}
+
+\subparagraph{}
+\textit{Donner une méthode permettant de calculer le rapport de réduction du réducteur.}
+%\subparagraph{}
+%\textit{Réaliser, à main levée, le croquis de l'écrou \textbf{59}.}
+
+\end{document}
+
+
