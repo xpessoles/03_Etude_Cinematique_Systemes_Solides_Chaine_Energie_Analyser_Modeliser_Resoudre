@@ -1,0 +1,275 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={Cinématique - DM5},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\usepackage{schemabloc}
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\colorlet{shadecolor}{orange!15}
+
+\newtheorem{theorem}{Theorem}
+
+\newenvironment{theo}
+  {\begin{snugshade}\begin{leftbar}\begin{theorem}}
+  {\end{theorem}\end{leftbar}\end{snugshade}}
+
+
+\renewenvironment{leftbar}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=1.4cm]{png/logo_jh_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2011 -- 2012} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{DM 5 -- CI 2 : SLCI -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{DM 5 -- CI 2 : SLCI}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+\begin{center}
+ \Large\textsc{Devoir Maison 5}
+\end{center}
+
+\begin{center}
+ \large\textsc{Éléments de corrigés} 
+\end{center}
+
+\vspace{.25cm}
+
+\section{Mise en situation}
+	
+ 
+\section{Travail demandé}
+
+\paragraph{}
+\textit{Rechercher et expliquer ce que signifie le terme « pièces frettées ».}
+Le frettage est un procédé d'assemblage de pièces, notamment pour des pièces cylindriques.
+Dans ce procédé, l'arbre est plus grand que le moyeu. Afin d'assembler les deux pièces on chauffe le moyeu afin de le dilater ou on refroidit l'arbre afin de le contracter (ou les deux). La différence de température permet d'assembler les pièces. Une fois à même température, les pièces sont solidarisées.
+
+%\paragraph{}
+%\textit{Quel est le rôle de la pièce 38 ?}
+
+\paragraph{}
+\textit{Quels sont le nom et le rôle de la pièce 29 ?}
+
+La pièce 29 est une goupille cannelée. Elle permet de réaliser une liaison encastrement entre deux pièces, ici les pièces 30 et 48. 
+
+\paragraph{}
+\textit{Quel est le rôle, dans le fonctionnement de ce mécanisme, du ressort 5 ?}
+
+Le ressort 5 est un ressort de rappel. Lorsque le système n'est plus sous pression, le ressort permet de ramener le piston 10 vers la droite. 
+
+\paragraph{}
+\textit{Quel est le rôle du ressort 16 ?}
+
+\paragraph{}
+\textit{Rechercher ce que signifie précisément les désignations de matériaux donnés dans la nomenclature pour les pièces 5, 10, 38. Pour la pièce 10, vous expliciterez comment est déterminée la valeur 295. }
+
+La pièce 5 est en $C\;60$. C'est un acier pour traitement thermique avec 0,06\% de carbone.
+
+La pièce 10 est en $E\;295$. C'est un acier pour construction mécanique. La résistance élastique s'élève à $295 \; MPa$. Cette valeur est obtenue grâce à un essai de traction. 295 est la valeur maximale jusqu'à laquelle le matériau est élastique.
+
+La pièce 38 est un  $Cu\; Sn \; 8 \; Pb\; 15$. C'est un alliage de cuivre. Il comporte 8\% d'étain et 15\% de plomb.
+
+
+\paragraph{}
+\textit{Donner l'ensemble des opérations qui ont mené à la fabrication des pièces 1, 3, 27 et 39. (En partant d'un lopin ou d'un lingot de métal, en arrivant à la forme finie.)}
+
+La pièce 1 est composée de pans de tôle qui proviennent du laminage de l'acier. Ces pans sont alors soudés.
+
+La pièce 3 semble avoir été moulée puis usinée (en fraisage).
+
+La pièce 27 a probablement été forgée puis usinée (en perçage).
+
+La pièce 39 semble avoir été laminée puis usinée (en tournage).
+
+\subsection{Modélisation cinématique}
+\paragraph{}
+\textit{Déterminer les classes d'équivalence de ce mécanisme : pour ce faire, associer une couleur à chaque groupe défini, et « colorier » la vue de face en coupe A-A ainsi que les coupes B-B, C-C et D-D du plan d'ensemble. Faire également la liste des pièces par groupe et donner un nom a chaque groupe (utiliser le repère de la pièce principal du groupe).}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Nom & Numéro & Pièces \\
+\hline
+\hline
+Piston&		10&7,8,9,10,45,46,47\\
+Tige&		28&28\\
+Bras&			27&27,39,40,41\\
+Balancier&		21&21, axe C\\
+Bielle&		19&17,18,19,22\\
+Crochet&		20&20\\
+Galet	&	37&37,38\\
+Bâti&			1&1,2,3,4,6,11,23,24,25,26,29,30,33,(42),43,48\\
+Biellette&			15&12,13,14,15\\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{}
+\textit{Identifier les liaisons entre ces classes. Vous préciserez obligatoirement la nature des surfaces en contact, justifiant ainsi les liaisons déterminées. Donner le schéma plan et 3D des liaisons en respectant les couleurs choisies pour les classes d'équivalence de la question précédente. Le repère doit être identique pour tous les schémas.}
+		
+\begin{center}
+\begin{tabular}{|c|c|p{.2\textwidth}|c|c|}
+\hline
+Groupes en liaison & Surfaces en contact & Liaison \\
+\hline
+\hline
+10-1	&2 portions de cylindre& Pivot glissant d’axe $(A,\vect{x} )$ \\
+\hline
+10-28 &Cylindre + plan& Pivot d’axe $(B, \vect{z})$\\
+\hline
+28-27 &Cylindre + plan & Pivot d’axe $(C, \vect{z})$\\
+\hline
+27-21 & Cylindre + plan& Pivot d’axe $(C, \vect{z})$\\
+\hline
+27-1 &Cylindre + plan& Pivot d’axe $(D, \vect{z})$\\
+\hline
+21-37 &Cylindre + plan& Pivot d’axe $(F, \vect{z})$\\
+\hline
+37-20 &Cylindre et plan tangent& Linéaire rectiligne de normale $(J, \vect{v})$, de direction $\vect{z}$ \\
+\hline
+21-19 &Cylindre + plan& Pivot d’axe $(E, \vect{z})$\\
+\hline
+20-1 &Cylindre + plan& Pivot d’axe $(H,\vect{z} )$\\
+\hline
+20-15 &Cylindre + plan& Pivot d’axe $(G, \vect{z})$ \\
+\hline
+15-1&Cylindre&Linéaire annulaire d’axe $(I,  \vect{x})$\\
+\hline
+\end{tabular}
+\end{center}
+
+
+	
+\paragraph{}
+\textit{Effectuer le schéma cinématique plan de ce mécanisme, en couleurs (identiques aux classes d'équivalence) dans le plan de la coupe A-A, et à l'échelle du plan fourni.
+ Utilisez  le plan pour positionner les centres et les axes des liaisons 
+ Vous respecterez les solutions constructives choisies pour le mécanisme concernant les pièces qui seront considérées comme « axe » ou comme « alésage » de la liaison.}
+\begin{center}
+\includegraphics[width=.75\textwidth]{png/schema}
+\end{center}
+
+\paragraph{}
+\textit{Effectuer un paramétrage pour chacun des types de liaisons. (Par exemple, s'il existe 3 pivots et 2 rotules dans le dessin, vous n'effectuerez qu'un seul paramétrage pour une des pivots et 1 paramétrage pour une des rotules.}
+
+
+\paragraph{}
+\textit{Effectuer ce schéma en perspective, en couleur.
+ Son orientation est au choix.
+ On ne demande pas de respecter l'échelle, mais vous devez respecter les positions relatives des liaisons}
+
+\subsection{Étude technologique de certaines liaisons}
+
+\subsection*{Analyse de la 1\iere solution}
+
+\paragraph{}
+\textit{Préciser la nature de la liaison entre la tige de piston 28 et le piston 10 dans la solution 1 présentée ci-dessous et décrire sa réalisation technologique.}
+
+La liaison entre 28 et 10 est une liaison encastrement réalisée par soudage. 
+
+
+\paragraph{}
+\textit{A votre avis, quelle conséquence technique peut avoir le léger débattement angulaire de la tige 28 sur cette solution ? Justifier ainsi l'abandon de cette solution.}
+
+Cette solution ne permet pas le débattement angulaire de la tige 28. Cette solution technologique risquerait de provoquer le coincement du piston dans la chambre.
+
+\subsection*{Analyse de la 2\ieme solution}
+
+\paragraph{}
+\textit{Préciser la nature de la liaison entre la tige de piston 28 et le piston 10 dans cette solution 2.}
+
+Cette liaison est une rotule.
+
+\paragraph{}
+\textit{Cette liaison résout-elle le problème du débattement angulaire mis en évidence dans la 1ere solution ? Justifier votre réponse.}
+
+Cette liaison apporte du rotulage entre les deux pièces et évite ainsi le coincement du piston.
+
+
+\paragraph{}
+\textit{Quelle liaison a finalement été adoptée et quelle peut en être la raison ?}
+
+Pour des raisons de coût et de facilité de réalisation il a été choisi d'utiliser une liaison pivot.
+
+\subsection*{Analyse de la liaison 47/3}
+
+
+\paragraph{}
+\textit{En considérant qu'il n'y a aucun jeu possible,  quel modèle peut on proposer pour cette liaison.}
+
+Dans ce cas, la liaison est modélisable par une liaison pivot glissant d'axe $(A,\vect{x})$.
+
+\paragraph{}
+\textit{Considérons maintenant qu'un léger jeu existe, impliquant un rotulage possible entre ces deux pièces, autour de deux axes supplémentaires. Quel modèle devrait-on alors adopter.}
+
+Le rotulage ajoute 3 degrés de liberté en rotation à la liaison pivot glissant. La liaison est donc une linéaire annulaire (ou sphère cylindre) d'axe $(A,\vect{x})$.
+
+\paragraph{}
+\textit{L'usure observée au niveau de ce contact a tendance à augmenter ce jeu considérablement. Quelle solution simple pourriez vous proposer pour éviter cette usure.}
+ 
+Pour éviter l'usure des pièces, on peut utiliser un coussinet.
+
+
+\end{document}
