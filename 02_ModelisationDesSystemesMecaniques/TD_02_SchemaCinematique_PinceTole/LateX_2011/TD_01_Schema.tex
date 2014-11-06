@@ -1,0 +1,139 @@
+\documentclass[11pt,oneside]{article}
+\input{coursHeadings}
+
+\usepackage[%
+    pdftitle={TD Cinématique},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\colorlet{shadecolor}{orange!15}
+
+\newtheorem{theorem}{Theorem}
+
+\newenvironment{theo}
+  {\begin{snugshade}\begin{leftbar}\begin{theorem}}
+  {\end{theorem}\end{leftbar}\end{snugshade}}
+
+
+\renewenvironment{leftbar}[1][\hsize]
+{%
+    \def\FrameCommand
+    {%
+        {\color{bleuf}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{bleuc}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}
+{\endMakeFramed}
+
+
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{true}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\begin{minipage}[c]{1.6cm}
+\includegraphics[width=1.4cm]{png/logo_jh_ptsi.png}%
+\end{minipage}
+\rule{2cm}{.5pt}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ pour l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2011 -- 2012} \\ X. \textsc{Pessoles}}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{TD -- CI 2 : Cinématique -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{TD -- CI 2 : Cinématique}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+\begin{center}
+ \huge\textsc{CI 2 -- Cinématique : Modélisation, prévision et vérification du comportement cinématiques des systèmes}
+\end{center}
+
+\begin{center}
+ \LARGE\textsc{Chapitre 1 -- Modélisation des systèmes mécaniques} 
+\end{center}
+
+\begin{center}
+ \large\textsc{Robot manipulateur} 
+\end{center}
+
+Le plan d'ensemble proposé représente l'avant projet d'une pince de manutention d'un robot manipulateur, à une échelle réduite, en vue de face et en vue de gauche.
+Le carter 1 est solidaire d’une colonne de guidage dans laquelle se situe un vérin, qui par l’intermédiaire d’une bielle 2 fait pivoter la fourche 3 autour de l’axe 4. La tige 5 est alors entraînée en translation par l’intermédiaire de deux galets 6 et 6’, encastrés dans la fourche 3. Ceci permet le pincement de la tôle 11 entre le mors 7 et le carter 1. (Attention, la nomenclature donnée ci-dessous utilise l’ancienne désignation des matériaux).
+
+\begin{minipage}[c]{.5\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/img1}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.5\linewidth}
+On étudie le mécanisme en phase de serrage de la tôle en tenant compte des remarques suivantes.
+On considérera que les liaisons sont parfaites (sans jeu) sauf pour les cas suivants :
+\begin{itemize}
+\item au vu des jeux et des dimensions des pièces 2 et 3, on admettra que la liaison L2/3 est une linéaire annulaire d’axe $(D, \vect{z})$;
+\item il existe également un jeu axial important entre les pièces 5 et 7, qui autorise une légère translation suivant $\vect{z}$;
+\item on considérera qu’il y a un jeu entre les pièces \{6 ;6’\} et l’arbre 5, de telle sorte qu’on ne tiendra pas compte des éventuels contacts plans entre ces pièces.
+\end{itemize}
+\end{minipage}
+
+\paragraph{}
+\textit{Dans quel sens faut-il déplacer la tige du vérin 10 pour commander le serrage de la tôle ?}
+
+\paragraph{}
+\textit{Déterminer les classes d’équivalence de ce mécanisme (colorier le plan d’ensemble dans les deux vues, il n’est pas nécessaire d’écrire les listes de pièces par groupe).}
+
+\paragraph{}
+\textit{Identifier les liaisons et effectuer le graphe des liaisons (respecter les couleurs précédentes).}
+
+\paragraph{}
+\textit{Tracer le schéma cinématique plan  du mécanisme : en vue de face, dans la position représentée sur le plan d’ensemble, et à l’échelle de ce plan.}
+
+\paragraph{}
+\textit{Tracer le schéma cinématique spatial  en perspective cavalière.}
+
+\begin{center}
+\includegraphics[width=\textwidth]{png/plan}
+\end{center}
+
+\end{document}
