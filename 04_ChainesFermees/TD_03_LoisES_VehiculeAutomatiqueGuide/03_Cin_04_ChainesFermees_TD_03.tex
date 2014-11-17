@@ -1,0 +1,294 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\newif\ifprof
+%\proftrue
+\proffalse
+
+\newboolean{td}
+\setboolean{td}{true}
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{CI 3 -- CIN : Étude du comportement cinématique des systèmes}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 4 -- Étude des chaînes fermées : Détermination des lois Entrée -- Sortie}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent Xavier \textsc{Pessoles}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 4 : Cinématique \\
+Ch 4 : Chaînes fermées -- Lois entrée -- sortie -- TD -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Xavier \textsc{Pessoles}}{
+Informatique - Cours}}
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+
+
+%\renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+\begin{comp}
+\noindent \textbf{Résoudre :} à partir des modèles retenus :
+\begin{itemize}
+\item choisir une méthode de résolution analytique, graphique, numérique;
+\item mettre en \oe{}uvre une méthode de résolution.
+\end{itemize}
+
+\noindent \textit{Rés -- C1.1 :} Loi entrée sortie géométrique et cinématique -- Fermeture géométrique.
+
+%\noindent \textit{Mod2 -- C4.1 :} Représentation par schéma bloc.
+\end{comp}
+
+\section*{Simulateur de conduite}
+
+\begin{flushright}
+\textit{D'après concours CCP -- PSI -- 2014.}
+\end{flushright}
+
+
+
+
+\begin{minipage}[c]{.7\linewidth}
+Les simulateurs de conduite sont peuvent être utilisés pour des travaux de recherche (comportement humain dans différents contextes de conduite, aider à la conception d'un véhicule ...) pour aider à l'apprentissage de la conduite à moindre coût ou encore dans le cadre de jeux vidéos. Le simulateur présenté ici est développé par la société SimXperience. 
+\begin{obj} 
+
+On s'intéresse à la restitution des sensations de mouvement par le système et en particulier les mouvements de tangages. Pour cela, on désire savoir si la structure mécanique adoptée permettra d'autoriser les débattements imposés par le cahier des charges. 
+\end{obj}
+
+
+ 
+\end{minipage} \hfill
+\begin{minipage}[c]{.25\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Simulateur1}
+\end{center}
+\end{minipage}
+
+\ifprof
+\else
+ On donne un extrait du cahier des charges.
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/uc}
+
+\textit{Diagramme des cas d'utilisation}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/ct}
+
+\textit{Diagramme de contexte}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.38\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/req}
+
+\textit{Diagramme partiel des exigences}
+\end{center}
+\end{minipage}
+
+
+
+On ne s'intéresse qu'au mouvement de tangage. Dans ces conditions, les deux vérins présentés sur le système réel ci-dessous sont modélisables par un vérin équivalent dont on donne la modélisation plane équivalente. Sur le paramétrage donné sur la figure,  $\alpha$ est l’angle de tangage du siège par rapport au châssis.
+
+\begin{minipage}[c]{.33\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Simulateur2}
+
+\textit{Système réel}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.63\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Simulateur3}
+
+\textit{Modélisation plane}
+\end{center}
+\end{minipage}
+
+\vspace{.25cm}
+
+La cinématique retenue pour le simulateur est basée sur une structure articulée permettant
+deux degrés de liberté par l’intermédiaire de deux vérins linéaires asservis. On désigne par \textbf{(3a)}
+et \textbf{(3b)} les corps des vérins en liaison sphérique avec le châssis noté \textbf{(0)}, \textbf{(2a)} et \textbf{(2b)} les tiges
+des vérins en liaison sphérique avec le siège noté \textbf{(1)}, lui même en liaison avec le châssis. Les
+tiges des vérins sont en liaison glissière avec les corps des vérins. La liaison entre le siège et le
+châssis est réalisée par un joint de cardan \textbf{(C)} qui autorise deux rotations (selon les axes $(O,\vect{x_0})$ et $(O,\vect{y_0})$).
+
+\fi
+\subparagraph{}
+\textit{Réaliser le graphe de liaisons de la structure articulée (système réel). }
+\ifprof
+\begin{corrige}
+\begin{center}
+\includegraphics[width=.4\textwidth]{images/Corr_01}
+\end{center}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique 3D de la structure articulée en vous aidant du tracé ci-dessous.}
+\ifprof
+\begin{corrige}
+\begin{center}
+\includegraphics[width=.4\textwidth]{images/Corr_02}
+\end{center}
+
+\end{corrige}
+\else
+\begin{center}
+\includegraphics[width=.6\textwidth]{images/Simulateur4}
+\end{center}
+\fi
+
+\subparagraph{}
+\textit{Exprimer $\lambda$ en fonction de $\alpha$ et des dimensions constantes du système.} 
+\ifprof
+\begin{corrige}
+Écrivons la fermeture vectorielle dans le triangle $ABO$ :
+$$
+\vect{OA} + \vect{AB} + \vect{BO} = \vect{0}  \Leftrightarrow  
+h\vect{z_1} - \lambda(t) \vect{x_3} + L\vect{x_0} = \vect{0}
+$$
+
+En projetant l'équation vectorielle sur $\vect{x_0}$ et $\vect{z_0}$ on obtient : 
+$$
+\left\{
+\begin{array}{l}
+h\vect{z_1}\cdot\vect{x_0} - \lambda(t) \vect{x_3}\cdot\vect{x_0} + L\vect{x_0}\cdot\vect{x_0} = 0 \\
+h\vect{z_1}\cdot\vect{z_0} - \lambda(t) \vect{x_3}\cdot\vect{z_0} + L\vect{x_0}\cdot\vect{z_0} = 0
+\end{array}
+\right.
+\Leftrightarrow
+\left\{
+\begin{array}{l}
+h\cos\left(\dfrac{\pi}{2} - \alpha(t)\right) - \lambda(t) \cos(t)\beta + L = 0 \\
+h\cos\alpha(t) - \lambda(t) \cos\left(\dfrac{\pi}{2} + \beta(t)\right)  = 0
+\end{array}
+\right.
+$$
+
+$$
+\Leftrightarrow
+\left\{
+\begin{array}{l}
+h\sin \alpha(t) - \lambda(t) \cos\beta(t) + L = 0 \\
+h\cos\alpha(t) + \lambda(t) \sin\beta(t)  = 0
+\end{array}
+\right.
+$$
+
+On souhaite supprimer l'angle $\beta$; donc :
+$$
+\left\{
+\begin{array}{l}
+\lambda(t) \cos\beta(t) = h\sin \alpha(t)  + L \\
+\lambda(t) \sin\beta(t)  = - h\cos\alpha(t) 
+\end{array}
+\right.
+\Longrightarrow
+\lambda(t)^2 = h^2 \sin^2 \alpha(t) + L^2 + 2 h L \sin\alpha(t) + h^2 \cos^2\alpha(t)
+$$
+
+On a donc : 
+$$
+\lambda(t)^2 = h^2 + L^2 + 2 h L \sin\alpha(t)  \Longrightarrow
+\lambda(t) = \sqrt{h^2 + L^2 + 2 h L \sin\alpha(t)}
+$$
+\end{corrige}
+
+\else
+\fi
+
+\ifprof
+\else
+On donne ci-dessous les courbes obtenues à partir des deux relations
+déterminées précédemment. Lorsque l’assise du siège est horizontale, l’angle $\alpha$ est nul, le vérin
+est alors à mi course (la longueur $\lambda$ est de 0,99 m). La course du vérin équivalent est de $0,15\; m$,
+lambda peut donc varier de $\pm\, 0,075\;m$ autour de $0,99\; m$. 
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/Simulateur5}
+\end{center}
+\fi
+
+\subparagraph{}
+\textit{Déterminer le débattement angulaire et comparer la valeur obtenue à celle du cahier des charges.}
+\ifprof
+\begin{corrige}
+Lorsque $\lambda$ varie de 0,0915 m à 1,065 m, $\alpha$ varie de -9 degrés à +9 degrés. Le cahier des charges imposant un débattement de $\pm$ 15 degrés, le cahier des charges n'est donc pas vérifié. 
+\end{corrige}
+\else
+\fi
+
+
+On approche les deux courbes du par des droites au voisinage de $\alpha=0\textdegree$ : 
+$\lambda = \lambda_0+K_\alpha \alpha$ et 
+$\beta = \beta_0+K_\beta \alpha$.
+
+\subparagraph{}
+\textit{En utilisant les courbes précédentes, donner les valeurs numériques de $K_\alpha$, $K_\beta$ et $\beta_0$. Conserver les unités définies sur les figures.}
+\ifprof
+\begin{corrige}
+En traçant les deux courbes sur Excel et en faisant une regression linéaire on obtient la figure suivante :
+\begin{center}
+\includegraphics[width=.85\textwidth]{images/Courbes.png}
+\end{center}
+
+%$$=DEGRES\dfrac{-(H1*COS(RADIANS(A2))}{H1*SIN(RADIANS(A2))+H1)}$$
+On a donc en faisant afficher les coefficients : 
+\begin{itemize}
+\item $\lambda_0 = 0,9849\; m$;
+\item $K_\alpha = 0,0086\; m/\text{\textdegree}$;
+\item $\beta_0 = -45 \text{\textdegree}$:
+\item $K_\beta = 0,5 $.
+\end{itemize}
+\end{corrige}
+\else
+\fi
+
+\end{document}
+
