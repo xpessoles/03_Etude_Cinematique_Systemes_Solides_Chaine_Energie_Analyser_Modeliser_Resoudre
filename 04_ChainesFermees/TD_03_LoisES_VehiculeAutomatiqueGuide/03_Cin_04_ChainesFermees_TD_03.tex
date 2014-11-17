@@ -11,7 +11,7 @@
 \setboolean{xp}{true}
 
 \newboolean{prof}
-\setboolean{prof}{true}
+\setboolean{prof}{false}
 
 \newif\ifprof
 %\proftrue
@@ -21,7 +21,7 @@
 \setboolean{td}{true}
 
 \usepackage[%
-    pdftitle={},
+    pdftitle={CI3 - CIN - },
     pdfauthor={Xavier Pessoles},
     colorlinks=true,
     linkcolor=blue,
@@ -78,20 +78,19 @@ Informatique - Cours}}
 %\noindent \textit{Mod2 -- C4.1 :} Représentation par schéma bloc.
 \end{comp}
 
-\section*{Simulateur de conduite}
+\section*{Véhicule auto guidé}
 
 \begin{flushright}
-\textit{D'après concours CCP -- PSI -- 2014.}
+\textit{D'après ATS -- 2014.}
 \end{flushright}
 
 
 
 
 \begin{minipage}[c]{.7\linewidth}
-Les simulateurs de conduite sont peuvent être utilisés pour des travaux de recherche (comportement humain dans différents contextes de conduite, aider à la conception d'un véhicule ...) pour aider à l'apprentissage de la conduite à moindre coût ou encore dans le cadre de jeux vidéos. Le simulateur présenté ici est développé par la société SimXperience. 
+***
 \begin{obj} 
-
-On s'intéresse à la restitution des sensations de mouvement par le système et en particulier les mouvements de tangages. Pour cela, on désire savoir si la structure mécanique adoptée permettra d'autoriser les débattements imposés par le cahier des charges. 
+***
 \end{obj}
 
 
@@ -99,7 +98,7 @@ On s'intéresse à la restitution des sensations de mouvement par le système et
 \end{minipage} \hfill
 \begin{minipage}[c]{.25\linewidth}
 \begin{center}
-\includegraphics[width=\textwidth]{images/Simulateur1}
+%\includegraphics[width=\textwidth]{images/Simulateur1}
 \end{center}
 \end{minipage}
 
@@ -109,186 +108,153 @@ On s'intéresse à la restitution des sensations de mouvement par le système et
 
 \begin{minipage}[c]{.3\linewidth}
 \begin{center}
-\includegraphics[width=\textwidth]{images/uc}
+%\includegraphics[width=\textwidth]{images/uc}
 
 \textit{Diagramme des cas d'utilisation}
 \end{center}
 \end{minipage} \hfill
 \begin{minipage}[c]{.3\linewidth}
 \begin{center}
-\includegraphics[width=\textwidth]{images/ct}
+%\includegraphics[width=\textwidth]{images/ct}
 
 \textit{Diagramme de contexte}
 \end{center}
 \end{minipage} \hfill
 \begin{minipage}[c]{.38\linewidth}
 \begin{center}
-\includegraphics[width=\textwidth]{images/req}
+%\includegraphics[width=\textwidth]{images/req}
 
 \textit{Diagramme partiel des exigences}
 \end{center}
 \end{minipage}
 
+Le respect des conditions de sécurité pour la circulation des chariots à proximité du personnel de l'hôpital nécessite de maîtriser les trajectoires de déplacements du VAG.
+
+\begin{obj}
+Les objectifs de cette partie sont les suivants :
+\begin{itemize}
+\item étudier le comportement en virage du chariot par une approche géométrique et valider la solution retenue;
+\item vérifier et ajuster les performances de la boucle de régulation de direction.
+\end{itemize}
+\end{obj}
+
+Le schéma cinématique incomplet suivant (Figure 14) montre l’architecture du système d’orientation des roues arrière et avant :
+
+Un moteur électrique (non représenté) permet la rotation simultanée des roue arrière \textbf{(1)} et avant \textbf{(4)} autour des axes $\left(A,\vect{y} \right)$ et $\left(C,\vect{y} \right)$ respectivement. L’arbre moteur est \textbf{(14)}. Par l’intermédiaire d’un réducteur de rapport de réduction $k_1$ (non représenté ci-dessus), l’arbre moteur entraîne un satellite, noté \textbf{(11)}. Ce dernier, engrène avec la roue solidaire du carter \textbf{(5)}. Pour la suite la roue sera aussi notée \textbf{(5)}. Le stator du moteur est lié à \textbf{(6)}, qui joue le rôle de porte satellite et transmet la puissance nécessaire à l’orientation de la roue arrière, et à la roue avant, par l’intermédiaire de la biellette \textbf{(12)} et de l’axe \textbf{(13)}.
+
+Afin d’assurer la stabilité du chariot en virage pour éviter tout accident, le dérapage en glissement au niveau des roue doit être limité.
+
+La figure suivante (Figure 15) montre le système d’orientation dans deux positions : la figure de gauche montre les roues lorsque le VAG avance en ligne droite, la seconde lorsque le VAG est en virage :
+ 
+Figure 15  Système d’orientation des roues vu de dessus
+Partie 2.1 : Etude de la relation entrée/sortie du mécanisme d’orientation des roues
+
+\begin{obj}
+L’objectif de cette partie est de déterminer la relation entrée / sortie du système d’orientation des roues afin de valider la solution constructeur.
+
+Une étude préliminaire montre que, pour qu’il n’y ait pas de glissement en virage au niveau des roues, les deux roues doivent être orientées d’un même angle $\alpha_1 = \alpha_4$.
+\end{obj}
+
+Afin de déterminer la relation entre les angles d’orientations des roues arrière et avant, on adopte la modélisation suivante :
+ 
+Figure 16 Schéma cinématique simplifié du système d’orientation des roues vu de dessus
+
+Ce schéma cinématique représente le système d’orientation simplifié (vue de dessus du chariot), muni du paramétrage suivant :
+\begin{itemize}
+\item le repère $\mathcal{R}\left(\vect{x},\vect{y},\vect{z} \right)$ est attaché au carter \textbf{(5)} du VAG;
+\item la pièce \textbf{(6)} est en liaison pivot d’axe $\left(K,\vect{y} \right)$ avec \textbf{(5)}. On y attache le repère : $\mathcal{R}_1\left(\vect{x_1},\vect{y},\vect{z_1} \right)$    et on a $\alpha_2 =\left(\vect{x_1},\vect{x} \right)=\left( \vect{z_1},\vect{z} \right)$;
+\item la biellette \textbf{(12)} est en liaison rotule de centre $L$ avec \textbf{(6)} d’une part, et en liaison rotule de centre $M$ avec \textbf{(13)} d’autre part. On y attache le repère $\mathcal{R}_{12}$ et on a $\beta=\left(\vect{x_{12}},\vect{x} \right)=\left( \vect{z_{12}},\vect{z} \right)$;
+\item la pièce \textbf{(13)} est en liaison pivot d’axe $\left(N,\vect{y}\right)$ avec \textbf{(5)}. On y attache le repère $\mathcal{R}_{13}$ et on a : $\alpha_4=\left(\vect{x},\vect{x_4} \right)=\left( \vect{z},\vect{z_4} \right)$.
+\end{itemize}
+Les autres données utiles à l’étude sont :
+\begin{itemize}
+\item $\vect{LK}=L_1 \vect{z_1} $ avec $L_1 = 98\;mm$;
+\item $\vect{LM}=L_2 \vect{x_{12}}$ avec $L_2 = 1\,060\;mm$;
+\item $\vect{NM}=L_1 \vect{z_4}$;
+\item $\vect{KN}=L_3 \vect{x}$ avec $L_3=1\,042\; mm$.
+\end{itemize}
+On donne ci-dessous les figures géométrales pour les projections :
+ 
+Figure 17 Figures géométrales
+
+L’objectif étant de trouver la relation entre $\alpha_1$ et $\alpha_4$, on se propose d’exploiter la fermeture géométrique $K-N-M-L-K$.
+
+\subparagraph{}\textit{En exploitant la fermeture géométrique proposée, déterminer les deux équations scalaires liant $\alpha_1$, $\alpha_4$ et $\beta$, issues de la projection sur 
+$\vect{x}$ et  $\vect{z}$.}
+ 
+\subparagraph{}\textit{En manipulant judicieusement les deux équations précédemment obtenues, donner la relation entre $\alpha_1$ et $\alpha_4$ et montrer qu’elle peut se mettre sous la forme suivante :}
+$$
+A\cos\alpha_4 - B\sin\alpha_4 = C
+$$
+Avec :
+\begin{itemize}
+\item $A = 2L_1^2 \cos\alpha_1$;
+\item $B = 2\left(L_1^2 \sin\alpha_1 -L_1L_3\right)$;
+\item $C = L_2^2 -2L_1^2 -L_3^2 + 2L_1L_3\sin\alpha_1$.
+\end{itemize}
+	 
+Ces relations pourront être admises par la suite.
+
+ Le terme $A^2+B^2$ ne s’annulant jamais, la relation précédente peut aussi s’écrire :
+ $$
+ \dfrac{A}{\sqrt{A^2+B^2}} \cos\alpha_4 -  \dfrac{B}{\sqrt{A^2+B^2}} \sin\alpha_4
+ =
+  \dfrac{C}{\sqrt{A^2+B^2}} 
+ $$
+ 
+ On pose $\cos\theta =  \dfrac{A}{\sqrt{A^2+B^2}} $ et $\sin\theta =  \dfrac{B}{\sqrt{A^2+B^2}} $. 
 
 
-On ne s'intéresse qu'au mouvement de tangage. Dans ces conditions, les deux vérins présentés sur le système réel ci-dessous sont modélisables par un vérin équivalent dont on donne la modélisation plane équivalente. Sur le paramétrage donné sur la figure,  $\alpha$ est l’angle de tangage du siège par rapport au châssis.
+\subparagraph{}\textit{Exprimer $\alpha_4$ en fonction de $\theta$, $A$, $B$ et $C$.}
 
-\begin{minipage}[c]{.33\linewidth}
-\begin{center}
-\includegraphics[width=\textwidth]{images/Simulateur2}
+L’expression obtenue montre une relation non linéaire entre $\alpha_1$ et $\alpha_4$ et par conséquent la condition de roulement sans glissement pour chaque roue, en virage n’est pas strictement respectée.
 
-\textit{Système réel}
-\end{center}
-\end{minipage} \hfill
-\begin{minipage}[c]{.63\linewidth}
-\begin{center}
-\includegraphics[width=\textwidth]{images/Simulateur3}
+Cependant, on donne sur le document réponse DR1 la courbe représentative de $\alpha_4$ en fonction de $\alpha_1$, pour $\alpha_1$ variant de 0\textdegree à 50\textdegree.
 
-\textit{Modélisation plane}
-\end{center}
-\end{minipage}
+\subparagraph{}\textit{Tracer en vert, sur le document réponse DR1, la courbe  représentant l’angle $\alpha_{41}$ idéal désiré qui respecte la condition de roulement sans glissement, c'est-à-dire $\alpha_{41}=\alpha_1$. Commenter.}
 
-\vspace{.25cm}
 
-La cinématique retenue pour le simulateur est basée sur une structure articulée permettant
-deux degrés de liberté par l’intermédiaire de deux vérins linéaires asservis. On désigne par \textbf{(3a)}
-et \textbf{(3b)} les corps des vérins en liaison sphérique avec le châssis noté \textbf{(0)}, \textbf{(2a)} et \textbf{(2b)} les tiges
-des vérins en liaison sphérique avec le siège noté \textbf{(1)}, lui même en liaison avec le châssis. Les
-tiges des vérins sont en liaison glissière avec les corps des vérins. La liaison entre le siège et le
-châssis est réalisée par un joint de cardan \textbf{(C)} qui autorise deux rotations (selon les axes $(O,\vect{x_0})$ et $(O,\vect{y_0})$).
+L’écart entre les courbes est une fonction croissante de $\alpha_1$ : plus l’angle $\alpha_1$ de la roue arrière augmente, plus l’angle $\alpha_1$ de la roue avant s’éloigne de sa valeur idéale.
 
-\fi
-\subparagraph{}
-\textit{Réaliser le graphe de liaisons de la structure articulée (système réel). }
-\ifprof
-\begin{corrige}
-\begin{center}
-\includegraphics[width=.4\textwidth]{images/Corr_01}
-\end{center}
-\end{corrige}
-\else
-\fi
+Pour la suite, on note $\Delta$ l’écart entre l’angle idéal $\alpha_{41}$ et l’angle réel obtenu $\alpha_4$, soit $\Delta = \alpha_{4} - \alpha_{41}$.
+
+La recherche de l’écart maximal $\Delta_{\text{max}}$ nécessite de déterminer l’angle de rotation maximal de la roue avant noté $\alpha_{\text{max}}$.
+
+En phase d’utilisation, le VAG parcourt des trajets qui sont des successions de portions de lignes droites et de portions circulaires. Plus le rayon des portions circulaires est faible, plus les roues du VAG doivent pivoter. Le plus petit rayon relevé sur le trajet au CHU de Dijon est $R_{\text{min}} = 908\;mm$.
+
+On se propose de déterminer l’angle $\alpha_{\text{max}}$ qui permet au VAG de décrire un cercle de rayon $R_{\text{min}}$. On fera l’hypothèse suivante : au regard des résultats de la Q32, on peut admettre en première approche que $\alpha_4\simeq\alpha_1$  et donc $\alpha_{\text{4max}} \simeq\alpha_{\text{1max}}$.
+
+La Figure 18 représente partiellement le VAG, vu de dessus, lorsqu’il décrit un cercle de rayon $R_{\text{min}}$ :
+ 
+Figure 18 Schématisation retenue lors d’un virage
+
+On pose $\vect{||\vect{AC}||}=2a = L_3 =1\,042\; mm$. Le cercle passe par les points $A$ et $C$ et les axes des roues du VAG s’intersectent tous au centre $P$ du cercle de rayon $R_{\text{min}}$.
+
+\subparagraph{}\textit{Par une approche géométrique, exprimer $\alpha_{\text{1max}}$ en fonction de $R_\text{min}$ et $a$. Puis réaliser l’application numérique. Un résultat en degrés est attendu.}
+\subparagraph{}\textit{Sur le document réponse DR1, tracer en rouge l’erreur maximale  correspondant à l’angle $\alpha_{1\text{max}}$ trouvé précédemment. Calculer alors l’écart maximal relatif en pourcent (\%) noté $\Delta\%\text{max} = \Delta\text{max}/\alpha1\text{max}$.}
+
+Une erreur maximale relative de 15\% est admise pour garantir un bon comportement en virage du VAG et limiter le glissement entre les roues et le sol.
+
+\subparagraph{}\textit{Conclure quant au respect du cahier des charges au regard de la condition de roulement sans glissement en virage et justifier succinctement le choix du constructeur. Proposer, en une ligne, une autre solution qui permettrait d’orienter la roue avant du VAG en fonction de l’orientation de sa roue arrière.}
+
+
+
 
 \subparagraph{}
 \textit{Réaliser le schéma cinématique 3D de la structure articulée en vous aidant du tracé ci-dessous.}
 \ifprof
 \begin{corrige}
 \begin{center}
-\includegraphics[width=.4\textwidth]{images/Corr_02}
+%\includegraphics[width=.4\textwidth]{images/Corr_02}
 \end{center}
 
 \end{corrige}
 \else
 \begin{center}
-\includegraphics[width=.6\textwidth]{images/Simulateur4}
+%\includegraphics[width=.6\textwidth]{images/Simulateur4}
 \end{center}
 \fi
 
-\subparagraph{}
-\textit{Exprimer $\lambda$ en fonction de $\alpha$ et des dimensions constantes du système.} 
-\ifprof
-\begin{corrige}
-Écrivons la fermeture vectorielle dans le triangle $ABO$ :
-$$
-\vect{OA} + \vect{AB} + \vect{BO} = \vect{0}  \Leftrightarrow  
-h\vect{z_1} - \lambda(t) \vect{x_3} + L\vect{x_0} = \vect{0}
-$$
-
-En projetant l'équation vectorielle sur $\vect{x_0}$ et $\vect{z_0}$ on obtient : 
-$$
-\left\{
-\begin{array}{l}
-h\vect{z_1}\cdot\vect{x_0} - \lambda(t) \vect{x_3}\cdot\vect{x_0} + L\vect{x_0}\cdot\vect{x_0} = 0 \\
-h\vect{z_1}\cdot\vect{z_0} - \lambda(t) \vect{x_3}\cdot\vect{z_0} + L\vect{x_0}\cdot\vect{z_0} = 0
-\end{array}
-\right.
-\Leftrightarrow
-\left\{
-\begin{array}{l}
-h\cos\left(\dfrac{\pi}{2} - \alpha(t)\right) - \lambda(t) \cos(t)\beta + L = 0 \\
-h\cos\alpha(t) - \lambda(t) \cos\left(\dfrac{\pi}{2} + \beta(t)\right)  = 0
-\end{array}
-\right.
-$$
-
-$$
-\Leftrightarrow
-\left\{
-\begin{array}{l}
-h\sin \alpha(t) - \lambda(t) \cos\beta(t) + L = 0 \\
-h\cos\alpha(t) + \lambda(t) \sin\beta(t)  = 0
-\end{array}
-\right.
-$$
-
-On souhaite supprimer l'angle $\beta$; donc :
-$$
-\left\{
-\begin{array}{l}
-\lambda(t) \cos\beta(t) = h\sin \alpha(t)  + L \\
-\lambda(t) \sin\beta(t)  = - h\cos\alpha(t) 
-\end{array}
-\right.
-\Longrightarrow
-\lambda(t)^2 = h^2 \sin^2 \alpha(t) + L^2 + 2 h L \sin\alpha(t) + h^2 \cos^2\alpha(t)
-$$
-
-On a donc : 
-$$
-\lambda(t)^2 = h^2 + L^2 + 2 h L \sin\alpha(t)  \Longrightarrow
-\lambda(t) = \sqrt{h^2 + L^2 + 2 h L \sin\alpha(t)}
-$$
-\end{corrige}
-
-\else
-\fi
-
-\ifprof
-\else
-On donne ci-dessous les courbes obtenues à partir des deux relations
-déterminées précédemment. Lorsque l’assise du siège est horizontale, l’angle $\alpha$ est nul, le vérin
-est alors à mi course (la longueur $\lambda$ est de 0,99 m). La course du vérin équivalent est de $0,15\; m$,
-lambda peut donc varier de $\pm\, 0,075\;m$ autour de $0,99\; m$. 
-
-\begin{center}
-\includegraphics[width=.8\textwidth]{images/Simulateur5}
-\end{center}
-\fi
-
-\subparagraph{}
-\textit{Déterminer le débattement angulaire et comparer la valeur obtenue à celle du cahier des charges.}
-\ifprof
-\begin{corrige}
-Lorsque $\lambda$ varie de 0,0915 m à 1,065 m, $\alpha$ varie de -9 degrés à +9 degrés. Le cahier des charges imposant un débattement de $\pm$ 15 degrés, le cahier des charges n'est donc pas vérifié. 
-\end{corrige}
-\else
-\fi
-
-
-On approche les deux courbes du par des droites au voisinage de $\alpha=0\textdegree$ : 
-$\lambda = \lambda_0+K_\alpha \alpha$ et 
-$\beta = \beta_0+K_\beta \alpha$.
-
-\subparagraph{}
-\textit{En utilisant les courbes précédentes, donner les valeurs numériques de $K_\alpha$, $K_\beta$ et $\beta_0$. Conserver les unités définies sur les figures.}
-\ifprof
-\begin{corrige}
-En traçant les deux courbes sur Excel et en faisant une regression linéaire on obtient la figure suivante :
-\begin{center}
-\includegraphics[width=.85\textwidth]{images/Courbes.png}
-\end{center}
-
-%$$=DEGRES\dfrac{-(H1*COS(RADIANS(A2))}{H1*SIN(RADIANS(A2))+H1)}$$
-On a donc en faisant afficher les coefficients : 
-\begin{itemize}
-\item $\lambda_0 = 0,9849\; m$;
-\item $K_\alpha = 0,0086\; m/\text{\textdegree}$;
-\item $\beta_0 = -45 \text{\textdegree}$:
-\item $K_\beta = 0,5 $.
-\end{itemize}
-\end{corrige}
-\else
-\fi
 
 \end{document}
 
