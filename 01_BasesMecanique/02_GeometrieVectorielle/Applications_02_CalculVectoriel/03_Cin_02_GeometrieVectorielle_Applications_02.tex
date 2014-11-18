@@ -38,7 +38,8 @@ Chapitre 2 -- Géométrie Vectorielle}{
 
 
 \def\xxauteur{\ifthenelse{\boolean{xp}}{
-\noindent Xavier \textsc{Pessoles}}{
+\noindent Xavier \textsc{Pessoles} \\
+Exercice 2 : A. Martin \& D. Noël}{
 }}
 
 
@@ -97,18 +98,18 @@ On donnes les figures planes associées aux bases suivantes : $\left( \vect{i_0}
 \begin{multicols}{3}
 \begin{itemize}
  \renewcommand{\labelitemi}{\tiny{$\blacksquare$}}
-\item $\vect{i_0} \cdot \vect{j_0}$
-\item $\vect{j_0} \cdot \vect{k_0}$
-\item $\vect{j_0} \cdot \vect{j_1}$
-\item $\vect{j_0} \cdot \vect{k_1}$
-\item $\vect{i_0} \cdot \vect{i_2}$
-\item $\vect{k_1} \cdot \vect{k_0}$
-\item $\vect{i_0} \cdot \vect{j_2}$
-\item $\vect{i_2} \cdot \vect{j_1}$
-\item $\vect{j_2} \cdot \vect{j_0}$
-\item $\vect{k_1} \cdot \vect{i_2}$
-\item $\vect{i_0} \cdot \vect{k_1}$
-\item $\vect{j_2} \cdot \vect{i_2}$
+\item $\vect{i_0} \cdot \vect{j_0}$;
+\item $\vect{j_0} \cdot \vect{k_0}$;
+\item $\vect{j_0} \cdot \vect{j_1}$;
+\item $\vect{j_0} \cdot \vect{k_1}$;
+\item $\vect{i_0} \cdot \vect{i_2}$;
+\item $\vect{k_1} \cdot \vect{k_0}$;
+\item $\vect{i_0} \cdot \vect{j_2}$;
+\item $\vect{i_2} \cdot \vect{j_1}$;
+\item $\vect{j_2} \cdot \vect{j_0}$;
+\item $\vect{k_1} \cdot \vect{i_2}$;
+\item $\vect{i_0} \cdot \vect{k_1}$;
+\item $\vect{j_2} \cdot \vect{i_2}$.
 \end{itemize}
 \end{multicols}
 
@@ -121,6 +122,28 @@ On donnes les figures planes associées aux bases suivantes : $\left( \vect{i_0}
 \item le vecteur $\vect{j_2}$ dans la base $\left(\vect{i_0},\vect{j_0},\vect{k_0}\right)$.
 \end{itemize}
 }
+
+\subparagraph{}\textit{Calculer les produits vectoriels suivants :}
+
+\begin{multicols}{3}
+\begin{itemize}
+ \renewcommand{\labelitemi}{\tiny{$\blacksquare$}}
+\item $\vect{i_0} \wedge \vect{j_0}$;
+\item $\vect{j_0} \wedge\vect{k_0}$;
+\item $\vect{j_0} \wedge \vect{j_1}$;
+\item $\vect{j_0} \wedge\vect{k_1}$;
+\item $\vect{i_0} \wedge \vect{i_2}$;
+\item $\vect{k_1} \wedge \vect{k_0}$;
+\item $\vect{i_0} \wedge \vect{j_2}$;
+\item $\vect{i_2} \wedge \vect{j_1}$;
+\item $\vect{j_2} \wedge \vect{j_0}$;
+\item $\vect{k_1} \wedge \vect{i_2}$;
+\item $\vect{i_0} \wedge \vect{k_1}$;
+\item $\vect{j_2} \wedge \vect{i_2}$.
+\end{itemize}
+\end{multicols}
+
+\newpage
 
 
 \subsection*{Exercice 2}
@@ -162,10 +185,15 @@ On considère une rotation d’angle $\varphi$ autour de l’axe $(O,(\vect{z_2}
 
 \subparagraph{}
 \textit{En s’aidant des figures de projection proposées, effectuer les calculs vectoriels ci-dessous (les bases sont orthonormées directes).}
-\begin{center}
-\includegraphics[width=.5\textwidth]{images/fig_03}
-\end{center}
 
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.97\textwidth]{images/fig_03}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.47\linewidth}
+
+\begin{multicols}{2}
 \begin{itemize}
 \item $\vect{x_2} \cdot \vect{z_1}$;
 \item $\vect{z_3} \cdot \vect{z_3}$;
@@ -173,5 +201,16 @@ On considère une rotation d’angle $\varphi$ autour de l’axe $(O,(\vect{z_2}
 \item $\vect{x_2} \cdot \vect{x_3}$;
 \item $\vect{x_1} \cdot \vect{x_3}$.
 \end{itemize}
+
+\begin{itemize}
+\item $\vect{x_2} \wedge \vect{z_1}$;
+\item $\vect{z_3} \wedge \vect{z_3}$;
+\item $\vect{y_1} \wedge \vect{x_2}$;
+\item $\vect{x_2} \wedge \vect{x_3}$;
+\item $\vect{x_1} \wedge \vect{x_3}$.
+\end{itemize}
+\end{multicols}
+\end{minipage}
+
 \end{document}
 
