@@ -1,0 +1,142 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 8 : Analyse, Modélisation et Conception des systèmes mécaniques}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Exercice de colle -- Roue motrice et directrice
+}{Partie  -- }}
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+Xavier \textsc{Pessoles}}{}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 8 : Analyse, Modélisation et Conception des systèmes mécaniques\\
+Exercice de colle}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{}{}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
+
+
+\subsection*{Mise en situation}
+
+
+\begin{minipage}[c]{.7\linewidth}
+On s’intéresse à un chariot motorisé du fabricant HYSTER utilisé pour assister des opérateurs dans des tâches de manutention de charges lourdes. 
+
+La rotation du timon autour d’un axe vertical permet de diriger le chariot dans la direction souhaitée. La rotation du timon autour d’un axe horizontal permet de freiner le chariot. Le freinage (frein à sangle agissant sur la poulie \textbf{38}) est automatiquement appliqué et le courant coupé lorsque le timon se trouve en position haute ou basse.
+Les commandes des vitesses avant et arrière et la commande d’élévation de la fourche qui supporte la charge sont placées sur la poignée du timon, sous la main de l’utilisateur. 
+
+Une description partielle, du contexte des constituants et des exigences du chariot sont donnés dans les diagrammes ci-dessous :
+\end{minipage} \hfill
+\begin{minipage}[c]{.27\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/fig1}
+\end{center}
+\end{minipage}
+
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Contexte}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.39\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Blocs}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Exigences}
+\end{center}
+\end{minipage}
+
+
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/fig2}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.67\linewidth}
+
+L’étude porte plus particulièrement sur l’unité motrice et directrice du chariot. Le module des engrenages est de 1,5. On donne le nombre de dents des roues dentées suivantes : 
+\begin{itemize}
+\item \textbf{27} :16
+\item \textbf{35} : 84
+\item \textbf{5} :14
+\item \textbf{11} : 56
+\item \textbf{16} : 75
+\end{itemize}
+\end{minipage} 
+
+\subsection*{Analyse du système}
+
+\subparagraph{}
+\textit{Sur le dessin d'ensemble, identifier :
+\begin{itemize}
+\item les pièces liées au châssis;
+\item la roue;
+\item le positionnement du moteur.
+\end{itemize}}
+
+\subparagraph{}
+\textit{Quel est le nom et le rôle des pièces \textbf{11}, \textbf{22}, \textbf{28}, \textbf{26},\textbf{46}, \textbf{48} ?}
+
+\subparagraph{}
+\textit{Décrire l'architecture de la liaison encastrement entre les pièces \textbf{44} et \textbf{49} et entre les pièces \textbf{44} et \textbf{16}.}
+
+\subparagraph{}
+\textit{Quelles dispositions constructives permettent d'assurer l'étanchéité statique et dynamique du système ?}
+\subsection*{Modélisation du système}
+
+\subparagraph{}
+\textit{Réaliser le schéma d'architecture de la liaison entre l'arbre 5 et le bâti. Justifier le choix des liaisons.}
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique minimal de la roue motrice.}
+
+\subparagraph{}
+\textit{Donner le rapport de réduction du train d'engrenages.}
+
+\subparagraph{}
+\textit{La vitesse de rotation du moteur est-elle compatible avec l'exigence 1.1.}
+\end{document}
+
+
