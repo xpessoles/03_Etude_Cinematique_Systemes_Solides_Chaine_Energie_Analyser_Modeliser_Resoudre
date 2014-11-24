@@ -1,0 +1,183 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{true}
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 8 : Analyse, Modélisation et Conception des systèmes mécaniques}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Exercice de colle -- Rouleau d'entrainement de machine à tisser
+}{Partie  -- }}
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+Xavier \textsc{Pessoles}}{}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 8 : Analyse, Modélisation et Conception des systèmes mécaniques\\
+Exercice de colle}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{}{}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
+
+
+\subsection*{Mise en situation}
+\begin{center}
+\includegraphics[width=.7\textwidth]{images/Rouleaux}
+\end{center}
+
+
+On s'intéresse à une unité de fabrication de tissus qui peuvent intervenir dans la confection de vêtements élaborés à partir de fils entrelacés. Les rouleaux étudiés permettent d’assurer le convoyage du tissus. 
+
+
+\vspace{.25cm}
+
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[height=4cm]{images/Rouleaux2}
+
+\textit{Rouleaux de sortie d'une machine à tisser}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[height=4cm]{images/trame}
+
+\textit{Trame de tissus}
+\end{center}
+\end{minipage}
+\vspace{.25cm}
+
+
+Les fils longitudinaux forment la chaîne et les fils transversaux forment la trame. Pour des raisons de résistance et d’esthétique les tissus doivent avoir une trame géométriquement correcte par rapport à la chaîne. Pour obtenir cette condition il fait que la machine puisse corriger la position de la trame de tissus pendant la fabrication. Cette exigence fonctionnelle est réalisée par le rouleau d’entraînement.
+\subsection*{Principe de fonctionnementt}
+
+Le rouleau d’entrainement du tissu à l’entrée de la machine est réalisé en trois tronçons : un tronçon central est deux tronçons aux extrémités. Les tronçons d’extrémité pouvant tourner à des vitesses différentes par rapport à la vitesse du tronçon central. %On donne le cahier des charges partiel du rouleau.
+ 	 
+
+Lorsque l’erreur géométrique de la trame se trouve dans l’intervalle de tolérance admis par le cahier des charges, les trois tronçons tournent à la même vitesse de rotation et le rouleau entraîne le tissu à une vitesse linéaire de 1,5 m/s. 
+ 	 
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[height=7cm]{images/trame2}
+
+\textit{Bonne géométrie de trame -- Rouleaux men arche normale}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[height=7cm]{images/trame3}
+
+\textit{Mauvaise géométrie de trame -- Rouleaux en phase de correction}
+\end{center}
+\end{minipage}
+
+\vspace{.25cm}
+
+Lorsque les capteurs détectent un défaut, le tronçon d’extrémité concerné voit sa fréquence de rotation augmenter. Pour éviter toute détérioration du tissu la variation de vitesse du tronçon d’extrémité par rapport au rouleau central doit être faible. La correction du défaut est obtenue par la différence des vitesses linéaires des tronçons d’extrémité par rapport au tronçon central.
+
+\subsection*{Constitution d’un rouleau d’entraînement}
+Les tronçons d’extrémités sont appelés rouleaux d’extrémités. Le tronçon central appelé rouleau central.
+
+Les éléments fonctionnels du rouleau d’entraînement sont principalement : 
+\begin{itemize}
+\item deux freins électromagnétiques ;
+\item deux réducteurs épicycloïdaux ;
+\item deux roues libres.
+\end{itemize}
+
+On donne le dessin d’ensemble du rouleau d’entraînement à l’échelle 0,7 et sa nomenclature. Les rouleaux d’extrémités étant identiques, le dessin représente uniquement un rouleau d’extrémité et un demi-rouleau central.
+
+\subsection*{Étude technologique}
+\subparagraph{}
+\textit{Quelle est la fonction des pièces 37 et 48 ?} %Expliciter la désignation des matériaux et justifier son emploi.} 
+
+\subparagraph{}
+\textit{En déduire la liaison cinématique entre 35 et 36 et entre 44 et 36. Justifier rigoureusement vos choix de liaison. On admettra que 37 et 35 sont montés serrés ainsi que 36 et 48.}
+
+\subparagraph{}
+\textit{Donner la désignation complète des 2 roulements 21.}% Expliciter la désignation du matériau.}
+\subparagraph{}
+\textit{Quel est le rôle des rouleaux 19 ?}% Expliciter la désignation du matériau. Quelle est la particularité de ce matériau ?
+
+\subparagraph{}
+\textit{Quel est le rôle des ressorts 26 ?}
+
+\subparagraph{}
+\textit{Comment est assurée la lubrification du système ? Comment est assurée l’étanchéité dynamique du système ?}
+
+%Les rouleaux ont été trempés à 850°C et revenus à 550°C. Expliquer le déroulement de cette série de traitements thermiques. Quel est le but de chacun de ces traitements ?
+
+
+%Les triangles noirs indiquent que des morceaux de tôles ont été soudés. Comment sont obtenues les tôles ? Donner 3 procédés de soudage en expliquant très brièvement leur mode de fonctionnement et en citant une application pour chacun d’eux.
+
+
+Le frein électromagnétique est constitué des pièces 1 à 13’. La pièce 13’ est en liaison encastrement avec la pièce 36. 
+
+\subparagraph{}
+\textit{Quelle est la fonction des pièces 6 et 8?
+Expliquer le fonctionnement du frein électromagnétique. Vous pourrez éventuellement vous appuyer sur des schémas.}
+
+\subparagraph{}
+\textit{Quelle est la liaison cinématique entre l’ensemble 10 et le bâti 1 ? Vous justifierez rigoureusement le choix de cette liaison.}
+
+\subparagraph{}
+\textit{Comment s’effectue la transmission entre les pièces 44 et 47 lorsque le frein n’est pas alimenté ?} 
+
+\subsection*{Étude cinématique}
+Le réducteur est composé des pièces 32, 35, 36 et 51. 
+
+\subparagraph{}
+\textit{Colorier le plan d’ensemble en utilisant une couleur par classe d’équivalence cinématique.}
+ 
+\subparagraph{}
+\textit{Réaliser le schéma cinématique minimal du plan d’ensemble dans les coupes C-C et A-A en tenant compte des couleurs utilisées précédemment. }
+
+\subparagraph{}
+\textit{Que se passe-t-il lorsque le frein est alimenté ?}
+
+\subparagraph{}
+\textit{Déterminer le rapport de réduction du réducteur.}
+%En admettant que le rapport de réduction est de 1,02 (la sortie est donc plus rapide que l’entrée), conclure vis-à-vis du cahier des charges.
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{images/nomenclature}
+\end{center}
+
+
+\end{document}
+
+
