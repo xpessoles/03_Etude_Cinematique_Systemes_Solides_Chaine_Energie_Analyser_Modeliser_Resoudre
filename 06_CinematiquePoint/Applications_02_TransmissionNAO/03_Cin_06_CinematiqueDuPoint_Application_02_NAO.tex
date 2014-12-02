@@ -125,9 +125,40 @@ On s'intéresse ici à la cheville NAO. On cherche à savoir si, à partir du mo
 
 \subparagraph{}
 \textit{Quels doivent être les rapports de réductions des transmissions par engrenage afin de respecter les exigences 1.1.1.1 et 1.1.1.2 ?}
+\ifprof
+\begin{corrige}
+D'après le diagramme de définition des blocs et le diagramme des exigences, les rapports de transmission doivent être : 
+\begin{itemize}
+\item pour l'axe de tangage : $\dfrac{N_{\text{moteur}}}{N_{\text{Tangage}}}=138,33$ au minimum; 
+\item pour l'axe de roulis :  $\dfrac{N_{\text{moteur}}}{N_{\text{Roulis}}}= 197,61$ au minimum.
+\end{itemize}
+\end{corrige}
+\else
+\fi
 
 
+\ifprof
+\subparagraph{}
+\textit{Dans le cas de l'axe de tangage, remplir le tableau suivant :}
+\begin{corrige}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+Roue dentée & Module & Nb dents & Diamètre (mm)\\
+\hline
+Pignon 03 20 & 0,3 &20        & 6		\\ \hline
+Mobile Inf1 Roue & 0,3 & 80  & 24 	\\ \hline 
+Mobile Inf1 Pignon & 0,4 & 25 & 10	\\ \hline
+Mobile Inf2 Roue & 0,4 & 47   & 18,8	\\ \hline
+Mobile Inf2 Pignon & 0,4 & 12 & 4,8	\\ \hline
+Mobile Inf4 Roue & 0,4 & 58   & 23,2	\\ \hline
+Mobile Inf4 Pignon & 0,7 & 10 & 7	\\ \hline
+Roue de sortie & 0,7 & 36      & 25,2 \\ \hline
+\end{tabular}
+\end{center}
+\end{corrige}
 
+\else
 \subparagraph{}
 \textit{Dans le cas de l'axe de tangage, remplir le tableau suivant :}
 \begin{center}
@@ -162,18 +193,44 @@ Roue de sortie & && \\
 \hline
 \end{tabular}
 \end{center}
-
+\fi
 
 
 \subparagraph{}
 \textit{Dans le cas de l'axe de tangage, réaliser le schéma cinématique minimal.}
-
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
 
 \subparagraph{}
 \textit{Calculer le rapport de transmission de la chaîne de transmission de l'axe de tangage ? L'exigence 1.1.1.2 est-elle respectée ? Si non, quelle(s) solution(s) de remédiation pourrait-on proposer ?}
+\ifprof
+\begin{corrige}
+$$
+R_T = (-1)^n \dfrac{80\cdot 47 \cdot 58 \cdot 36}{20\cdot 25\cdot 12 \cdot 10 } = 130,85
+$$
+
+Ceci est inférieur à ce qui est préconisé par le cahier des charges. 
+
+Pour respecter le cahier des charges, on peut :
+\begin{itemize}
+\item choisir un autre moteur;
+\item changer le nombre de dents d'une des roues. Il suffirait pour cela que,  par exemple, la roue de sortie comporte 39 dents. 
+\end{itemize}
+\end{corrige}
+\else
+\fi
 
 \subparagraph{}
 \textit{Calculer le rapport de transmission de la chaîne de transmission de l'axe de roulis ? L'exigence 1.1.1.1 est-elle respectée ? Si non, quelle(s) solution(s) de remédiation pourrait-on proposer ?}
+\ifprof
+\begin{corrige}
+Le rapport de transmission du second train est de 201,3 ce qui est compatible avec le cahier des charges.
+\end{corrige}
+\else
+\fi
 
 \end{document}
 
