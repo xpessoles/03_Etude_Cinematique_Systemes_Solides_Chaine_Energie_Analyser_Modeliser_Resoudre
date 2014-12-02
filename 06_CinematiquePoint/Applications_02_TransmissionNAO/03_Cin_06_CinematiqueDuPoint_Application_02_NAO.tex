@@ -1,0 +1,176 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+
+\newif\ifprof
+%\proftrue
+\proffalse
+
+\newif\ifxp
+\xptrue
+%\xpfalse
+
+\newif\iftd
+\tdtrue
+%\tdfalse
+
+
+\usepackage[%
+    pdftitle={},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{%
+\ifxp
+Partie 3 - Étude cinématique des systèmes de solides de la chaîne d'énergie - Analyser, Modéliser, Résoudre
+\else
+\fi
+}
+
+\def\xxsoustitre{%
+\ifxp
+Chapitre 6 -- Cinématique du point immatériel
+\else
+\fi}
+
+\def\xxauteur{%
+\ifxp
+Xavier \textsc{Pessoles}
+\else
+\fi}
+
+\def\xxpied{%
+\ifxp
+Partie 3 : Étude cinématique des systèmes de solides\\
+Ch. 6 : Cinématique du point -- Transmissions -- Application 02
+\else
+\fi}
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\input{style/enteteXP}
+
+
+\setlength{\parskip}{0ex plus 0.2ex minus 0ex}
+ \renewcommand{\contentsname}{}
+ \renewcommand{\baselinestretch}{1}
+
+%\tableofcontents
+
+ \renewcommand{\baselinestretch}{1.2}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+\subsection*{Transmission de la cheville du robot NAO}
+\begin{minipage}[c]{.63\linewidth}
+NAO est un robot humanoïde conçu par la société française Aldebaran. \`A l'origine il a été conçu comme prototype du robot Romeo, destiné à être au service des personnes. NAO est utilisé à l'heure actuelle dans la recherche en robotique et dans des domaines pédagogiques. 
+\begin{obj}
+On s'intéresse ici à la cheville NAO. On cherche à savoir si, à partir du moteur retenu par le constructeur, la chaîne de transmission de puissance permet de vérifier les exigences 1.1.1.1 et 1.1.1.2.
+\end{obj}
+\end{minipage} \hfill
+\begin{minipage}[c]{.35\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/Cheville}
+\end{center}
+\end{minipage}
+
+\begin{minipage}[c]{.5\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/Req}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.5\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/BDD}
+\end{center}
+\end{minipage}
+
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Roulis}
+
+\textit{Architecture de l'axe de Roulis}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=\textwidth]{images/Tangage}
+
+\textit{Architecture de l'axe de Tangage}
+\end{center}
+\end{minipage}
+
+
+\newpage
+
+\subparagraph{}
+\textit{Quels doivent être les rapports de réductions des transmissions par engrenage afin de respecter les exigences 1.1.1.1 et 1.1.1.2 ?}
+
+
+
+\subparagraph{}
+\textit{Dans le cas de l'axe de tangage, remplir le tableau suivant :}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+Roue dentée & Module & Diamètre \\
+\hline
+& & \\ 
+Pignon 03 20 & & \\ 
+& & \\ \hline
+& & \\ 
+Mobile Inf1 Roue & & \\ 
+& & \\ \hline
+& & \\ 
+Mobile Inf1 Pignon & & \\ 
+& & \\ \hline
+& & \\ 
+Mobile Inf2 Roue & & \\ 
+& & \\ \hline
+& & \\ 
+Mobile Inf2 Pignon & & \\ 
+& & \\ \hline
+& & \\ 
+Mobile Inf4 Roue & & \\ 
+& & \\ \hline
+& & \\ 
+Mobile Inf4 Pignon & & \\ 
+& & \\ \hline
+& & \\ 
+Roue de sortie & & \\
+& & \\ 
+\hline
+\end{tabular}
+\end{center}
+
+
+\subparagraph{}
+\textit{Dans le cas de l'axe de tangage, réaliser le schéma cinématique minimal.}
+
+
+\subparagraph{}
+\textit{Calculer le rapport de transmission de la chaîne de transmission de l'axe de tangage ? L'exigence 1.1.1.2 est-elle respectée ? Si non, quelle(s) solution(s) de remédiation pourrait-on proposer ?}
+
+\subparagraph{}
+\textit{Calculer le rapport de transmission de la chaîne de transmission de l'axe de roulis ? L'exigence 1.1.1.1 est-elle respectée ? Si non, quelle(s) solution(s) de remédiation pourrait-on proposer ?}
+
+\end{document}
+
+
