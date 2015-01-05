@@ -51,7 +51,7 @@
 \renewcommand{\footrulewidth}{0.2pt}
 
 \fancyfoot[C]{\footnotesize{\bfseries \thepage}}
-\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles}}
+\fancyfoot[L]{J.-P. \textsc{Pupier}}
 \ifthenelse{\boolean{prof}}{%
 \fancyfoot[R]{\footnotesize{CI 3 : CIN -- Applications} \\ \footnotesize{Ch 5 : Cinématique du solide -- P}}
 }{%
@@ -81,34 +81,7 @@
 \end{flushright}
 \vspace{.5cm}
 
-\subsection*{Exercice 1 -- Dérivation vectorielle}
-\begin{center}
-\includegraphics[width=.95\textwidth]{png/fig1}
-\end{center}
-
-
-\subparagraph{}
-\textit{Faire les calculs suivants : 
-$\left[ \dfrac{d\vect{y_1}}{dt}\right]_{\mathcal{R}_0}$, 
-$\left[ \dfrac{d\vect{x_0}}{dt}\right]_{\mathcal{R}_1}$, 
-$\left[ \dfrac{d\vect{y_1}}{dt}\right]_{\mathcal{R}_3}$, 
-$\left[ \dfrac{d\vect{z_2}}{dt}\right]_{\mathcal{R}_0}$, 
-$\left[ \dfrac{d\vect{y_3}}{dt}\right]_{\mathcal{R}_0}$, 
-$\left[ \dfrac{d\vect{x_3}}{dt}\right]_{\mathcal{R}_0}$.}
-\ifthenelse{\boolean{prof}}{
-\begin{corrige}
-\end{corrige}
-}{}
-\subparagraph{}
-\textit{Faire les calculs suivants : 
-$\left[ \dfrac{d\vect{V}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{V} = 3\cos\alpha(t)\vect{x_1}$,
-$\left[ \dfrac{d\vect{U}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{U} = -7\sin\alpha(t)\vect{y_2}$,
-$\left[ \dfrac{d\vect{W}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{W} = -3\alpha(t)^3\vect{y_1}+6\sin\alpha(t)\vect{y_0}$,
-$\left[ \dfrac{d\vect{S}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{S} = 4t^3\alpha(t)\cos\alpha(t)\vect{y_1}$.
-}
-
-
-\subsection*{Exercice 2}
+\subsection*{Exercice 1}
 \setcounter{subparagraph}{0}
 \begin{minipage}[c]{.55\linewidth}
 \begin{center}
@@ -120,7 +93,7 @@ Soit le mécanisme plan constitué par :
 \begin{itemize}
 \item solide $S_0$ : fixe, repère lié $\mathcal{R}_0=\left( O,\vect{x_0},\vect{y_0},\vect{z_0}\right)$;
 \item solide $S_1$ : barre $OP$ de longueur $L$, en liaison pivot d’axe $(O,\vect{z_0})$ par rapport à $S_0$, repère lié  
-à $\mathcal{R}_1=\left( O,\vect{x_1},\vect{y_1},\vect{z_0}\right)$
+à $\mathcal{R}_1=\left( O,\vect{x_1},\vect{y_1},\vect{z_0}\right)$;
 \item solide $S_2$ : disque de centre $P$ et de rayon $R$, en liaison pivot d’axe $(P,\vect{z_0})$ par rapport à $S_1$, repère lié à
 $\mathcal{R}_2=\left( P,\vect{x_2},\vect{y_2},\vect{z_0}\right)$.
 \end{itemize}
@@ -139,6 +112,16 @@ On note :
 \end{corrige}
 }{}
 
+
+\subparagraph{}
+\textit{Réaliser les figures planes permettant de passer de $\mathcal{R}_0$ à $\mathcal{R}_1$ et de $\mathcal{R}_1$ à $\mathcal{R}_2$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+
+
+
 \subparagraph{}
 \textit{Déterminer $\vecto{S_1}{S_0}$, $\vecto{S_2}{S_1}$, $\vecto{S_2}{S_0}$.}
 \ifthenelse{\boolean{prof}}{
@@ -147,29 +130,29 @@ On note :
 }{}
 
 \subparagraph{}
-\textit{Déterminer $\vectv{M}{S_2}{S_0}$.}
+\textit{Déterminer $\vectv{P}{S_1}{S_0}$ puis $\vectg{P}{S_1}{S_0}$.} 
 \ifthenelse{\boolean{prof}}{
 \begin{corrige}
 \end{corrige}
 }{}
 
-\subparagraph{}
-\textit{Déterminer $\vectv{I}{S_2}{S_0}$.}
-\ifthenelse{\boolean{prof}}{
-\begin{corrige}
-\end{corrige}
-}{}
+%\subparagraph{}
+%\textit{Déterminer $\vectv{I}{S_2}{S_0}$.}
+%\ifthenelse{\boolean{prof}}{
+%\begin{corrige}
+%\end{corrige}
+%}{}
+%
+%
+%\subparagraph{}
+%\textit{Pourquoi ne faut-il absolument pas dériver le vecteur $\vect{OI}$ ? .}
+%\ifthenelse{\boolean{prof}}{
+%\begin{corrige}
+%\end{corrige}
+%}{}
 
-
 \subparagraph{}
-\textit{Pourquoi ne faut-il absolument pas dériver le vecteur $\vect{OI}$ ? .}
-\ifthenelse{\boolean{prof}}{
-\begin{corrige}
-\end{corrige}
-}{}
-
-\subparagraph{}
-\textit{Déterminer $\vectg{M}{S_2}{S_0}$.}
+\textit{Déterminer $\vectv{M}{S_2}{S_0}$ puis $\vectg{M}{S_2}{S_0}$.}
 \ifthenelse{\boolean{prof}}{
 \begin{corrige}
 \end{corrige}
@@ -215,6 +198,33 @@ $S_1$ est un bras porte satellite et $S_2$ un satellite qui roule sans glisser e
 \end{corrige}
 }{}
 
+
+\subsection*{Exercice 2 -- Dérivation vectorielle}
+\setcounter{subparagraph}{0}
+
+\begin{center}
+\includegraphics[width=.95\textwidth]{png/fig1}
+\end{center}
+
+\subparagraph{}
+\textit{Faire les calculs suivants : 
+$\left[ \dfrac{d\vect{y_1}}{dt}\right]_{\mathcal{R}_0}$, 
+$\left[ \dfrac{d\vect{x_0}}{dt}\right]_{\mathcal{R}_1}$, 
+$\left[ \dfrac{d\vect{y_1}}{dt}\right]_{\mathcal{R}_3}$, 
+$\left[ \dfrac{d\vect{z_2}}{dt}\right]_{\mathcal{R}_0}$, 
+$\left[ \dfrac{d\vect{y_3}}{dt}\right]_{\mathcal{R}_0}$, 
+$\left[ \dfrac{d\vect{x_3}}{dt}\right]_{\mathcal{R}_0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\end{corrige}
+}{}
+\subparagraph{}
+\textit{Faire les calculs suivants : 
+$\left[ \dfrac{d\vect{V}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{V} = 3\cos\alpha(t)\vect{x_1}$,
+$\left[ \dfrac{d\vect{U}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{U} = -7\sin\alpha(t)\vect{y_2}$,
+$\left[ \dfrac{d\vect{W}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{W} = -3\alpha(t)^3\vect{y_1}+6\sin\alpha(t)\vect{y_0}$,
+$\left[ \dfrac{d\vect{S}}{dt}\right]_{\mathcal{R}_0}$ avec $\vect{S} = 4t^3\alpha(t)\cos\alpha(t)\vect{y_1}$.
+}
 
 
 
