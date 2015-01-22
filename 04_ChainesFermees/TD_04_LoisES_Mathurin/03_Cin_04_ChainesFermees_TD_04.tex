@@ -1,0 +1,227 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\newif\ifprof
+%\proftrue
+\proffalse
+
+\newboolean{td}
+\setboolean{td}{true}
+
+\usepackage[%
+    pdftitle={CI3 - CIN - },
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{CI 3 -- CIN : Étude du comportement cinématique des systèmes}{}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 4 -- Étude des chaînes fermées : Détermination des lois Entrée -- Sortie}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent Florestan \textsc{Mathurin}}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 4 : Cinématique \\
+Ch 4 : Chaînes fermées -- Lois entrée -- sortie -- TD -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+2013 -- 2014 \\
+Florestan Mathurin \textsc{Pessoles}}{
+Informatique - Cours}}
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{flushright}
+\textit{D'après ressources de Florestan Mathurin -- \url{http://florestan.mathurin.free.fr/}.}
+\end{flushright}
+
+
+%\renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+\begin{comp}
+\noindent \textbf{Résoudre :} à partir des modèles retenus :
+\begin{itemize}
+\item choisir une méthode de résolution analytique, graphique, numérique;
+\item mettre en \oe{}uvre une méthode de résolution.
+\end{itemize}
+
+\noindent \textit{Rés -- C1.1 :} Loi entrée sortie géométrique et cinématique -- Fermeture géométrique.
+
+\end{comp}
+
+
+
+\section*{Palettiseur pour l'industrie laitière}
+
+Les briques de lait de 1L sont stockées par groupe de 6, et déposée sur des palettes (ce qui facilite leur transport dans les camions). Dans une chaîne de conditionnement de briques de lait, on utilise souvent des poussoirs qui poussent tout un lot de 6 briques de lait. On se propose d'étudier un de ces poussoirs dont on donne le modèle ci-dessous ainsi qu’un extrait de cahier des charges fonctionnel. L'objectif d’étude est de vérifier si le système permet d'atteindre l’exigence demandée. 
+
+\begin{center}
+\includegraphics[width=.7\textwidth]{images/Fig1Bis}
+\end{center}
+
+Le bâti 0 est fixe. Un motoréducteur anime en rotation la manivelle 2.
+%Par l'intermédiaire d'une liaison en B, la manivelle 2 déplace la tige 3 en rotation autour de l’axe (A,  z) qui déplace elle même le poussoir 4 en translation suivant l'axe  y 0 . 
+
+
+\textbf{Données : } $\vect{OB}=R\vect{x_2}$, $\vect{HA}=L\vect{x_0}$ et $\vect{OA}=L_1\vect{x_0}$ avec $R=0,15 \;\text{m}$ et $L=2L_1=0,5\; \text{m}$.
+
+
+\subparagraph{}
+\textit{Paramétrer le mécanisme. Quelle est l'entrée ? la sortie ?}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Écrire les équations de fermeture géométrique $(OAB)$ en projection dans la base 3. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Écrire les équations de fermeture géométrique $(HAC)$ en projection dans la base 3. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Réécrire les équations de fermeture géométrique $(OAB)$ et $(HAC)$ en projection dans la base 0 et en déduire la loi entrée sortie du système. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Déterminer l'amplitude de déplacement du poussoir.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\subparagraph{}
+\textit{Conclure vis-à-vis du cahier des charges.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\section*{Benne de camion}
+\setcounter{subparagraph}{0}
+
+\begin{minipage}[c]{.48\linewidth}
+On s’intéresse à un camion en phase de déchargement dont on donne une description structurelle ainsi qu’un extrait de cahier des charges fonctionnel.  
+
+Le camion noté $S_0$ en déchargement soulève l'ensemble $S_1$ (benne + chargement) de centre de gravité $G$ et de masse $M = 7000\; kg$ constitué de la benne et de la matière transportée. Un vérin (corps de vérin $S_2$ et tige $S_3$ ) commande le mouvement. 
+
+L’objectif est de déterminer la vitesse de rotation de la benne 1 en fonction du débit dans le vérin afin de vérifier la performance en vitesse angulaire de cette benne. 
+
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.48\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/Fig2}
+
+\includegraphics[width=.9\textwidth]{images/Fig3}
+\end{center}
+\end{minipage}
+
+\subparagraph{}
+\textit{Réaliser le schéma cinématique du système et paramétrer le mécanisme. Indiquer l'entrée et la sortie.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+On donne les caractéristiques du vérin : 
+\begin{itemize}
+\item débit volumique d'huile injectée dans le vérin $Q$ (en $m^3/s$);
+\item surface du piston du vérin $S$ (en $m^2$ );
+\item vitesse de déploiement du vérin $V$ (en $m/s$). 
+\end{itemize}
+
+\subparagraph{}
+\textit{Exprimer le débit $Q$ dans le vérin en fonction de sa vitesse de déploiement $V$ et de la surface du piston $S$.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{Écrire l'équation vectorielle de fermeture géométrique linéaire et projeter l’équation vectorielle obtenue dans la base 0. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{À partir des équations issues de la fermeture géométrique donner la loi entrée sortie. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{ Dériver l'expression obtenue question précédente et déterminer $Q$. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\subparagraph{}
+\textit{ L'étude de l'application numérique de la formule précédente aboutit à $\dot{\theta}_{max} = 70 \; Q$. Le vérin délivrant 0,4 Litres/s, conclure quant à la capacité de la benne à satisfaire la performance en vitesse angulaire. }
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+\end{document}
+
