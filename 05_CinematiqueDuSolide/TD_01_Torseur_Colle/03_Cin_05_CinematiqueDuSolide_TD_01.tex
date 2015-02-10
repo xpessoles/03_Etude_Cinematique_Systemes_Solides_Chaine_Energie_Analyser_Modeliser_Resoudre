@@ -1,0 +1,211 @@
+\documentclass[10pt,oneside]{article}
+\input{coursHeadings}
+\input{macros-gilles}
+\usepackage[%
+    pdftitle={CIN -- Cinématique du solide -- TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+
+% \makeatletter \let\ps@plain\ps@empty \makeatother
+%% DEBUT DU DOCUMENT
+%% =================
+\sloppy
+\hyphenpenalty 10000
+
+\newcommand{\Pointilles}[1][3]{%
+\multido{}{#1}{\makebox[\linewidth]{\dotfill}\\[\parskip]
+}}
+
+
+\begin{document}
+
+
+\newboolean{prof}
+\setboolean{prof}{false}
+%------------- En tetes et Pieds de Pages ------------
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead{}
+\fancyhead[L]{%
+\noindent\noindent\begin{minipage}[c]{2.6cm}
+%Lycée Rouvière PTSI
+\includegraphics[width=2cm]{png/logo_ptsi.png}%
+\end{minipage}
+}
+
+\fancyhead[C]{\rule{12cm}{.5pt}}
+
+\fancyhead[R]{%
+\begin{minipage}[c]{3cm}
+\begin{flushright}
+\footnotesize{\textit{\textsf{Sciences Industrielles\\ de l'Ingénieur}}}%
+\end{flushright}
+\end{minipage}
+}
+
+\renewcommand{\footrulewidth}{0.2pt}
+
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{\footnotesize{2013 -- 2014} \\ X. \textsc{Pessoles} -- TD de F. Mathurin}
+\ifthenelse{\boolean{prof}}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- TD} \\ \footnotesize{Ch 5 : Cinématique du solide -- P}}
+}{%
+\fancyfoot[R]{\footnotesize{CI 3 : CIN -- TD} \\ \footnotesize{Ch 5 : Cinématique du solide -- E}}
+}
+
+
+%\begin{center}
+%\textit{Centre d'intérêt}
+%\end{center}
+
+
+
+\begin{center}
+ \Large\textsc{CI 3 -- CIN : Étude du comportement cinématique des systèmes}
+\end{center}
+
+\begin{center}
+ \large\textsc{Chapitre 5 -- Cinématique du solide indéformable}
+\end{center}
+
+%\begin{center}
+%\textsc{Manège Magic Arms } 
+%\end{center}
+\begin{flushright}
+\textit{Activité proposée par F. Mathurin} 
+\end{flushright}
+\vspace{.5cm}
+
+
+\section*{Robot ramasseur de fruits} 
+On étudie un robot ramasseur de fruits. Il permet à un agriculteur de cueillir, de manière automatique, les fruits mûrs dans les arbres, et de les mettre dans un conteneur spécifique. 
+
+Le bras 1 tourne autour de l'axe $(O_0,\vect{z_0})$ par rapport au bâti 0. Le bras 2 tourne autour de l'axe $(O_1,\vect{z_0})$ par rapport à 1. Le bras 3 tourner autour de l'axe $(O_2,\vect{z_0})$ par rapport à 2. On pose :
+\begin{itemize}
+\item $\vect{O_0O_1} = R\vect{x_1}$;
+\item $\vect{O_1O_2} = R\vect{x_2}$;
+\item $\vect{O_2M} = L\vect{x_3}$;
+\end{itemize}
+
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig1}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.47\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/fig2}
+\end{center}
+\end{minipage}
+
+\begin{center}
+\includegraphics[width=.5\textwidth]{png/fig3}
+\end{center}
+
+\subparagraph{}
+\textit{Construire les figures planes de repérage/paramétrage puis exprimer les vecteurs vitesse instantanée de rotation.} 
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+
+\couleursfigureplane{black}{blue}
+\figureplanerep{x_0}{x_1}{y_0}{y_1}{z_0}{\theta_1}{0}{1}{3}
+\couleursfigureplane{blue}{red}
+\figureplanerep{x_1}{x_2}{y_1}{y_2}{z_0}{\theta_2}{1}{2}{3}
+\couleursfigureplane{red}{green}
+\figureplanerep{x_2}{x_3}{y_2}{y_3}{z_0}{\theta_3}{2}{3}{3}
+$$
+\vecrot{1}{0}=\dot\theta_1\vz{0} \quad \quad
+\vecrot{2}{1}=\dot\theta_2\vz{0} \quad \quad
+\vecrot{3}{2}=\dot\theta_3\vz{0}
+$$
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Déterminer $\torseurcin{V}{1}{0}$, $\torseurcin{V}{2}{1}$ et $\torseurcin{V}{3}{2}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{O_1}{1}{0}&=\vecvit{O_0}{1}{0}+\vecrot{1}{0}\wedge\gv{O_0 O_1}\\
+	&=\dot\theta_1\vz{0}\wedge R\vx{1}\\
+\vecvit{O_1}{1}{0}&=R\dot\theta_1\vy{1}
+\end{align*}
+\end{corrige}}{}
+
+
+\subparagraph{}
+\textit{Déterminer $\torseurcin{V}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{O_2}{2}{0}&=\vecvit{O_1}{2}{0}+\vecrot{2}{0}\wedge\gv{O_1 O_2}\\
+	&=\vecvit{O_1}{2}{1}+\vecvit{O_1}{1}{0}+(\vecrot{2}{1}+\vecrot{1}{0})\wedge\gv{O_1 O_2}\\
+	&=R\dot\theta_1\vy{1}+(\dot\theta_2+\dot\theta_1)\vz0\wedge R\vx2\\
+\vecvit{O_2}{2}{0}=R\dot\theta_1\vy{1}+R(\dot\theta_2+\dot\theta_1)\vy{2}
+\end{align*}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Déterminer $\vectg{M}{3}{0}$.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecvit{M}{3}{0}&=\vecvit{O_2}{3}{0}+\vecrot{3}{0}\wedge \gv{O_2 M}\\
+	&=\vecvit{O_2}{3}{2}+\vecvit{O_2}{2}{0}+(\vecrot{3}{2}+\vecrot{2}{1}+\vecrot{1}{0})\wedge \gv{O_2 M}\\
+	&=R\dot\theta_1\vy{1}+R(\dot\theta_2+\dot\theta_1)\vy{2}+(\dot\theta_3+\dot\theta_2+\dot\theta_1)\vz{0}\wedge L\vx{3}\\
+\vecvit{M}{3}{0}&=R\dot\theta_1\vy{1}+R(\dot\theta_2+\dot\theta_1)\vy{2} +L(\dot\theta_3+\dot\theta_2+\dot\theta_1)\vy{3}
+\end{align*}
+
+\end{corrige}}{}
+
+
+\section*{Manège Magic Arms } 
+\setcounter{subparagraph}{0}
+
+La manège Magic Arms dont la modélisation ainsi qu'un extrait de cahier des charges fonctionnel est composé d'une structure métallique d'environ $12\; m$ de haut avec deux bras mobiles. Les passagers s'assoient sur 39 pièces disposées sur une plate-forme tournante. Dès que tous les passagers sont assis et attachés, la nacelle tourne autour de son axe, le bras principal (bras 1) et le bras secondaires (bras 2), liés l'un à l'autre au début du cycle, commencent à tourner. Après 9 secondes, le maximum de hauteur est atteint et les deux bras se désindexent et se mettent à tourner indépendamment l'un de l'autre. Tous les mouvements sont pilotés par ordinateur. 
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{png/img1}
+\end{center}
+
+Le manège, schématisé ci-dessus, comporte :
+\begin{itemize}
+\item un bras principal 1 assimilé à une barre $AO_1O_2$. Il est en liaison pivot parfait d'axe $(O_1,\vect{z_1})$ caractérisée par le paramètre $\alpha$ avec le bâti 0. On pose $\vect{O_1O_2}=-l_1\vect{y_1}$;
+\item un bras secondaire 2 assimilé à une barre $BO_2O_3$. Il est en liaison pivot parfait d'axe $(O_2,\vect{z_2})$ caractérisée par le paramètre $\beta$ avec le bras principal 1. On pose $\vect{O_2O_3}=-l_2\vect{y_2}$;
+\item une nacelle 3 assimilée à un disque de centre $O_3$ et de rayon $R$. Elle est en liaison parfaite d'axe $(O_3,\vect{y_2})$ caractérisée par le paramètre $\varphi$ avec le bras 2. On s'intéresse plus particulièrement à un passager considéré comme un point matériel $P$ tel que $\vect{O_3P}=-R\vect{z_3}$.
+\end{itemize}
+\subparagraph{}
+\textit{Construire les figures planes associées au schéma cinématique.}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\couleursfigureplane{black}{red}
+\figureplanerep{x_0}{x_1}{y_0}{y_1}{z_0}{\alpha}{0}{1}{3}
+\couleursfigureplane{red}{blue}
+\figureplanerep{x_1}{x_2}{y_1}{y_2}{z_0}{\beta}{1}{2}{3}
+\couleursfigureplane{blue}{green}
+\figureplanerep{z_0}{z_3}{x_2}{x_3}{y_2}{\varphi}{2}{3}{3}
+
+\end{corrige}}{}
+
+\subparagraph{}
+\textit{Calculer $\torseurcin{V}{1}{0}$, $\torseurcin{V}{2}{1}$ et $\torseurcin{V}{3}{2}$ puis $\torseurcin{V}{3}{0}$}
+\ifthenelse{\boolean{prof}}{
+\begin{corrige}
+\begin{align*}
+\vecrot{1}{0}&=\dot\alpha\vz0\\
+\vecrot{2}{1}&=\dot\beta\vz0\\
+\vecrot{3}{2}&=\dot\varphi\vy2\\
+\end{align*}
+\end{corrige}}{}
+%\subparagraph{}
+%\textit{Calculer $\torseurcin{V}{3}{0}$.}
+
+\subparagraph{}
+\textit{Calculer $\vectg{0_3}{3}{0}$ puis $\vectg{P}{3}{0}$.}
+
+\end{document}
