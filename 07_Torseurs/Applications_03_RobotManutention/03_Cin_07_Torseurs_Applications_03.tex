@@ -1,0 +1,141 @@
+\documentclass[10pt]{article}
+\input{style/coursHeadings}
+\input{style/programHeadings}
+\input{style/macros_SII}
+\input{style/macros_Titres}
+\input{style/macros_Frames}
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\usepackage[%
+    pdftitle={CI3 - CIN -- Torseurs -- TD},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+\def\discipline{Sciences Industrielles de l'Ingénieur}
+\def\xxtitre{\ifthenelse{\boolean{xp}}{%CI 3 -- CIN : Étude du comportement cinématique des systèmes
+}{
+Chapitre  -- }}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+Partie  -- }}
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+Pôle Chateaubriand -- Joliot-Curie}{
+Damien \textsc{Iceta} \\ Xavier \textsc{Pessoles}}}
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- TD\\
+Ch. 7 : Torseurs -- \ifthenelse{\boolean{prof}}{P}{E}}{
+\xxtitre}}
+
+\def\xxcathegorie{\ifthenelse{\boolean{xp}}{
+Pôle Chateaubriand -- Joliot-Curie}{
+Informatique - Cours}}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+
+\ifthenelse{\boolean{xp}}{\input{style/enteteXP}}{\input{style/enteteDI}}
+
+\begin{center}
+\large{\textsc{Chapitre 7 -- Torseurs}}
+\end{center}
+
+\begin{center}
+\textsc{Applications}
+\end{center}
+
+\normalsize
+
+\begin{flushright}
+\textit{Pôle Chateaubriand -- Joliot Curie -- Rennes.}
+\end{flushright}
+
+ \renewcommand{\baselinestretch}{1.2}
+%\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+
+
+
+
+\subsection*{Robot de manutention}
+
+Le système étudié (voir photos ci-dessous) est un robot industriel destiné à la manutention de
+pièces lourdes. Ce robot a une structure en parallélogramme déformable qui lui permet de déplacer son poignet dans l’aire de travail.
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/fig1}
+\end{center}
+
+
+On associe a chaque solide $i$ une base orthonormée directe $\mathcal{B}_i \left(\vect{x_i} ,\vect{y_i}, \vect{z}\right)$.
+
+Le mouvement de 1/0 est une rotation d'axe $(A,\vect{z})$; on pose $\alpha= (\vect{x_0} , \vect{x_1})$.
+
+Le mouvement de 2/0 est une rotation d'axe $(A,\vect{z})$ ; on pose $\beta= (\vect{x_0} , \vect{x_2})$.
+
+Le mouvement de 1/3 est une rotation d'axe $(B,\vect{z})$.
+
+Le mouvement de 2/4 est une rotation d'axe $(E,\vect{z})$.
+
+Le mouvement de 3/4 est une rotation d'axe $(C,\vect{z})$.
+
+Par ailleurs : $\vect{AB} = L\cdot \vect{x_1}$, 
+$\vect{EA} = D\cdot \vect{x_2}$,
+$\vect{CB}= - D\cdot \vect{x_3}$,
+$\vect{BJ} = H\cdot \vect{x_3}$ et 
+$\vect{EC} = L \cdot \vect{x_4}$.
+
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/fig2}
+\end{center}
+
+\subparagraph{}
+\textit{Que peut-on dire sur les bases $\mathcal{B}_1$, $\mathcal{B}_2$, $\mathcal{B}_3$ et $\mathcal{B}_4$ ? En déduire les 2 figures de changement de base définissant les 2 paramètres d’orientation.}
+
+\subparagraph{}
+\textit{Déterminer les torseurs cinématiques $\torseurcin{V}{4}{2}$ et $\torseurcin{V}{2}{0}$.}
+
+\subparagraph{}
+\textit{En déduire le torseur cinématique $\torseurcin{V}{4}{0}$ au point E.}
+
+\subparagraph{}
+\textit{Déterminer les torseurs cinématiques $\torseurcin{V}{3}{1}$ et $\torseurcin{V}{1}{0}$.}
+
+\subparagraph{}
+\textit{En déduire le torseur cinématique $\torseurcin{V}{3}{0}$ au point $B$.}
+
+\subparagraph{}
+\textit{En déduire le vecteur vitesse $\vectv{J}{3}{0}$.}
+
+\subparagraph{}
+\textit{Déterminer le vecteur accélération $\vectg{J}{3}{0}$.}
+
+\subparagraph{}
+\textit{Déterminer la trajectoire $T_{J\in3/0}$ lorsque le moteur M2 est à l’arrêt et $\beta=0$.}
+
+\subparagraph{}
+\textit{Déterminer la trajectoire $T_{J\in3/0}$ lorsque le moteur M1 est à l’arrêt et $\alpha=\dfrac{\pi}{3}$.}
+
+\subparagraph{}
+\textit{Tracer sur une figure la surface liée à $\mathcal{R}_0$ dans laquelle se déplace le point $J$ lorsque $\alpha$ et $\beta$ varient dans les
+limites précédemment définies (les deux moteurs fonctionnent).}
+
+
+\end{document}
+
+
