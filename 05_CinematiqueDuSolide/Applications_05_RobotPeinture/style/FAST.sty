@@ -1,0 +1,285 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Package FAST.sty
+%
+% Ce package est destiné à réaliser facilement des diagrammes FAST
+% (voir http://fr.wikipedia.org/wiki/Function_Analysis_System_Technique ).
+%
+% Réalisé par Raphaël ALLAIS (Lycée G.Eiffel de Dijon),
+% avec l'importante contribution de Yannick Lebras (Lycée Montesquieu du Mans)
+% et les conseils de Robert Papanicola (Lycée Jacques Amyot d'Auxerre)
+%
+% Pour toute question/conseil/commentaire/reproche/menace de mort ou autre :
+% allais.raphael -arobase- free.fr
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Entête
+%-----------------------------------------
+%% Informations générales
+%-----------------------------------------
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{FAST}[2012/03/09]
+
+
+
+
+
+%% Chargement des extensions
+%--------------------------------------
+\RequirePackage{tikz}
+\RequirePackage{ifthen}
+\usetikzlibrary{calc,fit,shapes}
+\usepackage{relsize}
+
+\newif\if@FASTRaccourcis	\@FASTRaccourcisfalse
+\DeclareOption{raccourcis}	{\@FASTRaccourcistrue}
+\ProcessOptions
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Paramètres divers
+%--------------------------
+%Dimentsions
+%........................
+
+\newlength{\FASTInterligne}		%Longueur d'interligne
+\newlength{\FASTEspaceColonne}		%Espace entre colonne (de coin supérieur droit à coin supérieur droit)
+\newlength{\FASTLargeurBoite}		%Largeur des boites
+\newlength{\FASTDecalageTrait}		%Décalage des connecteur vers le bas, par rapport au sommet de la boite
+\newlength{\FASTDecalageOuHorizontal}	%Décalage horizontal du connecteur ``OU''
+\newlength{\FASTDecalageOuVertical}	%Décalage vertical du connecteur ``OU''
+%Styles
+%.........................
+\newlength{\FASTFSarrondi}		%Rayon des arrondis des angles de la boite ``fonction de service'' (la 1ere boite)
+\newlength{\FASTFTarrondi}		%Rayon des arrondis des angles de la boite ``fonction de technique''
+\newlength{\FASTSTarrondi}		%Rayon des arrondis des angles de la boite ``solution technique''
+\newcommand{\FASTFSStyle}	{}	
+\newcommand{\FASTFTStyle}	{}
+\newcommand{\FASTSTStyle}	{}
+\newcommand{\FASTFStexteStyle}	{}	%Style de la boite ``fonction de service'' (la 1ere boite)
+\newcommand{\FASTFTtexteStyle}	{}	%Style de la boite ``fonction de technique''
+\newcommand{\FASTSTtexteStyle}	{}	%Style de la boite ``solution technique''
+\newlength{\FASTEpaisseurTraits}	%Epaisseur des traits
+%Couleurs
+\definecolor{FASTCouleurTexteFS}{rgb}{0,0,0}	%Couleur du texte de la boite ``fonction de service'' (la 1ere boite)
+\definecolor{FASTCouleurBorduresFS}{rgb}{0,0,0}	%Couleur de bordures de la boite ``fonction de service''  (la 1ere boite)
+\definecolor{FASTCouleurFondFS}{rgb}{1,1,1}	%Couleur de fond de la boite ``fonction de service''  (la 1ere boite)
+\definecolor{FASTCouleurTexteFT}{rgb}{0,0,0}	%Couleur du texte de la boite ``fonction de technique''
+\definecolor{FASTCouleurBorduresFT}{rgb}{0,0,0}	%Couleur de bordures de la boite ``fonction de technique''
+\definecolor{FASTCouleurFondFT}{rgb}{1,1,1}	%Couleur de fond de la boite ``fonction de technique''
+\definecolor{FASTCouleurTexteST}{rgb}{0,0,0}	%Couleur du texte de la boite ``fonction de service''
+\definecolor{FASTCouleurBorduresST}{rgb}{0,0,0}	%Couleur de bordures de la boite ``fonction de service''
+\definecolor{FASTCouleurFondST}{rgb}{1,1,1}	%Couleur de fond de la boite ``fonction de service''
+\definecolor{FASTCouleurConnecteurs}{rgb}{0,0,0}%Couleur des connecteurs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\FASTSetCouleurBordures}[2][named]		%Commande qui change les couleurs de toutes les bordures
+	{\definecolor{FASTCouleurBorduresFS}{#1}{#2}
+	\definecolor{FASTCouleurBorduresFT}{#1}{#2}
+	\definecolor{FASTCouleurBorduresST}{#1}{#2}}
+
+\newcommand{\FASTSetCouleurTexte}[2][named]		%Commande qui change la couleur du texte
+	{\definecolor{FASTCouleurTexteFS}{#1}{#2}
+	\definecolor{FASTCouleurTexteFT}{#1}{#2}
+	\definecolor{FASTCouleurTexteST}{#1}{#2}}
+
+\newcommand{\FASTSetCouleurFond}[2][named]		%Commande qui change la couleur de tous les fonds de boite
+	{\definecolor{FASTCouleurFondFS}{#1}{#2}
+	\definecolor{FASTCouleurFondFT}{#1}{#2}
+	\definecolor{FASTCouleurFondST}{#1}{#2}}
+
+\newcommand{\FASTSetCouleurConnecteurs}[2][named]	%Commande qui change la couleur du texte
+	{\definecolor{FASTCouleurConnecteurs}{rgb}{#1}}
+
+\newcommand{\FASTSetCouleurTraits}[2][named]		%Commande qui change la couleur à la fois des bordures et des connecteurs
+	{\FASTSetCouleurConnecteurs[#1]{#2}
+	\FASTSetCouleurBordures[#1]{#2}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Commandes internes
+%-----------------------------
+
+\newcommand{\FASTReset}
+	{
+		\FASTInterligne=0.5em
+		\FASTEspaceColonne=10em
+		\FASTLargeurBoite=7em
+		\FASTDecalageTrait=-0.6em
+		\FASTDecalageOuVertical=0.4em
+		\FASTDecalageOuHorizontal=-0.4em
+		\FASTFSarrondi=0em
+		\FASTFTarrondi=0em
+		\FASTSTarrondi=0.5em
+		\FASTEpaisseurTraits=0.05em
+				
+		\renewcommand{\FASTFStexteStyle}	{\scalefont{1}\selectfont\bfseries}
+		\renewcommand{\FASTFTtexteStyle}	{\smaller}
+		\renewcommand{\FASTSTtexteStyle}	{\smaller\itshape}
+		\renewcommand{\FASTFSStyle}		{}
+		\renewcommand{\FASTFTStyle}		{}
+		\renewcommand{\FASTSTStyle}		{}
+
+		\definecolor{FASTCouleurTexteFS}{rgb}{0,0,0}	%Couleur du texte de la boite ``fonction de service'' (la 1ere boite)
+		\definecolor{FASTCouleurBorduresFS}{rgb}{0,0,0}	%Couleur de bordures de la boite ``fonction de service''  (la 1ere boite)
+		\definecolor{FASTCouleurFondFS}{rgb}{1,1,1}	%Couleur de fond de la boite ``fonction de service''  (la 1ere boite)
+		\definecolor{FASTCouleurTexteFT}{rgb}{0,0,0}	%Couleur du texte de la boite ``fonction de technique''
+		\definecolor{FASTCouleurBorduresFT}{rgb}{0,0,0}	%Couleur de bordures de la boite ``fonction de technique''
+		\definecolor{FASTCouleurFondFT}{rgb}{1,1,1}	%Couleur de fond de la boite ``fonction de technique''
+		\definecolor{FASTCouleurTexteST}{rgb}{0,0,0}	%Couleur du texte de la boite ``fonction de service''
+		\definecolor{FASTCouleurBorduresST}{rgb}{0,0,0}	%Couleur de bordures de la boite ``fonction de service''
+		\definecolor{FASTCouleurFondST}{rgb}{1,1,1}	%Couleur de fond de la boite ``fonction de service''
+		\definecolor{FASTCouleurConnecteurs}{rgb}{0,0,0}%Couleur des connecteurs
+	}
+\FASTReset
+
+
+
+
+\newcounter{cptAbscisse} 				%Compteur d'abscisse (a quelle colonne sommes-nous ?) - Sert notamment à nommer les noeuds
+\newcounter{cptAbscisseParent} 		%abscisse parent
+\newlength\posX
+\posX=0em
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\ttt}{\newcommand[1][ddd]{\lolo}{Hello !!!}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Environnement FAST
+%-----------------------------
+\newenvironment{FAST}[1]
+	{	
+
+
+		\newcommand{\FASTAvanceColonne}	%Avance à la colonne suivant
+		{	\setcounter{cptAbscisseParent}{\thecptAbscisse}	%On enregistre le compteur actuel (qui correspond encore au parent)
+			\addtocounter{cptAbscisse}{1}			%puis on décale le compteur d'une colonne
+			\advance \posX by \FASTEspaceColonne		%On se décale l'abscisse géométrique d'une colonne
+			%\setlength{\posX}{\posX + \FASTEspaceColonne}
+			%\addtolength{\posX}{\FASTEspaceColonne}
+		}
+
+		\newcommand{\FASTEnregistreMinimum}	% Enregistre la position minimum de la ligne en cours (pour aligner la ligne suivante)
+			{	%Attention, c'est compliqué : le but est de chercher le minimum absolu des nodes de la ligne en cours, qui nous servira d'ordonnee pour la ligne suivante
+				\coordinate (SudBoite) at ($(noeud \thecptAbscisse.south)+(0,-\FASTInterligne)$);%Sud de la boite + interligne
+				\node[inner sep=0,fit=(SudBoite) (BoiteMinimums)] (BoiteMinimumsAnnexe) {};	%On cree une boite qui contient le point minimum du node courant ainsi que le dernier minimum enregistré 
+				\path let \p1=(BoiteMinimumsAnnexe.south) in coordinate (BoiteMinimums) at (0,\y1) ;	%On enregistre ce minimum dans BoiteMinimums
+			}
+
+		\newcommand{\FASTReculeColonne}
+			{	\advance \posX by -\FASTEspaceColonne	%On recule l'abscisse géométrique d'une colonne
+				\addtocounter{cptAbscisse}{-1}	%On recule le compteur d'une colonne
+			}
+
+		\newcommand{\FASTTraceConnecteurs}[1][]
+			{
+				\ifthenelse{\equal{##1}{tempo}}	%Option ``tempo''
+					{\draw [color=FASTCouleurConnecteurs,line width=\FASTEpaisseurTraits] (noeud \thecptAbscisse.north) -- ($(noeud \thecptAbscisse.north)+(0,\FASTInterligne)$); }{}
+		
+				\ifthenelse{\equal{##1}{ou}}
+					{
+						\path ($(noeud \thecptAbscisse.north west)+(\FASTDecalageOuHorizontal,\FASTDecalageTrait)$) -- ($(noeud \thecptAbscisseParent.north east)+(0,\FASTDecalageTrait)+(\FASTDecalageOuHorizontal,-\FASTDecalageOuVertical)$) coordinate[pos=.5] (milieu);	%On cherche le point milieu du connecteur
+						\draw [color=FASTCouleurConnecteurs,line width=\FASTEpaisseurTraits] ($(noeud \thecptAbscisse.north west)+(0,\FASTDecalageTrait)$) -| (milieu) |- ($(noeud \thecptAbscisseParent.north east)+(0,\FASTDecalageTrait)+(0,-\FASTDecalageOuVertical)$);			%On trace le connecteur en faisant un zig	
+					}
+					{	\path ($(noeud \thecptAbscisse.north west)+(0,\FASTDecalageTrait)$) -- ($(noeud \thecptAbscisseParent.north east)+(0,\FASTDecalageTrait)$) coordinate[pos=.5] (milieu);	%On cherche le point milieu du connecteur
+						\draw [color=FASTCouleurConnecteurs,line width=\FASTEpaisseurTraits]($(noeud \thecptAbscisse.north west)+(0,\FASTDecalageTrait)$) -| (milieu) |- ($(noeud \thecptAbscisseParent.north east)+(0,\FASTDecalageTrait)$);			%On trace le connecteur en faisant un zig-zag par le milieu
+					}
+			}
+
+
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%Fonction technique
+		%---------------------------------------------
+		\newcommand\FASTFT[3][]{%Argument 1=option, Argument 2 = contenu de la fonction, Argument 3 = descendance)
+				\FASTAvanceColonne
+	
+				\ifthenelse{\equal{##2}{}}%Si la fonction est vide
+					{	\node[text width=\FASTLargeurBoite,anchor=north west] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {}; %Un node vide (parce que les enfants vont en avoir besoin)
+						\draw [color=FASTCouleurConnecteurs,line width=\FASTEpaisseurTraits]($(noeud \thecptAbscisse.north east)+(0,\FASTDecalageTrait)$)--($(noeud \thecptAbscisse.north west)+(0,\FASTDecalageTrait)$);
+						\FASTTraceConnecteurs
+					}%Si la fonction n'est pas vide
+					{	\node[draw,rounded corners=\FASTFTarrondi,text width=\FASTLargeurBoite,text centered,anchor=north west,FASTCouleurBorduresFT,fill=FASTCouleurFondFT,text=FASTCouleurTexteFT,line width=\FASTEpaisseurTraits,\FASTFTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\FASTFTtexteStyle ##2}; %On écrit le contenu de la fonction}
+						\FASTTraceConnecteurs[##1]
+					}
+				##3	%Il s'agit de la descendance passée en argument, et affichée ici.
+				\FASTEnregistreMinimum
+				\FASTReculeColonne
+		}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%Solution technique
+		%---------------------------
+		\newcommand\FASTST[2][]{%Argument 1 = option,Argument 2 = contenu de la solution technique)
+				\FASTAvanceColonne	%On avance d'une colonne
+				\node[dashed,rounded corners=\FASTSTarrondi,draw,text width=\FASTLargeurBoite,line width=\FASTEpaisseurTraits,text centered,anchor=north west,FASTCouleurBorduresST,fill=FASTCouleurFondST,text=FASTCouleurTexteST,\FASTSTStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\FASTSTtexteStyle ##2}; %On écrit le contenu de la fonction
+				\FASTTraceConnecteurs[##1]
+				\FASTEnregistreMinimum
+				\FASTReculeColonne
+				}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%Ligne droite simple
+		%---------------------------
+		\newcommand\FASTVide[1]{%
+				\FASTAvanceColonne
+				\node[text width=\FASTLargeurBoite,anchor=north west] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {}; %Un node vide (parce que les enfants vont en avoir besoin)
+				\draw [color=FASTCouleurConnecteurs,line width=\FASTEpaisseurTraits] ($(noeud \thecptAbscisse.north east)+(0,\FASTDecalageTrait)$)--($(noeud \thecptAbscisse.north west)+(0,\FASTDecalageTrait)$);
+				\FASTTraceConnecteurs
+				##1	%Il s'agit de la descendance passée en argument, et affichée ici.
+				\FASTEnregistreMinimum
+				\FASTReculeColonne
+				}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		\if@FASTRaccourcis 
+			\newcommand{\FT}[3][]{\FASTFT[##1]{##2}{##3}}
+			\newcommand{\ST}[2][]{\FASTST[##1]{##2}}
+			\newcommand{\FV}[1]{\FASTVide{##1}}
+		\fi
+
+
+		\begin{tikzpicture}		%On commence le dessin
+			\setcounter{cptAbscisse}{0}
+			\setcounter{cptAbscisseParent}{0}
+			\posX=0em	%Abscisse des boites (0 au début)
+			\coordinate (BoiteMinimums) at (0,0);	%noeud ou coordonnees, dont le south correspond au minimum de la ligne en cours (utile pour positionner la ligne suivante)
+			\node[draw,rounded corners=\FASTFSarrondi,line width=\FASTEpaisseurTraits,text width=\FASTLargeurBoite,text centered,anchor=north west,FASTCouleurBorduresFS,fill=FASTCouleurFondFS,text=FASTCouleurTexteFS,\FASTFSStyle] (noeud \thecptAbscisse) at ($(\posX,0)+(BoiteMinimums)$) {\FASTFStexteStyle #1}; %Fonction de service que l'on va développer dans ce FAST
+			
+	}
+	{	\end{tikzpicture}	%Fin du dessin
+
+	}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%Fin du package
+\endinput
+
+
+
+
+
+
+
+
+
+
+

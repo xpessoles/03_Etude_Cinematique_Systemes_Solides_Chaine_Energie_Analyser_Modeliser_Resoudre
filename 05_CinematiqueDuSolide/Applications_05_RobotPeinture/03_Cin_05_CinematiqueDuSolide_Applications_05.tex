@@ -1,0 +1,129 @@
+\documentclass[10pt,oneside]{article}
+\input{style/coursHeadings}
+
+
+%Si le boolen xp est vrai : compilation pour xabi
+%Sinon compilation Damien
+\newboolean{xp}
+\setboolean{xp}{true}
+
+\newboolean{prof}
+\setboolean{prof}{false}
+
+\def\xxtitre{\ifthenelse{\boolean{xp}}{
+CI 3 -- CIN : Étude du comportement cinématique des systèmes}{
+}}
+
+\def\xxsoustitre{\ifthenelse{\boolean{xp}}{
+Chapitre 5 -- Cinématique du solide indéformable}{
+}}
+
+
+\def\xxauteur{\ifthenelse{\boolean{xp}}{
+\noindent Pôle Chateaubriand -- Joliot - Curie}{
+}}
+
+
+\def\xxpied{\ifthenelse{\boolean{xp}}{
+CI 3 : CIN -- Cours \\
+Ch 5 : Cinématique du solide -- \ifthenelse{\boolean{prof}}{P}{E}%
+}{
+}}
+
+\usepackage[%
+    pdftitle={CIN : Cinématique du solide},
+    pdfauthor={Xavier Pessoles},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=magenta]{hyperref}
+
+
+\usepackage{pifont}
+\sloppy
+\hyphenpenalty 10000
+
+
+\begin{document}
+
+
+\input{style/entete1}
+
+\begin{center}
+ \Large\textsc{\xxtitre}
+
+\end{center}
+
+\begin{center}
+ \large\textsc{\xxsoustitre}
+\end{center}
+
+\begin{center}
+ \Large\textsc{Exercice d'application}
+\end{center}
+
+\begin{flushright}
+Ressources du Pôle Chateaubriand -- Joliot-Curie -- \url{http://www.s2i-chateaubriand-joliotcurie.net/}
+\end{flushright}
+\vspace{.25cm}
+
+\subsection*{Robot de peinture}
+
+\vspace{.25cm}
+
+On étudie un robot de peinture de voiture. Ce robot se déplace par rapport à une carrosserie de voiture, et projette dessus de la peinture. L'objectif est de déterminer les lois du mouvement du robot, pour lui permettre de vérifier le critère de vitesse de déplacement relatif (entre le robot et la carrosserie de voiture) du cahier des charges.
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig_1}
+
+\end{center}
+
+\vspace{.25cm}
+
+
+La modélisation cinématique du robot est donnée sur la figure suivante :
+
+
+\begin{center}
+\includegraphics[width=.8\textwidth]{png/fig_2}
+\end{center}
+
+
+
+\vspace{.25cm}
+
+Le chariot $S_1$, auquel on associe le repère $\mathcal{R}_1\left(A,\vect{x_1},\vect{y_1},\vect{z_1}\right)$ est en mouvement de translation de direction $\vect{y_0}$ par rapport au bâti $S_0$ de repère $\mathcal{R}_0\left(A,\vect{x_0},\vect{y_0},\vect{z_0}\right)$. 
+
+Le corps $S_2$, auquel on associe le repère $\mathcal{R}_2\left(A,\vect{x_2},\vect{y_2},\vect{z_2}\right)$ est en mouvement de rotation autour de l'axe $(B,\vect{z_0})$ avec le chariot $S_1$. 
+
+Le bras $S_3$, auquel on associe le repère $\mathcal{R}_3\left(B,\vect{x_3},\vect{y_3},\vect{z_3}\right)$ est en mouvement de rotation autour de l'axe $(B,\vect{y_2})$ avec le corps $S_2$. 
+
+On a $\vect{OD}=b\vect{y_0}$ avec $b=\sqrt{L^2-H^2}$.
+
+
+
+
+\subparagraph{}
+\textit{Construire les figures planes de repérage/paramétrage puis exprimer les vecteurs vitesse instantanée de rotation $\vecto{1}{0}$, $\vecto{2}{1}$, $\vecto{3}{2}$.}
+
+\subparagraph{}
+\textit{Déterminer $\vectv{P}{3}{0}$}
+
+On désire que $P$ décrive la droite $(D,\vect{x_0})$ à vitesse constante $V$, conformément au cahier des charges. 
+
+\subparagraph{}
+\textit{Représenter sur une figure dans le plan $(O,\vect{x_0},\vect{y_0})$, puis sur une figure dans le plan $(O,\vect{x_0},\vect{y_0})$, les positions des points $O$, $D$, $A$, $B$ et $P$ du robot lorsque celui-ci est en position extrême ($A$ est en $D$).}
+
+
+\subparagraph{}
+\textit{Traduire, à l'aide de l'expression de $\vectv{P}{3}{0}$ le fait que $P$ se déplace à la vitesse $V$ selon $\vect{x_0}$. En déduire $\dot{\beta}$.}
+
+\subparagraph{}
+\textit{Exprimer alors $\dot{\lambda}$ et $\dot{\alpha}$ en fonction de $L$, $V$, $\alpha$ et $\beta_0$. }
+
+\subparagraph{}
+\textit{A l'aide de la figure précédente, exprimer $\beta_0$ en fonction de $b$ et $L$.}
+
+\subparagraph{}
+\textit{Exprimer $\dot{\lambda}$ et $\dot{\alpha}$ en fonction de $V$, $b$ et $\alpha$.}
+\end{document}
+
