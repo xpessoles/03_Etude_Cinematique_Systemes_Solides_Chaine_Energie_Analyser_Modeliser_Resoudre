@@ -252,26 +252,24 @@ aux bâti 0 à l’aide de deux autres moto-réducteurs.
 \end{minipage}
 
 
+
+
+\begin{minipage}[c]{.45\linewidth}
 Schéma simplifié : on considère la roue 2 comme un disque. 
-
 \begin{center}
-\includegraphics[width=.75\textwidth]{images/fig_07}
+\includegraphics[width=\textwidth]{images/fig_07}
 \end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.53\linewidth}
 
-Constituants et paramétrage : 
- 
-Le bâti 0, de repère associé $\mathcal{R}_0\left( O,\vect{x},\vect{y},\vect{z}\right)$ 
-est considéré comme fixe. 
-
-Le plateau tournant 1, de repère associé $\mathcal{R}_1\left( O,\vect{x_1},\vect{y_1},\vect{z_1}\right)$, est en mouvement de rotation d’axe $\left(O,\vect{z}\right)$ 
-par rapport au bâti 0 tel que $\vect{z}=\vect{z_1}$ et $\theta=\left(\vect{x},\vect{x_1}\right)$. 
-
-Le bras 3, de repère associé $\mathcal{R}_3\left( H,\vect{u},\vect{v},\vect{w}\right)$
- est en mouvement de rotation d’axe $\left(O,\vect{z}\right)$ par rapport au 
-bâti 0 tel que $\vect{z}=\vect{w}$ et $\alpha = \left(\vect{x},\vect{u}\right)$.
-
-L’ensemble pneumatique + jante 2, de repère associé, $\mathcal{R}_2\left( O,\vect{x_2},\vect{y_2},\vect{z_2}\right)$ est en mouvement de rotation 
-d’axe $\left(H,\vect{u}\right)$ par rapport au bras 3 tel que $\vect{u}=\vect{x_2}$ et $\beta = \left(\vect{z},\vect{z_2}\right)$. On pose $\vect{HC}=d\vect{u}$ (d est constante). Le pneumatique de rayon $r$ est en contact au point $I$ avec le plateau 1. 
+Le paramétrage est le suivant : 
+\begin{itemize}
+\item $\mathcal{R}_0\left( O,\vect{x},\vect{y},\vect{z}\right)$  est associé au bâti 0 considéré comme fixe;
+\item le plateau tournant 1, de repère associé $\mathcal{R}_1\left( O,\vect{x_1},\vect{y_1},\vect{z_1}\right)$, est en mouvement de rotation d’axe $\left(O,\vect{z}\right)$ par rapport au bâti 0 tel que $\vect{z}=\vect{z_1}$ et $\theta=\left(\vect{x},\vect{x_1}\right)$;
+\item le bras 3, de repère associé $\mathcal{R}_3\left( H,\vect{u},\vect{v},\vect{w}\right)$ est en mouvement de rotation d’axe $\left(O,\vect{z}\right)$ par rapport au bâti 0 tel que $\vect{z}=\vect{w}$ et $\alpha = \left(\vect{x},\vect{u}\right)$;
+\item l’ensemble pneumatique + jante 2, de repère associé, $\mathcal{R}_2\left( O,\vect{x_2},\vect{y_2},\vect{z_2}\right)$ est en mouvement de rotation d’axe $\left(H,\vect{u}\right)$ par rapport au bras 3 tel que $\vect{u}=\vect{x_2}$ et $\beta = \left(\vect{z},\vect{z_2}\right)$. On pose $\vect{HC}=d\vect{u}$ (d est constante). Le pneumatique de rayon $r$ est en contact au point $I$ avec le plateau 1. 
+\end{itemize}
+\end{minipage}
 
 \begin{Objectif}
 Déterminer la relation entre les vitesses de rotation des 3 actionneurs permettant de reproduire 
@@ -285,19 +283,22 @@ des conditions de roulement sans glissement d’un pneumatique sur une route.
 %\end{corrige}}{}
 
 \subparagraph{}
+\textit{Quelle condition le vecteur $\vectv{I}{2}{1}$ doit-il satisfaire pour assurer le maintien du contact entre les solides 2 et 1 en $I$.}
+
+\subparagraph{}
 \textit{Déterminer $\vectv{I}{2}{1}$.}
 \ifthenelse{\boolean{prof}}{
 \begin{corrige}
 \end{corrige}}{}
 
 \subparagraph{}
-\textit{Déterminer le vecteur vitesse de glissement au point $I$ selon 2 méthodes différentes.}
+\textit{Déterminer le vecteur vitesse de glissement au point $I$.}% selon 2 méthodes différentes.}
 \ifthenelse{\boolean{prof}}{
 \begin{corrige}
 \end{corrige}}{}
 
 \subparagraph{}
-\textit{En déduire la relation entre $\dot{\theta}$, $\dot{\alpha}$, $\dot{\beta}$ (vitesses de rotation des 3 actionneurs) et les dimensions du système, afin que le pneumatique roule sans glisser.}
+\textit{Dans les conditions de roulement sans glissement en $I$, en déduire la relation entre $\dot{\theta}$, $\dot{\alpha}$, $\dot{\beta}$ (vitesses de rotation des 3 actionneurs) et les dimensions du système.}
 \ifthenelse{\boolean{prof}}{
 \begin{corrige}
 \end{corrige}}{}
