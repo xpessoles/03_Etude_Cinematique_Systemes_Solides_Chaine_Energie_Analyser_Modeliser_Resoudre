@@ -1,0 +1,94 @@
+%% Creator: Inkscape 0.91_64bit, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'BDD PartielBIS.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{420.00001144bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.50178569)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{BDD PartielBIS.pdf}}%
+    \put(-0.82178718,1.31580282){\rotatebox{-35.3264}{\makebox(0,0)[lb]{\smash{Version Académique pour Professeur Seulement}}}}%
+    \put(-0.84760118,1.27937999){\rotatebox{-35.3264}{\makebox(0,0)[lb]{\smash{Le Développement Commercial est strictement interdit}}}}%
+    \put(-0.16235431,0.15242884){\rotatebox{-35.3264}{\makebox(0,0)[lb]{\smash{Version Académique pour Professeur Seulement}}}}%
+    \put(-0.18816831,0.11600602){\rotatebox{-35.3264}{\makebox(0,0)[lb]{\smash{Le Développement Commercial est strictement interdit}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{BDD PartielBIS.pdf}}%
+    \put(0.19999999,0.46939658){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{BDD Partiel}}}%
+    \put(0.06607143,0.46939658){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{[Modèle]}}}%
+    \put(0.02142857,0.46939658){\makebox(0,0)[lb]{\smash{\textbf{bdd}}}}%
+    \put(0.14464285,0.46939658){\makebox(0,0)[lb]{\smash{Data}}}%
+    \put(0.18749999,0.46939658){\makebox(0,0)[lb]{\smash{[}}}%
+    \put(0.29642856,0.46939658){\makebox(0,0)[lb]{\smash{]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{BDD PartielBIS.pdf}}%
+    \put(0.26964285,0.31018801){\makebox(0,0)[lb]{\smash{\textit{parts}}}}%
+    \put(0.05535714,0.28903944){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{: Moteur à courant continu}}}%
+    \put(0.05535714,0.26761088){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{: Capteurs}}}%
+    \put(0.05535714,0.24618231){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{: Vis écrou à billes}}}%
+    \put(0.05535714,0.22475374){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{: Basculateur et Pied artificiel}}}%
+    \put(0.05535714,0.20332517){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{: Calculcateur}}}%
+    \put(0.05535714,0.1818966){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{réducteur poulies-couroie : Réducteur poulies-couroie}}}%
+    \put(0.05535714,0.16046803){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{: Réducteur poulies-couroie}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{BDD PartielBIS.pdf}}%
+    \put(0.24732142,0.36582515){\makebox(0,0)[lb]{\smash{«system»}}}%
+    \put(0.24642856,0.33903944){\makebox(0,0)[lb]{\smash{\textbf{Système}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{BDD PartielBIS.pdf}}%
+    \put(0.75803569,0.09768803){\makebox(0,0)[lb]{\smash{\textit{values}}}}%
+    \put(0.63035713,0.07653946){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{Pas : pv = 3mm/tr}}}%
+    \put(0.74910712,0.15332517){\makebox(0,0)[lb]{\smash{«block»}}}%
+    \put(0.69732141,0.12653946){\makebox(0,0)[lb]{\smash{\textbf{Vis écrou à billes}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{BDD PartielBIS.pdf}}%
+    \put(0.75803569,0.23518803){\makebox(0,0)[lb]{\smash{\textit{values}}}}%
+    \put(0.63035713,0.21403946){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{Rapport de réduction : k=1/2.1}}}%
+    \put(0.74910712,0.29082515){\makebox(0,0)[lb]{\smash{«block»}}}%
+    \put(0.6517857,0.26403945){\makebox(0,0)[lb]{\smash{\textbf{Réducteur poulies-couroie}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{BDD PartielBIS.pdf}}%
+    \put(0.75803569,0.38518801){\makebox(0,0)[lb]{\smash{\textit{values}}}}%
+    \put(0.63035713,0.36403944){\color[rgb]{0.15686275,0,0}\makebox(0,0)[lb]{\smash{Nmax = 7100 tr/min}}}%
+    \put(0.77499998,0.3459023){\makebox(0,0)[lb]{\smash{\textit{...}}}}%
+    \put(0.74910712,0.44082515){\makebox(0,0)[lb]{\smash{«block»}}}%
+    \put(0.65982141,0.41403944){\makebox(0,0)[lb]{\smash{\textbf{Moteur à courant continu}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{BDD PartielBIS.pdf}}%
+  \end{picture}%
+\endgroup%
