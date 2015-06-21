@@ -41,11 +41,19 @@
 \fancyfoot[R]{\footnotesize{\xxpied}}
 
 \begin{center}
- \ifthenelse{\boolean{td}}{\Large\textsc{\xxtitre}}{\huge\textsc{\xxtitre}}
+ \iftd
+ \Large\textsc{\xxtitre}
+ \else
+ \huge\textsc{\xxtitre}
+ \fi
 \end{center}
 
 \begin{center}
- \ifthenelse{\boolean{td}}{\large\textsc{\xxsoustitre}}{ \LARGE\textsc{\xxsoustitre}}
+ \iftd
+ \large\textsc{\xxsoustitre}
+ \else
+ \LARGE\textsc{\xxsoustitre}
+ \fi
 \end{center}
 
 \vspace{.5cm}

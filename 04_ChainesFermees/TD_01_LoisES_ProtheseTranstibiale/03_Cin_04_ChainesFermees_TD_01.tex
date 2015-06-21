@@ -85,7 +85,7 @@ Informatique - Cours}}
 \section*{Prothèse active transtibiale}
 
 \begin{flushright}
-\textit{D'après concours Mines-Ponts -- MP -- 2013.}
+\textit{D'après concours Mines-Ponts -- 2013.}
 \end{flushright}
 
 \ifprof
@@ -94,7 +94,7 @@ Informatique - Cours}}
 \begin{minipage}[c]{.8\linewidth}
 Les ingénieurs du MIT ont mis au point une prothèse active permettant aux personnes amputées en dessous du genou d'avoir une marche s'approchant d'une marche d'une personne valide. 
 \begin{obj} 
-Dans le but de dimensionner le vérin à utiliser sur la prothèse, on cherche à dimensionner sa course utile. Par ailleurs, la connaissance du modèle mécanique de transmission est nécessaire afin de renseigner un modèle multiphysique. 
+Dans le but de valider le moteur électrique utilisé sur la prothèse ainsi que la structure mécanique, on cherche à valider l'exigence 1.3.1.
 \end{obj}
 
  On donne un extrait du cahier des charges.
@@ -106,61 +106,50 @@ Dans le but de dimensionner le vérin à utiliser sur la prothèse, on cherche �
 \end{center}
 \end{minipage}
 
-\begin{minipage}[c]{.33\linewidth}
+\begin{minipage}[c]{.49\linewidth}
 \begin{center}
-\includegraphics[width=\textwidth]{images/uc}
+\includegraphics[width=\textwidth]{images/Exigences}
 
-\textit{Diagramme de cas des utilisations}
+\textit{Extrait du diagramme des exigences}
 \end{center}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/SystemePartiel}
+
+\textit{Extrait de diagramme de blocs internes}
+\end{center}
+
 \end{minipage} \hfill
-\begin{minipage}[c]{.63\linewidth}
-\begin{center}
-\includegraphics[width=\textwidth]{images/exigences}
+\begin{minipage}[c]{.49\linewidth}
 
-\textit{Diagramme d'exigences}
+\begin{center}
+\includegraphics[width=\textwidth]{images/BDDPartiel}
+
+\textit{Extrait de diagramme de blocs internes}
 \end{center}
 \end{minipage}
 
-\vspace{.25cm}
-
-La structure interne du système est donnée par les figures ci-contre. Le paramétrage géométrique est donné ci-dessous.
-
-\vspace{.25cm}
 
 
-\begin{minipage}[c]{.3\linewidth}
-\begin{center}
-\includegraphics[width=\textwidth]{images/prot_02}
 
-\textit{Représentation volumique}
-\end{center}
-\end{minipage}
- \hfill
-\begin{minipage}[c]{.65\linewidth}
-\begin{center}
-\includegraphics[width=\textwidth]{images/Systeme}
-
-\textit{Diagramme de blocs internes}
-\end{center}
-\end{minipage}
 
 
 \begin{minipage}[c]{.54\linewidth}
+On s'intéresse d'abord au système de basculeur du pied. La pièce $3_1$ est liée à l'écrou du système vis-écrou. Ainsi la translation de l'écrou provoque un basculement du pied $1$. 
 
-Le repère $\rep{0} (O, \vx{},\vy{0} ,\vz{0})$ est lié au tibia noté 0 fixe dans toutes nos études. Ce repère est supposé galiléen (hypothèse justifiée dans le sujet).
+Le repère $\rep{0} (O, \vx{},\vy{0} ,\vz{0})$ est lié au tibia noté $0$ fixe dans toutes nos études. Ce repère est supposé galiléen (hypothèse justifiée dans le sujet).
 
-Le repère $\rep{1} (O, \vx{},\vy{1} ,\vz{1} )$ est lié au pied artificiel noté 1, supposé indéformable. On note $\theta (t)=(\vy{0} ,\vy{1})=(\vz{0},\vz{1})$ l'angle de rotation du pied par rapport au tibia. D'autre part, le vecteur unitaire $\vect{n_1}$ définit la direction des ressorts avec $\delta=(\vy{1} ,\vect{n_1})$ considéré comme constant tout au long
+Le repère $\rep{1} (O, \vx{},\vy{1} ,\vz{1} )$ est lié au pied artificiel noté $1$, supposé indéformable. On note $\theta (t)=(\vy{0} ,\vy{1})=(\vz{0},\vz{1})$ l'angle de rotation du pied par rapport au tibia. D'autre part, le vecteur unitaire $\vect{n_1}$ définit la direction des ressorts avec $\delta=(\vy{1} ,\vect{n_1})$ considéré comme constant tout au long
 du cycle de marche.
 
-Le repère $\rep{2} (O, \vx{} ,\vy{2} ,\vz{2} )$ est lié au basculeur noté 2. On note $\alpha(t) =(\vy{0} ,\vy{2})=(\vz{0} ,\vz{2})$ l'angle de rotation du basculeur par rapport au tibia.
+Le repère $\rep{2} (O, \vx{} ,\vy{2} ,\vz{2} )$ est lié au basculeur noté $2$. On note $\alpha(t) =(\vy{0} ,\vy{2})=(\vz{0} ,\vz{2})$ l'angle de rotation du basculeur par rapport au tibia.
 
-Le repère $\rep{3} ( A, \vx{},\vy{3} ,\vz{3})$ est lié au vérin électrique 3. On note $\beta(t )=(\vy{0} ,\vy{3})=(\vz{0} ,\vz{3})$ l'angle de rotation du vérin électrique par rapport au tibia. Le vérin électrique comporte une tige notée $3_1$ et un
-corps noté $3_2$.
+Le repère $\rep{3} ( A, \vx{},\vy{3} ,\vz{3})$ est lié à l'ensemble $3_1+3_2$. On note $\beta(t )=(\vy{0} ,\vy{3})=(\vz{0} ,\vz{3})$ l'angle de par rapport au tibia.
 
 On pose : $\vect{OA}=a\vect{z_0}$, $\vect{BA}=\lambda(t)\vy{3}$, $\vect{BO}=b\vy{2}$ et 
 $\vect{SO}=b\vz{2}$ avec $b=0,039 \; m$ et $a=0,117\;m$.
 
-En l'absence d'action sur la prothèse, une position repos est identifiée par les paramètres $\theta_R$, $\alpha_R$, et $\delta_R$. Cette position est notamment obtenue lorsque le tibia est vertical et que le pied est en appui horizontalement
+En l'absence d'action sur la prothèse, une position repos est identifiée par les paramètres $\theta_R$, $\alpha_R$, et $\delta_R$. Cette position est obtenue lorsque le tibia est vertical et que le pied est en appui horizontalement
 sur le sol. Les valeurs numériques sont alors : $\theta_R=0\textdegree$ , $\alpha_R=9\textdegree$ et $\delta_R=\delta=-17\textdegree$.
 \end{minipage} \hfill
 \begin{minipage}[c]{.43\linewidth}
@@ -170,30 +159,73 @@ sur le sol. Les valeurs numériques sont alors : $\theta_R=0\textdegree$ , $\alp
 \textit{Modélisation cinématique pour $\theta=0\textdegree$}
 \end{center}
 \end{minipage}
-
 \fi
 
+%\vspace{.25cm}
+
 \subparagraph{}
-\textit{Expliciter le type d'énergie en sortie du sous système <<Vis écrou à billes>>. Après avoir identifié les différents paramètres variables du système, préciser quelle est l'entrée et quelle est la sortie.}% Quelle relation lie les paramètres $\alpha$ et $\theta$ ?} 
+\textit{Quel type de mouvement y-a t-il en sortie des blocs <<Moteur à courant continu >>, <<Réducteur poulie-courroie>>, <<Vis-écrou à billes>> ? Quel est le mouvement final du pied ?} 
 
 \ifprof
 \begin{corrige}
-Les paramètres variables sont :
-\begin{itemize}
-\item l'angle $\alpha(t)$;
-\item l'angle $\beta(t)$;
-\item l'angle $\theta(t)$ (non représenté);
-\item la distance $\lambda(t)$ représentative de l'élongation du vérin. 
-\end{itemize}
-
-L'actionneur étant ici le vérin 3, $\lambda(t)$ est l'entrée du système.  Dans le cas du système,  	$\theta(t)$ peut être considéré comme la sortie. 
+Le mouvement du pied est une rotation d'axe $\vz{}$. La rotation du moteur entraîne un réducteur poulies-courroie. La poulie réceptrice entraîne un écrou qui, grâce à une liaison hélicoïdale, va entrainer la transmission de la vis. Le système $\{0, 2, 3_1, 3_2\}$ va transformer la translation de la vis 3 en rotation du pied 2. 
 \end{corrige}
-
 \else
 \fi
 
 \subparagraph{}
-\textit{Paramétrer le système et réaliser les figures planes correspondant aux différents changements de repères.} 
+\textit{Compléter le schéma cinématique permettant de modéliser la transmission de mouvement du moteur jusqu'à la vis $3_1$. Donner la relation entre le taux de rotation du moteur et la vitesse de déplacement de la vis.}
+
+
+
+\ifprof
+\begin{corrige}
+En notant $\omega_m$ le taux de rotation du moteur, on a :
+$$\dot{\lambda} = \omega_m \cdot \dfrac{1}{k}\cdot p_v  = 
+ \dfrac{7\,600}{60} \cdot \dfrac{1}{2,1}\cdot 3=180 \; \text{mm/s}$$
+ 
+ 
+\begin{center}
+\includegraphics[width=.3\textwidth]{images/Schema}
+\end{center}
+%$$
+%\alpha_v = \omega_m \cdot \dfrac{1}{k}\cdot p_v \cdot \dfrac{1}{m} \cdot 
+%7\,600 \cdot \dfrac{1}{2,1}\cdot 3 \cdot \dfrac{1}{240} \simeq 45,24 tr/min \simeq 
+%4,73\; rad /s.
+%$$
+\end{corrige}
+\else
+\begin{minipage}[c]{.49\linewidth}
+\begin{center}
+\includegraphics[width=.9\textwidth]{images/Schema_Vide}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.49\linewidth}
+\begin{center}
+\includegraphics[width=.95\textwidth]{images/figure_1.pdf}
+\end{center}
+\end{minipage}
+\fi
+
+%
+%\ifprof
+%\begin{corrige}
+%Les paramètres variables sont :
+%\begin{itemize}
+%\item l'angle $\alpha(t)$;
+%\item l'angle $\beta(t)$;
+%\item l'angle $\theta(t)$ (non représenté);
+%\item la distance $\lambda(t)$ représentative de l'élongation du vérin. 
+%\end{itemize}
+%
+%L'actionneur étant ici le vérin 3, $\lambda(t)$ est l'entrée du système.  Dans le cas du système,  $\theta(t)$ peut être considéré comme la sortie. 
+%\end{corrige}
+%
+%\else
+%\fi
+
+\subparagraph{}
+\textit{Réaliser les figures planes correspondantes aux différents changements de repères.} 
 
 \ifprof
 \begin{corrige}
@@ -206,7 +238,7 @@ L'actionneur étant ici le vérin 3, $\lambda(t)$ est l'entrée du système.  Da
 
 
 \subparagraph{}
-\textit{Déterminer la loi entrée-sortie entre $\alpha(t)$ et $\lambda(t)$.} 
+\textit{Déterminer la loi entrée-sortie entre $\lambda(t)$ et $\alpha(t)$.} 
 
 
 \ifprof
@@ -237,64 +269,75 @@ $$
 $$
 
 Par ailleurs, les exigences 4 et 5 du cahier des charges indiquent les variations du mouvement de la cheville, il est donc possible de tracer la courbes.
-\begin{py}
-\begin{python}
-a=0.117
-b=0.039
-x=linspace(-25,15,200)
-plt.plot(x,1000.*sqrt(b*b+a*a+2*a*b*sin(x*math.pi/180)))
-plt.ylabel("Course du vérin $\\lambda$ (en mm)")
-plt.xlabel("Angle $\\alpha$ (en degrés)")
-plt.grid()
-\end{python}
-\end{py}
+%\begin{py}
+%\begin{python}
+
+
+\texttt{a=0.117}
+
+\texttt{b=0.039}
+
+\texttt{x=linspace(-25,15,200)}
+
+\texttt{plt.plot(x,1000.*sqrt(b*b+a*a+2*a*b*sin(x*math.pi/180)))}
+
+\texttt{plt.ylabel("Course du vérin \$\textbackslash  lambda\$ (en mm)")}
+
+\texttt{plt.xlabel("Angle \$\textbackslash alpha\$ (en degrés)")}
+
+\texttt{plt.grid()}
+%\end{python}
+%\end{py}
 \end{corrige}
 
 \else
 \fi
 
+\ifprof
+\else
+\vspace{.5cm}
 
-\begin{minipage}[c]{.47\linewidth}
-La loi entrée sortie correspondant au mouvement de la cheville est donnée par la courbe ci-contre.
+La loi entrée sortie correspondant au mouvement de la cheville est donnée sur la courbe plus haut.
+
+
+\fi
 
 \subparagraph{}
-\textit{Commenter l'allure de la courbe et donner son équation. Comment les bornes de variation ont-elles été choisies ? En linéarisant le comportement du système, déterminer l'équation de le droite.}
-
-
-\subparagraph{}
-\textit{Donner le schéma bloc du système depuis la sortie du moteur jusqu'à la rotation $\alpha$ de la prothèse. L'exigence 3 est-elle vérifiée ?}
-
-\end{minipage}\hfill
-\begin{minipage}[c]{.47\linewidth}
-\begin{center}
-\includegraphics[width=.95\textwidth]{images/figure_1.pdf}
-\end{center}
-\end{minipage}
-
+\textit{Commenter l'allure de la courbe le choix des bornes de variation. En linéarisant le comportement du système, déterminer l'équation de le droite.}
 
 \ifprof
 \begin{corrige}
-D'après les notes de l'ibd, le domaine de variation de l'angle de la cheville doit être compris entre -25 et 15 degrés. Sur cette plage, on observe qu'il est possible de linéariser le comportement de la cheville. 
+D'après le diagramme des exigences, le domaine de variation de l'angle de la cheville doit être compris entre -25 et 15 degrés. Sur cette plage, on observe qu'il est possible de linéariser le comportement de la cheville. 
 
- Ainsi, pour 2 couples de points $( -20,110)$ et $(10,130)$, le coefficient directeur est donné par :  $m=\dfrac{130-110}{10-(-20)} = \dfrac{20}{30}\simeq 0,66 \; mm/\text{\textdegree}\simeq 240 \; mm/tour$.
+Ainsi, pour 2 couples de points $( -20,110)$ et $(10,130)$, le coefficient directeur est donné par :  $m=\dfrac{130-110}{10-(-20)} = \dfrac{20}{30}\simeq 0,66 \; \text{mm/\textdegree}\simeq 240 \; \text{mm/tour}$.
  
  L'ordonnée à l'origine est donnée par : 
- $y=m x+p \Leftarrow p = 110-\dfrac{2}{3} (-20) \simeq 123 \; mm$.  
+ $y=m x+p \Leftarrow p = 110-\dfrac{2}{3} (-20) \simeq 123 \; \text{mm}$. 
 \end{corrige}
+\else
+\fi
+
+
+\subparagraph{}
+\textit{%Donner le schéma bloc du système depuis la sortie du moteur jusqu'à la rotation $\alpha$ de la prothèse. 
+L'exigence 1.1.3 est-elle satisfaite ?}
+
+
+\ifprof
 
 \begin{corrige}
-\begin{center}
-\includegraphics[width=.8\textwidth]{images/SchemaBloc}
-\end{center}
 
 Le moteur ayant une fréquence de rotation nominale de 7 600 tr/min, la fréquence de rotation de la cheville sera de :
 $$
 \alpha_v = \omega_m \cdot \dfrac{1}{k}\cdot p_v \cdot \dfrac{1}{m} \cdot 
-7\,600 \cdot \dfrac{1}{2,1}\cdot 3 \cdot \dfrac{1}{240} \simeq 45,24 tr/min \simeq 
-4,73\; rad /s.
+7\,600 \cdot \dfrac{1}{2,1}\cdot 3 \cdot \dfrac{1}{240} \simeq 45,24 \text{tr/min} \simeq 
+4,73\; \text{rad/s}.
 $$
 
 La vitesse maximale demandée par le cahier des charges n'est donc pas dépassée. L'exigence est donc satisfaite. 
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/SchemaBloc}
+\end{center}
 
 \end{corrige}
 \else

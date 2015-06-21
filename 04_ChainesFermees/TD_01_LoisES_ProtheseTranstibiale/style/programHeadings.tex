@@ -33,8 +33,8 @@
 \lstnewenvironment{python}[1][]{
 \lstset{
 %escapeinside={\%*}{*)},
-%inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
-%extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
 language=python,
 basicstyle=\sffamily\footnotesize, 	
 stringstyle=\color{red}, 
@@ -47,7 +47,7 @@ except,exec,finally,for,from,global,if,import,in,i s,
 lambda,not,or,pass,print,raise,return,try,while},
 emphstyle=\color{black}\bfseries,
 emph={[2]True, False, None, self},
-emphstyle=[2]\color{olive},
+emphstyle=[2]\color{black},
 emph={[3]from, import, as},
 emphstyle=[3]\color{blue},
 upquote=true,
@@ -107,7 +107,7 @@ except,exec,finally,for,from,global,if,import,in,i s,
 lambda,not,or,pass,print,raise,return,try,while,Debut},
 emphstyle=\color{black}\bfseries,
 emph={[2]True, False, None, self},
-emphstyle=[2]\color{olive},
+emphstyle=[2]\color{black},
 emph={[3]from, import, as},
 emphstyle=[3]\color{blue},
 upquote=true,
@@ -249,6 +249,68 @@ literate=*{:}{{\textcolor{blue}:}}{1}
 {]}{{\textcolor{blue}]}}{1}
 {<}{{\textcolor{blue}<}}{1}
 {>}{{\textcolor{blue}>}}{1},
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+\lstnewenvironment{sql}[1][]{
+\lstset{
+%escapeinside={\%*}{*)},
+%inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+%extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=sql,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1, % pour regler les pb d accent utf8 dans les codes
 %framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
 %backgroundcolor=\color{SourceHintergrund}, 
 %framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
