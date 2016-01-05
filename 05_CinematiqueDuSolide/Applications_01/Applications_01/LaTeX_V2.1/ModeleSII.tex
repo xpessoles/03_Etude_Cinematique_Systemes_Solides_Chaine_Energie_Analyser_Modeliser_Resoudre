@@ -1,0 +1,134 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={CIN : Cinématique du solide},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+\input{style/new_style}
+\input{style/macros_SII}
+
+\newif\ifprof
+\proftrue
+%\proffalse
+
+\newif\iftd
+%\tdtrue
+\tdfalse
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\classe{PTSI}
+\def\xxnumpartie{Partie 1}
+\def\xxpartie{Titre de la partie coucouc \\ 
+Sous titre de la partie \\
+Compétence, Compétence, Compétence}
+
+\def\xxnumchapitre{Chapitre 1}
+\def\xxchapitre{Titre du chapitre blla bla bkabka bkabakbakb bkabakbakb bkabakbakb bkabakbakb}
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+\def\xxonglet{Part. 1 -- Ch. 2}
+
+\def\xxactivite{Cours}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+\def\xxcompetences{%
+\textsl{\textbf{Concevoir :}
+\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+\item Conc1-C2 : Démarche de conception appliquée aux fonctions techniques;
+\item Conc1-C3.4 : Critères de choix pour la fonction : la fonction assemblage;
+\item Conc2-C5 : Méthodes de conception.
+\end{itemize}}
+}
+
+\def\xxfigures{
+%\includegraphics[width=.9\textwidth]{images/prot_01}
+
+\includegraphics[width=.9\textwidth]{images/prot_01}
+
+\includegraphics[width=.9\textwidth]{images/prot_01}
+}%figues de la page de garde
+\def\xxpied{%
+CI ** : **\\
+Ch. ** : ** -- Cours TD
+}
+
+
+
+%---------------------------------------------------------------------------
+
+
+
+
+\begin{document}
+\chapterimage{png/Fond_SIMU}
+\input{style/new_pagegarde}
+
+\newpage
+
+
+\section{Titre 1}
+\subsection{Sous titre 1.1}
+\lipsum[1-2]
+
+\begin{exercise}[toto]
+This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+\end{exercise}
+
+\begin{resultat}[toto]
+This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+\end{resultat}
+
+\begin{proposition}[toto]
+This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+\end{proposition}
+
+\begin{hypo}[toto]
+This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
+\end{hypo}
+
+
+\begin{corollary}[Corollary name]
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{corollary}
+
+\begin{remark}
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{remark}
+
+\begin{theorem}
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{theorem}
+
+\begin{theorem}[Titre]
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{theorem}
+
+\begin{definition}[Titre]
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{definition}
+
+\begin{vocabulary}[Titre - Vocab]
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{vocabulary}
+
+
+\begin{demo}[Titre - Vocab]
+The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
+\end{demo}
+
+\subsection{Sous titre 1.2}
+\lipsum[1-2]
+\subsection{Sous titre 1.3}
+\lipsum[1-2]
+\section{Titre 2}
+\subsection{Sous titre 2.1}
+\subsection{Sous titre 2.2}
+\subsection{Sous titre 2.3}
+\subsubsection{Sous titre 2.1}
+\subsubsection{Sous titre 2.2}
+\subsubsection{Sous titre 2.3}
+\end{document}
+
+

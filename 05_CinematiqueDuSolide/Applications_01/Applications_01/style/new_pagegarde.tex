@@ -1,0 +1,235 @@
+\pagestyle{empty}
+
+
+%%%%%%%% PAGE DE GARDE COURS
+\ifcours
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+\draw[anchor=west] (-2cm,-8cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-8cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{\xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+\Large\sffamily\textsc{\textbf{\xxpartie}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[overlay]
+\node[shape=rectangle, 
+      rounded corners = .25 cm,
+	  draw= ocre,
+	  line width=2pt, 
+	  fill = ocre!10,
+	  minimum width  = 2.5cm,
+	  minimum height = 3cm,] at (18cm,0) {};
+\node at (17.7cm,0) {\rotatebox{90}{\textbf{\Large\color{ocre}{\classe}}}};
+%{};
+\end{tikzpicture}
+
+\vspace{3.5cm}
+
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-6cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{2cm}
+\begin{center}
+\LARGE\sffamily\textsc{\color{ocre}\textbf{\xxactivite}}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{15cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\Large\sffamily\textsc{\textbf{\xxnumchapitre}}
+
+\Large\sffamily\textsc{\textbf{\xxchapitre}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\xxcompetences
+\end{titrechapitre}
+\end{minipage}  };
+\end{tikzpicture}
+\vfill
+
+\begin{flushright}
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\xxfigures
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.6\linewidth}
+\startcontents
+\printcontents{}{1}{}
+\end{minipage}
+\end{flushright}
+
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (4.5cm,-.7cm) node {
+\begin{minipage}[c]{.2\linewidth}
+\begin{flushright}
+\includegraphics[width=2cm]{png/logoCC}
+\end{flushright}
+\end{minipage}
+\begin{minipage}[c]{.2\linewidth}
+\textsl{\xxauteur} \\
+\textsl{\classe}
+\end{minipage}
+ };
+\end{tikzpicture}
+\newpage
+\pagestyle{fancy}
+
+\newpage
+\pagestyle{fancy}
+
+\else
+\fi
+
+
+%%%%%%%% PAGE DE GARDE TD
+\iftd
+%\begin{tikzpicture}[remember picture,overlay]
+%\node at (current page.north west)
+%{\begin{tikzpicture}[remember picture,overlay]
+%\draw[anchor=west] (-2cm,-3.25cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+%\draw[anchor=west] (1cm,-3.25cm) node {\huge\sffamily\bfseries\color{black} %
+%\begin{minipage}{1cm}
+%\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{\xxnumpartie}}}
+%\end{minipage} \hfill
+%\begin{minipage}[c]{13.5cm}
+%\begin{titrepartie}
+%\begin{flushright}
+%\renewcommand{\baselinestretch}{1.1} 
+%\Large\sffamily\textsc{\textbf{\xxpartie}}
+%\renewcommand{\baselinestretch}{1} 
+%\end{flushright}
+%\end{titrepartie}
+%\end{minipage} \hfill
+%\begin{minipage}[c]{3.5cm}
+%{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+%\end{minipage} 
+% };
+%\end{tikzpicture}};
+%\end{tikzpicture}
+
+%%%%%%%%%% PAGE DE GARDE TD %%%%%%%%%%%%%%%
+%\begin{tikzpicture}[overlay]
+%\node[shape=rectangle, 
+%      rounded corners = .25 cm,
+%	  draw= ocre,
+%	  line width=2pt, 
+%	  fill = ocre!10,
+%	  minimum width  = 2.5cm,
+%	  minimum height = 2.5cm,] at (18.5cm,0) {};
+%\node at (17.7cm,0) {\rotatebox{90}{\textbf{\Large\color{ocre}{\classe}}}};
+%%{};
+%\end{tikzpicture}
+
+% PARTIE ET CHAPITRE
+%\begin{tikzpicture}[remember picture,overlay]
+%\draw[anchor=west] (-1cm,-2.1cm) node {\large\sffamily\bfseries\color{black} %
+%\begin{minipage}[c]{15cm}
+%\begin{flushleft}
+%\xxnumchapitre \\
+%\xxchapitre
+%\end{flushleft}
+%\end{minipage}  };
+%\end{tikzpicture}
+
+% Bandeau titre exo
+\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-6cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{5cm}
+\begin{center}
+\LARGE\sffamily\color{ocre}\textbf{\textsc{\xxactivite}}
+
+\begin{center}
+\xxfigures
+\end{center}
+
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{12cm}
+\begin{titrechapitre}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textbf{\textsc{\xxtitreexo}}
+
+\small\sffamily{\textbf{\textit{\color{black!70}\xxsourceexo}}}
+\vspace{.5cm}
+
+\renewcommand{\baselinestretch}{1} 
+\normalsize\normalfont
+\xxcompetences
+\end{titrechapitre}
+\end{minipage}  };
+\end{tikzpicture}
+
+\else
+\fi
+
+
+%%%%%%%% PAGE DE GARDE FICHE
+\iffiche
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\draw[anchor=west] (-2cm,-3.25cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.6,inner sep=40pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (1cm,-3.25cm) node {\huge\sffamily\bfseries\color{black} %
+\begin{minipage}{1cm}
+\rotatebox{90}{\LARGE\sffamily\textsc{\color{ocre}\textbf{\xxnumpartie}}}
+\end{minipage} \hfill
+\begin{minipage}[c]{14cm}
+\begin{titrepartie}
+\begin{flushright}
+\renewcommand{\baselinestretch}{1.1} 
+\large\sffamily\textsc{\textbf{\xxpartie} \\} 
+
+\vspace{.2cm}
+
+\normalsize\sffamily\textsc{\textbf{\xxnumchapitre -- \xxchapitre}}
+\renewcommand{\baselinestretch}{1} 
+\end{flushright}
+\end{titrepartie}
+\end{minipage} \hfill
+\begin{minipage}[c]{3.5cm}
+{\large\sffamily\textsc{\textbf{\color{ocre} \discipline}}}
+\end{minipage} 
+ };
+\end{tikzpicture}};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[overlay]
+\node[shape=rectangle, 
+      rounded corners = .25 cm,
+	  draw= ocre,
+	  line width=2pt, 
+	  fill = ocre!10,
+	  minimum width  = 2.5cm,
+	  minimum height = 2.5cm,] at (18.5cm,0.5cm) {};
+%	  minimum height = 2.5cm,] at (18.5cm,0cm) {};
+\node at (17.7cm,0.5) {\rotatebox{90}{\textsf{\textbf{\large\color{ocre}{\classe}}}}};
+%{};
+\end{tikzpicture}
+
+
+
+\else
+\fi
+
+

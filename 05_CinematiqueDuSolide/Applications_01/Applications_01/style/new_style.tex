@@ -1,0 +1,1107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	VARIOUS REQUIRED PACKAGES AND CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage[top=2.5cm,bottom=2cm,left=2cm,right=2cm,headsep=40pt,a4paper]{geometry} % Page margins
+
+\usepackage{graphicx} % Required for including pictures
+\graphicspath{{images/}} % Specifies the directory where pictures are stored
+
+\usepackage{lipsum} % Inserts dummy text
+
+\usepackage{tikz} % Required for drawing custom shapes
+
+\usepackage[french]{babel} % English language/hyphenation
+\frenchbsetup{StandardLists=true} % Pour éviter la collision babel enumitem pour les listes
+
+\usepackage{enumitem} % Customize lists
+\setlist{nolistsep} % Reduce spacing between bullet points and numbered lists
+
+\usepackage{booktabs} % Required for nicer horizontal rules in tables
+
+\usepackage{xcolor} % Required for specifying colors by name
+%\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+ \definecolor{ocre}{RGB}{49,133,156} % Couleur ''bleue''
+\definecolor{violetf}{RGB}{112,48,160} % Couleur ''violet''
+\usepackage{enumitem}
+\usepackage{pifont} % Pour les dinglist
+\usepackage{multicol}
+\usepackage{array} % Centrage vertical dans les tableaux
+
+%----------------------------------------------------------------------------------------
+%	FONTS
+%----------------------------------------------------------------------------------------
+
+\usepackage{avant} % Use the Avantgarde font for headings
+%\usepackage{times} % Use the Times font for headings
+%\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
+\usepackage[adobe-utopia]{mathdesign}
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage[utf8]{inputenc} % Required for including letters with accents
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY AND INDEX
+%----------------------------------------------------------------------------------------
+
+\usepackage[style=alphabetic,citestyle=numeric,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\addbibresource{bibliography.bib} % BibTeX bibliography file
+\defbibheading{bibempty}{}
+
+\usepackage{calc} % For simpler calculation - used for spacing the index letter headings correctly
+\usepackage{makeidx} % Required to make an index
+\makeindex % Tells LaTeX to create the files required for indexing
+
+%----------------------------------------------------------------------------------------
+%	MAIN TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\usepackage{titletoc} % Required for manipulating the table of contents
+
+\setcounter{tocdepth}{2}     % Dans la table des matieres
+\setcounter{secnumdepth}{2}
+
+\contentsmargin{0cm} % Removes the default margin
+
+% Part text styling
+\titlecontents{part}[0cm]
+{\addvspace{20pt}\centering\large\bfseries}
+{}
+{}
+{}
+
+% Chapter text styling
+\titlecontents{chapter}[1.25cm] % Indentation
+{\addvspace{12pt}\large\sffamily\bfseries} % Spacing and font options for chapters
+{\color{ocre!60}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Chapter number
+{\color{ocre}}  
+{\color{ocre!60}\normalsize\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+
+% Section text styling
+\titlecontents{section}[1.25cm] % Indentation
+{\addvspace{3pt}\sffamily\bfseries} % Spacing and font options for sections
+{\color{ocre!60}\contentslabel[\thecontentslabel]{1.25cm} \color{ocre}} % Section number
+{\color{ocre}}
+{\hfill\color{ocre!60}\thecontentspage} % Page number
+[]
+
+% Subsection text styling
+\titlecontents{subsection}[1.25cm] % Indentation
+{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[]
+
+
+% Subsection text styling
+\titlecontents{subsubsection}[1.25cm] % Indentation
+{\addvspace{1pt}\sffamily\small} % Spacing and font options for subsections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Subsection number
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+[]
+
+% List of figures
+\titlecontents{figure}[0em]
+{\addvspace{-5pt}\sffamily}
+{\thecontentslabel\hspace*{1em}}
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage}
+[]
+
+% List of tables
+\titlecontents{table}[0em]
+{\addvspace{-5pt}\sffamily}
+{\thecontentslabel\hspace*{1em}}
+{}
+{\ \titlerule*[.5pc]{.}\;\thecontentspage}
+[]
+
+%----------------------------------------------------------------------------------------
+%	MINI TABLE OF CONTENTS IN PART HEADS
+%----------------------------------------------------------------------------------------
+
+% Chapter text styling
+\titlecontents{lchapter}[0em] % Indenting
+{\addvspace{15pt}\large\sffamily\bfseries} % Spacing and font options for chapters
+{\color{ocre}\contentslabel[\Large\thecontentslabel]{1.25cm}\color{ocre}} % Chapter number
+{}  
+{\color{ocre}\normalsize\sffamily\bfseries\;\titlerule*[.5pc]{.}\;\thecontentspage} % Page number
+
+% Section text styling
+\titlecontents{lsection}[0em] % Indenting
+{\sffamily\small} % Spacing and font options for sections
+{\contentslabel[\thecontentslabel]{1.25cm}} % Section number
+{}
+{}
+
+% Subsection text styling
+\titlecontents{lsubsection}[.5em] % Indentation
+{\normalfont\footnotesize\sffamily} % Font settings
+{}
+{}
+{}
+
+%----------------------------------------------------------------------------------------
+%	PAGE HEADERS
+%----------------------------------------------------------------------------------------
+
+\usepackage{fancyhdr} % Required for header and footer configuration
+
+
+
+\pagestyle{fancy}
+ \renewcommand{\headrulewidth}{0pt}
+ \fancyhead{}
+ \fancyhead[L]{%
+ \noindent\begin{minipage}[c]{2.6cm}%
+ \includegraphics[width=2cm]{png/logo_lycee.png}%
+ \end{minipage}}
+
+\fancyhead[C]{\rule{8cm}{.5pt}}
+
+ \fancyhead[R]{%
+ \noindent\begin{minipage}[c]{3cm}
+ \begin{flushright}
+ \footnotesize{\textit{\textsf{\xxtete}}}%
+ \end{flushright}
+ \end{minipage}
+}
+
+
+\fancyfoot[C]{\rule{12cm}{.5pt}}
+\renewcommand{\footrulewidth}{0.2pt}
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{ 
+\begin{minipage}[c]{.4\linewidth}
+\noindent\footnotesize{{\xxauteur}}
+\end{minipage}}
+
+
+\fancyfoot[R]{\footnotesize{\xxpied}
+\ifthenelse{\isodd{\value{page}}}{
+\begin{tikzpicture}[overlay]
+\node[shape=rectangle, 
+      rounded corners = .25 cm,
+	  draw= ocre,
+	  line width=2pt, 
+	  fill = ocre!10,
+	  minimum width  = 2.5cm,
+	  minimum height = 3cm,] at (\xxposongletx,\xxposonglety) {};
+\node at (\xxposonglettext,\xxposonglety) {\rotatebox{90}{\textbf{\large\color{ocre}{\xxonglet}}}};
+%{};
+\end{tikzpicture}}{}
+}
+%
+%
+%
+% Removes the header from odd empty pages at the end of chapters
+\makeatletter
+\renewcommand{\cleardoublepage}{
+\clearpage\ifodd\c@page\else
+\hbox{}
+\vspace*{\fill}
+\thispagestyle{empty}
+\newpage
+\fi}
+
+\fancypagestyle{plain}{%
+\fancyhf{} % vide l’en-tête et le pied~de~page.
+%\fancyfoot[C]{\bfseries \thepage} % numéro de la page en cours en gras
+% et centré en pied~de~page.
+\fancyfoot[R]{\footnotesize{\xxpied}}
+\fancyfoot[C]{\rule{12cm}{.5pt}}
+\renewcommand{\footrulewidth}{0.2pt}
+\fancyfoot[C]{\footnotesize{\bfseries \thepage}}
+\fancyfoot[L]{ 
+\begin{minipage}[c]{.4\linewidth}
+\noindent\footnotesize{{\xxauteur}}
+\end{minipage}}}
+
+
+
+%----------------------------------------------------------------------------------------
+%	THEOREM STYLES
+%----------------------------------------------------------------------------------------
+
+% Conflit avec la police adobe
+%\usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+\usepackage{amsmath,amsthm}
+
+\newcommand{\intoo}[2]{\mathopen{]}#1\,;#2\mathclose{[}}
+\newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
+\newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
+%\newtheorem{notation}{Notation}[chapter]
+\newtheorem{notation}{Notation}[section]
+
+% Boxed/framed environments
+\newtheoremstyle{ocrenumbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ocre}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber%{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+
+% Boite pour les corriges
+\newtheoremstyle{correctionbox}% % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{violet}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace\thmnumber%{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+
+
+
+\newtheoremstyle{blacknumex}% Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% Body font
+{} % Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily{\tiny\ensuremath{\blacksquare}}\nobreakspace\thmname{#1}\nobreakspace\thmnumber%{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+\newtheoremstyle{blacknumbox} % Theorem style name
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\thmname{#1}\nobreakspace 
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries---\nobreakspace#3.}}% Optional theorem note
+
+% Non-boxed/non-framed environments
+\newtheoremstyle{ocrenum}% % Theorem style name
+{5pt}% Space above
+{5pt}% Space below
+{\normalfont}% % Body font
+{}% Indent amount
+{\small\bf\sffamily\color{ocre}}% % Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+{\small\sffamily\color{ocre}\thmname{#1}\nobreakspace%\thmnumber{\@ifnotempty{#1}{}\@upn{#2}}% Theorem text (e.g. Theorem 2.1)
+\thmnote{\nobreakspace\the\thm@notefont\sffamily\bfseries\color{black}---\nobreakspace#3.}} % Optional theorem note
+\renewcommand{\qedsymbol}{$\blacksquare$}% Optional qed square
+\makeatother
+
+% Environnement pour les titres de parties
+\newtheoremstyle{partiebox} 
+{0pt}% Space above
+{0pt}% Space below
+{\normalfont}% Body font
+{}% Indent amount
+{\small\bf\sffamily}% Theorem head font
+{\;}% Punctuation after theorem head
+{0.25em}% Space after theorem head
+
+
+
+
+% Defines the theorem text style for each type of theorem to one of the three styles above
+\newcounter{dummy} 
+\numberwithin{dummy}{section}
+\theoremstyle{ocrenumbox}
+%\newtheorem{theoremeT}[dummy]{Théorème}
+\newtheorem{theoremeT}[dummy]{Théorème}
+\newtheorem{resultatT}[dummy]{Résultat}
+\newtheorem{savoirT}[dummy]{Savoir}
+\newtheorem{methodeT}[dummy]{Méthode}
+\newtheorem{objectifT}[dummy]{Objectif}
+%\newtheorem{problem}{Problem}[chapter]
+\newtheorem{problem}{Problem}[section]
+%\newtheorem{exerciseT}{Exercise}[chapter]
+\newtheorem{exerciseT}{Exercice}[section]
+
+\theoremstyle{blacknumex}
+%\newtheorem{exampleT}{Example}[chapter]
+\newtheorem{exempleT}{Exemple}[section]
+\newtheorem{termT}{Terminal\\}[section]
+\newtheorem{pyT}{Python\\}[section]
+\newtheorem{sciT}{Scilab\\}[section]
+\newtheorem{pseudoT}{Pseudo Code\\}[section]
+\newtheorem{sqlT}{SQL\\}[section]
+
+\theoremstyle{blacknumbox}
+%\newtheorem{vocabulary}{Vocabulary}[chapter]
+\newtheorem{vocabulary}{Vocabulaire}[section]
+%\newtheorem{definitionT}{Definition}[section]
+\newtheorem{definitionT}{Définition}[section]
+\newtheorem{rappelT}{Rappel}[section]
+\newtheorem{demoT}{Démonstration}[section]
+\newtheorem{corollaryT}[dummy]{Corollaire}
+\newtheorem{hypoT}{Hypothèse(s)}
+
+\theoremstyle{ocrenum}
+\newtheorem{proposition}[dummy]{Proposition}
+
+\theoremstyle{partiebox}
+\newtheorem{titrepartieT}[]{}
+\newtheorem{titrechapitreT}[]{}
+
+\theoremstyle{correctionbox}
+\newtheorem{correctionT}[dummy]{\color{violet}{Correction}}
+
+%----------------------------------------------------------------------------------------
+%	DEFINITION OF COLORED BOXES
+%----------------------------------------------------------------------------------------
+
+\RequirePackage[framemethod=tikz]{mdframed} % Required for creating the theorem, definition, exercise and corollary boxes
+
+% Theorem box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+backgroundcolor=ocre!10,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+innerbottommargin=5pt]{tBox}
+
+
+% Correction
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+backgroundcolor=violet!10,
+linecolor=violet,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+innerbottommargin=5pt]{coBox}
+
+
+% Exercise box	  
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=ocre!10,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+innerbottommargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt]{eBox}	
+
+% Definition box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+backgroundcolor=ocre!10,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=0pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=0pt]{dBox}	
+
+% Demonstration box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+%backgroundcolor=ocre!10,
+linecolor=ocre,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=0pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=0pt]{demoBox}	
+
+% Corollary box
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{cBox}
+
+
+% Hypothèses
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{hyBox}
+
+
+% Boite pour le titre de la partie (pBox)
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=true,
+leftline=false,
+topline=false,
+bottomline=false,
+linecolor=ocre,
+backgroundcolor=none,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{pBox}
+
+% Boite pour le titre du chapitre (chBox)
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=ocre,
+%backgroundcolor=black!5,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{chBox}
+
+
+% Boite pour les exemples
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=white,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{exBox}
+
+% Boite pour le terminal
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=white,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{termBox}
+
+
+% Boite pour Python
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=white,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=0pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{pyBox}
+
+% Boite pour scilab
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=white,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{sciBox}
+
+
+% Boite pour pseudo
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=white,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{pseudoBox}
+
+% Boite pour pseudo
+\newmdenv[skipabove=7pt,
+skipbelow=7pt,
+rightline=false,
+leftline=true,
+topline=false,
+bottomline=false,
+linecolor=gray,
+backgroundcolor=white,
+innerleftmargin=5pt,
+innerrightmargin=5pt,
+innertopmargin=5pt,
+leftmargin=0cm,
+rightmargin=0cm,
+linewidth=4pt,
+innerbottommargin=5pt]{sqlBox}
+
+
+% Creates an environment for each type of theorem and assigns it a theorem text style from the "Theorem Styles" section above and a colored box from above
+\newenvironment{theorem}{\begin{tBox}\begin{theoremeT}}{\end{theoremeT}\end{tBox}}
+\newenvironment{resultat}{\begin{tBox}\begin{resultatT}}{\end{resultatT}\end{tBox}}
+\newenvironment{methode}{\begin{tBox}\begin{methodeT}}{\end{methodeT}\end{tBox}}
+\newenvironment{savoir}{\begin{tBox}\begin{savoirT}}{\end{savoirT}\end{tBox}}
+\newenvironment{obj}{\begin{tBox}\begin{objectifT}}{\end{objectifT}\end{tBox}}
+\newenvironment{corrige}{\begin{coBox}\begin{correctionT}}{\end{correctionT}\end{coBox}}
+\newenvironment{exercise}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+\newenvironment{exercice}{\begin{eBox}\begin{exerciseT}}{\hfill{\color{ocre}\tiny\ensuremath{\blacksquare}}\end{exerciseT}\end{eBox}}				  
+
+\newenvironment{definition}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}	
+\newenvironment{rappel}{\begin{dBox}\begin{rappelT}}{\end{rappelT}\end{dBox}}	
+\newenvironment{defi}{\begin{dBox}\begin{definitionT}}{\end{definitionT}\end{dBox}}	
+\newenvironment{demo}{\begin{demoBox}\begin{demoT}}{\end{demoT}\end{demoBox}}	
+%\newenvironment{exemple}{\begin{exempleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exempleT}}		
+\newenvironment{corollary}{\begin{cBox}\begin{corollaryT}}{\end{corollaryT}\end{cBox}}
+\newenvironment{hypo}{\begin{hyBox}\begin{hypoT}}{\end{hypoT}\end{hyBox}}	\newenvironment{exemple}{\begin{exBox}\begin{exempleT}}{\hfill{\tiny\ensuremath{\blacksquare}}\end{exempleT}\end{exBox}}	
+\newenvironment{titrepartie}{\begin{pBox}\begin{titrepartieT}}{\end{titrepartieT}\end{pBox}}	
+\newenvironment{titrechapitre}{\begin{chBox}\begin{titrechapitreT}}{\end{titrechapitreT}\end{chBox}}	
+
+\newenvironment{term}{ \begin{termBox}\begin{termT}}{\end{termT}\end{termBox}}
+\newenvironment{py}{ \begin{pyBox}\begin{pyT}}{\end{pyT}\end{pyBox}}
+\newenvironment{sci}{ \begin{sciBox}\begin{sciT}}{\end{sciT}\end{sciBox}}
+\newenvironment{pseudo}{ \begin{pseudoBox}\begin{pseudoT}}{\end{pseudoT}\end{pseudoBox}}
+\newenvironment{envsql}{ \begin{sqlBox}\begin{sqlT}}{\end{sqlT}\end{sqlBox}}
+
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENT
+%----------------------------------------------------------------------------------------
+
+\newenvironment{remark}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+\begin{list}{}{
+\leftmargin=35pt % Indentation on the left
+\rightmargin=25pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}};\end{tikzpicture}} % Orange R in a circle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+\newenvironment{rem}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+\begin{list}{}{
+\leftmargin=35pt % Indentation on the left
+\rightmargin=25pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}};\end{tikzpicture}} % Orange R in a circle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+
+\newenvironment{warn}{\par\vspace{10pt}\small % Vertical white space above the remark and smaller font size
+\begin{list}{}{
+\leftmargin=35pt % Indentation on the left
+\rightmargin=25pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=red!60,line width=1pt,circle,fill=red!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{black}{!}};\end{tikzpicture}} % Point d'exclamation dans un cercle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION NUMBERING IN THE MARGIN
+%----------------------------------------------------------------------------------------
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\llap{\textcolor{ocre}{\csname the#1\endcsname}\hspace{1em}}}                    
+\renewcommand{\section}{\@startsection{section}{1}{\z@}
+{-4ex \@plus -1ex \@minus -.4ex}
+{1ex \@plus.2ex }
+{\normalfont\large\sffamily\bfseries}}
+\renewcommand{\subsection}{\@startsection {subsection}{2}{\z@}
+{-3ex \@plus -0.1ex \@minus -.4ex}
+{0.5ex \@plus.2ex }
+{\normalfont\sffamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection {subsubsection}{3}{\z@}
+{-2ex \@plus -0.1ex \@minus -.2ex}
+{.2ex \@plus.2ex }
+{\normalfont\small\sffamily\bfseries}}                        
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}
+{-2ex \@plus-.2ex \@minus .2ex}
+{.1ex}
+{\normalfont\small\sffamily\bfseries}}
+
+%----------------------------------------------------------------------------------------
+%	PART HEADINGS
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER HEADINGS
+%----------------------------------------------------------------------------------------
+
+% \newcommand{\thechapterimage}{}%
+% \newcommand{\chapterimage}[1]{\renewcommand{\thechapterimage}{#1}}%
+% \def\@makechapterhead#1{%
+% {\parindent \z@ \raggedright \normalfont
+% \ifnum \c@secnumdepth >\m@ne
+% \if@mainmatter
+% \begin{tikzpicture}[remember picture,overlay]
+% \node at (current page.north west)
+% {\begin{tikzpicture}[remember picture,overlay]
+% \node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+% \draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+% \draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}\thechapter. #1\strut};
+% \end{tikzpicture}};
+% \end{tikzpicture}
+% \else
+% \begin{tikzpicture}[remember picture,overlay]
+% \node at (current page.north west)
+% {\begin{tikzpicture}[remember picture,overlay]
+% \node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+% \draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+% \draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}#1\strut};
+% \end{tikzpicture}};
+% \end{tikzpicture}
+% \fi\fi\par\vspace*{270\p@}}}
+
+%-------------------------------------------
+
+\def\@makeschapterhead#1{%
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+\draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}#1\strut};
+\end{tikzpicture}};
+\end{tikzpicture}
+\par\vspace*{270\p@}}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS IN THE DOCUMENTS
+%----------------------------------------------------------------------------------------
+
+
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor= ocre,bookmarks=true,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+\usepackage{bookmark}
+\bookmarksetup{
+open,
+numbered,
+addtohook={%
+\ifnum\bookmarkget{level}=0 % chapter
+\bookmarksetup{bold}%
+\fi
+\ifnum\bookmarkget{level}=-1 % part
+\bookmarksetup{color=ocre,bold}%
+\fi
+}
+}
+
+%----------------------------------------------------------------------------------------
+%	
+%----------------------------------------------------------------------------------------
+
+\newcommand{\thechapterimage}{}%
+\newcommand{\chapterimage}[1]{\renewcommand{\thechapterimage}{#1}}%
+\def\@makechapterhead#1{%
+{\parindent \z@ \raggedright \normalfont
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{\thechapterimage}};
+%\draw[anchor=west] (\Gm@lmargin,-9cm) node [line width=2pt,rounded corners=15pt,draw=ocre,fill=white,fill opacity=0.5,inner sep=15pt]{\strut\makebox[22cm]{}};
+%\draw[anchor=west] (\Gm@lmargin+.3cm,-9cm) node {\huge\sffamily\bfseries\color{black}\thechapter. #1\strut};
+\end{tikzpicture}};
+\end{tikzpicture}
+\par\vspace*{270\p@}
+}}
+
+ \newcounter{exo}
+
+
+\makeatletter             
+\renewcommand{\subparagraph}{\@startsection{exo}{5}{\z@}%
+                                    {-2ex \@plus-.2ex \@minus .2ex}%
+                                    {0ex}%               
+{\normalfont\bfseries Question \hspace{.7cm} }}
+\makeatother
+\renewcommand{\thesubparagraph}{\arabic{subparagraph}} 
+\makeatletter
+
+
+%%%% Environnement pour inclure du code
+\usepackage{textcomp}
+\usepackage[french]{algorithm2e}
+\usepackage{listings}
+\lstloadlanguages{R}   % pour regler les pb d accent utf8 dans les codes
+\lstset{language=R} % pour regler les pb d accent utf8 dans les codes
+\renewcommand{\lstlistlistingname}{Listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\SetKwBlock{Fonction}{Début Fonction}{Fin Fonction}
+\SetKwComment{Comment}{start}{end}
+
+\definecolor{Bleu}{rgb}{0.1,0.1,1.0}
+\definecolor{Noir}{rgb}{0,0,0}
+\definecolor{Grau}{rgb}{0.5,0.5,0.5}
+\definecolor{DunkelGrau}{rgb}{0.15,0.15,0.15}
+\definecolor{Hellbraun}{rgb}{0.5,0.25,0.0}
+\definecolor{Magenta}{rgb}{1.0,0.0,1.0}
+\definecolor{Gris}{gray}{0.5}
+\definecolor{Vert}{rgb}{0,0.5,0}
+\definecolor{SourceHintergrund}{rgb}{1,1.0,0.95}
+
+
+\lstnewenvironment{python}[1][]{
+\lstset{
+%escapeinside={\%*}{*)},
+inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=python,
+basicstyle=\ttfamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1, % pour regler les pb d accent utf8 dans les codes
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+
+\lstnewenvironment{scilab}[1][]{
+\lstset{
+language=scilab,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while,Debut},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1},
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+\lstdefinestyle{stylepython}{%
+escapeinside={\%*}{*)},
+inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=python,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{green},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1,
+%numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%numbersep=5pt,                   % how far the line-numbers are from the code
+%numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+}
+
+
+
+\lstnewenvironment{termi}[1][]{
+\lstset{
+language=scilab,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while,Debut},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{green},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1},
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+\lstnewenvironment{sql}[1][]{
+\lstset{
+%escapeinside={\%*}{*)},
+%inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+%extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=sql,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1, % pour regler les pb d accent utf8 dans les codes
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+% Définition des booleéns
+\newif\iffiche
+\newif\ifprof
+\newif\iftd
+\newif\ifcours

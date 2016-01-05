@@ -1,0 +1,498 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Cycle 6 : Vérification des performances mécaniques},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+    
+\input{style/new_style}
+\input{style/macros_SII}
+
+\usepackage{multicol}
+\fichetrue
+%\fichefalse
+
+%\proftrue
+\proffalse
+
+\tdtrue
+%\tdfalse
+
+\courstrue
+\coursfalse
+
+\def\discipline{Sciences \\Industrielles de \\ l'Ingénieur}
+\def\xxtete{Sciences Industrielles de l'Ingénieur}
+
+\def\classe{PTSI}
+\def\xxnumpartie{Cycle 6}
+\def\xxpartie{Vérification des performances mécaniques  \\
+des systèmes mécaniques}
+
+\def\xxnumchapitre{Chapitre 1}
+\def\xxchapitre{Détermination des grandeurs cinématiques : vitesse et accélération}
+
+\def\xxtitreexo{Exercices d'application du cours}
+\def\xxsourceexo{\hspace{.2cm} D'après ressources de S. Genouël.}
+
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+\def\xxonglet{Cy. 6 -- Ch. 1}
+
+\def\xxactivite{Colle 1}
+\def\xxauteur{\textsl{S. Genouël}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}\\
+%\noindent \textbf{Résoudre :} à partir des modèles retenus :
+\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+%\item %\textit{Rés -- C1.1 :} Loi entrée sortie géométrique et cinématique -- Fermeture géométrique.
+\item Écrire le vecteur position, vitesse d’un point d’un solide.
+\item Écrire le vecteur accélération d’un point d’un solide.
+\end{itemize}
+%
+%\noindent \textit{Mod2 -- C4.1 :} Représentation par schéma bloc.
+}}
+
+\def\xxfigures{
+\includegraphics[width=.8\textwidth]{images/prot_01}
+}%figues de la page de garde
+
+\def\xxpied{%
+Partie 6 -- Étude cinématique des systèmes  \\
+Ch. 1 : Détermination des grandeurs cinématiques : vitesse et accélération -- \xxactivite%
+}
+
+
+\setcounter{secnumdepth}{5}
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+%\chapterimage{images/Fond_Cin}
+\input{style/new_pagegarde}
+\vspace{8cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+\begin{multicols}{2}
+\section*{Étude d'une benne de camion}
+
+
+Soit $\mathcal{R}_0$ un repère lié au châssis 0 d'un camion benne. Soit $\mathcal{R}_1$ et $\mathcal{R}_2$  deux repères liés respectivement au corps 1 et à la tige 2 d'un des deux vérins hydrauliques.
+On suppose que le vérin étudié (corps+tige) se déplace dans le plan $(\vect{x_0},\vect{y_0})$.
+On pose $\alpha=(\vect{x_0};\vect{x_1})$ et $\vect{OB}=\lambda (t)\vect{x_1}$.
+
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/benne1}
+\end{center}
+
+\begin{center}
+\includegraphics[width=.7\linewidth]{images/benne2}
+\end{center}
+
+
+Le paramétrage du système est le suivant :
+$$
+\vect{OB} = \lambda(t) \vect{x_1}
+$$
+
+
+\begin{center}
+\includegraphics[width=.45\linewidth]{images/parametrage}
+\end{center}
+
+
+
+%\subparagraph{}
+%Donner le paramétrage du système.
+%\ifprof
+%\begin{corrige}
+%\end{corrige}\else \fi
+
+\subparagraph{}
+Quelle est la trajectoire du point $B$ appartenant au solide 2 par rapport à 0.
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+\subparagraph{}
+Calculer $\vectv{B}{2}{0}$.
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+\subparagraph{}
+Calculer $\vect{\Gamma(B,2/0)}$.
+
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+\end{multicols}
+\newpage \setcounter{exo}{0}
+\begin{multicols}{2}
+
+\section*{Étude d'une bras manipulateur}
+
+
+La figure ci-dessous représente un bras manipulateur permettant de déplacer des objets.
+Ce mécanisme est constitué :
+\begin{itemize}
+\item d'un bâti S0;
+\item d'un solide S1 entraîné en rotation par un moteur M1;
+\item d'un solide S2 entraîné en rotation par un moteur M2;
+\item d'un solide S3 entraîné en translation par un vérin V1;
+\item d'une pince située à l’extrémité du vérin permettant de saisir l’objet.
+\end{itemize}
+
+On note : 
+\begin{itemize}
+\item $1/0$ la rotation d'axe $(A,\vect{z_0})$.
+\item $2/1$ la rotation d'axe $(B,\vect{x_1})$.
+\item $3/2$ la translation rectiligne de direction $\vect{z_2}$.
+\item $\vect{AB}=a\vect{y_1}$.
+\end{itemize}
+
+
+\begin{center}
+\includegraphics[width=.7\linewidth]{images/bras1}
+\end{center}
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/parametrage_02}
+\end{center}
+
+$$\vect{BC}=\lambda\vect{z_2}$$
+
+
+
+
+%\ifprof
+%\begin{corrige}
+%\end{corrige}\else \fi
+%
+%
+%
+%Donner le paramétrage du système.
+%\ifprof
+%\begin{corrige}
+%\end{corrige}\else \fi
+
+\subparagraph{}
+\textit{Proposer un schéma cinématique du bras manipulateur.}
+
+\subparagraph{}
+\textit{Quelle est la trajectoire du point $B$ appartenant au solide 2 par rapport à 0.}
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+\subparagraph{}
+\textit{Calculer $\vectv{C}{3}{2}$, $\vectv{C}{2}{1}$, $\vectv{C}{1}{0}$, $\vectv{B}{2}{0}$, $\vectv{C}{3}{0}$.}
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+\subparagraph{}
+\textit{Calculer $\vect{\Gamma(A,2/0)}$, $\vect{\Gamma(B,2/0)}$, $\vect{\Gamma(C,2/0)}$.}
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+\end{multicols}
+\newpage \setcounter{exo}{0}
+\begin{multicols}{2}
+
+\section*{Étude d'une centrifugeuse à 2 degrés de liberté [1]}
+
+\begin{center}
+\includegraphics[height=3.5cm]{images/centrifugeuse_1}
+
+\textit{Centrifugeuse humaine développée par le CNRS / MEDES } 
+\end{center}
+
+
+
+\begin{center}
+\includegraphics[width=0.9\linewidth]{images/centrifugeuse_2}
+
+\textit{Modélisation cinématique} 
+\end{center}
+
+
+
+Le paramétrage de la centrifugeuse est donnée ci dessous : 
+
+
+
+\begin{center}
+\includegraphics[height=3cm]{images/centrifugeuse_3}
+\end{center}
+
+
+Les paramètres constants du système sont les suivants : 
+\begin{itemize}%[$\bullet$]
+\item $\vect{O_0O_1} = a \vect{i_1}$;
+\item $\vect{O_1G} = b \vect{i_2} + c \vect{k_2}$.
+\end{itemize}
+
+
+
+
+
+\subparagraph{}
+\textit{Donner la trajectoire du point $G$ dans le repère $\mathcal{R}_0$.}
+\ifprof
+\begin{corrige}
+La trajectoire du point $G$ dans le repère $\mathcal{R}_0$  est donnée par le vecteur :
+$$
+\vect{O_0 G}(t)  = \vect{O_0O_1} + \vect{O_1G}
+= a \vect{i_1} +  b \vect{i_2} + c \vect{k_2}
+$$
+
+Il faut alors projeter les vecteurs dans $\mathcal{R}_0$ : 
+\begin{eqnarray*}
+\vect{O_0 G}(t) &=& a \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) 
++ b \left(\cos\beta(t) \vect{i_1} - \sin\beta(t) \vect{k_1} \right) 
++ c\left(\cos\beta(t) \vect{k_1} + \sin\beta(t)\vect{i_1}\right)\\
+&=& a \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) 
++ b \left(\cos\beta(t) \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) - \sin\beta(t) \vect{k_0} \right) \\
+&& + c\left(\cos\beta(t) \vect{k_0} + \sin\beta(t)  \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) \right)\\
+&=& \left[ \begin{array}{c} 
+a \cos\alpha(t) + b \cos\beta(t) \cos\alpha(t) +c \sin\beta(t)\cos\alpha(t)\\
+a \sin\alpha(t) + b \cos\beta(t) \sin\alpha(t) +c \sin\beta(t)\sin\alpha(t) \\
+- b\sin\beta(t) + c\cos\beta(t)
+\end{array}\right]_{\mathcal{R}_0}
+\end{eqnarray*}
+
+On a ainsi l'équation paramétrique de la position du point $G$.
+
+\end{corrige}
+\else \fi
+
+
+\subparagraph{}
+\textit{Calculer $\vectv{O_0}{S_1}{S_0}$.}
+
+\subparagraph{}
+\textit{Calculer $\vectv{O_1}{S_2}{S_1}$.}
+
+\subparagraph{}
+\textit{Calculer $\vectv{O_1}{S_1}{S_0}$ et $\vectg{O_1}{S_1}{S_0}$.}
+\ifprof
+\begin{corrige}
+
+
+\textbf{Méthode 1 -- }
+Par définition, 
+$$
+\vectv{O_1}{S_1}{S_0} 
+= \left[\dfrac{d\vect{O_0O_1}(t)}{dt}\right]_{\mathcal{R}_0}
+= \left[\dfrac{d \left(a \vect{i_1}\right) }{dt}\right]_{\mathcal{R}_0}
+= a \left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}
+$$
+
+On a :
+\begin{eqnarray*}
+\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}
+&=&\left[\dfrac{d \left(\cos\alpha(t)\vect{i_0}+\sin\alpha(t)\vect{j_0} \right)}{dt}\right]_{\mathcal{R}_0}
+=\left[\dfrac{d  \cos\alpha(t)\vect{i_0}}{dt}\right]_{\mathcal{R}_0}
++\left[\dfrac{d  \sin\alpha(t)\vect{j_0} }{dt}\right]_{\mathcal{R}_0}\\
+& = & 
+\dfrac{d \cos\alpha(t)}{dt} \vect{i_0}  
++\cos\alpha(t)\underbrace{\left[\dfrac{d  \vect{i_0}}{dt}\right]_{\mathcal{R}_0}}_{\vect{0}}
++\dfrac{d \sin\alpha(t)}{dt} \vect{i_0}  
++\sin(t)\underbrace{\left[\dfrac{d  \vect{j_0}}{dt}\right]_{\mathcal{R}_0}}_{\vect{0}}\\
+& = & -\dot{\alpha}(t)\sin\alpha(t) \vect{i_0}   + \dot{\alpha}(t)\cos\alpha(t) \vect{j_0}  = 
+\dot{\alpha}(t)\vect{j_1}
+\end{eqnarray*}
+
+Ainsi,
+$$
+\vectv{O_1}{S_1}{S_0} 
+= \left[\begin{array}{c} 
+-a\dot{\alpha}(t)\sin\alpha(t) \\
+a \dot{\alpha}(t)\cos\alpha(t) \\
+0 \end{array}\right]_{\mathcal{R}_0}
+=\left[\begin{array}{c} 0 \\ a\dot{\alpha}(t) \\ 0\end{array}\right]_{\mathcal{R}_1}
+$$
+
+Dans les deux cas, $\vect{O_0O_1}(t)$ est dérivé par rapport $\mathcal{R}_0$ mais il s'exprime différemment dans $\mathcal{R}_0$ et $\mathcal{R}_1$ :
+\begin{itemize}
+\item $\vectv{O_1}{S_1}{S_0} = -a\dot{\alpha}(t)\sin\alpha(t) \vect{i_0}   + a\dot{\alpha}(t) \cos\alpha(t) \vect{j_0}$ : ici la base de \textbf{projection} et de \textbf{dérivation} est la base $\mathcal{B}_0$;
+\item $\vectv{O_1}{S_1}{S_0} = a\dot{\alpha}(t)\vect{j_1}$ : ici la base de dérivation est la base $\mathcal{B}_0$ et la base de projection est $\mathcal{B}_1$.
+\end{itemize}
+
+
+\textbf{Méthode 2 -- Utilisation de la dérivation vectorielle.}
+
+Calcul de $\vectv{O_1}{S_1}{S_0}$.
+
+On rappelle que :
+$$
+\vectv{O_1}{S_1}{S_0} 
+= a \left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}
+$$
+
+Le calcul de $\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}$ peut donc être réalisé ainsi : 
+$$ 
+\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0} = 
+\underbrace{\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_1}}_{\vect{0}} + \vecto{S_1}{S_0}\wedge \vect{i_1}
+=\dot{\alpha}\vect{k_0}  \wedge \vect{i_1}
+=\dot{\alpha} \vect{j_1}
+$$
+
+Ainsi 
+$$
+\vectv{O_1}{S_1}{S_0} 
+= a \dot{\alpha} \vect{j_1}
+$$
+
+\textbf{Méthode 3 -- }
+Calcul de $\vectv{O_1}{S_1}{S_0}$.
+
+$S_1$ et $S_0$ sont en liaison pivot de centre $O_0$, on a donc :  $\vectv{O_0}{S_1}{S_0}=\vect{0}$.
+
+En conséquence, 
+$$
+\vectv{O_1}{S_1}{S_0} = \vectv{O_0}{S_1}{S_0} + \vect{O_1O_0}\wedge   \vecto{S_1}{S_0} = \vect{0} - a \vect{i_1} \wedge \left( \dot{\alpha}\vect{k_0} \right)
+=a \dot{\alpha}\vect{j_1}
+$$
+
+\end{corrige}\else \fi
+
+
+\subparagraph{}
+\textit{Calculer $\vecto{S_1}{S_0}$, $\vecto{S_2}{S_1}$ et $\vecto{S_2}{S_0}$.}
+
+
+
+\subparagraph{}
+\textit{Calculer $\vectv{G}{S_2}{S_0}$.}
+\ifprof
+\begin{corrige}
+
+Calcul de $\vectv{G}{S_2}{S_0}$.
+%On a :
+%$$\vecto{S_2}{S_0}=\vecto{S_2}{S_1}+\vecto{S_1}{S_0} = \dot{\alpha}\vect{k_0} + \dot{\beta}\vect{j_1}  $$
+
+%Par ailleurs, 
+On a : 
+$$\vectv{G}{S_2}{S_0} = \vectv{G}{S_2}{S_1} + \vectv{G}{S_1}{S_0} $$
+Calculons $\vectv{G}{S_1}{S_0}$ :
+$$
+\vectv{G}{S_1}{S_0} 
+= \vectv{O_1}{S_1}{S_0} + \vect{GO_1}\wedge\vecto{S_1}{S_0}
+= a\dot{\alpha}\vect{j_1} - \left(b\vect{i_2} + c\vect{k_2}\right) \wedge\left( \dot{\alpha} \vect{k_0}\right)
+$$
+$$
+\vectv{G}{S_1}{S_0} 
+= a\dot{\alpha}\vect{j_1}  + b\dot{\alpha} \sin(\beta+\pi/2) \vect{j_1} + c \dot{\alpha}\sin\beta\vect{j_1}
+= \dot{\alpha} \left(a+b \cos\beta + c \sin\beta\right) \vect{j_1} 
+$$
+
+Par ailleurs calculons $\vectv{G}{S_2}{S_1}$ :
+$$\vectv{G}{S_2}{S_1} = \vectv{O_1}{S_2}{S_1} + \vect{GO_1}\wedge \vecto{S_2}{S_1}
+=-\left(b\vect{i_2}+c\vect{k_2}\right) \wedge \left(\dot{\beta}\vect{j_1}\right)
+=-\dot{\beta}\left(b\vect{k_2}-c\vect{i_2} \right)
+$$
+
+Au final, 
+$$\vectv{G}{S_2}{S_0} = \dot{\alpha} \left(a+b \cos\beta + c \sin\beta\right) \vect{j_1} 
+-\dot{\beta}\left(b\vect{k_2}-c\vect{i_2} \right)
+$$
+
+Il est aussi possible de calculer $\vectv{G}{S_2}{S_0}$ ainsi : 
+$$\vectv{G}{S_2}{S_0} = \left[\dfrac{d \vect{O_0G}}{dt}\right]_{\mathcal{R}_0}$$ 
+
+\end{corrige}\else \fi
+
+
+
+
+\subparagraph{}
+\textit{Calculer $\vectg{G}{S_2}{S_0}$.}
+\ifprof
+\begin{corrige}
+\end{corrige}\else \fi
+
+
+
+\begin{thebibliography}{2}
+\bibitem[1]{cite1} Centrifugeuse humaine -- CNRS Photothèque/Sébastien Godefroy et MEDES, \textit{Avio et Tiger}, \url{http://www.medes.fr/home_fr/fiche-centrifugeuse/mainColumnParagraphs/0/document/Presentation\%20centrifugeuse%2018.12.07.pdf}.
+\end{thebibliography}
+\end{multicols}
+\newpage \setcounter{exo}{0}
+\begin{multicols}{2}
+
+\section*{Robot de peinture}
+
+\vspace{.25cm}
+
+On étudie un robot de peinture de voiture. Ce robot se déplace par rapport à une carrosserie de voiture, et projette dessus de la peinture. L'objectif est de déterminer les lois du mouvement du robot, pour lui permettre de vérifier le critère de vitesse de déplacement relatif (entre le robot et la carrosserie de voiture) du cahier des charges.
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_1}
+
+\end{center}
+
+\vspace{.25cm}
+
+
+La modélisation cinématique du robot est donnée sur la figure suivante :
+
+
+\begin{center}
+\includegraphics[width=\linewidth]{images/fig_2}
+\end{center}
+
+
+
+\vspace{.25cm}
+
+Le chariot $S_1$, auquel on associe le repère $\mathcal{R}_1\left(A,\vect{x_1},\vect{y_1},\vect{z_1}\right)$ est en mouvement de translation de direction $\vect{y_0}$ par rapport au bâti $S_0$ de repère $\mathcal{R}_0\left(A,\vect{x_0},\vect{y_0},\vect{z_0}\right)$. 
+
+Le corps $S_2$, auquel on associe le repère $\mathcal{R}_2\left(A,\vect{x_2},\vect{y_2},\vect{z_2}\right)$ est en mouvement de rotation autour de l'axe $(B,\vect{z_0})$ avec le chariot $S_1$. 
+
+Le bras $S_3$, auquel on associe le repère $\mathcal{R}_3\left(B,\vect{x_3},\vect{y_3},\vect{z_3}\right)$ est en mouvement de rotation autour de l'axe $(B,\vect{y_2})$ avec le corps $S_2$. 
+
+On a $\vect{OD}=b\vect{y_0}$ avec $b=\sqrt{L^2-H^2}$.
+
+
+
+
+\subparagraph{}
+\textit{Construire les figures planes de repérage/paramétrage puis exprimer les vecteurs vitesse instantanée de rotation $\vecto{1}{0}$, $\vecto{2}{1}$, $\vecto{3}{2}$.}
+
+\subparagraph{}
+\textit{Déterminer $\vectv{P}{3}{0}$}
+
+On désire que $P$ décrive la droite $(D,\vect{x_0})$ à vitesse constante $V$, conformément au cahier des charges. 
+
+\subparagraph{}
+\textit{Représenter sur une figure dans le plan $(O,\vect{x_0},\vect{y_0})$, puis sur une figure dans le plan $(O,\vect{x_0},\vect{y_0})$, les positions des points $O$, $D$, $A$, $B$ et $P$ du robot lorsque celui-ci est en position extrême ($A$ est en $D$).}
+
+
+\subparagraph{}
+\textit{Traduire, à l'aide de l'expression de $\vectv{P}{3}{0}$ le fait que $P$ se déplace à la vitesse $V$ selon $\vect{x_0}$. En déduire $\dot{\beta}$.}
+
+\subparagraph{}
+\textit{Exprimer alors $\dot{\lambda}$ et $\dot{\alpha}$ en fonction de $L$, $V$, $\alpha$ et $\beta_0$. }
+
+\subparagraph{}
+\textit{A l'aide de la figure précédente, exprimer $\beta_0$ en fonction de $b$ et $L$.}
+
+\subparagraph{}
+\textit{Exprimer $\dot{\lambda}$ et $\dot{\alpha}$ en fonction de $V$, $b$ et $\alpha$.}
+
+\end{multicols}
+
+\end{document}
+
+

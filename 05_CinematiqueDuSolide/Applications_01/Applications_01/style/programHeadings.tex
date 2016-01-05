@@ -1,0 +1,338 @@
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage[french]{algorithm2e}
+
+\SetKwBlock{Fonction}{Début Fonction}{Fin Fonction}
+\SetKwComment{Comment}{start}{end}
+% Python sources
+
+\usepackage{listings}
+\lstloadlanguages{R}   % pour regler les pb d accent utf8 dans les codes
+\lstset{language=R} % pour regler les pb d accent utf8 dans les codes
+
+\usepackage{textcomp}
+\usepackage{setspace}
+%\usepackage{palatino}
+
+%\usepackage{color}
+\definecolor{Bleu}{rgb}{0.1,0.1,1.0}
+\definecolor{Noir}{rgb}{0,0,0}
+\definecolor{Grau}{rgb}{0.5,0.5,0.5}
+\definecolor{DunkelGrau}{rgb}{0.15,0.15,0.15}
+\definecolor{Hellbraun}{rgb}{0.5,0.25,0.0}
+\definecolor{Magenta}{rgb}{1.0,0.0,1.0}
+\definecolor{Gris}{gray}{0.5}
+\definecolor{Vert}{rgb}{0,0.5,0}
+\definecolor{SourceHintergrund}{rgb}{1,1.0,0.95}
+
+
+%
+\renewcommand{\lstlistlistingname}{Listings}
+\renewcommand{\lstlistingname}{Listing}
+
+\lstnewenvironment{python}[1][]{
+\lstset{
+%escapeinside={\%*}{*)},
+inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=python,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1, % pour regler les pb d accent utf8 dans les codes
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+
+\lstnewenvironment{scilab}[1][]{
+\lstset{
+language=scilab,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while,Debut},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1},
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+\lstdefinestyle{stylepython}{%
+escapeinside={\%*}{*)},
+inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=python,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{green},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1,
+%numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%numbersep=5pt,                   % how far the line-numbers are from the code
+%numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+}
+
+%
+%\renewcommand{\algorithmicrequire} {\textbf{\textsc{Entrées:}}}
+%\renewcommand{\algorithmicensure}  {\textbf{\textsc{Sorties:}}}
+%\renewcommand{\algorithmicwhile}   {\textbf{tantque}}
+%\renewcommand{\algorithmicdo}      {\textbf{faire}}
+%\renewcommand{\algorithmicendwhile}{\textbf{fin tantque}}
+%\renewcommand{\algorithmicend}     {\textbf{fin}}
+%\renewcommand{\algorithmicif}      {\textbf{si}}
+%\renewcommand{\algorithmicendif}   {\textbf{finsi}}
+%\renewcommand{\algorithmicelse}    {\textbf{sinon}}
+%\renewcommand{\algorithmicthen}    {\textbf{alors}}
+%\renewcommand{\algorithmicfor}     {\textbf{pour}}
+%\renewcommand{\algorithmicforall}  {\textbf{pour tout}}
+%\renewcommand{\algorithmicdo}      {\textbf{faire}}
+%\renewcommand{\algorithmicendfor}  {\textbf{fin pour}}
+%\renewcommand{\algorithmicloop}    {\textbf{boucler}}
+%\renewcommand{\algorithmicendloop} {\textbf{fin boucle}}
+%\renewcommand{\algorithmicrepeat}  {\textbf{répéter}}
+%\renewcommand{\algorithmicuntil}   {\textbf{jusqu'à}}
+
+\lstnewenvironment{termi}[1][]{
+\lstset{
+language=scilab,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while,Debut},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{green},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1},
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+\lstnewenvironment{sql}[1][]{
+\lstset{
+%escapeinside={\%*}{*)},
+%inputencoding=utf8,   % pour regler les pb d accent utf8 dans les codes
+%extendedchars=true,   % pour regler les pb d accent utf8 dans les codes
+language=sql,
+basicstyle=\sffamily\footnotesize, 	
+stringstyle=\color{red}, 
+showstringspaces=false, 
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{blue},
+emph={access,and,break,class,continue,def,del,elif ,else,
+except,exec,finally,for,from,global,if,import,in,i s,
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{black}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{black},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+columns=flexible, % pour empecher d'avoir un espacement mono
+morecomment=[s]{"""}{"""},
+commentstyle=\color{Hellbraun}\slshape, 
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+emphstyle=[4]\color{blue},
+literate=*{:}{{\textcolor{blue}:}}{1}
+{=}{{\textcolor{blue}=}}{1}
+{-}{{\textcolor{blue}-}}{1}
+{+}{{\textcolor{blue}+}}{1}
+{*}{{\textcolor{blue}*}}{1}
+{!}{{\textcolor{blue}!}}{1}
+{(}{{\textcolor{blue}(}}{1}
+{)}{{\textcolor{blue})}}{1}
+{[}{{\textcolor{blue}[}}{1}
+{]}{{\textcolor{blue}]}}{1}
+{<}{{\textcolor{blue}<}}{1}
+{>}{{\textcolor{blue}>}}{1}
+{COMPLETER}{{\textcolor{red}COMPLETER}}{1},
+literate=%
+            {é}{{\'{e}}}1
+            {è}{{\`{e}}}1
+            {ê}{{\^{e}}}1
+            {ë}{{\¨{e}}}1
+            {û}{{\^{u}}}1
+            {ù}{{\`{u}}}1
+            {â}{{\^{a}}}1
+            {à}{{\`{a}}}1
+            {î}{{\^{i}}}1
+            {ç}{{\c{c}}}1
+            {Ç}{{\c{C}}}1
+            {É}{{\'{E}}}1
+            {Ê}{{\^{E}}}1
+            {À}{{\`{A}}}1
+            {Â}{{\^{A}}}1
+            {Î}{{\^{I}}}1, % pour regler les pb d accent utf8 dans les codes
+%framexleftmargin=1mm, framextopmargin=1mm, frame=shadowbox, rulesepcolor=\color{blue},#1
+%backgroundcolor=\color{SourceHintergrund}, 
+%framexleftmargin=1mm, framexrightmargin=1mm, framextopmargin=1mm, frame=single, framerule=1pt, rulecolor=\color{black},#1
+}}{}
+
+
+%
+%\renewcommand{\algorithmicrequire} {\textbf{\textsc{Entrées:}}}
+%\renewcommand{\algorithmicensure}  {\textbf{\textsc{Sorties:}}}
+%\renewcommand{\algorithmicwhile}   {\textbf{tantque}}
+%\renewcommand{\algorithmicdo}      {\textbf{faire}}
+%\renewcommand{\algorithmicendwhile}{\textbf{fin tantque}}
+%\renewcommand{\algorithmicend}     {\textbf{fin}}
+%\renewcommand{\algorithmicif}      {\textbf{si}}
+%\renewcommand{\algorithmicendif}   {\textbf{finsi}}
+%\renewcommand{\algorithmicelse}    {\textbf{sinon}}
+%\renewcommand{\algorithmicthen}    {\textbf{alors}}
+%\renewcommand{\algorithmicfor}     {\textbf{pour}}
+%\renewcommand{\algorithmicforall}  {\textbf{pour tout}}
+%\renewcommand{\algorithmicdo}      {\textbf{faire}}
+%\renewcommand{\algorithmicendfor}  {\textbf{fin pour}}
+%\renewcommand{\algorithmicloop}    {\textbf{boucler}}
+%\renewcommand{\algorithmicendloop} {\textbf{fin boucle}}
+%\renewcommand{\algorithmicrepeat}  {\textbf{répéter}}
+%\renewcommand{\algorithmicuntil}   {\textbf{jusqu'à}}

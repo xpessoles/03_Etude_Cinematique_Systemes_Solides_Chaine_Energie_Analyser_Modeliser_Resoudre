@@ -1,0 +1,987 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={CIN : Cinématique du solide},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{style/new_style}
+\input{style/macros_SII}
+
+%\fichetrue
+\fichefalse
+
+%\proftrue
+\proffalse
+
+%\tdtrue
+\tdfalse
+
+\courstrue
+%\coursfalse
+
+% -------------------------------------
+% Déclaration des titres
+% -------------------------------------
+
+\def\discipline{Informatique}
+\def\xxtete{Informatique}
+
+\def\classe{PTSI}
+\def\xxnumpartie{Partie 1}
+\def\xxpartie{Étude cinématique des systèmes de solides de la chaîne d'énergie  \\
+Analyser, Modéliser, Résoudre}
+
+\def\xxnumchapitre{Chapitre 5}
+\def\xxchapitre{\hspace{.12cm} Cinématique du solide indéformable}
+
+\def\xxposongletx{2}
+\def\xxposonglettext{1.45}
+\def\xxposonglety{20}
+\def\xxonglet{Part. 1 -- Ch. 2}
+
+\def\xxactivite{Cours}
+\def\xxauteur{\textsl{Xavier Pessoles}}
+
+\def\xxcompetences{%
+\textsl{%
+\textbf{Savoirs et compétences :}
+\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+\item Mod-C11 : Modélisation géométrique et cinématique des mouvements entre solides indéformables 
+\begin{itemize}[label=\ding{112},font=\color{ocre}] 
+\item Mod-C11.2 : Champ des vecteurs vitesses des points d'un solide
+\item Mod-C11.4 : Composition des vitesses
+\item Mod-C11.6 : Champ des vecteurs accélérations des points d'un solide
+\item Mod-C11.6 : Composition des accélérations
+\item Mod-C11-S5 : Déterminer la trajectoire d’un point d’un solide
+\item Mod-C11-S8 : Écrire le vecteur accélération d’un point d’un solide
+\end{itemize}
+\end{itemize}
+%
+}}
+
+\def\xxfigures{
+\includegraphics[width=\textwidth]{images/prot_01}
+
+\textit{Centrifugeuse humaine développée par le CNRS / MEDES [1]} 
+
+	\includegraphics[width=\textwidth]{images/prot_01}
+
+\textit{Modélisation cinématique} 
+
+}%figues de la page de garde
+\def\xxpied{%
+Partie 3 -- Étude cinématique des systèmes  \\
+Ch 5 : Cinématique du solide -- \xxactivite%
+}
+
+%---------------------------------------------------------------------------
+
+
+\begin{document}
+\chapterimage{png/Fond_Arch}
+\input{style/new_pagegarde}
+
+%\newpage
+
+
+
+
+\section{Avant propos}
+
+\subsection{Notion de solide indéformable}
+Lorsqu'un objet ou un système est soumis à des efforts, il peut subir, suivant la nature du matériau de grandes ou de petites déformations. 
+
+\begin{exemple}
+\begin{center}
+\begin{tabular}{ccc}
+\includegraphics[width=.25\textwidth]{images/prot_01} & &
+\includegraphics[width=.25\textwidth]{images/prot_01} \\
+Pâte à modeler \cite{cite4}& &
+%Nano gouttes d'or \cite{cite5} & 
+Éprouvette de traction\\
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item pale d'hélicoptère soumis à une force centrifuge;
+\item fluides ...
+\end{itemize}
+\end{exemple}
+
+
+
+Dans le cadre du programme de CPGE (PTSI et PT), plusieurs hypothèses peuvent être retenues.
+En résistance des matériaux (programme de PT), ou lors des essais sur les matériaux (essai de traction par exemple), les matériaux sont considérés comme déformables. En effet, on observe la déformation de la matière au cours du temps.
+
+En cinématique (PTSI), en statique (PTSI) et en dynamique (PT) les solides seront considérés comme indéformables. On considère en effet que les déformations sont négligeables par rapport aux études réalisées.
+
+\begin{hypo}
+\textbf{Solide indéformable}
+
+%\begin{minipage}[c]{.6\linewidth}
+%\ifthenelse{\boolean{prof}}{%
+On considère deux points $A$ et $B$ d'un solide indéformable noté $S$. On note $t$ le temps.
+
+
+
+\end{hypo}
+\begin{rem}
+En cinématique du solide indéformable, les fluides et les ressorts ne seront pas étudiés.
+\end{rem}
+
+
+\subsection{Notion de point appartenant à un solide}
+
+
+
+\begin{warn}
+En cinématique, il faudra vérifier si les points considérés sont bien des points matériels des solides considérés. 
+\end{warn}
+
+
+
+Dans le cas d'une roue de voiture, le point de contact entre la roue et le sol n'est pas un point matériel, il change au cours du temps...
+
+
+... il en est de même pour le point de contact entre la came et le plateau.
+
+
+
+Dans une transmission par engrenage simple, on modélise le contact entre $S_1$ et $S_2$ par un point qui est fixe par rapport au bâti. Ce point n'appartient ni au solide 1, ni au solide 2.
+
+
+
+\section{Trajectoire d'un point appartenant à un solide}
+
+
+\begin{defi}
+\textbf{Trajectoire d'un point dans l'espace}
+
+Soit un point $P$ se déplaçant dans un repère $\mathcal{R}_0 \left(O,\vect{i_0},\vect{j_0},\vect{k_0} \right)$. La trajectoire du point $P$ est définie par la courbe $\mathcal{C}(t)$ paramétrée par le temps $t$. On a : 
+$$
+\forall t\in \mathbb{R}^+, \vect{OP(t)}=
+\left[
+\begin{array}{l}
+x(t)\\
+y(t)\\
+z(t)\\
+\end{array}
+\right]_{\mathcal{R}_0}
+=x(t)\vect{i_0}+y(t)\vect{j_0}+z(t)\vect{k_0}
+$$
+\end{defi}
+
+
+\begin{exemple}
+\textit{Centrifugeuse}
+
+Le paramétrage de la centrifugeuse est donnée ci dessous : 
+
+\begin{minipage}[c]{.25\linewidth}
+\begin{center}
+\includegraphics[height=3cm]{images/prot_01}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.45\linewidth}
+\begin{center}
+\includegraphics[height=3cm]{images/prot_01}
+\end{center}
+\end{minipage}\hfill
+\begin{minipage}[c]{.25\linewidth}
+Les paramètres constants du système sont les suivants : 
+\begin{itemize}%[$\bullet$]
+\item $\vect{O_0O_1} = a \vect{i_1}$
+\item $\vect{O_1G} = b \vect{i_2} + c \vect{k_2}$
+\end{itemize}
+\end{minipage}
+
+La trajectoire du point $G$ dans le repère $\mathcal{R}_0$  est donnée par le vecteur 
+$$
+\vect{O_0 G}(t)  = \vect{O_0O_1} + \vect{O_1G}
+= a \vect{i_1} +  b \vect{i_2} + c \vect{k_2}
+$$
+
+Il faut alors projeter les vecteurs dans $\mathcal{R}_0$ : 
+\begin{eqnarray*}
+\vect{O_0 G}(t) &=& a \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) 
++ b \left(\cos\beta(t) \vect{i_1} - \sin\beta(t) \vect{k_1} \right) 
++ c\left(\cos\beta(t) \vect{k_1} + \sin\beta(t)\vect{i_1}\right)\\
+&=& a \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) 
++ b \left(\cos\beta(t) \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) - \sin\beta(t) \vect{k_0} \right) \\
+&& + c\left(\cos\beta(t) \vect{k_0} + \sin\beta(t)  \left(\cos\alpha(t) \vect{i_0} + \sin\alpha(t) \vect{j_0} \right) \right)\\
+&=& \left[ \begin{array}{c} 
+a \cos\alpha(t) + b \cos\beta(t) \cos\alpha(t) +c \sin\beta(t)\cos\alpha(t)\\
+a \sin\alpha(t) + b \cos\beta(t) \sin\alpha(t) +c \sin\beta(t)\sin\alpha(t) \\
+- b\sin\beta(t) + c\cos\beta(t)
+\end{array}\right]_{\mathcal{R}_0}
+\end{eqnarray*}
+
+On a ainsi l'équation paramétrique de la position du point $G$.
+
+\vspace{.25cm}
+
+\end{exemple}
+\section{Vitesse d'un point appartenant à un solide}
+
+\subsection{Le vecteur vitesse}
+\subsubsection{Définition}
+
+\begin{defi}
+\textbf{Vitesse d'un point appartenant à un solide}
+
+Soit un solide $S_0$ auquel on associe le repère $\mathcal{R}_0$ $\left(O_0,\vect{i_0},\vect{j_0},\vect{k_0} \right)$.  Soit un solide $S_1$ auquel on associe le repère $\mathcal{R}_1$,  $\left(O_1,\vect{i_1},\vect{j_1},\vect{k_1} \right)$. Le solide $S_1$ est en mouvement par rapport au solide $S_0$. 
+
+Soit un point $P$ appartenant au solide $S_1$. La vitesse du point $P$ appartenant au solide $S_1$ par rapport au solide $S_0$ se calcule donc ainsi : 
+$$
+\vect{V(P\in S_1/S_0)}(t) = \left[\dfrac{d\vect{O_0P(t)}}{dt}\right]_{\mathcal{R}_0}
+$$
+\end{defi}
+
+
+\begin{warn}
+\begin{minipage}[c]{.15\linewidth}
+\begin{center}
+\includegraphics[width=.8\textwidth]{images/prot_01}
+\end{center}
+\end{minipage} \hfill
+\begin{minipage}[c]{.8\linewidth}
+\begin{itemize}
+\item Attention à respecter rigoureusement la notation.
+\item La vitesse dépend du point d'application.
+\item Attention, << dériver un vecteur par rapport à une base >> est différent de << exprimer un vecteur dans une base>>.
+\end{itemize}
+\end{minipage}
+\end{warn}
+
+
+\begin{rem}
+\begin{itemize}
+\item $\vect{V(P\in S_1/S_0)}(t)$ dépend du temps $t$. On l'appelle vitesse instantannée. 
+\item $\vect{V(P\in S_1/S_0)}(t)$ est tangent à la trajectoire du point $P$ dans $\mathcal{R}_0$.
+\item $\vect{V(P\in S_1/S_0)}(t)$ peut s'exprimer dans n'importe quelle base.
+\end{itemize}
+\end{rem}
+
+
+\subsubsection{Calcul du vecteur vitesse -- Application directe}
+
+Soit un avion $S_1$ repéré par le repère $\mathcal{R}_1\left(O_1,\vect{i_1},\vect{j_1},\vect{k_1} \right)$ en mouvement libre par rapport à un repère $\mathcal{R}_0\left(O_0,\vect{i_0},\vect{j_0},\vect{k_0} \right)$.  La position de l'avion dans l'espace est repéré par le vecteur $\vect{O_0O_1}=x(t)\vect{i_0}+y(t)\vect{j_0}+z(t)\vect{k_0}$ ainsi que par les angles d'Euler.
+
+
+Calculons la vitesse du point $O_1$ par rapport à $\mathcal{R}_0$ :
+$$
+\vectv{O_1}{S_1}{S_0} =  \left[\dfrac{d\vect{O_0 O_1}(t)}{dt}\right]_{\mathcal{R}_0} 
+$$
+
+\begin{rem}
+Pour dériver le vecteur $\vect{O_0 O_1}(t)$ par rapport au repère $\mathcal{R}_0$ une méthode consiste en exprimer le vecteur $\vect{O_0 O_1}(t)$ dans $\mathcal{R}_0$ puis en dériver chacune des composantes. 
+\end{rem}
+
+\begin{eqnarray*}
+\vectv{O_1}{S_1}{S_0} &=&  
+\left[\dfrac{d\left(x(t)\vect{i_0}+y(t)\vect{j_0}+z(t)\vect{k_0} \right)}{dt}\right]_{\mathcal{R}_0}
+= 
+\left[\dfrac{d\left(x(t)\vect{i_0}\right)}{dt}\right]_{\mathcal{R}_0}
++\left[\dfrac{d\left(y(t)\vect{j_0}\right)}{dt}\right]_{\mathcal{R}_0}
++\left[\dfrac{d\left(z(t)\vect{k_0}\right)}{dt}\right]_{\mathcal{R}_0} \\
+&=&
+x(t)\left[\dfrac{d\vect{i_0}}{dt}\right]_{\mathcal{R}_0}
++ \dfrac{dx(t)}{dt} \vect{i_0}
++y(t)\left[\dfrac{d\vect{j_0}}{dt}\right]_{\mathcal{R}_0}
++ \dfrac{dy(t)}{dt} \vect{j_0}
++z(t)\left[\dfrac{d\vect{k_0}}{dt}\right]_{\mathcal{R}_0}
++ \dfrac{dz(t)}{dt} \vect{k_0} \\
+%%&= &\dot{x(t)}\vect{i_0}+\dot{y(t)}\vect{j_0}+\dot{z(t)}\vect{k_0}
+\end{eqnarray*}
+
+On a : 
+$$
+\left[\dfrac{d\vect{i_0}}{dt}\right]_{\mathcal{R}_0} = 
+\left[
+\begin{array}{c}
+\dfrac{d 1}{dt}\\
+\dfrac{d 0}{dt}\\
+\dfrac{d  0}{dt}\\
+\end{array}
+\right]_{\mathcal{R}_0}
+ = \vect{0}
+$$
+Il est est de même pour $\left[\dfrac{d\vect{j_0}}{dt}\right]_{\mathcal{R}_0}$ et $\left[\dfrac{d\vect{k_0}}{dt}\right]_{\mathcal{R}_0}$.
+
+\begin{rem}
+\begin{itemize}
+\item La dérivée d'un vecteur fixe $\vect{V}$ exprimé dans une base $\mathcal{B}_i$ par rapport à $\mathcal{B}_i$ est nul. Ainsi,  $\left[\dfrac{d\vect{i_i}}{dt}\right]_{\mathcal{R}_i}=\vect{0}$.
+\item On note par un $\cdot$ la dérivée d'une fonction par rapport au temps : $\dfrac{dx(t)}{dt} = \dot{x}(t)$.
+\end{itemize}
+
+\end{rem}
+
+Au final, on a donc :
+$$\vectv{O_1}{S_1}{S_0} = \dot{x}(t) \vect{i_0}+\dot{y}(t) \vect{j_0}+\dot{z}(t) \vect{k_0} $$
+
+\begin{exemple}
+\textit{Centrifugeuse}
+
+Calculer $\vectv{O_1}{S_1}{S_0}$.
+
+Par définition, 
+$$
+\vectv{O_1}{S_1}{S_0} 
+= \left[\dfrac{d\vect{O_0O_1}(t)}{dt}\right]_{\mathcal{R}_0}
+= \left[\dfrac{d \left(a \vect{i_1}\right) }{dt}\right]_{\mathcal{R}_0}
+= a \left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}
+$$
+
+On a :
+\begin{eqnarray*}
+\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}
+&=&\left[\dfrac{d \left(\cos\alpha(t)\vect{i_0}+\sin\alpha(t)\vect{j_0} \right)}{dt}\right]_{\mathcal{R}_0}
+=\left[\dfrac{d  \cos\alpha(t)\vect{i_0}}{dt}\right]_{\mathcal{R}_0}
++\left[\dfrac{d  \sin\alpha(t)\vect{j_0} }{dt}\right]_{\mathcal{R}_0}\\
+& = & 
+\dfrac{d \cos\alpha(t)}{dt} \vect{i_0}  
++\cos\alpha(t)\underbrace{\left[\dfrac{d  \vect{i_0}}{dt}\right]_{\mathcal{R}_0}}_{\vect{0}}
++\dfrac{d \sin\alpha(t)}{dt} \vect{i_0}  
++\sin(t)\underbrace{\left[\dfrac{d  \vect{j_0}}{dt}\right]_{\mathcal{R}_0}}_{\vect{0}}\\
+& = & -\dot{\alpha}(t)\sin\alpha(t) \vect{i_0}   + \dot{\alpha}(t)\cos\alpha(t) \vect{j_0}  = 
+\dot{\alpha}(t)\vect{j_1}
+\end{eqnarray*}
+
+Ainsi,
+$$
+\vectv{O_1}{S_1}{S_0} 
+= \left[\begin{array}{c} 
+-a\dot{\alpha}(t)\sin\alpha(t) \\
+a \dot{\alpha}(t)\cos\alpha(t) \\
+0 \end{array}\right]_{\mathcal{R}_0}
+=\left[\begin{array}{c} 0 \\ a\dot{\alpha}(t) \\ 0\end{array}\right]_{\mathcal{R}_1}
+$$
+
+Dans les deux cas, $\vect{O_0O_1}(t)$ est dérivé par rapport $\mathcal{R}_0$ mais il s'exprime différemment dans $\mathcal{R}_0$ et $\mathcal{R}_1$ :
+\begin{itemize}
+\item $\vectv{O_1}{S_1}{S_0} = -a\dot{\alpha}(t)\sin\alpha(t) \vect{i_0}   + a\dot{\alpha}(t) \cos\alpha(t) \vect{j_0}$ : ici la base de \textbf{projection} et de \textbf{dérivation} est la base $\mathcal{B}_0$;
+\item $\vectv{O_1}{S_1}{S_0} = a\dot{\alpha}(t)\vect{j_1}$ : ici la base de dérivation est la base $\mathcal{B}_0$ et la base de projection est $\mathcal{B}_1$.
+\end{itemize}
+
+\end{exemple}
+
+
+\begin{rem}
+\begin{minipage}[c]{.65\linewidth}
+Lorsqu'un point est confondu pour deux solides et qu'il n'y a pas de mouvement relatif entre les solides, (centre d'une liaison pivot ou d'une liaison rotule par exemple) les vitesses sont égales ainsi, ici : 
+$$
+\vect{V(0_1\in S_1/S_0)}(t) = \vect{V(0_1\in S_2/S_0)}(t)
+$$
+
+Par ailleurs, 
+$$
+\vect{V(0_1\in S_1/S_2)}(t) = \vect{0}
+$$
+\end{minipage}\hfill
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.6\textwidth]{images/prot_01}
+\end{center}
+\end{minipage}
+\end{rem}
+\subsubsection{Détermination du vecteur vitesse dans les liaisons cinématiques}
+
+\begin{resultat}
+Lorsque il n'y a pas de degré de liberté de translation dans une liaison, la vitesse au centre de la liaison est nulle. Ainsi : 
+\begin{itemize}
+\item si les solides $S_1$ et $S_2$ sont en liaison rotule de centre $O$ alors $\vectv{O}{S_2}{S_1}=\vect{0}$;
+\item si les solides $S_1$ et $S_2$ sont en liaison pivot de centre $O$ alors $\vectv{O}{S_2}{S_1}=\vect{0}$;
+\item si les solides $S_1$ et $S_2$ sont en liaison rotule à doigt de centre $O$ alors $\vectv{O}{S_2}{S_1}=\vect{0}$.
+\end{itemize}
+\end{resultat}
+\begin{exemple}
+\textit{Centrifugeuse humaine}
+
+Dans ce cas, on peut affirmer que :
+$$
+ \vectv{O_0}{S_1}{S_0} = \vect{0} \quad \text{et} \quad 
+\vectv{O_1}{S_2}{S_1} = \vect{0}
+$$
+\textbf{Attention : dans le cas des liaisons pivots, ces relations ne sont vraies que sur les axes des liaisons et pour les mouvements relatifs entre les deux solides participant à la liaison.} 
+\end{exemple}
+\subsection{Vecteur instantané de rotation}
+
+\subsubsection{Définition}
+
+\begin{defi}
+\textbf{Vitesse instantané de rotation entre deux solides -- Vecteur taux de rotation}
+
+Soit un solide $S_0$ auquel on associe le repère $\mathcal{R}_0$ $\left(O_0,\vect{i_0},\vect{j_0},\vect{k_0} \right)$.  Soit un solide $S_1$ auquel on associe le repère $\mathcal{R}_1$,  $\left(O_1,\vect{i_1},\vect{j_1},\vect{k_1} \right)$. Le solide $S_1$ est en mouvement par rapport au solide $S_0$. 
+
+
+Les rotations entre le solide $S_0$ et le solide $S_1$ sont paramétrés par les angles d'Euler $\psi(t)$, $\theta(t)$ et $\varphi(t)$.
+
+
+\vspace{.25cm}
+
+On appelle vecteur instantané de rotation entre les solides $S_0$ et $S_1$ le vecteur
+$$
+\vecto{S_1}{S_0} = \dot{\psi}(t) \vect{k_0} + \dot{\theta}(t) \vect{u} + \dot{\varphi}(t) \vect{k_1}
+$$
+
+$\dot{\psi}(t) $, $\dot{\theta}(t) $ et $\dot{\varphi}(t) $ sont en $rad/s$. 
+\end{defi}
+
+\begin{rem}
+
+\begin{itemize}
+\item On note sans distinction $\vecto{S_1}{S_0}$ et $\vecto{\mathcal{R}_1}{\mathcal{R}_0}$.
+\item Le vecteur instantané de rotation est indépendant du point d'application.
+\item On a la relation suivante :
+$$\vecto{S_1}{S_0} = -\vecto{S_0}{S_1}$$
+\end{itemize}
+\end{rem}
+
+
+\subsubsection{Détermination du vecteur vitesse instantané de rotation dans les liaisons cinématiques}
+
+\begin{resultat}
+Lorsqu'il n'y a pas de degrés de liberté de rotation dans une liaison ou que les degrés de liberté en rotation sont paramétrés, on a :  
+\begin{itemize}
+\item si les solides $S_1$ et $S_2$ sont en liaison pivot de centre $O$, d'angle $\alpha$ et d'axe $\vect{k}$ alors $\vecto{S_2}{S_1}=\dot{\alpha}\vect{k}$;
+\item si les solides $S_1$ et $S_2$ sont en liaison glissière d'axe $\vect{z}$, $\vecto{S_2}{S_1}=\vect{0}$; 
+\item si les solides $S_1$ et $S_2$ sont en liaison rotule de centre $O$,  et d'orientations $(\psi,\vect{k})$, $(\theta,\vect{u})$, $(\varphi,\vect{k_1})$, alors $\vecto{S_2}{S_1}=\dot{\psi}\vect{k}+\dot{\theta}\vect{u}+\dot{\varphi}\vect{k_1}$;
+\item ...
+\end{itemize}
+\end{resultat}
+
+\begin{exemple}
+\textit{Centrifugeuse}
+
+On a :
+$$
+\vecto{S_1}{S_0} = \dot{\alpha}\vect{k_0} 
+\quad \quad
+\vecto{S_2}{S_1} = \dot{\beta}\vect{j_1} 
+$$
+
+\end{exemple}
+\subsection{Dérivation vectorielle -- Formule de Bour}
+
+
+\begin{resultat}
+\textbf{Dérivation vectorielle}
+
+Soient $S_0$ et $S_1$ deux solides en mouvements relatifs et $\mathcal{R}_0$ et $\mathcal{R}_1$ les repères orthonormés directs associés. Soit $\vect{v}$ un vecteur de l'espace. On note $\vect{\Omega(\mathcal{R}_1/\mathcal{R}_0)}$ le vecteur instantané de rotation permettant d'exprimer les rotations entre chacune des deux bases. 
+
+La dérivée d'un vecteur dans une base mobile se calcule donc ainsi :
+
+$$
+\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} =
+\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_1} 
++ \vect{\Omega(\mathcal{R}_1/\mathcal{R}_0)}\wedge \vect{v}
+$$
+\end{resultat}
+
+\begin{exemple}
+\textit{Centrifugeuse}
+
+Calcul de $\vectv{O_1}{S_1}{S_0}$.
+
+On rappelle que :
+$$
+\vectv{O_1}{S_1}{S_0} 
+= a \left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}
+$$
+
+Le calcul de $\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0}$ peut donc être réalisé ainsi : 
+$$ 
+\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_0} = 
+\underbrace{\left[\dfrac{d  \vect{i_1} }{dt}\right]_{\mathcal{R}_1}}_{\vect{0}} + \vecto{S_1}{S_0}\wedge \vect{i_1}
+=\dot{\alpha}\vect{k_0}  \wedge \vect{i_1}
+=\dot{\alpha} \vect{j_1}
+$$
+
+Ainsi 
+$$
+\vectv{O_1}{S_1}{S_0} 
+= a \dot{\alpha} \vect{j_1}
+$$
+\end{exemple}
+
+
+\subsection{Champ du vecteur vitesse dans un solide en mouvement}
+
+\subsubsection{Mise en évidence}
+Reprenons le cas d'un avion en déplacement dans le ciel . Soit $P$ un point appartenant à l'avion tel que $\vect{O_1P} = a\vect{i_1} + b\vect{j_1} + c\vect{k_1}$. 
+
+Calculons la vitesse du point $P$ par rapport à $\mathcal{R}_0$ :
+
+\begin{eqnarray*}
+\vectv{P}{S_1}{S_0} & = &\left[\dfrac{d\vect{O_0 P}(t)}{dt}\right]_{\mathcal{R}_0}
+= \left[\dfrac{d\left( \vect{O_0 O_1} + \vect{O_1P}\right)(t)}{dt}\right]_{\mathcal{R}_0} \\
+&=&\vectv{O_1}{S_1}{S_0}+\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0} \\
+\end{eqnarray*}
+
+Calculons maintenant $\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0}$:
+$$
+\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0} = 
+\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_1} 
++ \vecto{S_1}{S_0} \wedge \vect{O_1 P}(t)
+$$
+$\vect{O_1 P}$ étant fixe dans le repère $\mathcal{R}_1$, $\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_1}=\vect{0}$.
+
+Au final, 
+$$
+\vectv{P}{S_1}{S_0} = \vectv{O_1}{S_1}{S_0}+
+\vecto{S_1}{S_0} \wedge \vect{O_1 P}(t)
+= \vectv{O_1}{S_1}{S_0}+
+ \vect{P O_1}(t) \wedge \vecto{S_1}{S_0} 
+$$
+\subsubsection{Résultat}
+\begin{resultat}
+\textbf{Champ du vecteur vitesse dans un solide -- Formule de Varignon}
+
+Soient $A$ et $B$ deux points appartenant à un solide $S_1$ en mouvement par rapport à $S_0$. Le champ des vecteurs vitesses est donc déterminé ainsi :
+$$
+\vect{V(B\in S_1/S_0)} = \vect{V(A\in S_1/S_0)} + \vect{BA}\wedge \vect{\Omega(S_1/S_0)}
+$$
+\end{resultat}
+
+\begin{rem}
+
+\textit{Moyen mnémotechnique}
+
+\begin{minipage}[c]{.65\linewidth}
+Comme la dérivée vectorielle, l'utilisation de cette formule est indispensable en mécanique en général et en cinématique en particulier.
+
+On verra par la suite que le vecteur $\vect{\Omega}$ est appelé \textbf{R}ésultante du torseur cinématique. 
+
+En conséquence, en utilisant le moyen mnémotechnique on a :
+$$
+\vect{V(\mathbf{B}\in S_1/S_0)} = \vect{V(\mathbf{A}\in S_1/S_0)} + \vect{\mathbf{BA}}\wedge \underbrace{\vect{\Omega(S_1/S_0)}}_{\mathbf{R}}
+$$
+\end{minipage}
+\begin{minipage}[c]{.3\linewidth}
+\begin{center}
+\includegraphics[width=.6\textwidth]{images/prot_01}
+\end{center}
+\end{minipage}
+\end{rem}
+
+\begin{rem}
+\textit{Utilisation du champ de vecteur}
+
+La formule du champ de vecteur est utilisée à chaque fois que la vitesse est connue en un point d'un solide et qu'on veut la calculer en un point appartenant à un autre point d'un même solide. 
+\end{rem}
+
+\begin{exemple}
+\textit{Centrifugeuse}
+
+Calcul de $\vectv{O_1}{S_1}{S_0}$.
+
+$S_1$ et $S_0$ sont en liaison pivot de centre $O_0$, on a donc :  $\vectv{O_0}{S_1}{S_0}=\vect{0}$.
+
+En conséquence, 
+$$
+\vectv{O_1}{S_1}{S_0} = \vectv{O_0}{S_1}{S_0} + \vect{O_1O_0}\wedge   \vecto{S_1}{S_0} = \vect{0} - a \vect{i_1} \wedge \left( \dot{\alpha}\vect{k_0} \right)
+=a \dot{\alpha}\vect{j_1}
+$$
+
+
+\end{exemple}
+\subsubsection{\'Equiprojectivité du champ des vecteurs vitesses}
+
+\begin{resultat}
+\textbf{Equiprojectivité}
+
+Soit un solide $S_1$ en mouvement par rapport à un repère fixe $\mathcal{R}_0$. Soient deux points $A$ et $B$ appartenant au solide $S_1$. On démontre qu'à chaque instant $t$ :
+$$
+\vectv{A}{S_1}{\mathcal{R}_0}\cdot \vect{AB} = 
+\vectv{B}{S_1}{\mathcal{R}_0}\cdot \vect{AB}
+$$
+\end{resultat}
+
+
+\begin{py}
+
+\begin{python}
+TOTOTO
+TOTOOT
+if a<b :
+    return none # Commentaire àaàaaà
+    
+oTOOTE
+\end{python}
+\end{py}
+
+\begin{rem}
+Cette propriété sera très utilisée en cinématique graphique lors de l'étude des mouvements plans.
+\end{rem}
+
+
+%\subsubsection{Détermination de la vitesse d'un point appartenant à un solide un mouvement -- Cas à un seul degré de liberté}
+%Considérons notre avion en phase de décollage uniquement. Dans ces conditions et selon le paramétrage adopté,  $\theta(t)=\varphi(t)=0$. On a donc la figure de changement de base ci-contre.
+%Soit $P$ un point appartenant à l'avion tel que $\vect{O_1P} = a\vect{i_1} + b\vect{j_1} + c\vect{k_1}$. 
+%
+%
+%Calculons la vitesse du point $P$ par rapport à $\mathcal{R}_0$ :
+%
+%$$
+%\vectv{P}{S_1}{S_0}=\left[\dfrac{d\vect{O_0 P}(t)}{dt}\right]_{\mathcal{R}_0}
+%= \left[\dfrac{d\left( \vect{O_0 O_1} + \vect{O_1P}\right)(t)}{dt}\right]_{\mathcal{R}_0}
+%=\underbrace{\left[\dfrac{d\vect{O_0 O_1}(t)}{dt}\right]_{\mathcal{R}_0}}_{\vectv{O_1}{S_1}{S_0}}
+%+\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0}
+%$$
+%
+%
+%Calculons donc $\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0}$ :
+%\begin{eqnarray*}
+%\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0} & = & 
+%\left[\dfrac{d\left(a\vect{i_1}+b\vect{j_1}+c\vect{j_1} \right)}{dt}\right]_{\mathcal{R}_0} \\
+%& = & a\left[\dfrac{d\vect{i_1}}{dt}\right]_{\mathcal{R}_0}
+%+ \underbrace{\left[\dfrac{da}{dt}\right]_{\mathcal{R}_0}}_{0} \vect{i_1}
+%+b\left[\dfrac{d\vect{j_1}}{dt}\right]_{\mathcal{R}_0}
+%+ \underbrace{\left[\dfrac{db}{dt}\right]_{\mathcal{R}_0}}_{0} \vect{j_1}
+%+c\left[\dfrac{d\vect{k_1}}{dt}\right]_{\mathcal{R}_0} 
+%+ \underbrace{\left[\dfrac{dc}{dt}\right]_{\mathcal{R}_0}}_{0} \vect{k_1} \\
+%& = & a\left[\dfrac{d\vect{i_1}}{dt}\right]_{\mathcal{R}_0}
+%+b\left[\dfrac{d\vect{j_1}}{dt}\right]_{\mathcal{R}_0}
+%+c\left[\dfrac{d\vect{k_1}}{dt}\right]_{\mathcal{R}_0} \\
+%\end{eqnarray*}
+%
+%Par ailleurs, d'après le paramétrage, $\vect{k_1}=\vect{k_0}$. En conséquences, 
+%$\left[\dfrac{d\vect{k_1}}{dt}\right]_{\mathcal{R}_0} = \vect{0}$.
+%
+%
+%Pour dériver les vecteurs $\vect{i_1}$, $\vect{j_1}$  dans la base $\mathcal{R}_0$ \textbf{une}\footnote{Mais pas forcément la meilleure.} des solutions est d'exprimer ces vecteurs dans $\mathcal{R}_0$. On a donc :
+%
+%\begin{eqnarray*}
+%\vect{i_1} & = &  \cos\varphi(t) \vect{i_0} +  \sin\varphi(t) \vect{j_0}  \\
+%\vect{j_1} & = &  \cos\varphi(t) \vect{j_0} -  \sin\varphi(t) \vect{i_0} 
+%\end{eqnarray*}
+%
+%
+%\begin{eqnarray*}
+%\left[\dfrac{d\vect{i_1}}{dt}\right]_{\mathcal{R}_0} & = &  
+%\dfrac{d\cos\varphi(t)}{dt} \vect{i_0} +  
+%\cos\varphi(t)\left[\dfrac{d\vect{i_0}}{dt}\right]_{\mathcal{R}_0}
+%\dfrac{d\sin\varphi(t)}{dt} \vect{j_0} + 
+%\sin\varphi(t)\left[\dfrac{d\vect{j_0}}{dt}\right]_{\mathcal{R}_0}\\
+%& = & -\dot{\varphi(t)}\sin\varphi(t) \vect{i_0} + \dot{\varphi(t)}\cos \varphi(t) \vect{j_0} \\
+%& = & \dot{\varphi(t)}\left(  \cos \varphi(t) \vect{j_0} - \sin\varphi(t) \vect{i_0}\right)\\
+%& = & \dot{\varphi(t)}\vect{j_1}\\
+%\end{eqnarray*}
+%
+%De même :
+%\begin{eqnarray*}
+%\left[\dfrac{d\vect{j_1}}{dt}\right]_{\mathcal{R}_0} & = & - \dot{\varphi(t)}\vect{i_1}\\
+%\end{eqnarray*}
+%
+%On a donc :
+%$$
+%\left[\dfrac{d\vect{O_1 P}(t)}{dt}\right]_{\mathcal{R}_0} = \dot{\varphi(t)}\left(a\vect{j_1}-b\vect{i_1}\right)
+%$$
+%
+%Au final, 
+%$$
+%\vectv{P}{S_1}{S_0}=\vectv{O_1}{S_1}{S_0}
+%+\dot{\varphi(t)}\left(a\vect{j_1}-b\vect{i_1}\right)
+%$$
+
+
+%\subsection{Champ des vecteurs vitesses des points d'un solide}
+
+%\subsection{Calcul du vecteur vitesse}
+%\begin{methode}
+
+%\end{methode}
+
+\section{Composition des mouvements}
+\subsection{Composition du vecteur vitesse}
+\begin{resultat}
+\textbf{Composition du vecteur vitesse}
+\label{ref_va}
+
+Soit un solide $S_1$ en mouvement par rapport à un repère $\mathcal{R}_0$ et un solide $S_2$ par rapport au solide $S_1$. Pour chacun des points $A$ appartenant au solide $S_2$, on a :
+$$
+\vectv{A}{S_2}{\mathcal{R}_0}=
+\vectv{A}{S_2}{S_1}+\vectv{A}{S_1}{\mathcal{R}_0}
+$$
+\end{resultat}
+
+Démontrons ce résultat. $O_1$ est le centre de la liaison entre $\mathcal{R}_0$ et $S_1$. $O_1$ est donc fixe dans le repère $\mathcal{R}_0$. $O_2$ est le centre de la liaison entre $S_1$ et $S_2$. $A$ appartient à $S_2$. 
+$$
+\vectv{A}{S_2}{\mathcal{R}_0}
+= \left[\dfrac{\vect{dO_1 A}}{dt}
+\right]_{\mathcal{R}_0}
+= \left[\dfrac{\vect{dO_1 O_2}}{dt}
+\right]_{\mathcal{R}_0}
++
+\left[\dfrac{\vect{dO_2 A}}{dt}
+\right]_{\mathcal{R}_0}
+=
+\vectv{O_2}{S_1}{\mathcal{R}_0}
++
+\left[\dfrac{\vect{dO_2 A}}{dt}\right]_{S_1}
++\vecto{S_1}{\mathcal{R}_0}\wedge \vect{O_2 A}
+$$
+
+$$
+\vectv{A}{S_2}{\mathcal{R}_0}
+=
+\underbrace{\left[\dfrac{\vect{dO_2 A}}{dt}\right]_{S_1}}_{\vectv{A}{S_2}{S_1}}
++
+\underbrace{\vectv{O_2}{S_1}{\mathcal{R}_0}
++
+\vect{AO_2}
+\wedge 
+\vecto{S_1}{\mathcal{R}_0}}_{\vectv{A}{S_1}{\mathcal{R}_0}}
+$$
+
+
+On a donc bien : 
+$$
+\vectv{A}{S_2}{\mathcal{R}_0}
+=
+\vectv{A}{S_2}{S_1}
++
+\vectv{A}{S_1}{\mathcal{R}_0}
+$$
+
+\begin{rem}
+\begin{itemize}
+\item $\vectv{A}{S_2}{\mathcal{R}_0}$ est appelé vecteur vitesse absolu;
+\item $\vectv{A}{S_2}{S_1}$ est appelé vecteur vitesse relatif; 
+\item $\vectv{A}{S_1}{\mathcal{R}_0}$ est appelé vecteur vitesse d'entraînement.
+\end{itemize}
+\end{rem}
+
+\begin{resultat}
+\textbf{Généralisation}
+
+La décomposition du vecteur vitesse peut se généraliser avec $n$ solides : 
+$$
+\vectv{A}{S_n}{S_0}
+=
+\vectv{A}{S_n}{S_{n-1}}
++...+
+\vectv{A}{S_1}{S_0}
+$$
+
+\end{resultat}
+
+\subsection{Composition du vecteur instantané de rotation}
+\begin{resultat}
+\textbf{Composition du vecteur vitesse}
+
+Soit un solide $S_1$ en mouvement par rapport à un repère $\mathcal{R}_0$ et un solide $S_2$ par rapport au solide $S_1$. On a : 
+$$
+\vecto{S_2}{\mathcal{R}_0}=
+\vecto{S_2}{S_1}+\vecto{S_1}{\mathcal{R}_0}
+$$
+\end{resultat}
+
+Pour démontrer ce résultat, prenons un vecteur $\vect{v}$ :
+$$
+\left[\dfrac{d\vect{v}}{dt}\right]_{S_1} = 
+\left[\dfrac{d\vect{v}}{dt}\right]_{S_2} 
++ \vecto{S_2}{S_1} \wedge \vect{v}
+$$
+
+$$
+\left[\dfrac{d\vect{v}}{dt}\right]_{S_1} = 
+\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} 
++ \vecto{\mathcal{R}_0}{S_1} \wedge \vect{v}
+$$
+
+$$
+\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} = 
+\left[\dfrac{d\vect{v}}{dt}\right]_{S_2} 
++ \vecto{S_2}{\mathcal{R}_0} \wedge \vect{v} \Longleftrightarrow 
+\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} 
+-\left[\dfrac{d\vect{v}}{dt}\right]_{S_2} 
+= \vecto{S_2}{\mathcal{R}_0} \wedge \vect{v}
+$$
+
+En faisant la soustraction des deux premières expressions on obtient : 
+$$
+\vect{0} = 
+\left[\dfrac{d\vect{v}}{dt}\right]_{S_2} 
+-\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} 
++ \vecto{S_2}{S_1} \wedge \vect{v}
+- \vecto{\mathcal{R}_0}{S_1} \wedge \vect{v}
+=\left[\dfrac{d\vect{v}}{dt}\right]_{S_2} 
+-\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} 
++ \left(\vecto{S_2}{S_1} - \vecto{\mathcal{R}_0}{S_1}  \right)\wedge \vect{v}
+$$
+
+$$
+\Longleftrightarrow
+\left[\dfrac{d\vect{v}}{dt}\right]_{\mathcal{R}_0} 
+-\left[\dfrac{d\vect{v}}{dt}\right]_{S_2} 
+=
+ \left(\vecto{S_2}{S_1} + \vecto{S_1}{\mathcal{R}_0}  \right)\wedge \vect{v}
+$$
+En utilisant la dernière relation on a donc : 
+$$
+\vecto{S_2}{\mathcal{R}_0} \wedge \vect{v}
+=
+ \left(\vecto{S_2}{S_1} + \vecto{S_1}{\mathcal{R}_0}  \right)\wedge \vect{v}
+\Longleftrightarrow
+\vecto{S_2}{\mathcal{R}_0} = \vecto{S_2}{S_1} + \vecto{S_1}{\mathcal{R}_0}
+$$
+\begin{proposition}
+Toto
+\end{proposition}
+
+\begin{resultat}
+\textbf{Généralisation}
+
+La décomposition du vecteur instantané de rotation peut se généraliser avec $n$ solides : 
+$$
+\vecto{S_n}{S_0}
+=
+\vecto{S_n}{S_{n-1}}
++...+
+\vecto{S_1}{S_0}
+$$
+\end{resultat}
+
+\subsubsection{Exemple}
+
+\begin{exemple}
+\textit{Centrifugeuse}
+
+Calcul de $\vectv{G}{S_2}{S_0}$.
+%On a :
+%$$\vecto{S_2}{S_0}=\vecto{S_2}{S_1}+\vecto{S_1}{S_0} = \dot{\alpha}\vect{k_0} + \dot{\beta}\vect{j_1}  $$
+
+%Par ailleurs, 
+On a : 
+$$\vectv{G}{S_2}{S_0} = \vectv{G}{S_2}{S_1} + \vectv{G}{S_1}{S_0} $$
+Calculons $\vectv{G}{S_1}{S_0}$ :
+$$
+\vectv{G}{S_1}{S_0} 
+= \vectv{O_1}{S_1}{S_0} + \vect{GO_1}\wedge\vecto{S_1}{S_0}
+= a\dot{\alpha}\vect{j_1} - \left(b\vect{i_2} + c\vect{k_2}\right) \wedge\left( \dot{\alpha} \vect{k_0}\right)
+$$
+$$
+\vectv{G}{S_1}{S_0} 
+= a\dot{\alpha}\vect{j_1}  + b\dot{\alpha} \sin(\beta+\pi/2) \vect{j_1} + c \dot{\alpha}\sin\beta\vect{j_1}
+= \dot{\alpha} \left(a+b \cos\beta + c \sin\beta\right) \vect{j_1} 
+$$
+
+Par ailleurs calculons $\vectv{G}{S_2}{S_1}$ :
+$$\vectv{G}{S_2}{S_1} = \vectv{O_1}{S_2}{S_1} + \vect{GO_1}\wedge \vecto{S_2}{S_1}
+=-\left(b\vect{i_2}+c\vect{k_2}\right) \wedge \left(\dot{\beta}\vect{j_1}\right)
+=-\dot{\beta}\left(b\vect{k_2}-c\vect{i_2} \right)
+$$
+
+Au final, 
+$$\vectv{G}{S_2}{S_0} = \dot{\alpha} \left(a+b \cos\beta + c \sin\beta\right) \vect{j_1} 
+-\dot{\beta}\left(b\vect{k_2}-c\vect{i_2} \right)
+$$
+
+Il est aussi possible de calculer $\vectv{G}{S_2}{S_0}$ ainsi : 
+$$\vectv{G}{S_2}{S_0} = \left[\dfrac{d \vect{O_0G}}{dt}\right]_{\mathcal{R}_0}$$ 
+
+\end{exemple}
+\section{Accélération d'un point appartenant à un solide}
+\subsection{Définition}
+\begin{defi}
+\textbf{Accélération d'un point appartenant à un solide}
+
+Soit un solide $S_0$ auquel on associe le repère $\mathcal{R}_0$ $\left(O_0,\vect{i_0},\vect{j_0},\vect{k_0} \right)$.  Soit un solide $S_1$ auquel on associe le repère $\mathcal{R}_1$,  $\left(O_1,\vect{i_1},\vect{j_1},\vect{k_1} \right)$. Le solide $S_1$ est en mouvement par rapport au solide $S_0$. 
+
+
+Soit un point $P$ appartenant au solide $S_1$. L'accélération du point $P$ appartenant au solide $S_1$ par rapport au solide $S_0$ se calcule donc ainsi : 
+$$
+\vect{\Gamma(P\in S_1/S_0)}(t) = \left[\dfrac{d\left( \vect{V(P\in S_1/S_0)}(t)\right)}{dt}\right]_{\mathcal{R}_0}
+$$
+
+\end{defi}
+
+
+
+\subsection{Champ d'accélération d'un solide en mouvement}
+On a vu que 
+$\vectv{B}{S_1}{S_0} = \vectv{A}{S_1}{S_0} + \vect{BA} \wedge \vecto{S_1}{S_0}$. En dérivant cette expression on a donc : 
+$$
+\vectg{B}{S_1}{S_0} 
+= \vectg{A}{S_1}{S_0} 
++\left[\dfrac{d\vect{BA}}{dt}\right]_{S_0} \wedge \vecto{S_1}{S_0}
++\vect{BA} \wedge \left[\dfrac{d\vecto{S_1}{S_0}}{dt}\right]_{S_0}
+$$
+
+$B$ et $A$ sont des points du solide $S_1$. On a donc : 
+ $$
+\left[\dfrac{d\vect{BA}}{dt}\right]_{S_0} =
+\underbrace{\left[\dfrac{d\vect{BA}}{dt}\right]_{S_1}}_{\vect{0}} 
++ \vecto{S_1}{S_0} \wedge \vect{BA}
+$$
+
+$$
+\vectg{B}{S_1}{S_0} 
+= \vectg{A}{S_1}{S_0} 
++\vecto{S_1}{S_0} \wedge \vect{BA}
+\wedge \vecto{S_1}{S_0}
++\vect{BA} \wedge \left[\dfrac{d\vecto{S_1}{S_0}}{dt}\right]_{S_0}
+$$
+
+$$
+\vectg{B}{S_1}{S_0} 
+= \vectg{A}{S_1}{S_0} 
++\vecto{S_1}{S_0} \wedge \vecto{S_1}{S_0}
+\wedge \vect{AB}
++\left[\dfrac{d\vecto{S_1}{S_0}}{dt}\right]_{S_0} \wedge \vect{AB} 
+$$
+
+\begin{resultat}
+Le champ des accélérations n'est donc pas un champ de moment.
+\end{resultat}
+
+\subsection{Composition des accélérations}
+
+
+Au final, 
+$$
+\vectg{A}{S_2}{\mathcal{R}_0}
+=
+\vectg{A}{S_2}{S_1} + \underbrace{2\vecto{S_1}{\mathcal{R}_0}\wedge\vectv{A}{S_2}{S_1}}_{\vectg{A}{S_1}{\mathcal{R}_0}_{Cor}}
++\vectg{A}{S_1}{\mathcal{R}_0} 
+$$
+
+
+\begin{resultat}
+On ne peut donc pas composer les accélérations.
+On appelle : 
+\begin{itemize}
+\item $\vectg{A}{S_2}{\mathcal{R}_0}$ : accélération absolue;
+\item $\vectg{A}{S_2}{S_1}$ : accélération relative;
+\item $\vectg{A}{S_1}{\mathcal{R}_0}$ : accélération absolue;
+\item $\vectg{A}{S_1}{\mathcal{R}_0}_{Cor}$ : accélération de Coriolis.
+\end{itemize}
+\end{resultat}
+
+\section{Mouvements élémentaires}
+
+En cinématique, les vitesses dépendront des dérivées des paramètres variables angulaires et linéaires. Pour les chaînes ouvertes, il sera nécessaire de disposer d'un actionneur par paramètre variable pour animer un système. Pour les chaînes fermées à une seule boucle, il suffira d'un actionneur en entrée du système pour l'animer.
+%\begin{exemple}
+
+%\end{exemple}
+Les lois d'évolution des actionneurs sont au choix du concepteur du système. 
+
+\subsection{Loi de vitesse uniforme}
+Dans le cas où la vitesse est uniforme, on a la loi suivante : 
+
+
+
+\subsection{Loi de vitesse en trapèze}
+Physiquement il est impossible de passer d'une vitesse nulle à une vitesse non nulle. Par une première approche, il est possible qu'un actionneur soit piloté par une loi de vitesse en trapèze :
+
+
+
+
+
+\begin{thebibliography}{2}
+\bibitem[1]{cite1} Centrifugeuse humaine -- CNRS Photothèque/Sébastien Godefroy et MEDES, \textit{Avio et Tiger}, \url{http://www.medes.fr/home_fr/fiche-centrifugeuse/mainColumnParagraphs/0/document/Presentation%20centrifugeuse%2018.12.07.pdf}.
+\bibitem[2]{cite4} Wallace et Gromit, \url{http://www.wallaceandgromit.com/goodies/}.
+\bibitem[3]{JPP} Jean-Pierre Pupier -- Vitesse et accélération -- Dérivée vectorielle -- Mouvement de solides -- PTSI -- Lycée Rouvière Toulon.
+\bibitem[4]{FM} Florestan Mathurin, \textit{Champs des Vecteurs Vitesse des Points d’un Solide}, cours de PCSI / MPSI du lycée Bellevue de Toulouse, \url{http://florestan.mathurin.free.fr} .
+\end{thebibliography}
+\end{document}
+
